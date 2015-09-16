@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<stdlib.h>
 
 namespace Ui {
 class MainWindow;
