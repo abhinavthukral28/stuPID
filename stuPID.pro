@@ -13,8 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    studentregisterview.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    studentregisterview.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    studentregisterview.ui
