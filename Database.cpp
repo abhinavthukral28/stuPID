@@ -1,7 +1,7 @@
 #include "Database.h"
-#include <QtSql>
-#include <QtDebug>
 
+
+const QString Database::DBpath="./testdatabase.db";
 
 Database* Database::instance=0;
 
@@ -35,7 +35,7 @@ int Database::init(){
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 
-     db.setDatabaseName( "/home/admin/testdatabase.db" );
+     db.setDatabaseName(Database::DBpath);
 
      if( !db.open() )
      {

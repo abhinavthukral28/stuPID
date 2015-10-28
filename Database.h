@@ -1,5 +1,11 @@
+#include <QtSql>
+#include <QtDebug>
+#include<QString>
+
 #ifndef DATABASE_H
 #define DATABASE_H
+
+
 
 
 class Database{
@@ -11,8 +17,10 @@ class Database{
 
    private:
     static Database *instance;
-    int init();
+    static const QString DBpath;
 
+    //functions
+    int init();
     Database();
 
 
