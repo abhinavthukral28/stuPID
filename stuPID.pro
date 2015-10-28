@@ -7,7 +7,7 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
+QT += sql
 TARGET = stuPID
 TEMPLATE = app
 
@@ -16,11 +16,12 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     studentregisterview.cpp \
         logindialog.cpp \
-        sqlinit.cpp
+    Database.cpp
 
 HEADERS  += mainwindow.h \
     studentregisterview.h \
-            logindialog.h
+            logindialog.h \
+    Database.h
 
 FORMS    += mainwindow.ui \
     studentregisterview.ui \
