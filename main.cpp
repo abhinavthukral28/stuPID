@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
     Database *instance = Database::getInstance();
 
     instance->sayHello();
+    instance->createTables();
 
 
 
