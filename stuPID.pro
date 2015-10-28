@@ -17,9 +17,9 @@ SOURCES += main.cpp\
         logindialog.cpp \  
     studentregister.cpp \
     qualificationinit.cpp \
-
     editqualificationsview.cpp \
-    manageprojectsview.cpp
+    manageprojectsview.cpp \
+    Database.cpp
 
 HEADERS  += mainwindow.h \
     studentregister.h \
