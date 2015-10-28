@@ -14,13 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    studentregisterview.cpp \
-        logindialog.cpp 
+        logindialog.cpp \  
+    studentregister.cpp
 
 HEADERS  += mainwindow.h \
-    studentregisterview.h \
-            logindialog.h
+            logindialog.h \
+    studentregister.h
 
 FORMS    += mainwindow.ui \
-    studentregisterview.ui \
-            logindialog.ui
+            logindialog.ui \
+    studentregister.ui
