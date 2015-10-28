@@ -1,4 +1,4 @@
-#-------------------------------------------------
+
 #
 # Project created by QtCreator 2015-09-13T16:05:48
 #
@@ -14,15 +14,26 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    studentregisterview.cpp \
-        logindialog.cpp \
+        logindialog.cpp \  
+    studentregister.cpp \
+    qualificationinit.cpp \
+    editqualificationsview.cpp \
+    manageprojectsview.cpp \
     Database.cpp
 
 HEADERS  += mainwindow.h \
-    studentregisterview.h \
+    studentregister.h \
             logindialog.h \
-    Database.h
+    qualificationinit.h \
+    editqualificationsview.h \
+        Database.h \
+    manageprojectsview.h
 
 FORMS    += mainwindow.ui \
-    studentregisterview.ui \
-            logindialog.ui
+    studentregister.ui \
+            logindialog.ui \
+    qualificationinit.ui \
+    editqualificationsview.ui \
+    manageprojectsview.ui
+
+ 
