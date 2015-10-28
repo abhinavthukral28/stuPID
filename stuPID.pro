@@ -15,7 +15,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     studentregisterview.cpp \
-        logindialog.cpp 
+        logindialog.cpp \
+        sqlinit.cpp
 
 HEADERS  += mainwindow.h \
     studentregisterview.h \
