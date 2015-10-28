@@ -14,31 +14,24 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-<<<<<<< HEAD
         logindialog.cpp \
     qualificationinit.cpp \
+     studentregisterview.cpp \
+    Database.cpp 
+
     editqualificationsview.cpp
 
 HEADERS  += mainwindow.h \
             logindialog.h \
     qualificationinit.h \
-    editqualificationsview.h
+    studentregisterview.h \
+    editqualificationsview.h \
+        Database.h
 
 FORMS    += mainwindow.ui \
             logindialog.ui \
     qualificationinit.ui \
-    editqualificationsview.ui
-=======
-    studentregisterview.cpp \
-        logindialog.cpp \
-    Database.cpp
+    editqualificationsview.ui \
+    studentregisterview.ui 
 
-HEADERS  += mainwindow.h \
-    studentregisterview.h \
-            logindialog.h \
-    Database.h
-
-FORMS    += mainwindow.ui \
-    studentregisterview.ui \
-            logindialog.ui
->>>>>>> 481721efecc91a7a58ec1f88db533ff773f0a5c5
+ 
