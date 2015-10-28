@@ -3,6 +3,7 @@
 #include "editqualificationsview.h"
 #include "qualificationinit.h"
 #include "logindialog.h"
+#include "studentregister.h"
 #include "Database.h"
 
 int main(int argc, char *argv[])
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
     Database *instance = Database::getInstance();
 
     instance->sayHello();
+    instance->createTables();
 
 
 
@@ -30,6 +32,9 @@ int main(int argc, char *argv[])
 
 
 
+
+    StudentRegister r;
+    r.show();
 
     return a.exec();
 

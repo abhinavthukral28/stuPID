@@ -14,6 +14,8 @@ class Database{
     static Database* getInstance();
     ~Database();
     void sayHello();
+    void createTables();
+
 
    private:
     static Database *instance;
