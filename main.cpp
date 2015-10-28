@@ -1,8 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
-
 #include "editqualificationsview.h"
-
+#include "qualificationinit.h"
 #include "logindialog.h"
 #include "Database.h"
 
@@ -15,8 +14,8 @@ int main(int argc, char *argv[])
    // editQualificationsView w;
     //w.show();
 
-   // qualificationinit w;
-   // w.show();
+    qualificationinit w;
+    w.show();
 
     //DATABASE INITIALIZATION
 
