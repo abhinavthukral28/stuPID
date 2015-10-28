@@ -17,21 +17,23 @@ SOURCES += main.cpp\
         logindialog.cpp \
     qualificationinit.cpp \
      studentregisterview.cpp \
-    Database.cpp 
-
-    editqualificationsview.cpp
+    Database.cpp \
+    editqualificationsview.cpp \
+    manageprojectsview.cpp
 
 HEADERS  += mainwindow.h \
             logindialog.h \
     qualificationinit.h \
     studentregisterview.h \
     editqualificationsview.h \
-        Database.h
+        Database.h \
+    manageprojectsview.h
 
 FORMS    += mainwindow.ui \
             logindialog.ui \
     qualificationinit.ui \
     editqualificationsview.ui \
-    studentregisterview.ui 
+    studentregisterview.ui \
+    manageprojectsview.ui
 
  
