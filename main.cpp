@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include <QApplication>
+
 #include "editqualificationsview.h"
+
+#include "logindialog.h"
+#include "Database.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,5 +18,21 @@ int main(int argc, char *argv[])
    // qualificationinit w;
    // w.show();
 
+    //DATABASE INITIALIZATION
+
+    Database *instance = Database::getInstance();
+
+    instance->sayHello();
+
+
+
+
+
+
+
+
+
     return a.exec();
+
+
 }
