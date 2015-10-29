@@ -19,7 +19,12 @@ SOURCES += main.cpp\
     qualificationinit.cpp \
     editqualificationsview.cpp \
     manageprojectsview.cpp \
-    Database.cpp
+    Database.cpp \
+    user.cpp \
+    student.cpp \
+    project.cpp \
+    qualification.cpp \
+    team.cpp
 
 HEADERS  += mainwindow.h \
     studentregister.h \
@@ -27,7 +32,12 @@ HEADERS  += mainwindow.h \
     qualificationinit.h \
     editqualificationsview.h \
         Database.h \
-    manageprojectsview.h
+    manageprojectsview.h \
+    user.h \
+    student.h \
+    project.h \
+    qualification.h \
+    team.h
 
 FORMS    += mainwindow.ui \
     studentregister.ui \
