@@ -1,10 +1,12 @@
 #ifndef ADMINISTRATOR_H
 #define ADMINISTRATOR_H
 
-class Administrator
+#include "user.h"
+
+class Administrator : public User
 {
 public:
-    Administrator();
+    Administrator(QString& username);
 };
 
 #endif // ADMINISTRATOR_H

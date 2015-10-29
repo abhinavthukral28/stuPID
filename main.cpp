@@ -1,42 +1,26 @@
-#include "mainwindow.h"
-#include <QApplication>
-#include "editqualificationsview.h"
-#include "qualificationinit.h"
+#include <QApplication> 
 #include "logindialog.h"
-#include "studentregister.h"
 #include "Database.h"
+#include "user.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-   // MainWindow w;
-   // w.show();
+//    QApplication a(argc, argv);
+//    //DATABASE INITIALIZATION
 
-   // editQualificationsView w;
-    //w.show();
+//    Database *instance = Database::getInstance();
 
-    qualificationinit w;
-    w.show();
+//    instance->sayHello();
+//    instance->createTables();
 
-    //DATABASE INITIALIZATION
+//    LoginDialog dialog;
 
-    Database *instance = Database::getInstance();
+//    dialog.show();
+//    return a.exec();
 
-    instance->sayHello();
-    instance->createTables();
+QString username = "hi";
+User* user = new User (username);
 
-
-
-
-
-
-
-
-
-    StudentRegister r;
-    r.show();
-
-    return a.exec();
-
+return 0;
 
 }

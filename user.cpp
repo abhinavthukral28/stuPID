@@ -1,5 +1,7 @@
 #include "user.h"
 
-User::User()
+#include <QDebug>
+User::User(QString& initUsername) : username(initUsername)
 {
+
 }

@@ -6,7 +6,7 @@
 class Student : public User
 {
 public:
-    Student();
+    Student(QString& username);
 };
 
 #endif // STUDENT_H
