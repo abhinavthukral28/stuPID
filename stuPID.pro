@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     student.cpp \
     project.cpp \
     qualification.cpp \
-    team.cpp
+    team.cpp \
+    administrator.cpp
 
 HEADERS  += mainwindow.h \
     studentregister.h \
@@ -37,7 +38,8 @@ HEADERS  += mainwindow.h \
     student.h \
     project.h \
     qualification.h \
-    team.h
+    team.h \
+    administrator.h
 
 FORMS    += mainwindow.ui \
     studentregister.ui \
