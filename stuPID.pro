@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
         logindialog.cpp \  
     studentregister.cpp \
     qualificationinit.cpp \
@@ -27,7 +26,7 @@ SOURCES += main.cpp\
     team.cpp \
     administrator.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     studentregister.h \
             logindialog.h \
     qualificationinit.h \
@@ -41,7 +40,7 @@ HEADERS  += mainwindow.h \
     team.h \
     administrator.h
 
-FORMS    += mainwindow.ui \
+FORMS    += \
     studentregister.ui \
             logindialog.ui \
     qualificationinit.ui \

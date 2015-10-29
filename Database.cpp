@@ -1,5 +1,7 @@
 #include "Database.h"
 
+#include <QtSql>
+#include <QtDebug>
 
 const QString Database::DBpath="./testdatabase.db";
 
