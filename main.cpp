@@ -8,10 +8,10 @@ int main(int argc, char *argv[])
 //    QApplication a(argc, argv);
 //    //DATABASE INITIALIZATION
 
-//    Database *instance = Database::getInstance();
+    Database *instance = Database::getInstance();
 
-//    instance->sayHello();
-//    instance->createTables();
+    instance->sayHello();
+
 
 //    LoginDialog dialog;
 

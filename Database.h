@@ -13,7 +13,7 @@ class Database{
     static Database* getInstance();
     ~Database();
     void sayHello();
-    void createTables();
+
 
 
    private:
@@ -21,6 +21,7 @@ class Database{
     static const QString DBpath;
 
     //functions
+    void createTables();
     int init();
     Database();
 

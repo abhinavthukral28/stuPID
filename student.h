@@ -5,6 +5,8 @@
 
 class Student : public User
 {
+
+
 public:
     Student(QString& username);
 };

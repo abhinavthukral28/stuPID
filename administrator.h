@@ -3,10 +3,16 @@
 
 #include "user.h"
 
+#include "project.h"
+#include <vector>
 class Administrator : public User
 {
+
+std::vector<Project*> projects;
 public:
     Administrator(QString& username);
+    int addProject (Project& project);
+
 };
 
 #endif // ADMINISTRATOR_H

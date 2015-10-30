@@ -27,8 +27,7 @@ Database* Database::getInstance(){
 
 }
 void Database::sayHello(){
-
-    qDebug("hello");
+ qDebug("hello");
 }
 
 
@@ -46,7 +45,7 @@ int Database::init(){
      }
 
      qDebug( "Connected!" );
-
+     createTables();
      return 0;
 
 

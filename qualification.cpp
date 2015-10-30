@@ -1,5 +1,5 @@
 #include "qualification.h"
 
-Qualification::Qualification()
+Qualification::Qualification(QString& displayPartner, QString& displayPersonal) : partnerDisplay(displayPartner), personalDisplay(displayPersonal)
 {
 }
