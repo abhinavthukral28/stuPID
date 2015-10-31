@@ -3,17 +3,17 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-
+#include <QList>
 class QString;
+class Student;
 
 
 class Database{
 
    public:
     static Database* getInstance();
-    ~Database();
-    void sayHello();
 
+    QList<Student*> getAllStudents();
 
 
    private:

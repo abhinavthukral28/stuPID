@@ -9,9 +9,12 @@
  */
 class User
 {
- QString& username;
+ QString username;
+
+protected:
+    User(QString &username);
 public:
-    User( QString& username);
+    QString getUsername() const;
 };
 
 #endif // USER_H

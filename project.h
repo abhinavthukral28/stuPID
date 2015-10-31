@@ -1,7 +1,7 @@
 #ifndef PROJECT_H
 #define PROJECT_H
 
-#include <vector>
+#include <QList>
 #include "student.h"
 class Administrator;
 class QString;
@@ -10,7 +10,7 @@ class Project
 
 Administrator& owner;
 QString& projectName;
-std::vector<Student> registeredStudents;
+QList<Student> registeredStudents;
 
 public:
     Project(Administrator& admin,QString& title);
