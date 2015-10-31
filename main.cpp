@@ -32,17 +32,23 @@ int main(int argc, char *argv[])
 //    return a.exec();
 
 QString username = "im a student";
-Student* user = new Student (username);
+//Student* user = new Student (username);
 
-QList<Student*> students = instance->getAllStudents();
-
-for (int i = 0; i < students.count();i++)
+Student* temp = new Student(username);
+if (instance->createStudent(*temp))
 {
 
-    std::cout << students.at(i)->getUsername().toStdString() << std::endl;
+QList<Student*>* students = instance->getAllStudents();
+
+for (int i = 0; i < students->count();i++)
+{
+
+    std::cout << students->at(i)->getUsername().toStdString() << std::endl;
 }
 
-std::cout << user->getUsername().toStdString() << std::endl;
+}
+else std::cout << "ERROR IN INSERTION";
+//std::cout << user->getUsername().toStdString() << std::endl;
 
 return 0;
 

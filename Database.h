@@ -6,15 +6,21 @@
 #include <QList>
 class QString;
 class Student;
-
-
+class Project;
+class Team;
 class Database{
 
    public:
     static Database* getInstance();
 
-    QList<Student*> getAllStudents();
+    QList<Student*>* getAllStudents();
+//    QList<Project*>* getAllProjects();
+//    QList<Team*>* getTeamsByProject();
+//    QList<Student*>* getStudentsByProject();
 
+
+    int createStudent(Student& student);
+   // int createProject()
 
    private:
     static Database *instance;
