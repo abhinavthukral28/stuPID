@@ -16,6 +16,9 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :
 
 
     ui->projectsList->addItems(projectTitles);
+    ui->projectName->setText("Project Name");
+    ui->projectDescription->setText("Project Description");
+    ui->viewTextBrowser->setText("view students or view details or view results");
 
 }
 

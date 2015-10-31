@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
    // editQualificationsView w;
     //w.show();
 
-    qualificationinit w;
-    w.show();
+    //qualificationinit w;
+   // w.show();
 
     //DATABASE INITIALIZATION
 

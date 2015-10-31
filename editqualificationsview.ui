@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>541</width>
+    <height>381</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,26 +19,26 @@
      <x>10</x>
      <y>10</y>
      <width>141</width>
-     <height>271</height>
+     <height>361</height>
     </rect>
    </property>
   </widget>
   <widget class="QTextBrowser" name="textBrowser">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>40</y>
-     <width>201</width>
-     <height>51</height>
+     <x>190</x>
+     <y>30</y>
+     <width>291</width>
+     <height>71</height>
     </rect>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>200</y>
-     <width>111</width>
+     <x>380</x>
+     <y>230</y>
+     <width>126</width>
      <height>23</height>
     </rect>
    </property>
@@ -83,9 +83,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>120</y>
-     <width>91</width>
+     <x>220</x>
+     <y>180</y>
+     <width>70</width>
      <height>17</height>
     </rect>
    </property>
@@ -96,9 +96,9 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>410</x>
      <y>180</y>
-     <width>91</width>
+     <width>87</width>
      <height>17</height>
     </rect>
    </property>
@@ -106,12 +106,12 @@
     <string>parter rating</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>150</y>
-     <width>111</width>
+     <x>190</x>
+     <y>230</y>
+     <width>126</width>
      <height>23</height>
     </rect>
    </property>
