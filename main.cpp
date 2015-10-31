@@ -1,13 +1,12 @@
-#include "mainwindow.h"
-#include <QApplication>
-#include "editqualificationsview.h"
-#include "qualificationinit.h"
+#include <QApplication> 
+#include <iostream>
 #include "logindialog.h"
-#include "studentregister.h"
 #include "Database.h"
-
+#include "user.h"
+#include "student.h"
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
    // MainWindow w;
    // w.show();
@@ -18,25 +17,33 @@ int main(int argc, char *argv[])
     //qualificationinit w;
    // w.show();
 
-    //DATABASE INITIALIZATION
+//    QApplication a(argc, argv);
+//    //DATABASE INITIALIZATION
 
-    Database *instance = Database::getInstance();
 
-    instance->sayHello();
-    instance->createTables();
-
+    Database* instance = Database::getInstance();
 
 
 
 
+//    LoginDialog dialog;
 
+//    dialog.show();
+//    return a.exec();
 
+QString username = "im a student";
+Student* user = new Student (username);
 
+QList<Student*> students = instance->getAllStudents();
 
-    StudentRegister r;
-    r.show();
+for (int i = 0; i < students.count();i++)
+{
 
-    return a.exec();
+    std::cout << students.at(i)->getUsername().toStdString() << std::endl;
+}
 
+std::cout << user->getUsername().toStdString() << std::endl;
+
+return 0;
 
 }

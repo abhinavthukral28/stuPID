@@ -1,6 +1,7 @@
 #include "Database.h"
-
-
+#include "student.h"
+#include <QDebug>
+#include <QtSql>
 const QString Database::DBpath="./testdatabase.db";
 
 Database* Database::instance=0;
@@ -24,10 +25,7 @@ Database* Database::getInstance(){
     return Database::instance;
 
 }
-void Database::sayHello(){
 
-    qDebug("hello");
-}
 
 
 int Database::init(){
@@ -45,10 +43,17 @@ int Database::init(){
 
      qDebug( "Connected!" );
 
+
+     createTables();
      return 0;
 
 
 }
+
+
+
+
+
 
 void Database::createTables(){
 
@@ -100,4 +105,13 @@ void Database::createTables(){
     else
       qDebug() << "Table Teams created!";
 
+}
+
+
+QList<Student*> Database::getAllStudents(){
+    QList<Student*> students;
+    QString string = "username";
+    Student* temp = new Student(string);
+    students << temp;
+    return students;
 }

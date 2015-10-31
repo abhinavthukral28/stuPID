@@ -13,23 +13,35 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
         logindialog.cpp \  
     studentregister.cpp \
     qualificationinit.cpp \
     editqualificationsview.cpp \
     manageprojectsview.cpp \
-    Database.cpp
+    Database.cpp \
+    user.cpp \
+    student.cpp \
+    project.cpp \
+    qualification.cpp \
+    team.cpp \
+    administrator.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     studentregister.h \
             logindialog.h \
     qualificationinit.h \
     editqualificationsview.h \
         Database.h \
-    manageprojectsview.h
+    manageprojectsview.h \
+    user.h \
+    student.h \
+    project.h \
+    qualification.h \
+    team.h \
+    administrator.h \
+    DatabaseQueries.h
 
-FORMS    += mainwindow.ui \
+FORMS    += \
     studentregister.ui \
             logindialog.ui \
     qualificationinit.ui \

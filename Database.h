@@ -1,20 +1,19 @@
-#include <QtSql>
-#include <QtDebug>
-#include<QString>
+
 
 #ifndef DATABASE_H
 #define DATABASE_H
 
-
+#include <QList>
+class QString;
+class Student;
 
 
 class Database{
 
    public:
     static Database* getInstance();
-    ~Database();
-    void sayHello();
-    void createTables();
+
+    QList<Student*> getAllStudents();
 
 
    private:
@@ -22,6 +21,7 @@ class Database{
     static const QString DBpath;
 
     //functions
+    void createTables();
     int init();
     Database();
 
