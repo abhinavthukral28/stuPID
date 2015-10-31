@@ -1,6 +1,6 @@
 #ifndef LOGINDIALOG_H
 #define LOGINDIALOG_H
-
+#include "logincontroller.h"
 #include <QDialog>
 
 namespace Ui {
@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::LoginDialog *ui;
+    LoginController *loginController;
 };
 
 #endif // LOGINDIALOG_H

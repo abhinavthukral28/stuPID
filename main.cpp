@@ -11,44 +11,10 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    // MainWindow w;
-    // w.show();
 
-    //editQualificationsView w;
-
-
-    //qualificationinit w;
-    // w.show();
-
-    //    QApplication a(argc, argv);
-    //    //DATABASE INITIALIZATION
 
     LoginDialog w;
     w.show();
-
-    // Database* instance = Database::getInstance();
-
-
-
-
-    //    LoginDialog dialog;
-
-    //    dialog.show();
     return a.exec();
-    /*
-QString username = "im a student";
-Student* user = new Student (username);
-
-QList<Student*> students = instance->getAllStudents();
-
-for (int i = 0; i < students.count();i++)
-{
-
-    std::cout << students.at(i)->getUsername().toStdString() << std::endl;
-}
-
-std::cout << user->getUsername().toStdString() << std::endl;
-*/
-    //return 0;
 
 }
