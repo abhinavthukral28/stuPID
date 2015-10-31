@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     studentProjectView w;
     w.show();
 
-   // Database* instance = Database::getInstance();
+   Database* instance = Database::getInstance();
 
 
 
