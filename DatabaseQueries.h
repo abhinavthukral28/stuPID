@@ -31,6 +31,6 @@ const QString DatabaseQueries::TEAM_TABLE = "Team";
 
 //QUERIES
 const QString DatabaseQueries::selectAllStudents = QString("SELECT * FROM ") + DatabaseQueries::STUDENTS_TABLE;
-const QString DatabaseQueries::insertStudent = "INSERT INTO (studentID,studentName)" + DatabaseQueries::STUDENTS_TABLE + " VALUES (NULL,?)";
+const QString DatabaseQueries::insertStudent = "INSERT INTO (studentID,studentName) " + DatabaseQueries::STUDENTS_TABLE + " VALUES (NULL,?)";
 
 #endif // DATABASEQUERIES_H

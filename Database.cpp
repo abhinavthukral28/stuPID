@@ -127,7 +127,7 @@ QList<Student*>* Database::getAllStudents(){
         Student* temp = new Student(username);
         students->append(temp);
         }
-        qDebug() << students->size();
+
         return students;
     }
 
