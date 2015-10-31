@@ -38,7 +38,8 @@ HEADERS  += \
     project.h \
     qualification.h \
     team.h \
-    administrator.h
+    administrator.h \
+    DatabaseQueries.h
 
 FORMS    += \
     studentregister.ui \
