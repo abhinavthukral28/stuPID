@@ -11,47 +11,47 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-   // MainWindow w;
-   // w.show();
+    // MainWindow w;
+    // w.show();
 
     //editQualificationsView w;
 
 
     //qualificationinit w;
-   // w.show();
+    // w.show();
 
-//    QApplication a(argc, argv);
-//    //DATABASE INITIALIZATION
+    //    QApplication a(argc, argv);
+    //    //DATABASE INITIALIZATION
 
     studentProjectView w;
     w.show();
 
-   Database* instance = Database::getInstance();
+    Database* instance = Database::getInstance();
 
 
 
 
-//    LoginDialog dialog;
+    //    LoginDialog dialog;
 
-//    dialog.show();
-   return a.exec();
+    //    dialog.show();
 
-QString username = "im a student";
-//Student* user = new Student (username);
 
-Student* temp = new Student(username);
-if (instance->createStudent(*temp))
-{
+    QString username = "im a student";
+    //Student* user = new Student (username);
 
-QList<Student*>* students = instance->getAllStudents();
+    Student* temp = new Student(username);
+    if (instance->createStudent(*temp))
+    {
 
-for (int i = 0; i < students->count();i++)
-{
+        QList<Student*>* students = instance->getAllStudents();
 
-    std::cout << students->at(i)->getUsername().toStdString() << std::endl;
-}
-}
+        for (int i = 0; i < students->count();i++)
+        {
 
-return 0;
+            std::cout << students->at(i)->getUsername().toStdString() << std::endl;
+        }
+    }
+
+    return a.exec();
 
 }
