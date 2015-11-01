@@ -15,6 +15,7 @@ private:
   public:
     const static QString selectAllStudents;
     const static QString insertStudent;
+    const static QString selectAllProjects;
 
 
 
@@ -32,5 +33,6 @@ const QString DatabaseQueries::TEAM_TABLE = "Team";
 //QUERIES
 const QString DatabaseQueries::selectAllStudents = QString("SELECT * FROM ") + DatabaseQueries::STUDENTS_TABLE;
 const QString DatabaseQueries::insertStudent = "INSERT INTO "+DatabaseQueries::STUDENTS_TABLE+" (studentID,studentName)  VALUES (NULL,:username)";
+const QString DatabaseQueries::selectAllProjects = QString("SELECT * FROM ") + DatabaseQueries::PROJECTS_TABLE;
 
 #endif // DATABASEQUERIES_H

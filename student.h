@@ -8,7 +8,10 @@ class Student : public User
 
 
 public:
-    Student(QString& username);
+    Student(int& ID,QString& username);
+
+
+
 };
 
 #endif // STUDENT_H

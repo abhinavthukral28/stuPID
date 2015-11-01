@@ -1,6 +1,6 @@
 #include "administrator.h"
 
-Administrator::Administrator(QString& username) : User(username)
+Administrator::Administrator(int& ID, QString& username) : User(username,ID)
 {
 }
 

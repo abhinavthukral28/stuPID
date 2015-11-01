@@ -1,4 +1,6 @@
 #include "student.h"
-Student::Student(QString& username) : User(username)
+Student::Student(int& ID,QString& username) : User(username,ID)
 {
 }
+
+

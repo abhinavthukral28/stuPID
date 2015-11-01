@@ -14,7 +14,7 @@ class Database{
     static Database* getInstance();
 
     QList<Student*>* getAllStudents();
-//    QList<Project*>* getAllProjects();
+    QList<Project*>* getAllProjects();
 //    QList<Team*>* getTeamsByProject();
 //    QList<Student*>* getStudentsByProject();
 

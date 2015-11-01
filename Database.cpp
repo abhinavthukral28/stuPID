@@ -1,5 +1,6 @@
 #include "Database.h"
 #include "student.h"
+#include "project.h"
 #include "DatabaseQueries.h"
 #include <QDebug>
 #include <QtSql>
@@ -60,9 +61,12 @@ void Database::createTables(){
 
     QSqlQuery qry;
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, studentName VARCHAR(30))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER , studentName VARCHAR(30) UNIQUE,PRIMARY KEY(studentID,studentName))" );
     if( !qry.exec() )
+     {
+        qDebug() <<qry.lastQuery();
         qDebug() << qry.lastError();
+    }
     else
         qDebug() << "Table Students created!";
 
@@ -122,11 +126,16 @@ QList<Student*>* Database::getAllStudents(){
     }
     else
     {
+        QString tempUsername;
+        int tempID;
         QList<Student*>* students = new QList<Student*>;
         while (query.next())
         {
-            QString username = QString(query.value(0).toString());
-            Student* temp = new Student(username);
+            //first column is 0
+            tempID = query.value(0).toInt();
+            tempUsername = QString(query.value(1).toString());
+
+            Student* temp = new Student(tempID,tempUsername);
             students->append(temp);
         }
 
@@ -136,6 +145,34 @@ QList<Student*>* Database::getAllStudents(){
 
 }
 
+QList<Project*>* Database::getAllProjects(){
+
+    QSqlQuery query;
+    query.prepare(DatabaseQueries::selectAllProjects);
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError();
+        qDebug() << query.lastQuery();
+        return NULL;
+    }
+    else
+    {
+        QList<Project*>* projects = new QList<Project*>;
+//        while (query.next())
+//        {
+//            //first column is 0
+//            QString username = QString(query.value(1).toString());
+//            Student* temp = new Student(username);
+//            students->append(temp);
+//        }
+
+        return projects;
+    }
+
+}
+
+
 
 int Database::createStudent (Student& student){
     QSqlQuery query;
@@ -144,7 +181,7 @@ int Database::createStudent (Student& student){
     if(!query.exec())
     {
         qDebug() << query.lastError();
-        qDebug() <<query.lastQuery();
+        qDebug() << query.lastQuery();
         return 0;
     }
     else {
@@ -152,3 +189,5 @@ int Database::createStudent (Student& student){
     }
 
 }
+
+
