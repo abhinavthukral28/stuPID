@@ -1,10 +1,15 @@
 #include "manageprojectsview.h"
 #include "ui_manageprojectsview.h"
 
+#include "manageprojectscontroller.h"
+
 ManageProjectsView::ManageProjectsView(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::ManageProjectsView)
+    ui(new Ui::ManageProjectsView),
+     manageProjectsController(new ManageProjectsController(this))
 {
+
+
     ui->setupUi(this);
 
      QStringList projectTitles;

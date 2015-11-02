@@ -3,6 +3,8 @@
 #include <QListWidgetItem>
 #include <QMainWindow>
 
+#include "manageprojectscontroller.h"
+
 namespace Ui {
 class ManageProjectsView;
 }
@@ -20,6 +22,7 @@ private slots:
 
 private:
     Ui::ManageProjectsView *ui;
+    ManageProjectsController *manageProjectsController;
 };
 
 #endif // MANAGEPROJECTSVIEW_H
