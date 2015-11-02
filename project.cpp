@@ -3,8 +3,11 @@
 #include <QString>
 
 
-Project::Project(Administrator& admin, QString& title) : owner(admin), projectName(title)
+
+
+Project::Project(int& pID, QString &title) : projectName(title),ID(pID)
 {
+
 }
 
 int Project::registerStudent(Student& student)
@@ -27,17 +30,39 @@ int Project::registerStudents(QList<Student*>* students)
 
 int Project::setTeamMax(int& max)
 {
-
+    teamMax = max;
+    return 0;
 }
 
 int Project::setTeamMin(int& min)
 {
-
+   if (min > 0)
+   {
+       teamMin = min;
+       return 0;
+   }
+   else
+       return -1;
 }
 
 int Project::setDescription(QString& description)
 {
-
+    this->description = description;
 }
 
 
+int Project::getMinTeamSize(){
+    return teamMin;
+}
+
+int Project::getMaxTeamSize(){
+    return teamMax;
+}
+
+QString Project::getDescription(){
+    return description;
+}
+
+QString Project::getTitle(){
+    return projectName;
+}

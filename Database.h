@@ -15,17 +15,17 @@ class Database{
 
     QList<Student*>* getAllStudents();
     QList<Project*>* getAllProjects();
-//    QList<Team*>* getTeamsByProject();
-//    QList<Student*>* getStudentsByProject();
+   // QList<Student*>* getStudentsByProject();
 
 
     int createStudent(Student& student);
-   // int createProject()
+    int createProject(Project& project);
 
    private:
     static Database *instance;
     static const QString DBpath;
 
+    int addStudentsToProject(int& projectID, QList<Student*>* students);
     //functions
     void createTables();
     int init();

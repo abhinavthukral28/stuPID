@@ -78,18 +78,33 @@ void Database::createTables(){
     else
         qDebug() << "Table Qualifications created!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, admin VARCHAR(30),projectName VARCHAR(30), description VARCHAR(30),minTeamSize int, maxTeamSize int)" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER , admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize int, maxTeamSize int,PRIMARY KEY(projectID, projectName))" );
     if( !qry.exec() )
+    {
+        qDebug() << qry.lastQuery();
         qDebug() << qry.lastError();
+    }
     else
         qDebug() << "Table Project created!";
 
+
+    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER , studentID VARCHAR(30),PRIMARY KEY(projectID,studentID))" );
+    if( !qry.exec() )
+     {
+        qDebug() <<qry.lastQuery();
+        qDebug() << qry.lastError();
+    }
+    else
+        qDebug() << "Table ProjectStudents!";
 
     qry.prepare( "CREATE TABLE IF NOT EXISTS teamMember(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,student_ID int,FOREIGN KEY(student_ID) REFERENCES Students(studentId))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
         qDebug() << "Table teamMember created!";
+
+
+
 
 
     qry.prepare( "CREATE TABLE IF NOT EXISTS Expectations(eID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, expectationValue VARCHAR(30))" );
@@ -128,6 +143,7 @@ QList<Student*>* Database::getAllStudents(){
     {
         QString tempUsername;
         int tempID;
+        Student* tempStudent;
         QList<Student*>* students = new QList<Student*>;
         while (query.next())
         {
@@ -135,8 +151,8 @@ QList<Student*>* Database::getAllStudents(){
             tempID = query.value(0).toInt();
             tempUsername = QString(query.value(1).toString());
 
-            Student* temp = new Student(tempID,tempUsername);
-            students->append(temp);
+            tempStudent = new Student(tempID,tempUsername);
+            students->append(tempStudent);
         }
 
         return students;
@@ -145,6 +161,20 @@ QList<Student*>* Database::getAllStudents(){
 
 }
 
+/**
+ * @brief Database::getAllProjects
+ *
+ * This function currently DOES NOT populate the projects with the
+ * students registered in the project. The table ProjectStudents contains
+ * a mapping for retrieving students that have registered to a project.
+ *
+ * Note that there is a field in Project that stores the registered students.
+ * Please add the registered students to that field.
+ *
+ *
+ *
+ * @return
+ */
 QList<Project*>* Database::getAllProjects(){
 
     QSqlQuery query;
@@ -159,13 +189,29 @@ QList<Project*>* Database::getAllProjects(){
     else
     {
         QList<Project*>* projects = new QList<Project*>;
-//        while (query.next())
-//        {
-//            //first column is 0
-//            QString username = QString(query.value(1).toString());
-//            Student* temp = new Student(username);
-//            students->append(temp);
-//        }
+        Project* tempProject;
+        QString tempDescription;
+        QString tempTitle;
+        int tempTeamMin;
+        int tempTeamMax;
+        int tempID;
+
+        while (query.next())
+        {
+            tempTitle = QString(query.value(2).toString());
+            tempID = query.value(0).toInt();
+            tempProject = new Project(tempID,tempTitle);
+
+            tempDescription = QString(query.value(3).toString());
+            tempTeamMin = query.value(4).toInt();
+            tempTeamMax = query.value(5).toInt();
+
+            tempProject->setDescription(tempDescription);
+            tempProject->setTeamMax(tempTeamMax);
+            tempProject->setTeamMin(tempTeamMin);
+
+            projects->append(tempProject);
+        }
 
         return projects;
     }
@@ -189,5 +235,34 @@ int Database::createStudent (Student& student){
     }
 
 }
+
+/**
+ * @brief Database::createProject
+ *
+ * This function currently does not register students in the Project object.
+ * Please add the registered students to the database.
+ *
+ * @param project
+ * @return
+ */
+int Database::createProject (Project& project){
+    QSqlQuery query;
+    query.prepare(DatabaseQueries::insertProject);
+    query.bindValue(":projectName",project.getTitle());
+    query.bindValue(":description",project.getDescription());
+    query.bindValue(":minTeamSize",project.getMinTeamSize());
+    query.bindValue(":maxTeamSize",project.getMaxTeamSize());
+    if(!query.exec())
+    {
+        qDebug() << query.lastError();
+        qDebug() << query.lastQuery();
+        return 0;
+    }
+    else {
+        return query.lastInsertId().toInt();
+    }
+
+}
+
 
 
