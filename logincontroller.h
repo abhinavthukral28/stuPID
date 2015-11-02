@@ -10,6 +10,7 @@ public:
     LoginController(LoginDialog *login);
     int authenticate(QString &userName, QString &password, bool boolStudent);
     int goToStudentView(QString &userName);
+    int goToAdminView(QString &userName);
 
  private slots:
     void transition();
