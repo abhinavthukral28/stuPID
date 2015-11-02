@@ -1,13 +1,13 @@
 #ifndef MANAGEPROJECTSVIEW_H
 #define MANAGEPROJECTSVIEW_H
 #include <QListWidgetItem>
-#include <QMainWindow>
+#include <QDialog>
 
 namespace Ui {
 class ManageProjectsView;
 }
 
-class ManageProjectsView : public QMainWindow
+class ManageProjectsView : public QDialog
 {
     Q_OBJECT
 

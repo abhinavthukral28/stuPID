@@ -1,6 +1,7 @@
 #include "logincontroller.h"
 #include <QString>
 #include "studentprojectview.h"
+#include "manageprojectsview.h"
 #include <QDebug>
 #include "logindialog.h"
 LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(login)
@@ -12,28 +13,40 @@ LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(lo
 int LoginController::authenticate(QString &userName, QString &password, bool boolStudent)
 {
 
-    if(QString("11") == userName && QString("11") == password &&
-            boolStudent)
-            {
-              return 1;
-            } else {
-               return 0;
-            }
+    if(QString("11") == userName)
+    {
+        return 1;
+    } else {
+        return 0;
+    }
 
 }
 
- int LoginController::goToStudentView(QString &userName){
-     //transition view
-         transition();
-        return 0;
- }
+int LoginController::goToStudentView(QString &userName){
+    //transition view
+    transition();
+    return 0;
+}
 
- void LoginController::transition()
- {
-        loginDialog->close();
-     studentProjectView view;
+int LoginController::goToAdminView(QString &userName){
+    //transition view
+    transition();
+    return 0;
+}
+void LoginController::transition()
+{
+    bool student = false;
+    loginDialog->close();
+    if(student){
+        qDebug() << "got Here Now";
+        studentProjectView sview;
+        sview.exec();
+    }
+    else{
+        qDebug() << "got Here";
+        ManageProjectsView mview;
+        mview.exec();
+    }
 
-      view.exec();
 
-
- }
+}

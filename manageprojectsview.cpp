@@ -2,7 +2,7 @@
 #include "ui_manageprojectsview.h"
 
 ManageProjectsView::ManageProjectsView(QWidget *parent) :
-    QMainWindow(parent),
+    QDialog(parent),
     ui(new Ui::ManageProjectsView)
 {
     ui->setupUi(this);

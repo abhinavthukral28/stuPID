@@ -46,7 +46,9 @@ int main()
             std::cout<< registeredStudents.at(j)->getUsername().toStdString();
         }
 
+
     }
-   // return a.exec();
+  return a.exec();
+
 
 }
