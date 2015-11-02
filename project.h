@@ -27,8 +27,11 @@ public:
 
     int getMinTeamSize();
     int getMaxTeamSize();
+    int getID();
+    int setID(int& newID);
     QString getDescription();
     QString getTitle();
+    QList<Student*> getRegisteredStudents();
 
 };
 

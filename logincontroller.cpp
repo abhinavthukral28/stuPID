@@ -3,8 +3,9 @@
 #include "studentprojectview.h"
 #include <QDebug>
 #include "logindialog.h"
-LoginController::LoginController( LoginDialog *login):QObject(), loginDialog(login)
+LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(login)
 {
+
 }
 
 
