@@ -3,17 +3,11 @@
 
 #include "manageprojectscontroller.h"
 
-ManageProjectsView::ManageProjectsView(QWidget *parent) :
-<<<<<<< HEAD
-    QMainWindow(parent),
+ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     ui(new Ui::ManageProjectsView),
-     manageProjectsController(new ManageProjectsController(this))
-=======
-    QDialog(parent),
-    ui(new Ui::ManageProjectsView)
->>>>>>> 1b5a4786bd4cd220050c18087b420e5b0e7c4f05
-{
+    manageProjectsController(new ManageProjectsController(this))
 
+{
 
     ui->setupUi(this);
 
