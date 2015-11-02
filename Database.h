@@ -20,12 +20,13 @@ class Database{
 
     int createStudent(Student& student);
     int createProject(Project& project);
+    int addStudentsToProject(const int& projectID, const QList<Student*>* students);
+    int addStudentToProject(int& projectID,Student& student);
 
    private:
     static Database *instance;
     static const QString DBpath;
 
-    int addStudentsToProject(int& projectID, QList<Student*>* students);
     //functions
     void createTables();
     int init();

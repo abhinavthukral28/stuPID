@@ -5,7 +5,7 @@
 
 
 
-Project::Project(int& pID, QString &title) : projectName(title),ID(pID)
+Project::Project(int& pID, QString &title) : projectName(title),ID(pID),teamMax(0),teamMin(0)
 {
 
 }
@@ -15,9 +15,9 @@ int Project::registerStudent(Student& student)
     if (!registeredStudents.contains(&student))
     {
      registeredStudents << &student;
-     return 0;
+     return 1;
     }
-    return -1;
+    return 0;
 }
 
 int Project::registerStudents(QList<Student*>* students)
@@ -31,7 +31,7 @@ int Project::registerStudents(QList<Student*>* students)
 int Project::setTeamMax(int& max)
 {
     teamMax = max;
-    return 0;
+    return 1;
 }
 
 int Project::setTeamMin(int& min)
@@ -39,10 +39,10 @@ int Project::setTeamMin(int& min)
    if (min > 0)
    {
        teamMin = min;
-       return 0;
+       return 1;
    }
    else
-       return -1;
+       return 0;
 }
 
 int Project::setDescription(QString& description)
@@ -65,4 +65,19 @@ QString Project::getDescription(){
 
 QString Project::getTitle(){
     return projectName;
+}
+
+int Project::getID()
+{
+    return ID;
+}
+
+int Project::setID(int& newID){
+
+    ID = newID;
+    return 1;
+}
+
+QList<Student*> Project::getRegisteredStudents(){
+    return registeredStudents;
 }

@@ -61,9 +61,9 @@ void Database::createTables(){
 
     QSqlQuery qry;
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER , studentName VARCHAR(30) UNIQUE,PRIMARY KEY(studentID,studentName))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER PRIMARY KEY, studentName VARCHAR(30) UNIQUE)" );
     if( !qry.exec() )
-     {
+    {
         qDebug() <<qry.lastQuery();
         qDebug() << qry.lastError();
     }
@@ -78,7 +78,7 @@ void Database::createTables(){
     else
         qDebug() << "Table Qualifications created!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER , admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize int, maxTeamSize int,PRIMARY KEY(projectID, projectName))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize int, maxTeamSize int)" );
     if( !qry.exec() )
     {
         qDebug() << qry.lastQuery();
@@ -90,14 +90,14 @@ void Database::createTables(){
 
     qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER , studentID VARCHAR(30),PRIMARY KEY(projectID,studentID))" );
     if( !qry.exec() )
-     {
+    {
         qDebug() <<qry.lastQuery();
         qDebug() << qry.lastError();
     }
     else
         qDebug() << "Table ProjectStudents!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS teamMember(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,student_ID int,FOREIGN KEY(student_ID) REFERENCES Students(studentId))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS teamMember(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,studentID int,FOREIGN KEY(studentID) REFERENCES Students(studentId))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -113,13 +113,13 @@ void Database::createTables(){
     else
         qDebug() << "Table Expectations created!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS StudentQualifications(studentQualificationID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, ratings VARCHAR(30), student_ID int, e_ID int,FOREIGN KEY(e_ID) REFERENCES Expectations(eId))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS StudentQualifications(studentQualificationID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, ratings VARCHAR(30), studentID int, eID int,FOREIGN KEY(eID) REFERENCES Expectations(eId))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
         qDebug() << "Table StudentQualifications created!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Team(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,project_ID int, FOREIGN KEY(project_ID) REFERENCES Projects(projectID))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Team(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,projectID int, FOREIGN KEY(projectID) REFERENCES Projects(projectID))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -161,20 +161,7 @@ QList<Student*>* Database::getAllStudents(){
 
 }
 
-/**
- * @brief Database::getAllProjects
- *
- * This function currently DOES NOT populate the projects with the
- * students registered in the project. The table ProjectStudents contains
- * a mapping for retrieving students that have registered to a project.
- *
- * Note that there is a field in Project that stores the registered students.
- * Please add the registered students to that field.
- *
- *
- *
- * @return
- */
+
 QList<Project*>* Database::getAllProjects(){
 
     QSqlQuery query;
@@ -190,27 +177,45 @@ QList<Project*>* Database::getAllProjects(){
     {
         QList<Project*>* projects = new QList<Project*>;
         Project* tempProject;
+        Student* tempStudent;
         QString tempDescription;
         QString tempTitle;
+        QString tempUsername;
         int tempTeamMin;
         int tempTeamMax;
         int tempID;
+        int tempStudentID;
+
 
         while (query.next())
         {
-            tempTitle = QString(query.value(2).toString());
+
             tempID = query.value(0).toInt();
-            tempProject = new Project(tempID,tempTitle);
 
-            tempDescription = QString(query.value(3).toString());
-            tempTeamMin = query.value(4).toInt();
-            tempTeamMax = query.value(5).toInt();
+            if (tempProject != NULL)
+            {
+                if (tempProject->getID() != tempID)
+                {
+                    tempTitle = QString(query.value(2).toString());
+                    tempProject = new Project(tempID,tempTitle);
 
-            tempProject->setDescription(tempDescription);
-            tempProject->setTeamMax(tempTeamMax);
-            tempProject->setTeamMin(tempTeamMin);
+                    tempDescription = QString(query.value(3).toString());
+                    tempTeamMin = query.value(4).toInt();
+                    tempTeamMax = query.value(5).toInt();
 
-            projects->append(tempProject);
+                    tempProject->setDescription(tempDescription);
+                    tempProject->setTeamMax(tempTeamMax);
+                    tempProject->setTeamMin(tempTeamMin);
+
+                    projects->append(tempProject);
+                }
+
+                tempStudentID = query.value(8).toInt();
+                tempUsername = query.value(9).toString();
+                tempStudent = new Student(tempStudentID,tempUsername);
+                tempProject->registerStudent(*tempStudent);
+
+            }
         }
 
         return projects;
@@ -231,7 +236,9 @@ int Database::createStudent (Student& student){
         return 0;
     }
     else {
-        return query.lastInsertId().toInt();
+        int lastID = query.lastInsertId().toInt();
+        student.setID(lastID);
+        return lastID;
     }
 
 }
@@ -259,8 +266,59 @@ int Database::createProject (Project& project){
         return 0;
     }
     else {
+
+        int lastID = query.lastInsertId().toInt();
+        QList<Student*> students = project.getRegisteredStudents();
+        //RISKY CALL, STUDENTS MAY NOT EXIST
+        addStudentsToProject(lastID,&students);
+        project.setID(lastID);
+        return lastID;
+    }
+
+}
+
+int Database::addStudentsToProject(const int& projectID, const QList<Student*>* students){
+    QSqlQuery query;
+    QVariantList projectIDList;
+    QVariantList studentIDList;
+    query.prepare(DatabaseQueries::addStudentToProject);
+
+    for (int i = 0; i< students->count();i++)
+    {
+        projectIDList << projectID;
+        studentIDList << students->at(i)->getID();
+    }
+
+    query.bindValue(":projectID",projectIDList);
+    query.bindValue(":studentID",studentIDList);
+
+    if(!query.execBatch())
+    {
+        qDebug() << query.lastError();
+        qDebug() << query.lastQuery();
+        return 0;
+    }
+    else return query.lastInsertId().toInt();
+
+}
+
+int Database::addStudentToProject(int& projectID,Student& student){
+    QSqlQuery query;
+
+    query.prepare(DatabaseQueries::addStudentToProject);
+    query.bindValue(":projectID",projectID);
+    query.bindValue(":studentID",student.getID());
+
+    if(!query.exec())
+    {
+        qDebug() << query.lastError();
+        qDebug() << query.lastQuery();
+        return 0;
+    }
+    else {
         return query.lastInsertId().toInt();
     }
+
 
 }
 

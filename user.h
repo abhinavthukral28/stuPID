@@ -16,11 +16,12 @@ protected:
     User(QString &username,int&ID, QString &firstName, QString &lastName);
 public:
     QString getUsername() const;
-    QString setFirstName(QString& firstName);
-    QString setLastName(QString& lastName);
+    int setFirstName(QString& firstName);
+    int setLastName(QString& lastName);
     QString getFirstName() const;
     QString getLastName () const;
     int getID() const;
+    int setID(int& newID);
     bool operator==(const User& other);
 };
 
