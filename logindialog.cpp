@@ -1,6 +1,5 @@
 #include "logindialog.h"
 #include "ui_logindialog.h"
-//#include <QString>
 #include <QMessageBox>
 #include <QDebug>
 #include "studentprojectview.h"

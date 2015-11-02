@@ -13,12 +13,14 @@ private:
     const static QString STUDENT_QUALIFICATIONS_TABLE;
     const static QString TEAM_TABLE;
     const static QString PROJECT_STUDENT_TABLE;
+
   public:
     const static QString selectAllStudents;
     const static QString insertStudent;
     const static QString selectAllProjects;
     const static QString insertProject;
     const static QString addStudentToProject;
+    const static QString getProjectsByStudent;
 
 };
 
@@ -46,4 +48,10 @@ const QString DatabaseQueries::selectAllProjects = QString("SELECT * FROM ") + D
 const QString DatabaseQueries::insertProject = "INSERT INTO "+DatabaseQueries::PROJECTS_TABLE+" (projectID,projectName,description,minTeamSize,maxTeamSize)  VALUES (NULL,:projectName,:description,:minTeamSize,:maxTeamSize)";
 
 const QString DatabaseQueries::addStudentToProject = "INSERT INTO " + DatabaseQueries::PROJECT_STUDENT_TABLE + " (projectID,studentID) VALUES (:projectID,:studentID)";
+
+//SELECT Projects.* FROM Students JOIN ProjectStudents on Students.studentID = ProjectStudents.studentID JOIN Projects ON Projects.projectID = ProjectStudents.projectID where Students.studentID = ?;
+
+const QString DatabaseQueries::getProjectsByStudent =  QString("SELECT * FROM ") + DatabaseQueries::PROJECTS_TABLE +
+        " JOIN " + DatabaseQueries::PROJECT_STUDENT_TABLE + " ON " + DatabaseQueries::PROJECTS_TABLE + ".projectID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".projectID JOIN " +
+        DatabaseQueries::STUDENTS_TABLE + " ON " + DatabaseQueries::STUDENTS_TABLE+ ".studentID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".studentID WHERE "+DatabaseQueries::STUDENTS_TABLE+".studentID = :studentID";
 #endif // DATABASEQUERIES_H
