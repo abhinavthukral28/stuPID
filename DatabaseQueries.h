@@ -16,7 +16,7 @@ private:
     const static QString selectAllStudents;
     const static QString insertStudent;
     const static QString selectAllProjects;
-
+    const static QString insertProject;
 
 
 };
@@ -34,5 +34,5 @@ const QString DatabaseQueries::TEAM_TABLE = "Team";
 const QString DatabaseQueries::selectAllStudents = QString("SELECT * FROM ") + DatabaseQueries::STUDENTS_TABLE;
 const QString DatabaseQueries::insertStudent = "INSERT INTO "+DatabaseQueries::STUDENTS_TABLE+" (studentID,studentName)  VALUES (NULL,:username)";
 const QString DatabaseQueries::selectAllProjects = QString("SELECT * FROM ") + DatabaseQueries::PROJECTS_TABLE;
-
+const QString DatabaseQueries::insertProject = "INSERT INTO "+DatabaseQueries::PROJECTS_TABLE+" (projectID,projectName,description,minTeamSize,maxTeamSize)  VALUES (NULL,:projectName,:description,:minTeamSize,:maxTeamSize)";
 #endif // DATABASEQUERIES_H
