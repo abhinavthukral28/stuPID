@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     studentprojectregisterview.cpp \
     studentregistercontroller.cpp \
     qualificationinitController.cpp \
-    studentmanageprojectview.cpp
+    studentmanageprojectview.cpp \
+    createprojectview.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -51,7 +52,8 @@ HEADERS  += \
     studentprojectregisterview.h \
     qualificationinitController.h \
     studentregistercontroller.h \
-    studentmanageprojectview.h
+    studentmanageprojectview.h \
+    createprojectview.h
 
 FORMS    += \
     studentregister.ui \
@@ -60,4 +62,5 @@ FORMS    += \
     editqualificationsview.ui \
     manageprojectsview.ui \
     studentprojectregisterview.ui \
-    studentmanageprojectview.ui
+    studentmanageprojectview.ui \
+    createprojectview.ui
