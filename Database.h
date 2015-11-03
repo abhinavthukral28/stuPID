@@ -15,12 +15,13 @@ class Database{
 
     QList<Student*>* getAllStudents();
     QList<Project*>* getAllProjects();
-   // QList<Student*>* getStudentsByProject();
+    //QList<Student*>* getStudentsByProject();
+    QList<Project*>* getProjectsByStudent(const int& studentID);
 
 
     int createStudent(Student& student);
     int createProject(Project& project);
-    int addStudentsToProject(const int& projectID, const QList<Student*>* students);
+    int addStudentsToProject(int& projectID, QList<Student*>* students);
     int addStudentToProject(int& projectID,Student& student);
 
    private:

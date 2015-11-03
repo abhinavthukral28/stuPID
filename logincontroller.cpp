@@ -24,18 +24,18 @@ int LoginController::authenticate(QString &userName, QString &password, bool boo
 
 int LoginController::goToStudentView(QString &userName){
     //transition view
-    transition();
+    transition(true);
     return 0;
 }
 
 int LoginController::goToAdminView(QString &userName){
     //transition view
-    transition();
+    transition(false);
     return 0;
 }
-void LoginController::transition()
+void LoginController::transition(bool student)
 {
-    bool student = false;
+
     loginDialog->close();
     if(student){
         qDebug() << "got Here Now";

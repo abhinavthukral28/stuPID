@@ -13,7 +13,7 @@ public:
     int goToAdminView(QString &userName);
 
  private slots:
-    void transition();
+    void transition(bool student);
 
  private:
     LoginDialog *loginDialog;

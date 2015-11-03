@@ -18,6 +18,7 @@ Database::Database(){
     }
 
 
+
 }
 
 Database* Database::getInstance(){
@@ -175,15 +176,16 @@ QList<Project*>* Database::getAllProjects(){
     }
     else
     {
+
         QList<Project*>* projects = new QList<Project*>;
-        Project* tempProject;
         Student* tempStudent;
         QString tempDescription;
-        QString tempTitle;
+        QString tempTitle = "";
         QString tempUsername;
         int tempTeamMin;
         int tempTeamMax;
-        int tempID;
+        int tempID = -1;
+        Project* tempProject  = new Project(tempID,tempTitle);
         int tempStudentID;
 
 
@@ -192,30 +194,29 @@ QList<Project*>* Database::getAllProjects(){
 
             tempID = query.value(0).toInt();
 
-            if (tempProject != NULL)
+
+            if (tempProject->getID() != tempID)
             {
-                if (tempProject->getID() != tempID)
-                {
-                    tempTitle = QString(query.value(2).toString());
-                    tempProject = new Project(tempID,tempTitle);
+                tempTitle = QString(query.value(2).toString());
+                tempProject = new Project(tempID,tempTitle);
 
-                    tempDescription = QString(query.value(3).toString());
-                    tempTeamMin = query.value(4).toInt();
-                    tempTeamMax = query.value(5).toInt();
+                tempDescription = QString(query.value(3).toString());
+                tempTeamMin = query.value(4).toInt();
+                tempTeamMax = query.value(5).toInt();
 
-                    tempProject->setDescription(tempDescription);
-                    tempProject->setTeamMax(tempTeamMax);
-                    tempProject->setTeamMin(tempTeamMin);
+                tempProject->setDescription(tempDescription);
+                tempProject->setTeamMax(tempTeamMax);
+                tempProject->setTeamMin(tempTeamMin);
 
-                    projects->append(tempProject);
-                }
-
-                tempStudentID = query.value(8).toInt();
-                tempUsername = query.value(9).toString();
-                tempStudent = new Student(tempStudentID,tempUsername);
-                tempProject->registerStudent(*tempStudent);
-
+                projects->append(tempProject);
             }
+
+            tempStudentID = query.value(8).toInt();
+            tempUsername = query.value(9).toString();
+            tempStudent = new Student(tempStudentID,tempUsername);
+            tempProject->registerStudent(*tempStudent);
+
+
         }
 
         return projects;
@@ -277,49 +278,123 @@ int Database::createProject (Project& project){
 
 }
 
-int Database::addStudentsToProject(const int& projectID, const QList<Student*>* students){
-    QSqlQuery query;
-    QVariantList projectIDList;
-    QVariantList studentIDList;
-    query.prepare(DatabaseQueries::addStudentToProject);
-
-    for (int i = 0; i< students->count();i++)
+int Database::addStudentsToProject(int& projectID, QList<Student*>* students){
+    if (projectID > 0)
     {
-        projectIDList << projectID;
-        studentIDList << students->at(i)->getID();
-    }
+        QSqlQuery query;
+        QVariantList projectIDList;
+        QVariantList studentIDList;
+        query.prepare(DatabaseQueries::addStudentToProject);
 
-    query.bindValue(":projectID",projectIDList);
-    query.bindValue(":studentID",studentIDList);
+        for (int i = 0; i< students->count();i++)
+        {
+            projectIDList << projectID;
+            studentIDList << students->at(i)->getID();
+        }
 
-    if(!query.execBatch())
-    {
-        qDebug() << query.lastError();
-        qDebug() << query.lastQuery();
-        return 0;
+        query.bindValue(":projectID",projectIDList);
+        query.bindValue(":studentID",studentIDList);
+
+        if(!query.execBatch())
+        {
+            qDebug() << query.lastError();
+            qDebug() << query.lastQuery();
+            return 0;
+        }
+        else return query.lastInsertId().toInt();
     }
-    else return query.lastInsertId().toInt();
+    else return 0;
 
 }
 
 int Database::addStudentToProject(int& projectID,Student& student){
-    QSqlQuery query;
 
-    query.prepare(DatabaseQueries::addStudentToProject);
-    query.bindValue(":projectID",projectID);
-    query.bindValue(":studentID",student.getID());
-
-    if(!query.exec())
+    if (projectID > 0)
     {
-        qDebug() << query.lastError();
-        qDebug() << query.lastQuery();
-        return 0;
+        QSqlQuery query;
+
+        query.prepare(DatabaseQueries::addStudentToProject);
+        query.bindValue(":projectID",projectID);
+        query.bindValue(":studentID",student.getID());
+
+        if(!query.exec())
+        {
+            qDebug() << query.lastError();
+            qDebug() << query.lastQuery();
+            return 0;
+        }
+        else {
+            return query.lastInsertId().toInt();
+        }
     }
-    else {
-        return query.lastInsertId().toInt();
-    }
+    else return NULL;
 
 
+}
+
+QList<Project*>* Database::getProjectsByStudent(const int& studentID)
+{
+    if (studentID > 0)
+    {
+        QSqlQuery query;
+
+        query.prepare(DatabaseQueries::getProjectsByStudent);
+        query.bindValue(":studentID",studentID);
+
+        if(!query.exec())
+        {
+            qDebug() << query.lastError();
+            qDebug() << query.lastQuery();
+            return NULL;
+        }
+        else {
+            QList<Project*>* projects = new QList<Project*>;
+
+            Student* tempStudent;
+            QString tempDescription;
+            QString tempTitle = "";
+            QString tempUsername;
+            int tempTeamMin;
+            int tempTeamMax;
+            int tempID = -1;
+            Project* tempProject = new Project(tempID,tempTitle);
+            int tempStudentID;
+
+
+            while (query.next())
+            {
+
+                tempID = query.value(0).toInt();
+
+
+                if (tempProject->getID() != tempID)
+                {
+                    tempTitle = QString(query.value(2).toString());
+                    tempProject = new Project(tempID,tempTitle);
+
+                    tempDescription = QString(query.value(3).toString());
+                    tempTeamMin = query.value(4).toInt();
+                    tempTeamMax = query.value(5).toInt();
+
+                    tempProject->setDescription(tempDescription);
+                    tempProject->setTeamMax(tempTeamMax);
+                    tempProject->setTeamMin(tempTeamMin);
+
+                    projects->append(tempProject);
+                }
+
+                tempStudentID = query.value(8).toInt();
+                tempUsername = query.value(9).toString();
+                tempStudent = new Student(tempStudentID,tempUsername);
+                tempProject->registerStudent(*tempStudent);
+
+
+            }
+
+            return projects;
+        }
+    }
+    else return NULL;
 }
 
 
