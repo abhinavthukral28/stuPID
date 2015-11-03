@@ -37,6 +37,5 @@ void studentProjectView::on_listWidget_doubleClicked(const QModelIndex &index)
 
 void studentProjectView::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
-    ui->textBrowser->setText(item->text());
 
 }
