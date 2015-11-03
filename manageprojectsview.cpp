@@ -2,6 +2,7 @@
 #include "ui_manageprojectsview.h"
 #include "project.h"
 #include "manageprojectscontroller.h"
+#include "student.h"
 
 ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     ui(new Ui::ManageProjectsView),
@@ -40,7 +41,12 @@ int ManageProjectsView::updateDetailedView(Project &project)
 {
   ui->projectName->setText(project.getTitle());
   ui->projectDescription->setText(project.getDescription());
+  for(int i=0; i<project.getRegisteredStudents().count();i++)
+  {
+      //QList<Students>* temp =project.getRegisteredStudents();
+      ui->viewTextBrowser->setText(project.getRegisteredStudents(i));
 
+  }
 }
 
 

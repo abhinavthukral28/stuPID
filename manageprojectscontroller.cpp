@@ -38,6 +38,7 @@ int ManageProjectsController::init(){
 int ManageProjectsController::updateSelectedProject(const int& index){
 
     manageProjectsView->updateDetailedView(*(allProjects.at(index)));
+
     return 0;
 }
 

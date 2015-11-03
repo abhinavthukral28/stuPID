@@ -43,7 +43,7 @@
        <height>509</height>
       </rect>
      </property>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="projectsTitle">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -172,7 +172,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ViewStendentButton">
+        <widget class="QPushButton" name="ViewStudentButton">
          <property name="text">
           <string>View Students</string>
          </property>

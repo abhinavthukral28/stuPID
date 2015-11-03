@@ -35,7 +35,7 @@ void LoginDialog::on_loginpushButton_clicked()
        }
        else{
            loginController->goToAdminView(userName);
-           //Manage Projects View
+           //Manage Projects View       
        }
     }
     else {

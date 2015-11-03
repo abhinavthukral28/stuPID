@@ -19,6 +19,7 @@ public:
     explicit ManageProjectsView(QWidget *parent = 0);
      int updateProjectsList(QList<QString> &projectTitles);
      int updateDetailedView(Project &project);
+     //int showListofAllStudents(Students);
     ~ManageProjectsView();
 
 

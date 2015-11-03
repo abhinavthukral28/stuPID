@@ -33,6 +33,7 @@ void studentProjectRegisterView::on_listWidget_doubleClicked(const QModelIndex &
       //tatic int i=1;
       // ui->textBrowser->setText("Hello I am project "+ QString::number(i));
       // i++;
+
 }
 
 void studentProjectRegisterView::on_listWidget_itemDoubleClicked(QListWidgetItem *item)

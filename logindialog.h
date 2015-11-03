@@ -15,6 +15,7 @@ public:
     explicit LoginDialog(QWidget *parent = 0);
     ~LoginDialog();
 
+
 private slots:
     void on_loginpushButton_clicked();
 

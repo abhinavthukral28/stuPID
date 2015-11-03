@@ -6,12 +6,15 @@ class Project;
 class QString;
 class ManageProjectsView;
 class Database;
+class Student;
 class ManageProjectsController:public QObject
 {
 public:
     ManageProjectsController(ManageProjectsView *view);
     int init();
     int updateSelectedProject(const int& index);
+    //int showStudentsbyProject(const int&
+
 
 
 
@@ -20,8 +23,8 @@ public:
 private:
     ManageProjectsView *manageProjectsView;
     QList<Project*> allProjects;
+    QList<Student*> studentsByProjects;
     Database *database;
-
 
 };
 
