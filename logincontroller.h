@@ -11,6 +11,8 @@ public:
     int authenticate(QString &userName, QString &password, bool boolStudent);
     int goToStudentView(QString &userName);
     int goToAdminView(QString &userName);
+    int goToStudentRegisterView();
+
 
  private slots:
     void transition(bool student);

@@ -44,3 +44,8 @@ void LoginDialog::on_loginpushButton_clicked()
                              QMessageBox::Yes);
     }
 }
+
+void LoginDialog::on_pushButton_clicked()
+{
+    loginController->goToStudentRegisterView();
+}

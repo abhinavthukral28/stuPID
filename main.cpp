@@ -2,14 +2,15 @@
 #include <iostream>
 #include "Database.h"
 #include "manageprojectsview.h"
-
+#include "logindialog.h"
 
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    ManageProjectsView view;
+    LoginDialog view;
     view.show();
+
 //    Database* database = Database::getInstance();
 
 //    int projectID;
