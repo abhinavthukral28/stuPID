@@ -2,7 +2,6 @@
 #define MANAGEPROJECTSCONTROLLER_H
 #include<QObject>
 
-
 class QString;
 class ManageProjectsView;
 class ManageProjectsController:public QObject
@@ -12,11 +11,10 @@ public:
     int displayAllProjects();
 
 
+
  private slots:
-   // void transition();
 
 private:
-   //LoginDialog *loginDialog;
     ManageProjectsView *manageProjectsView;
 };
 
