@@ -237,6 +237,8 @@ const QList<Project*>& Database::getAllProjects(){
         qDebug() << query.lastError();
         qDebug() << query.lastQuery();
 
+
+
     }
     else
     {
