@@ -8,7 +8,7 @@ StudentRegisterController::StudentRegisterController(StudentRegister *sRegister)
 
 int StudentRegisterController::goToQualificationsView(){
     studentRegister->close();
-    qualificationinit qual;
+    QualificationInit qual;
     return qual.exec();
 
 

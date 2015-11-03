@@ -1,9 +1,13 @@
 #include "qualificationinit.h"
 #include "ui_qualificationinit.h"
+#include "qualificationinitController.h"
 
-qualificationinit::qualificationinit(QWidget *parent) :
+QualificationInit::QualificationInit(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::qualificationinit)
+    ui(new Ui::qualificationinit),
+    controller(new QualificationInitController(this))
+
+
 {
     ui->setupUi(this);
     ui->NameLabel->setText("Git");
@@ -12,7 +16,7 @@ qualificationinit::qualificationinit(QWidget *parent) :
     ui->QuesDownLabel->setText("How much can the other do?");
 }
 
-qualificationinit::~qualificationinit()
+QualificationInit::~QualificationInit()
 {
     delete ui;
 }

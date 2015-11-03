@@ -3,15 +3,15 @@
 #include<QObject>
 #include "qualificationinit.h"
 class QString;
-class qualificationinit;
-class qualificationinitController:public QObject
+class QualificationInit;
+class QualificationInitController:public QObject
 {
     Q_OBJECT
 public:
-    qualificationinitController(qualificationinit *qual);
+    QualificationInitController(QualificationInit *qual);
 
 
-    qualificationinit *qualification;
+    QualificationInit *qualification;
 };
 
 #endif // LOGINTCONTROLLER_H
