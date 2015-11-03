@@ -13,7 +13,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        logindialog.cpp \  
+        logindialog.cpp \
     studentregister.cpp \
     qualificationinit.cpp \
     editqualificationsview.cpp \
@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     logincontroller.cpp \
     manageprojectscontroller.cpp \
     studentprojectregisterview.cpp \
-    studentregistercontroller.cpp
+    studentregistercontroller.cpp \
+    qualificationinitController.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -47,6 +48,7 @@ HEADERS  += \
     logincontroller.h \
     manageprojectscontroller.h \
     studentprojectregisterview.h \
+    qualificationinitController.h \
     studentregistercontroller.h
 
 FORMS    += \
@@ -56,5 +58,3 @@ FORMS    += \
     editqualificationsview.ui \
     manageprojectsview.ui \
     studentprojectregisterview.ui
-
- 
