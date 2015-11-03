@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="loginpushButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>140</x>
      <y>180</y>
      <width>99</width>
      <height>27</height>
@@ -109,6 +109,19 @@
    </property>
    <property name="text">
     <string>stuPID logo</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>260</y>
+     <width>151</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Register (Students Only)</string>
    </property>
   </widget>
  </widget>
