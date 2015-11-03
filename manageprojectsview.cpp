@@ -10,7 +10,7 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
 {
     ui->setupUi(this);
 
-    //manageProjectsController->init();
+    manageProjectsController->init();
 
     ui->projectName->setText("Project Name");
     ui->projectDescription->setText("Project Description");
@@ -18,8 +18,13 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
 
 }
 
- int ManageProjectsView::updateProjectsList(QStringList &projects){
-     ui->projectsList->addItems(projects);
+ int ManageProjectsView::updateProjectsList(QList<QString> &projectTitles){
+     QString temp;
+     for (int i = 0; i <projectTitles.count();i++)
+     {
+         temp =projectTitles.at(i);
+        ui->projectsList->addItem(temp);
+     }
  }
 
 
@@ -29,14 +34,21 @@ ManageProjectsView::~ManageProjectsView()
 }
 
 
-void ManageProjectsView::on_projectsList_doubleClicked(const QModelIndex &index)
-{
-    manageProjectsController->updateSelectedProject(index.data().toInt());
-}
 
 
 int ManageProjectsView::updateDetailedView(Project &project)
 {
   ui->projectName->setText(project.getTitle());
+  ui->projectDescription->setText(project.getDescription());
+
 }
 
+
+void ManageProjectsView::on_projectsList_clicked(const QModelIndex &index)
+{
+    int indexVal = index.row();
+
+   manageProjectsController->updateSelectedProject(indexVal);
+
+
+}

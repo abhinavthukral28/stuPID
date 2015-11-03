@@ -10,7 +10,7 @@ class ManageProjectsController:public QObject
 {
 public:
     ManageProjectsController(ManageProjectsView *view);
-   // int init();
+    int init();
     int updateSelectedProject(const int& index);
 
 

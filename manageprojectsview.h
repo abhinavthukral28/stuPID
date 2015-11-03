@@ -17,13 +17,14 @@ class ManageProjectsView : public QDialog
 
 public:
     explicit ManageProjectsView(QWidget *parent = 0);
-     int updateProjectsList(QStringList &projects);
+     int updateProjectsList(QList<QString> &projectTitles);
      int updateDetailedView(Project &project);
     ~ManageProjectsView();
 
 
+
 private slots:
-     void on_projectsList_doubleClicked(const QModelIndex &index);
+     void on_projectsList_clicked(const QModelIndex &index);
 
 private:
     Ui::ManageProjectsView *ui;
