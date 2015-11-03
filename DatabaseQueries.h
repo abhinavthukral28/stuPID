@@ -42,7 +42,7 @@ const QString DatabaseQueries::selectAllStudents = QString("SELECT * FROM ") + D
 const QString DatabaseQueries::insertStudent = "INSERT INTO "+DatabaseQueries::STUDENTS_TABLE+" (studentID,studentName)  VALUES (NULL,:username)";
 
 const QString DatabaseQueries::selectAllProjects = QString("SELECT * FROM ") + DatabaseQueries::PROJECTS_TABLE +
-        " JOIN " + DatabaseQueries::PROJECT_STUDENT_TABLE + " ON " + DatabaseQueries::PROJECTS_TABLE + ".projectID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".projectID JOIN " +
+        " LEFT JOIN " + DatabaseQueries::PROJECT_STUDENT_TABLE + " ON " + DatabaseQueries::PROJECTS_TABLE + ".projectID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".projectID LEFT JOIN " +
         DatabaseQueries::STUDENTS_TABLE + " ON " + DatabaseQueries::STUDENTS_TABLE+ ".studentID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".studentID";
 
 const QString DatabaseQueries::insertProject = "INSERT INTO "+DatabaseQueries::PROJECTS_TABLE+" (projectID,projectName,description,minTeamSize,maxTeamSize)  VALUES (NULL,:projectName,:description,:minTeamSize,:maxTeamSize)";
@@ -54,4 +54,5 @@ const QString DatabaseQueries::addStudentToProject = "INSERT INTO " + DatabaseQu
 const QString DatabaseQueries::getProjectsByStudent =  QString("SELECT * FROM ") + DatabaseQueries::PROJECTS_TABLE +
         " JOIN " + DatabaseQueries::PROJECT_STUDENT_TABLE + " ON " + DatabaseQueries::PROJECTS_TABLE + ".projectID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".projectID JOIN " +
         DatabaseQueries::STUDENTS_TABLE + " ON " + DatabaseQueries::STUDENTS_TABLE+ ".studentID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".studentID WHERE "+DatabaseQueries::STUDENTS_TABLE+".studentID = :studentID";
+
 #endif // DATABASEQUERIES_H

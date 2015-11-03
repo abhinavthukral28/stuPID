@@ -17,7 +17,7 @@ ManageProjectsController::ManageProjectsController(ManageProjectsView *view):QOb
 
 int ManageProjectsController::init(){
   Database* database = Database::getInstance();
-  QList<Project*>* allProjects = database->getAllProjects();
+  QList<Project*>* allProjects;// = database->getAllProjects();
   QStringList projectTitles;
 
        for(int i=0;i<allProjects->count();i++){

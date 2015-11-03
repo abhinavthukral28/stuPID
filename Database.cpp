@@ -79,7 +79,7 @@ void Database::createTables(){
     else
         qDebug() << "Table Qualifications created!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize int, maxTeamSize int)" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize INTEGER, maxTeamSize INTEGER)" );
     if( !qry.exec() )
     {
         qDebug() << qry.lastQuery();
@@ -89,7 +89,7 @@ void Database::createTables(){
         qDebug() << "Table Project created!";
 
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER , studentID INTEGER,PRIMARY KEY(projectID,studentID),FOREIGN KEY(studentID) REFERENCES Students(studentId))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER , studentID VARCHAR(30),PRIMARY KEY(projectID,studentID))" );
     if( !qry.exec() )
     {
         qDebug() <<qry.lastQuery();
@@ -366,29 +366,30 @@ QList<Project*>* Database::getProjectsByStudent(const int& studentID)
 
                 tempID = query.value(0).toInt();
 
-
-                if (tempProject->getID() != tempID)
+                if (tempProject != NULL)
                 {
-                    tempTitle = QString(query.value(2).toString());
-                    tempProject = new Project(tempID,tempTitle);
+                    if (tempProject->getID() != tempID)
+                    {
+                        tempTitle = QString(query.value(2).toString());
+                        tempProject = new Project(tempID,tempTitle);
 
-                    tempDescription = QString(query.value(3).toString());
-                    tempTeamMin = query.value(4).toInt();
-                    tempTeamMax = query.value(5).toInt();
+                        tempDescription = QString(query.value(3).toString());
+                        tempTeamMin = query.value(4).toInt();
+                        tempTeamMax = query.value(5).toInt();
 
-                    tempProject->setDescription(tempDescription);
-                    tempProject->setTeamMax(tempTeamMax);
-                    tempProject->setTeamMin(tempTeamMin);
+                        tempProject->setDescription(tempDescription);
+                        tempProject->setTeamMax(tempTeamMax);
+                        tempProject->setTeamMin(tempTeamMin);
 
-                    projects->append(tempProject);
+                        projects->append(tempProject);
+                    }
+
+                    tempStudentID = query.value(8).toInt();
+                    tempUsername = query.value(9).toString();
+                    tempStudent = new Student(tempStudentID,tempUsername);
+                    tempProject->registerStudent(*tempStudent);
+
                 }
-
-                tempStudentID = query.value(8).toInt();
-                tempUsername = query.value(9).toString();
-                tempStudent = new Student(tempStudentID,tempUsername);
-                tempProject->registerStudent(*tempStudent);
-
-
             }
 
             return projects;

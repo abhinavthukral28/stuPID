@@ -27,12 +27,7 @@ int main(int argc, char *argv[])
 
     QList<Project*>* projects = database->getAllProjects();
 
-    for (int i = 0; i < projects->count(); i++)
-    {
-        qDebug() << "this is fucked";
-        QString temp = projects->at(i)->getTitle();
-        std::cout << QString::toStdString(temp);
-    }
+  
 
   return a.exec();
 
