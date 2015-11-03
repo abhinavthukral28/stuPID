@@ -2,6 +2,7 @@
 #include "student.h"
 #include "project.h"
 #include "DatabaseQueries.h"
+#include "sqlexception.h"
 #include <QDebug>
 #include <QtSql>
 const QString Database::DBpath="./testdatabase.db";
@@ -234,11 +235,7 @@ const QList<Project*>& Database::getAllProjects(){
 
     if (!query.exec())
     {
-        qDebug() << query.lastError();
-        qDebug() << query.lastQuery();
-
-
-
+        throw generateException(query);
     }
     else
     {
@@ -464,5 +461,10 @@ QList<Project*>* Database::getProjectsByStudent(const int& studentID)
     else return NULL;
 }
 
+
+SQLException Database::generateException(QSqlQuery query)
+{
+   return *(new SQLException(query.lastError().text().toStdString() + "\n"  + query.lastQuery().toStdString() + "\n"));
+}
 
 
