@@ -4,7 +4,7 @@
 #include "Database.h"
 #include "user.h"
 #include "student.h"
-#include "studentprojectview.h"
+#include "studentprojectregisterview.h"
 #include "editqualificationsview.h"
 #include "project.h"
 

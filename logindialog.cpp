@@ -2,7 +2,7 @@
 #include "ui_logindialog.h"
 #include <QMessageBox>
 #include <QDebug>
-#include "studentprojectview.h"
+#include "studentprojectregisterview.h"
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginDialog),

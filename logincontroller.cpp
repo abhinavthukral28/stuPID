@@ -1,6 +1,6 @@
 #include "logincontroller.h"
 #include <QString>
-#include "studentprojectview.h"
+#include "studentprojectregisterview.h"
 #include "manageprojectsview.h"
 #include <QDebug>
 #include "logindialog.h"
@@ -39,7 +39,7 @@ void LoginController::transition(bool student)
     loginDialog->close();
     if(student){
         qDebug() << "got Here Now";
-        studentProjectView sview;
+        studentProjectRegisterView sview;
         sview.exec();
     }
     else{
