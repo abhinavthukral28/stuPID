@@ -89,7 +89,7 @@ void Database::createTables(){
         qDebug() << "Table Project created!";
 
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER , studentID VARCHAR(30),PRIMARY KEY(projectID,studentID))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER , studentID INTEGER,PRIMARY KEY(projectID,studentID),FOREIGN KEY(studentID) REFERENCES Students(studentId))" );
     if( !qry.exec() )
     {
         qDebug() <<qry.lastQuery();
