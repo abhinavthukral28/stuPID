@@ -1,13 +1,13 @@
 #ifndef STUDENTREGISTER_H
 #define STUDENTREGISTER_H
 
-#include <QMainWindow>
+#include <QDialog>
 
 namespace Ui {
 class StudentRegister;
 }
 
-class StudentRegister : public QMainWindow
+class StudentRegister : public QDialog
 {
     Q_OBJECT
 

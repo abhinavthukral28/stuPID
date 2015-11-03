@@ -2,21 +2,20 @@
 #define MANAGEPROJECTSCONTROLLER_H
 #include<QObject>
 
-
 class QString;
 class ManageProjectsView;
 class ManageProjectsController:public QObject
 {
 public:
     ManageProjectsController(ManageProjectsView *view);
-    int displayAllProjects();
+    int init();
+    int updateSelectedProject(const int& index);
+
 
 
  private slots:
-   // void transition();
 
 private:
-   //LoginDialog *loginDialog;
     ManageProjectsView *manageProjectsView;
 };
 

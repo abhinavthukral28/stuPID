@@ -25,9 +25,9 @@ SOURCES += main.cpp\
     qualification.cpp \
     team.cpp \
     administrator.cpp \
-    studentprojectview.cpp \
     logincontroller.cpp \
-    manageprojectscontroller.cpp
+    manageprojectscontroller.cpp \
+    studentprojectregisterview.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -43,9 +43,9 @@ HEADERS  += \
     team.h \
     administrator.h \
     DatabaseQueries.h \
-    studentprojectview.h \
     logincontroller.h \
-    manageprojectscontroller.h
+    manageprojectscontroller.h \
+    studentprojectregisterview.h
 
 FORMS    += \
     studentregister.ui \
@@ -53,6 +53,6 @@ FORMS    += \
     qualificationinit.ui \
     editqualificationsview.ui \
     manageprojectsview.ui \
-    studentprojectview.ui
+    studentprojectregisterview.ui
 
  

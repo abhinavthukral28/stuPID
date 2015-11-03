@@ -9,16 +9,21 @@ namespace Ui {
 class ManageProjectsView;
 }
 
+class QStringList;
+class Project;
 class ManageProjectsView : public QDialog
 {
     Q_OBJECT
 
 public:
     explicit ManageProjectsView(QWidget *parent = 0);
+     int updateProjectsList(QStringList &projects);
+     int updateDetailedView(Project &project);
     ~ManageProjectsView();
 
+
 private slots:
-    void on_projectsList_itemClicked(QListWidgetItem *item);
+     void on_projectsList_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::ManageProjectsView *ui;

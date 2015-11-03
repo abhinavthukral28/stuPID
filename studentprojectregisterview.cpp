@@ -1,8 +1,8 @@
-#include "studentprojectview.h"
+#include "studentprojectregisterview.h"
 #include "ui_studentprojectview.h"
 #include <QDebug>
 #include <QListWidgetItem>
-studentProjectView::studentProjectView(QWidget *parent) :
+studentProjectRegisterView::studentProjectRegisterView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::studentProjectView)
 {   
@@ -14,19 +14,19 @@ studentProjectView::studentProjectView(QWidget *parent) :
     }
 }
 
-studentProjectView::~studentProjectView()
+studentProjectRegisterView::~studentProjectRegisterView()
 {
     delete ui;
 }
 
-void studentProjectView::on_registerButton_clicked()
+void studentProjectRegisterView::on_registerButton_clicked()
 {
     QListWidgetItem *item = ui->listWidget->currentItem();
     item->setTextColor(Qt::red);
 
 }
 
-void studentProjectView::on_listWidget_doubleClicked(const QModelIndex &index)
+void studentProjectRegisterView::on_listWidget_doubleClicked(const QModelIndex &index)
 {
      //  QModelIndex i = ui->listWidget->currentIndex();
       //  qDebug()<<index;
@@ -35,8 +35,7 @@ void studentProjectView::on_listWidget_doubleClicked(const QModelIndex &index)
       // i++;
 }
 
-void studentProjectView::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+void studentProjectRegisterView::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
-    ui->textBrowser->setText(item->text());
 
 }

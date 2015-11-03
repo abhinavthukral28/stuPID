@@ -1,9 +1,10 @@
 #include "logincontroller.h"
 #include <QString>
-#include "studentprojectview.h"
+#include "studentprojectregisterview.h"
 #include "manageprojectsview.h"
 #include <QDebug>
 #include "logindialog.h"
+#include "studentregister.h"
 LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(login)
 {
 
@@ -33,17 +34,23 @@ int LoginController::goToAdminView(QString &userName){
     transition(false);
     return 0;
 }
+int LoginController::goToStudentRegisterView(){
+    //transition view
+    loginDialog->close();
+    StudentRegister rview;
+    rview.exec();
+
+    return 0;
+}
 void LoginController::transition(bool student)
 {
 
     loginDialog->close();
     if(student){
-        qDebug() << "got Here Now";
-        studentProjectView sview;
+        studentProjectRegisterView sview;
         sview.exec();
     }
     else{
-        qDebug() << "got Here";
         ManageProjectsView mview;
         mview.exec();
     }
