@@ -31,6 +31,7 @@ int ManageProjectsController::init(){
 
 
     manageProjectsView->updateProjectsList(projectTitles);
+    manageProjectsView->updateDetailedView(*allProjects.at(0));
     return 1;
 }
 

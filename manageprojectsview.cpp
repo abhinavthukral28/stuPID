@@ -26,6 +26,8 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
          temp =projectTitles.at(i);
         ui->projectsList->addItem(temp);
      }
+    // manageProjectsController->updateSelectedProject(0);
+
  }
 
 
@@ -41,10 +43,11 @@ int ManageProjectsView::updateDetailedView(Project &project)
 {
   ui->projectName->setText(project.getTitle());
   ui->projectDescription->setText(project.getDescription());
+
   for(int i=0; i<project.getRegisteredStudents().count();i++)
   {
-      //QList<Students>* temp =project.getRegisteredStudents();
-      ui->viewTextBrowser->setText(project.getRegisteredStudents(i));
+      QString temp = project.getRegisteredStudents().at(i)->getUsername();
+      ui->viewTextBrowser->setText(temp);
 
   }
 }
