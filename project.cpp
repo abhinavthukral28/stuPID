@@ -5,9 +5,17 @@
 
 
 
-Project::Project(int& pID, QString &title) : projectName(title),ID(pID),teamMax(0),teamMin(0)
+Project::Project(int& pID, QString &title) : projectName(QString::fromStdString(title.toStdString())),ID(pID),teamMax(0),teamMin(0)
 {
 
+}
+
+Project::Project(const Project &obj){
+  projectName = QString::fromStdString(obj.projectName.toStdString());
+  teamMax = obj.teamMax;
+  teamMin = obj.teamMin;
+  description = QString::fromStdString(obj.description.toStdString());
+  registeredStudents = obj.registeredStudents;
 }
 
 int Project::registerStudent(Student& student)
@@ -47,9 +55,12 @@ int Project::setTeamMin(int& min)
 
 int Project::setDescription(QString& description)
 {
-    this->description = description;
+    this->description = QString(description);
 }
 
+int Project::setTitle(QString& title){
+    this->projectName = QString(title);
+}
 
 int Project::getMinTeamSize(){
     return teamMin;
@@ -63,11 +74,11 @@ QString Project::getDescription(){
     return description;
 }
 
-QString Project::getTitle(){
+QString Project::getTitle() const{
     return projectName;
 }
 
-int Project::getID()
+int Project::getID() const
 {
     return ID;
 }
@@ -78,6 +89,6 @@ int Project::setID(int& newID){
     return 1;
 }
 
-QList<Student*> Project::getRegisteredStudents(){
+QList<Student*> Project::getRegisteredStudents () const{
     return registeredStudents;
 }

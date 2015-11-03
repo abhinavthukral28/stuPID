@@ -55,6 +55,70 @@ int Database::init(){
 
 
 
+int Database::insertValuesintoQualifications(){
+    QSqlQuery qry;
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (1,'Core GPA','What is your core GPA?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (2,'Git Version Control','How familiar are you with the GIT?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (3, 'Object Oriented Programming', 'How familiar are you with object-oriented Programming?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (4, 'Systems Programming', 'How familiar are you with systems programming?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (5, 'Web Development', 'How much experience do you have in Web Development?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (6, 'UX Design','How much experience do you have in UX Design? ')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (7, 'Punctuality', 'How punctual are you?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (8, 'Night Owl', 'How much of a night owl are you?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (9, 'Documentation', ' How much experience do you have in documentation?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (10, 'Leadership Skills', ' How would you rate your leadership skills?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (11, 'Locally or Remotely ', ' Do you prefer to work locally or remotely?')");
+
+    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (12, 'Communication Skills', ' How would you rate you communication skills?')");
+
+    return 0;
+}
+
+int Database::insertValuesintoExpectations(){
+
+    QSqlQuery qry;
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (1, 'Core GPA', 'What Core GPA do you expect from your team mates?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (2, 'Git Version Control','How familiar do you want your team mates to know Git?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (3, 'Object Oriented Programming', 'How familiar do you want your team mates to know Object Oriented Programming?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (4, 'Systems Programming','How familiar do you want your team mates to know Systems Programming?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (5, 'Web Development', 'How much experience do you expect your team mates to have in Web Development?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (6, 'UX Design', 'How much experience do you want your team mates to have in UX Design?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (7, 'Punctuality', 'How punctual do you want your team mates to be?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (8, 'Night Owl', 'How much of a night owl do you want your team mates to be?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (9, 'Documentation ', 'How much experience in documentation do you want your team mates to have?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (10, 'Leadership Skills', 'How much experience do you want your team mates to have in leadership?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (11, 'Locally or Remotely ', 'Do you want your team mates to work locally or remotely?')");
+
+    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (12, 'Communication Skills', 'How important is it for your teams to have communication skills?')");
+
+    return 0;
+}
+
+
+
+
 
 
 
@@ -73,13 +137,13 @@ void Database::createTables(){
 
 
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Qualifications(qID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, qualificationValue VARCHAR(30))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Qualifications(qID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, qtitle VARCHAR(30),qualificationValue VARCHAR(60))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
         qDebug() << "Table Qualifications created!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize int, maxTeamSize int)" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize INTEGER, maxTeamSize INTEGER)" );
     if( !qry.exec() )
     {
         qDebug() << qry.lastQuery();
@@ -98,7 +162,7 @@ void Database::createTables(){
     else
         qDebug() << "Table ProjectStudents!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS teamMember(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,studentID int,FOREIGN KEY(studentID) REFERENCES Students(studentId))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS TeamMember(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,studentID int,FOREIGN KEY(studentID) REFERENCES Students(studentId))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -108,7 +172,7 @@ void Database::createTables(){
 
 
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Expectations(eID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, expectationValue VARCHAR(30))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Expectations(eID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,etitle VARCHAR(30),expectationValue VARCHAR(30))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -163,7 +227,7 @@ QList<Student*>* Database::getAllStudents(){
 }
 
 
-QList<Project*>* Database::getAllProjects(){
+const QList<Project*>& Database::getAllProjects(){
 
     QSqlQuery query;
     query.prepare(DatabaseQueries::selectAllProjects);
@@ -172,7 +236,7 @@ QList<Project*>* Database::getAllProjects(){
     {
         qDebug() << query.lastError();
         qDebug() << query.lastQuery();
-        return NULL;
+
     }
     else
     {
@@ -219,7 +283,7 @@ QList<Project*>* Database::getAllProjects(){
 
         }
 
-        return projects;
+        return *projects;
     }
 
 }
@@ -366,29 +430,30 @@ QList<Project*>* Database::getProjectsByStudent(const int& studentID)
 
                 tempID = query.value(0).toInt();
 
-
-                if (tempProject->getID() != tempID)
+                if (tempProject != NULL)
                 {
-                    tempTitle = QString(query.value(2).toString());
-                    tempProject = new Project(tempID,tempTitle);
+                    if (tempProject->getID() != tempID)
+                    {
+                        tempTitle = QString(query.value(2).toString());
+                        tempProject = new Project(tempID,tempTitle);
 
-                    tempDescription = QString(query.value(3).toString());
-                    tempTeamMin = query.value(4).toInt();
-                    tempTeamMax = query.value(5).toInt();
+                        tempDescription = QString(query.value(3).toString());
+                        tempTeamMin = query.value(4).toInt();
+                        tempTeamMax = query.value(5).toInt();
 
-                    tempProject->setDescription(tempDescription);
-                    tempProject->setTeamMax(tempTeamMax);
-                    tempProject->setTeamMin(tempTeamMin);
+                        tempProject->setDescription(tempDescription);
+                        tempProject->setTeamMax(tempTeamMax);
+                        tempProject->setTeamMin(tempTeamMin);
 
-                    projects->append(tempProject);
+                        projects->append(tempProject);
+                    }
+
+                    tempStudentID = query.value(8).toInt();
+                    tempUsername = query.value(9).toString();
+                    tempStudent = new Student(tempStudentID,tempUsername);
+                    tempProject->registerStudent(*tempStudent);
+
                 }
-
-                tempStudentID = query.value(8).toInt();
-                tempUsername = query.value(9).toString();
-                tempStudent = new Student(tempStudentID,tempUsername);
-                tempProject->registerStudent(*tempStudent);
-
-
             }
 
             return projects;

@@ -8,25 +8,13 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     manageProjectsController(new ManageProjectsController(this))
 
 {
-
     ui->setupUi(this);
 
-    manageProjectsController->init();
-
-    /*
-     QStringList projectTitles;
-
-    for (int i = 0; i < 50;i++)
-    {
-        projectTitles << QString("Project %1").arg(i);
-    }
-    ui->projectsList->addItems(projectTitles);
-    */
+    //manageProjectsController->init();
 
     ui->projectName->setText("Project Name");
     ui->projectDescription->setText("Project Description");
     ui->viewTextBrowser->setText("view students or view details or view results");
-
 
 }
 
@@ -51,3 +39,4 @@ int ManageProjectsView::updateDetailedView(Project &project)
 {
   ui->projectName->setText(project.getTitle());
 }
+
