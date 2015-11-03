@@ -1,10 +1,21 @@
 #ifndef SQLEXCEPTION_H
 #define SQLEXCEPTION_H
 
-class SQLException : public Exception
+#include <exception>
+#include <string>
+class SQLException : public std::exception
 {
 public:
-    SQLException();
+    SQLException(std::string desc);
+    virtual const char* what() const throw();
+
+    ~SQLException() throw()
+     {
+        delete &whatStr;
+     }
+private:
+    std::string whatStr;
+
 };
 
 #endif // SQLEXCEPTION_H
