@@ -19,7 +19,7 @@ public:
 
 private:
     ManageProjectsView *manageProjectsView;
-    QList<Project*>* allProjects;
+    QList<Project*> allProjects;
     Database *database;
 
 

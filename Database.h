@@ -14,7 +14,7 @@ class Database{
     static Database* getInstance();
 
     QList<Student*>* getAllStudents();
-    QList<Project*>* getAllProjects();
+    const QList<Project*>& getAllProjects();
     //QList<Student*>* getStudentsByProject();
     QList<Project*>* getProjectsByStudent(const int& studentID);
 
@@ -23,6 +23,8 @@ class Database{
     int createProject(Project& project);
     int addStudentsToProject(int& projectID, QList<Student*>* students);
     int addStudentToProject(int& projectID,Student& student);
+    int insertValuesintoQualifications();
+    int insertValuesintoExpectations();
 
    private:
     static Database *instance;

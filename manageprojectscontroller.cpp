@@ -16,8 +16,8 @@ ManageProjectsController::ManageProjectsController(ManageProjectsView *view):QOb
 
     QStringList projectTitles;
 
-         for(int i=0;i<allProjects->count();i++){
-             projectTitles<<allProjects->at(i)->getTitle();
+         for(int i=0;i<allProjects.count();i++){
+             projectTitles<<allProjects.at(i)->getTitle();
 
         }
 
