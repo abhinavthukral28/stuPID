@@ -4,10 +4,12 @@
 #define DATABASE_H
 
 #include <QList>
+class QSqlQuery;
 class QString;
 class Student;
 class Project;
 class Team;
+class SQLException;
 class Database{
 
    public:
@@ -29,7 +31,7 @@ class Database{
    private:
     static Database *instance;
     static const QString DBpath;
-
+    static SQLException generateException(QSqlQuery query);
     //functions
     void createTables();
     int init();
