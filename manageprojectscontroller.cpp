@@ -15,7 +15,7 @@ ManageProjectsController::ManageProjectsController(ManageProjectsView *view):QOb
 }
 */
 
-int ManageProjectsController::displayAllProjects(){
+int ManageProjectsController::init(){
   Database* database = Database::getInstance();
   QList<Project*>* allProjects = database->getAllProjects();
   QStringList projectTitles;
@@ -26,6 +26,11 @@ int ManageProjectsController::displayAllProjects(){
 
 
     manageProjectsView->updateProjectsList(projectTitles);
+    return 1;
+}
+
+int ManageProjectsController::updateSelectedProject(const int& index){
+    return 0;
 }
 
 

@@ -8,7 +8,8 @@ class ManageProjectsController:public QObject
 {
 public:
     ManageProjectsController(ManageProjectsView *view);
-    int displayAllProjects();
+    int init();
+    int updateSelectedProject(const int& index);
 
 
 

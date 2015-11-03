@@ -11,7 +11,7 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
 
     ui->setupUi(this);
 
-    manageProjectsController->displayAllProjects();
+    manageProjectsController->init();
 
     /*
      QStringList projectTitles;
@@ -43,7 +43,7 @@ ManageProjectsView::~ManageProjectsView()
 
 void ManageProjectsView::on_projectsList_doubleClicked(const QModelIndex &index)
 {
-    index.data().toInt();
+    manageProjectsController->updateSelectedProject(index.data().toInt());
 }
 
 
