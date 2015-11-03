@@ -2,13 +2,15 @@
 #define MANAGEPROJECTSCONTROLLER_H
 #include<QObject>
 
+class Project;
 class QString;
 class ManageProjectsView;
+class Database;
 class ManageProjectsController:public QObject
 {
 public:
     ManageProjectsController(ManageProjectsView *view);
-    int init();
+   // int init();
     int updateSelectedProject(const int& index);
 
 
@@ -17,6 +19,10 @@ public:
 
 private:
     ManageProjectsView *manageProjectsView;
+    QList<Project*>* allProjects;
+    Database *database;
+
+
 };
 
 #endif // MANAGEPROJECTSCONTROLLER_H

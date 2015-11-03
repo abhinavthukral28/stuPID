@@ -1,16 +1,8 @@
 #include <QApplication> 
 #include <iostream>
 #include "Database.h"
-<<<<<<< HEAD
 #include "manageprojectsview.h"
-=======
-#include "user.h"
-#include "student.h"
-#include "studentprojectregisterview.h"
-#include "editqualificationsview.h"
-#include "project.h"
 
->>>>>>> 23c7180b408f00a0113c7a29e043b63f6d98914e
 
 int main(int argc, char *argv[])
 {
