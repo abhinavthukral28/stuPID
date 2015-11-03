@@ -1,5 +1,6 @@
 #ifndef STUDENTREGISTER_H
 #define STUDENTREGISTER_H
+#include "studentregistercontroller.h"
 
 #include <QDialog>
 
@@ -15,8 +16,13 @@ public:
     explicit StudentRegister(QWidget *parent = 0);
     ~StudentRegister();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::StudentRegister *ui;
+    StudentRegisterController *controller;
+
 };
 
 #endif // STUDENTREGISTER_H

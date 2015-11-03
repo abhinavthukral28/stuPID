@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     administrator.cpp \
     logincontroller.cpp \
     manageprojectscontroller.cpp \
-    studentprojectregisterview.cpp
+    studentprojectregisterview.cpp \
+    studentregistercontroller.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -45,7 +46,8 @@ HEADERS  += \
     DatabaseQueries.h \
     logincontroller.h \
     manageprojectscontroller.h \
-    studentprojectregisterview.h
+    studentprojectregisterview.h \
+    studentregistercontroller.h
 
 FORMS    += \
     studentregister.ui \
