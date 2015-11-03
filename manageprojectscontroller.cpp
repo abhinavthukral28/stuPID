@@ -11,52 +11,33 @@ ManageProjectsController::ManageProjectsController(ManageProjectsView *view):QOb
     database(Database::getInstance())
 
 {
-    //Database* database = Database::getInstance();
     allProjects = database->getAllProjects();
 
-    QStringList projectTitles;
-
-         for(int i=0;i<allProjects.count();i++){
-             projectTitles<<allProjects.at(i)->getTitle();
-
-        }
-
-
-      manageProjectsView->updateProjectsList(projectTitles);
-
 }
 
 
 
-/*LoginController::LoginController( LoginDialog *login):QObject(), loginDialog(login)
-{
-}
-*/
 
-/*
 int ManageProjectsController::init(){
-<<<<<<< HEAD
-  //Database* database = Database::getInstance();
-  //QList<Project*>* allProjects = database->getAllProjects();
-=======
-  Database* database = Database::getInstance();
-  QList<Project*>* allProjects;// = database->getAllProjects();
->>>>>>> c3e0385cf8aee8cc2584dca0b14cfbe3d44e654d
-  QStringList projectTitles;
 
-       for(int i=0;i<allProjects->count();i++){
-           projectTitles<<allProjects->at(i)->getTitle();
+    QList<QString> projectTitles;
+    QString tempTitle;
 
-      }
+    for(int i=0;i<allProjects.count();i++){
+        tempTitle = allProjects.at(i)->getTitle();
+        projectTitles << tempTitle;
+
+    }
 
 
     manageProjectsView->updateProjectsList(projectTitles);
     return 1;
 }
-*/
+
 
 int ManageProjectsController::updateSelectedProject(const int& index){
 
+    manageProjectsView->updateDetailedView(*(allProjects.at(index)));
     return 0;
 }
 

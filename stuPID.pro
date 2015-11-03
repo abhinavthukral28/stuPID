@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     studentregistercontroller.cpp \
     qualificationinitController.cpp \
     studentmanageprojectview.cpp \
-    createprojectview.cpp
+    createprojectview.cpp \
+    sqlexception.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -53,7 +54,8 @@ HEADERS  += \
     qualificationinitController.h \
     studentregistercontroller.h \
     studentmanageprojectview.h \
-    createprojectview.h
+    createprojectview.h \
+    sqlexception.h
 
 FORMS    += \
     studentregister.ui \

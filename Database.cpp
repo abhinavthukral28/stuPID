@@ -64,7 +64,7 @@ int Database::insertValuesintoQualifications(){
 
     qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (3, 'Object Oriented Programming', 'How familiar are you with object-oriented Programming?')");
 
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (4, 'Systems Programming', 'How familiar are you with systems programming?')");
+    qry.prepare("INSERT INTO Qualifications (qtle,qid,qtiualificationValue) VALUES (4, 'Systems Programming', 'How familiar are you with systems programming?')");
 
     qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (5, 'Web Development', 'How much experience do you have in Web Development?')");
 
