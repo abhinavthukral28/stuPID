@@ -6,31 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>665</width>
+    <height>569</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Qualification</string>
   </property>
-  <widget class="QPushButton" name="PreviousButton">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>260</y>
-     <width>99</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Previous</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>260</y>
+     <x>270</x>
+     <y>410</y>
      <width>99</width>
      <height>27</height>
     </rect>
@@ -42,9 +29,9 @@
   <widget class="QLabel" name="QuesDownLabel">
    <property name="geometry">
     <rect>
-     <x>86</x>
-     <y>160</y>
-     <width>221</width>
+     <x>90</x>
+     <y>300</y>
+     <width>521</width>
      <height>20</height>
     </rect>
    </property>
@@ -56,8 +43,8 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>60</y>
-     <width>241</width>
+     <y>190</y>
+     <width>511</width>
      <height>20</height>
     </rect>
    </property>
@@ -68,9 +55,9 @@
   <widget class="QLabel" name="keyLabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>91</width>
+     <x>80</x>
+     <y>130</y>
+     <width>271</width>
      <height>17</height>
     </rect>
    </property>
@@ -81,8 +68,8 @@
   <widget class="QLabel" name="NumberLabel">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>30</y>
+     <x>80</x>
+     <y>100</y>
      <width>101</width>
      <height>17</height>
     </rect>
@@ -94,14 +81,17 @@
   <widget class="QRadioButton" name="qB1">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>100</y>
+     <x>250</x>
+     <y>230</y>
      <width>21</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">qualificationButtonGroup</string>
@@ -110,8 +100,8 @@
   <widget class="QRadioButton" name="qB2">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>100</y>
+     <x>290</x>
+     <y>230</y>
      <width>21</width>
      <height>22</height>
     </rect>
@@ -126,8 +116,8 @@
   <widget class="QRadioButton" name="qB3">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>100</y>
+     <x>330</x>
+     <y>230</y>
      <width>21</width>
      <height>22</height>
     </rect>
@@ -142,8 +132,8 @@
   <widget class="QRadioButton" name="qB4">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>100</y>
+     <x>370</x>
+     <y>230</y>
      <width>21</width>
      <height>22</height>
     </rect>
@@ -158,8 +148,8 @@
   <widget class="QRadioButton" name="qB5">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>100</y>
+     <x>410</x>
+     <y>230</y>
      <width>21</width>
      <height>22</height>
     </rect>
@@ -174,14 +164,17 @@
   <widget class="QRadioButton" name="eB1">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>200</y>
+     <x>250</x>
+     <y>330</y>
      <width>21</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">expectationButtonGroup</string>
@@ -190,8 +183,8 @@
   <widget class="QRadioButton" name="eB5">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>200</y>
+     <x>410</x>
+     <y>330</y>
      <width>21</width>
      <height>22</height>
     </rect>
@@ -206,8 +199,8 @@
   <widget class="QRadioButton" name="eB2">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>200</y>
+     <x>290</x>
+     <y>330</y>
      <width>21</width>
      <height>22</height>
     </rect>
@@ -222,8 +215,8 @@
   <widget class="QRadioButton" name="eB4">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>200</y>
+     <x>370</x>
+     <y>330</y>
      <width>21</width>
      <height>22</height>
     </rect>
@@ -238,8 +231,8 @@
   <widget class="QRadioButton" name="eB3">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>200</y>
+     <x>330</x>
+     <y>330</y>
      <width>21</width>
      <height>22</height>
     </rect>
@@ -251,9 +244,138 @@
     <string notr="true">expectationButtonGroup</string>
    </attribute>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>260</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>260</y>
+     <width>59</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>5</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>260</y>
+     <width>21</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>3</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>260</y>
+     <width>21</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>260</y>
+     <width>21</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>4</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>360</y>
+     <width>59</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>5</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>360</y>
+     <width>21</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>3</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>360</y>
+     <width>21</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>360</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>360</y>
+     <width>21</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>4</string>
+   </property>
+  </widget>
  </widget>
  <tabstops>
-  <tabstop>PreviousButton</tabstop>
   <tabstop>NextButton</tabstop>
  </tabstops>
  <resources/>

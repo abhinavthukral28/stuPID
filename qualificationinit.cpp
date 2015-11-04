@@ -32,10 +32,6 @@ QualificationInit::QualificationInit(Student &student) :
      ui->NumberLabel->setText("1");
      ui->QuesTopLabel->setText(qualificationList.at(0)->getQualificationDisplay());
      ui->QuesDownLabel->setText(qualificationList.at(0)->getExpectationDisplay());
-//    ui->keyLabel->setText(keyList.at(0));
-//    ui->NumberLabel->setText("1");
-//    ui->QuesTopLabel->setText(q.at(0));
-//    ui->QuesDownLabel->setText(e.at(0));
 
     ui->qualificationButtonGroup->setId(ui->qB1, 1);
     ui->qualificationButtonGroup->setId(ui->qB2, 2);
@@ -63,11 +59,11 @@ void QualificationInit::on_NextButton_clicked()
 {
 
     activeIndex += 1;
-    if(activeIndex >= keyList.count()){
+    if(activeIndex >= qualificationList.count()){
 
     }
     else{
-        if(activeIndex == keyList.count() - 1){
+        if(activeIndex == qualificationList.count() - 1){
             ui->NextButton->setText("Submit");
         }
 
@@ -75,13 +71,9 @@ void QualificationInit::on_NextButton_clicked()
         qDebug() << ui->qualificationButtonGroup->checkedId();
         qDebug() << ui->expectationButtonGroup->checkedId();
 
-        //        ui->keyLabel->setText(qualificationList.at(activeIndex)->getTitle());
-        //        ui->NumberLabel->setText(QString::number(activeIndex + 1));
-        //        ui->QuesTopLabel->setText(qualificationList.at(activeIndex)->getQualificationDisplay());
-        //        ui->QuesDownLabel->setText(qualificationList.at(activeIndex)->getExpectationDisplay());
-        ui->keyLabel->setText(keyList.at(activeIndex));
-        ui->NumberLabel->setText(QString::number(activeIndex + 1));
-        ui->QuesTopLabel->setText(q.at(activeIndex));
-        ui->QuesDownLabel->setText(e.at(activeIndex));
+                ui->keyLabel->setText(qualificationList.at(activeIndex)->getTitle());
+                ui->NumberLabel->setText(QString::number(activeIndex + 1));
+                ui->QuesTopLabel->setText(qualificationList.at(activeIndex)->getQualificationDisplay());
+                ui->QuesDownLabel->setText(qualificationList.at(activeIndex)->getExpectationDisplay());
     }
 }
