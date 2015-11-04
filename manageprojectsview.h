@@ -2,7 +2,6 @@
 #define MANAGEPROJECTSVIEW_H
 #include <QListWidgetItem>
 #include <QDialog>
-
 #include "manageprojectscontroller.h"
 
 namespace Ui {

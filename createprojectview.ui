@@ -91,7 +91,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="minTeamSizeTextFeild">
+  <widget class="QLineEdit" name="maxTeamSizeTextFeild">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -100,8 +100,11 @@
      <height>24</height>
     </rect>
    </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="minTeamSizeTextFeild">
    <property name="geometry">
     <rect>
      <x>210</x>

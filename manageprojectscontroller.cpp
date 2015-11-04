@@ -33,6 +33,7 @@ int ManageProjectsController::init(){
     }
 
     manageProjectsView->updateProjectsList(projectTitles);
+    if(allProjects.count() > 0)
     manageProjectsView->updateDetailedView(*allProjects.at(0));
     return 1;
 }
