@@ -15,3 +15,7 @@ Student::Student(const QString& username) : User(username,-1,"","")
 {
 }
 
+QList<Student*> Student::getQualifications() const{
+    return qualifications;
+}
+
