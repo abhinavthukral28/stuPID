@@ -6,6 +6,7 @@
 #include "qualification.h"
 #include <QDebug>
 #include <QtSql>
+
 const QString Database::DBpath="./testdatabase.db";
 
 Database* Database::instance=0;
@@ -40,7 +41,7 @@ int Database::init(){
 
     db.setDatabaseName(Database::DBpath);
 
-    if( !db.open() )
+    if(!db.open())
     {
         qDebug() << db.lastError();
         qFatal( "Failed to connect." );
@@ -55,7 +56,51 @@ int Database::init(){
 
 }
 
+int Database::insertStudents()
+{
 
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM Students");
+    if (!qry.exec())
+        throw generateException(qry);
+    else{
+        if (!qry.next())
+        {
+            int num_students = 25;
+            QString usernamePrefix = "Student";
+            Student* tempStudent;
+            Qualification* qual;
+            QList<Qualification*> qualList;
+            for (int i = 0; i < num_students;i++)
+            {
+                tempStudent = new Student(-1,usernamePrefix+(65+i));
+
+                createStudent(*tempStudent);
+
+                qualList = getAllQualifications(tempStudent->getID());
+
+                for (int i = 0;i < qualList.count();i++)
+                {
+                    qual = qualList.at(i);
+
+                    qual->setExpectationRating(1 + (std::rand() % (int)(5- 1 + 1)));
+                    qual->setQualificationRating(1 + (std::rand() % (int)(5 - 1 + 1)));
+
+                    createQualificationEntry(tempStudent->getID(),*qualList.at(i));
+
+
+                }
+
+
+
+
+
+            }
+        }
+    }
+
+}
 
 int Database::insertValuesintoQualifications(){
     QSqlQuery qry;
@@ -128,14 +173,6 @@ void Database::createTables(){
 
     QSqlQuery qry;
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER PRIMARY KEY, studentName VARCHAR(30) UNIQUE,firstName VARCHAR(30), lastName VARCHAR(30))" );
-    if( !qry.exec() )
-    {
-        qDebug() <<qry.lastQuery();
-        qDebug() << qry.lastError();
-    }
-    else
-        qDebug() << "Table Students created!";
 
 
 
@@ -209,6 +246,19 @@ void Database::createTables(){
         qDebug() << qry.lastError();
     else
         qDebug() << "Table Teams created!";
+
+
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER PRIMARY KEY, studentName VARCHAR(30) UNIQUE,firstName VARCHAR(30), lastName VARCHAR(30))" );
+    if( !qry.exec() )
+    {
+        qDebug() <<qry.lastQuery();
+        qDebug() << qry.lastError();
+    }
+    else
+    {
+        insertStudents();
+        qDebug() << "Table Students created!";
+    }
 
 }
 
@@ -320,6 +370,11 @@ int Database::createStudent (Student& student){
     }
     else {
         int lastID = query.lastInsertId().toInt();
+
+        for (int i = 0;i < student.getQualifications().count();i++)
+        {
+            createQualificationEntry(student.getID(),*student.getQualifications().at(i));
+        }
         student.setID(lastID);
         return lastID;
     }
@@ -352,7 +407,7 @@ int Database::createProject (Project& project){
 
         int lastID = query.lastInsertId().toInt();
         QList<Student*> students = project.getRegisteredStudents();
-        //RISKY CALL, STUDENTS MAY NOT EXIST
+
         addStudentsToProject(lastID,&students);
         project.setID(lastID);
         return lastID;
@@ -394,7 +449,7 @@ int Database::updateQualification(const int& studentID,const Qualification& qual
     QSqlQuery query;
 
     query.prepare(DatabaseQueries::updateQualificationByStudent);
-    query.bindValue(":qualificationID",qualification.getQualificationID());
+
     query.bindValue(":qualificationRating",qualification.getQualificationRating());
     query.bindValue(":expectationRating",qualification.getExpectationRating());
     query.bindValue(":studentID",studentID);
@@ -435,6 +490,8 @@ int Database::addStudentToProject(const int& projectID,Student& student){
 
 
 }
+
+
 
 const QList<Project*>& Database::getProjectsByStudent(const int& studentID)
 {
@@ -517,7 +574,6 @@ const QList<Qualification*>& Database::getAllQualifications(const int& studentID
     else
     {
         QList<Qualification*>* qualifications = new QList<Qualification*>;
-        qDebug() << query.lastQuery();
         Qualification* tempQualification;
         int displayID;
         QString title ;
@@ -563,6 +619,29 @@ int Database::studentExists(const QString& username){
     }else
     {
         return query.next();
+    }
+}
+
+int Database::createQualificationEntry(const int& studentID, const Qualification& qualification)
+{
+    QSqlQuery query;
+
+    query.prepare(DatabaseQueries::createQualificationByStudent);
+
+    query.bindValue(":eID",qualification.getDisplayID());
+    query.bindValue(":expectationRating",qualification.getExpectationRating());
+    query.bindValue(":qualificationRating",qualification.getQualificationRating());
+    query.bindValue(":qualificationID",qualification.getQualificationID());
+    query.bindValue(":studentID",studentID);
+
+
+    if (!query.exec())
+    {
+        throw generateException(query);
+        return 1;
+    }else
+    {
+        return 0;
     }
 }
 
