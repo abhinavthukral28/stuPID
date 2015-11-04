@@ -13,7 +13,15 @@
   <property name="windowTitle">
    <string>Register Menu</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralwidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>833</width>
+     <height>692</height>
+    </rect>
+   </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -27,7 +35,7 @@
      <string>First Name</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="firstName">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -50,7 +58,7 @@
      <string>Last Name</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="lastName">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -60,7 +68,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="userName">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -70,7 +78,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
       <x>510</x>

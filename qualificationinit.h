@@ -1,6 +1,6 @@
 #ifndef QUALIFICATIONINIT_H
 #define QUALIFICATIONINIT_H
-
+#include "student.h"
 #include <QDialog>
 class QualificationInitController;
 namespace Ui {
@@ -12,7 +12,7 @@ class QualificationInit : public QDialog
     Q_OBJECT
 
 public:
-    explicit QualificationInit(QWidget *parent = 0);
+    explicit QualificationInit(Student &student);
     ~QualificationInit();
 
 
@@ -20,6 +20,7 @@ public:
 private:
     Ui::qualificationinit *ui;
     QualificationInitController *controller;
+    Student newStudent;
 };
 
 #endif // QUALIFICATIONINIT_H

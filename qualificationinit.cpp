@@ -1,11 +1,12 @@
 #include "qualificationinit.h"
 #include "ui_qualificationinit.h"
 #include "qualificationinitController.h"
-
-QualificationInit::QualificationInit(QWidget *parent) :
-    QDialog(parent),
+#include "student.h"
+QualificationInit::QualificationInit(Student &student) :
+    QDialog(),
     ui(new Ui::qualificationinit),
-    controller(new QualificationInitController(this))
+    controller(new QualificationInitController(this)),
+    newStudent(student)
 
 
 {

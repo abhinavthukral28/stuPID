@@ -2,12 +2,13 @@
 #define STUDENTREGISTERCONTROLLER_H
 #include <QObject>
 class StudentRegister;
+class Student;
 class StudentRegisterController:public QObject
 {
 	Q_OBJECT
 public:
     StudentRegisterController(StudentRegister *sRegister);
-    int goToQualificationsView();
+    int goToQualificationsView(Student student);
 
 
 private:
