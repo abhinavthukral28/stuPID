@@ -65,7 +65,7 @@
     <string>QuesTopLabel</string>
    </property>
   </widget>
-  <widget class="QLabel" name="NameLabel">
+  <widget class="QLabel" name="keyLabel">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -91,7 +91,7 @@
     <string>NumberLabel</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton">
+  <widget class="QRadioButton" name="qB1">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -107,7 +107,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_2">
+  <widget class="QRadioButton" name="qB2">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -123,7 +123,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_3">
+  <widget class="QRadioButton" name="qB3">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -139,7 +139,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_4">
+  <widget class="QRadioButton" name="qB4">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -155,7 +155,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_5">
+  <widget class="QRadioButton" name="qB5">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -171,7 +171,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_6">
+  <widget class="QRadioButton" name="eB1">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -187,7 +187,7 @@
     <string notr="true">buttonGroup_2</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_7">
+  <widget class="QRadioButton" name="eB5">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -203,7 +203,7 @@
     <string notr="true">buttonGroup_2</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_8">
+  <widget class="QRadioButton" name="eB2">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -219,7 +219,7 @@
     <string notr="true">buttonGroup_2</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_9">
+  <widget class="QRadioButton" name="eB4">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -235,7 +235,7 @@
     <string notr="true">buttonGroup_2</string>
    </attribute>
   </widget>
-  <widget class="QRadioButton" name="radioButton_10">
+  <widget class="QRadioButton" name="eB3">
    <property name="geometry">
     <rect>
      <x>170</x>
