@@ -475,6 +475,7 @@ const QList<Project*>& Database::getProjectsByStudent(const int& studentID)
             return *projects;
         }
     }
+    throw generateCustomSQLException("INVALID INPUT FOR STUDENT ID -> " + studentID);
 
 }
 
@@ -493,17 +494,27 @@ const QList<Qualification*>& Database::getAllQualifications(const int& studentID
     else
     {
         QList<Qualification*>* qualifications = new QList<Qualification*>;
+        qDebug() << query.lastQuery();
         Qualification* tempQualification;
-        int displayID = query.value(0).toInt();
-        QString title = query.value(1).toString();
-        QString expectationValue = query.value(2).toString();
-        QString qualificationValue = query.value(5).toString();
-        int qualificationID = query.value(6).toInt();
-        int qualificationRating = query.value(7).toInt();
-        int expectationRating = query.value(8).toInt();
-
+        int displayID;
+        QString title ;
+        QString expectationValue;
+        QString qualificationValue;
+        int qualificationID ;
+        int qualificationRating;
+        int expectationRating;
         while (query.next())
         {
+
+            displayID = query.value(0).toInt();
+            title = query.value(1).toString();
+            expectationValue = QString(query.value(2).toString());
+            qualificationValue = QString(query.value(5).toString());
+            qualificationID = query.value(6).toInt();
+            qualificationRating = query.value(7).toInt();
+            expectationRating = query.value(8).toInt();
+
+
             tempQualification = new Qualification(displayID,qualificationID,title,expectationValue,
                                                   qualificationValue,qualificationRating,expectationRating);
             qualifications->append(tempQualification);
@@ -517,5 +528,11 @@ SQLException Database::generateException(QSqlQuery query)
 {
     return *(new SQLException(query.lastError().text().toStdString() + "\n"  + query.lastQuery().toStdString() + "\n"));
 }
+
+SQLException Database::generateCustomSQLException(const char* input)
+{
+    return  *(new SQLException(input));
+}
+
 
 

@@ -1,12 +1,12 @@
 #include "qualification.h"
 #include <QString>
 Qualification::Qualification(const int& dispID,const int& ID,const QString& titleParam,const QString& displayExpectationParam,const QString& displayQualificationParam):
-                displayID(dispID),qualificationID(ID),title(titleParam),expectationDisplay(displayExpectationParam),qualificationDisplay(displayQualificationParam),qualificationRating(1),expectationRating(1){
+                displayID(dispID),qualificationID(ID),title(QString::fromStdString(titleParam.toStdString())),expectationDisplay(QString::fromStdString(displayExpectationParam.toStdString())),qualificationDisplay(QString::fromStdString(displayQualificationParam.toStdString())),qualificationRating(1),expectationRating(1){
 
 }
 
 Qualification::Qualification(const int& dispID,const int&ID,const QString& titleParam,const QString& displayExpectationParam,const QString& displayQualificationParam,const int& qualificationRatingParam,const int& expectationRatingParam):
-                 displayID(dispID),qualificationID(ID),title(titleParam),expectationDisplay(displayExpectationParam),qualificationDisplay(displayQualificationParam),qualificationRating(qualificationRatingParam),expectationRating(expectationRatingParam){
+                 displayID(dispID),qualificationID(ID),title(QString::fromStdString(titleParam.toStdString())),expectationDisplay(QString::fromStdString(displayExpectationParam.toStdString())),qualificationDisplay(QString::fromStdString(displayQualificationParam.toStdString())),qualificationRating(qualificationRatingParam),expectationRating(expectationRatingParam){
 }
 
 QString Qualification::getQualificationDisplay() const {
