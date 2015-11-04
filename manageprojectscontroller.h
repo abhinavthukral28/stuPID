@@ -13,9 +13,7 @@ public:
     ManageProjectsController(ManageProjectsView *view);
     int init();
     int updateSelectedProject(const int& index);
-    //int showStudentsbyProject(const int&
-
-
+    int updateViewStudentButton(const int& index);
 
 
  private slots:

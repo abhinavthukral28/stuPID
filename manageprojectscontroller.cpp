@@ -29,7 +29,6 @@ int ManageProjectsController::init(){
 
     }
 
-
     manageProjectsView->updateProjectsList(projectTitles);
     manageProjectsView->updateDetailedView(*allProjects.at(0));
     return 1;
@@ -39,6 +38,13 @@ int ManageProjectsController::init(){
 int ManageProjectsController::updateSelectedProject(const int& index){
 
     manageProjectsView->updateDetailedView(*(allProjects.at(index)));
+
+    return 0;
+}
+
+int ManageProjectsController::updateViewStudentButton(const int& index){
+
+    manageProjectsView->updateStudentButtonClicked(*(allProjects.at(index)));
 
     return 0;
 }
