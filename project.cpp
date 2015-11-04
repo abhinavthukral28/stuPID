@@ -5,7 +5,12 @@
 
 
 
-Project::Project(int& pID, QString &title) : projectName(QString::fromStdString(title.toStdString())),ID(pID),teamMax(0),teamMin(0)
+Project::Project(const int& pID,const QString &title) : projectName(QString::fromStdString(title.toStdString())),ID(pID),teamMax(0),teamMin(0)
+{
+
+}
+
+Project::Project(const QString &title) : projectName(QString::fromStdString(title.toStdString())),ID(-1),teamMax(0),teamMin(0)
 {
 
 }

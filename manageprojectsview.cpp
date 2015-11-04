@@ -19,6 +19,7 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
 
 }
 
+
  int ManageProjectsView::updateProjectsList(QList<QString> &projectTitles){
      QString temp;
      for (int i = 0; i <projectTitles.count();i++)
@@ -55,9 +56,36 @@ int ManageProjectsView::updateDetailedView(Project &project)
 
 void ManageProjectsView::on_projectsList_clicked(const QModelIndex &index)
 {
+
+
     int indexVal = index.row();
 
    manageProjectsController->updateSelectedProject(indexVal);
 
 
 }
+
+int ManageProjectsView::updateStudentButtonClicked(Project &project){
+
+    for(int i=0; i<project.getRegisteredStudents().count();i++)
+    {
+        QString temp = project.getRegisteredStudents().at(i)->getUsername();
+        ui->viewTextBrowser->setText(temp);
+
+    }
+
+}
+
+
+
+void ManageProjectsView::on_ViewStudentButton_clicked(const QModelIndex &index)
+{
+    int indexVal = index.row();
+
+    manageProjectsController->updateViewStudentButton(indexVal);
+
+
+
+
+}
+

@@ -19,17 +19,25 @@ public:
     explicit ManageProjectsView(QWidget *parent = 0);
      int updateProjectsList(QList<QString> &projectTitles);
      int updateDetailedView(Project &project);
+     int updateStudentButtonClicked(Project &project);
      //int showListofAllStudents(Students);
     ~ManageProjectsView();
+     void setprojectIndex(int x);
+     void getprojectIndex(int x);
 
 
 
 private slots:
      void on_projectsList_clicked(const QModelIndex &index);
 
+     void on_ViewStudentButton_clicked(const QModelIndex &index);
+
+
 private:
     Ui::ManageProjectsView *ui;
     ManageProjectsController *manageProjectsController;
+    int projectIndex;
+
 };
 
 #endif // MANAGEPROJECTSVIEW_H
