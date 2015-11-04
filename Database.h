@@ -21,6 +21,7 @@ class Database{
     QList<Project*>* getProjectsByStudent(const int& studentID);
 
 
+
     int createStudent(Student& student);
     int createProject(Project& project);
     int addStudentsToProject(int& projectID, QList<Student*>* students);

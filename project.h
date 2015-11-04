@@ -18,7 +18,8 @@ class Project
 
 
 public:
-    Project(int& pID,QString& title);
+    Project(const int& pID,const QString& title);
+    Project(const QString& title);
     Project(const Project &obj);
     int registerStudent(Student& student);
     int registerStudents(QList<Student*>* students);

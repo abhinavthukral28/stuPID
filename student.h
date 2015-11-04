@@ -2,13 +2,18 @@
 #define STUDENT_H
 
 #include "user.h"
-
+#include <QList>
+class Qualification;
 class Student : public User
 {
 
 
 public:
-    Student(int& ID,QString& username);
+    Student(const int& ID,const QString& username);
+    Student(const QString& username);
+
+private:
+    QList<Qualification*> qualifications;
 
 
 
