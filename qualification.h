@@ -23,7 +23,7 @@ public:
     int getQualificationRating() const;
     int getExpectationRating() const;
     int getQualificationID() const;
-    int getdisplayID() const;
+    int getDisplayID() const;
     int setQualificationRating(const int& rating);
     int setExpectationRating(const int& rating);
 

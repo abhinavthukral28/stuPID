@@ -11,6 +11,7 @@ LoginDialog::LoginDialog(QWidget *parent) :
 
     ui->setupUi(this);
     ui->passwroldlineEdit->setEchoMode(QLineEdit::Password);
+    ui->studentradioButton->setChecked(true);
 }
 
 LoginDialog::~LoginDialog()

@@ -18,24 +18,24 @@ class Database{
     const QList<Student*>& getAllStudents();
     const QList<Project*>& getAllProjects();
     const QList<Qualification*>& getAllQualifications(const int& studentID);
-    //QList<Student*>* getStudentsByProject();
+    const QList<Student*>& getStudentsByProject();
     const QList<Project*>& getProjectsByStudent(const int& studentID);
-
-
-
     int createStudent(Student& student);
     int createProject(Project& project);
     int addStudentsToProject(const int& projectID, QList<Student*>* students);
     int addStudentToProject(const int& projectID,Student& student);
-    int insertValuesintoQualifications();
-    int insertValuesintoExpectations();
-
+    int updateQualification(const int& studentID,const Qualification& qualification);
+    int studentExists(const QString& username);
    private:
     static Database *instance;
     static const QString DBpath;
     static SQLException generateException(QSqlQuery query);
+    static SQLException generateCustomSQLException(const char* input);
+
     //functions
     void createTables();
+    int insertValuesintoQualifications();
+    int insertValuesintoExpectations();
     int init();
     Database();
 
