@@ -1,5 +1,5 @@
 #include "studentprojectregisterview.h"
-#include "ui_studentprojectview.h"
+#include "ui_studentprojectregisterview.h"
 #include <QDebug>
 #include <QListWidgetItem>
 studentProjectRegisterView::studentProjectRegisterView(QWidget *parent) :
