@@ -12,8 +12,11 @@ ManageProjectsController::ManageProjectsController(ManageProjectsView *view):QOb
 
 {
     allProjects = database->getAllProjects();
+    selectedProject=0;
 
 }
+
+
 
 
 
@@ -36,16 +39,17 @@ int ManageProjectsController::init(){
 
 
 int ManageProjectsController::updateSelectedProject(const int& index){
-
-    manageProjectsView->updateDetailedView(*(allProjects.at(index)));
-
+    selectedProject=allProjects.at(index);
+    if(selectedProject != NULL){
+    manageProjectsView->updateDetailedView(*selectedProject);
+    }
     return 0;
 }
 
-int ManageProjectsController::updateViewStudentButton(const int& index){
-
-    manageProjectsView->updateStudentButtonClicked(*(allProjects.at(index)));
-
+int ManageProjectsController::updateStudentList(){
+    if(selectedProject != NULL){
+    manageProjectsView->setStudentList(*selectedProject);
+    }
     return 0;
 }
 

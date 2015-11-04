@@ -44,10 +44,14 @@ int ManageProjectsView::updateDetailedView(Project &project)
 {
   ui->projectName->setText(project.getTitle());
   ui->projectDescription->setText(project.getDescription());
+  QString a= "hello";
+   QString temp;
 
   for(int i=0; i<project.getRegisteredStudents().count();i++)
   {
-      QString temp = project.getRegisteredStudents().at(i)->getUsername();
+
+      temp += project.getRegisteredStudents().at(i)->getUsername() + "  ";
+
       ui->viewTextBrowser->setText(temp);
 
   }
@@ -65,12 +69,13 @@ void ManageProjectsView::on_projectsList_clicked(const QModelIndex &index)
 
 }
 
-int ManageProjectsView::updateStudentButtonClicked(Project &project){
-
+int ManageProjectsView::setStudentList(Project &project){
+QString temp;
     for(int i=0; i<project.getRegisteredStudents().count();i++)
     {
-        QString temp = project.getRegisteredStudents().at(i)->getUsername();
+        temp += project.getRegisteredStudents().at(i)->getUsername() + " ";
         ui->viewTextBrowser->setText(temp);
+
 
     }
 
@@ -78,14 +83,24 @@ int ManageProjectsView::updateStudentButtonClicked(Project &project){
 
 
 
-void ManageProjectsView::on_ViewStudentButton_clicked(const QModelIndex &index)
+void ManageProjectsView::on_ViewStudentButton_clicked()
 {
-    int indexVal = index.row();
+    //int indexVal = index.row();
 
-    manageProjectsController->updateViewStudentButton(indexVal);
+    manageProjectsController->updateStudentList();
 
 
 
 
 }
 
+
+void ManageProjectsView::on_viewDetailButton_clicked()
+{
+    ui->viewTextBrowser->setText("coming soon");
+}
+
+void ManageProjectsView::on_viewResultButton_clicked()
+{
+    ui->viewTextBrowser->setText("coming soon");
+}

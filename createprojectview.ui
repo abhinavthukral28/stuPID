@@ -81,7 +81,7 @@
     <string>Min Team Size</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="projectNameTextFeild">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -91,7 +91,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="minTeamSizeTextFeild">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -101,7 +101,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -111,7 +111,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QTextEdit" name="projectDescriptionTextFeild">
    <property name="geometry">
     <rect>
      <x>370</x>

@@ -13,7 +13,7 @@ public:
     ManageProjectsController(ManageProjectsView *view);
     int init();
     int updateSelectedProject(const int& index);
-    int updateViewStudentButton(const int& index);
+    int updateStudentList();
 
 
  private slots:
@@ -21,6 +21,8 @@ public:
 private:
     ManageProjectsView *manageProjectsView;
     QList<Project*> allProjects;
+    Project *selectedProject;
+
     QList<Student*> studentsByProjects;
     Database *database;
 

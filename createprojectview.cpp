@@ -12,3 +12,21 @@ CreateProjectView::~CreateProjectView()
 {
     delete ui;
 }
+
+//void CreateProjectView::getProjectDescription()
+//{
+
+//}
+
+//void CreateProjectView::getProjectTitle(){
+
+//}
+
+//void CreateProjectView::getProjectTeamMin(){
+
+//}
+
+//void CreateProjectView::getProjectTeamMax(){
+
+//}
+

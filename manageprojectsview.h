@@ -19,7 +19,7 @@ public:
     explicit ManageProjectsView(QWidget *parent = 0);
      int updateProjectsList(QList<QString> &projectTitles);
      int updateDetailedView(Project &project);
-     int updateStudentButtonClicked(Project &project);
+     int setStudentList(Project &project);
      //int showListofAllStudents(Students);
     ~ManageProjectsView();
      void setprojectIndex(int x);
@@ -30,8 +30,12 @@ public:
 private slots:
      void on_projectsList_clicked(const QModelIndex &index);
 
-     void on_ViewStudentButton_clicked(const QModelIndex &index);
+     void on_ViewStudentButton_clicked();
 
+
+     void on_viewDetailButton_clicked();
+
+     void on_viewResultButton_clicked();
 
 private:
     Ui::ManageProjectsView *ui;

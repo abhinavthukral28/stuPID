@@ -13,10 +13,15 @@ class CreateProjectView : public QDialog
 
 public:
     explicit CreateProjectView(QWidget *parent = 0);
+//    void getProjectDescription();
+//    void getProjectTitle();
+//    void getProjectTeamMin();
+//    void getProjectTeamMax();
     ~CreateProjectView();
 
 private:
     Ui::CreateProjectView *ui;
+
 };
 
 #endif // CREATEPROJECTVIEW_H
