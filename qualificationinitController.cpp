@@ -2,9 +2,17 @@
 #include "studentprojectregisterview.h"
 #include <QDebug>
 #include "qualificationinitController.h"
-QualificationInitController::QualificationInitController( QualificationInit *qual): QObject(), qualification(qual)
+#include <QList>
+#include "qualification.h"
+#include "Database.h"
+QualificationInitController::QualificationInitController( QualificationInit *qual): QObject(), qualification(qual),database(Database::getInstance())
+
 {
+  qList = database->getAllQualifications(-1);
 
 }
-
+void QualificationInitController::setQualificationList()
+{
+    qualification->getQualificationList(qList);
+}
 

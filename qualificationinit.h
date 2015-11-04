@@ -3,6 +3,7 @@
 #include "student.h"
 #include <QDialog>
 class QualificationInitController;
+class Qualification;
 class QString;
 namespace Ui {
 class qualificationinit;
@@ -15,6 +16,7 @@ class QualificationInit : public QDialog
 public:
     explicit QualificationInit(Student &student);
     ~QualificationInit();
+    void getQualificationList(const QList<Qualification*>& qList);
 
 
 
@@ -25,7 +27,7 @@ private:
     Ui::qualificationinit *ui;
     QualificationInitController *controller;
     Student newStudent;
-    QList<QString> keyList,q,e;
+    QList<Qualification*> qualificationList;
     int activeIndex;
 };
 

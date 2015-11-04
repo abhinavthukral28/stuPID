@@ -104,7 +104,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup</string>
+    <string notr="true">qualificationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="qB2">
@@ -120,7 +120,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup</string>
+    <string notr="true">qualificationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="qB3">
@@ -136,7 +136,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup</string>
+    <string notr="true">qualificationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="qB4">
@@ -152,7 +152,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup</string>
+    <string notr="true">qualificationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="qB5">
@@ -168,7 +168,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup</string>
+    <string notr="true">qualificationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="eB1">
@@ -184,7 +184,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup_2</string>
+    <string notr="true">expectationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="eB5">
@@ -200,7 +200,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup_2</string>
+    <string notr="true">expectationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="eB2">
@@ -216,7 +216,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup_2</string>
+    <string notr="true">expectationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="eB4">
@@ -232,7 +232,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup_2</string>
+    <string notr="true">expectationButtonGroup</string>
    </attribute>
   </widget>
   <widget class="QRadioButton" name="eB3">
@@ -248,7 +248,7 @@
     <string/>
    </property>
    <attribute name="buttonGroup">
-    <string notr="true">buttonGroup_2</string>
+    <string notr="true">expectationButtonGroup</string>
    </attribute>
   </widget>
  </widget>
@@ -259,7 +259,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="expectationButtonGroup"/>
+  <buttongroup name="qualificationButtonGroup"/>
  </buttongroups>
 </ui>
