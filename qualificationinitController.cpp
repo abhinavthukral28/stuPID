@@ -9,11 +9,11 @@ QualificationInitController::QualificationInitController( QualificationInit *qua
 
 
 {
-//  qList = database->getAllQualifications(-1);
+  qList = database->getAllQualifications(-1);
 
 }
-//void QualificationInitController::setQualificationList()
-//{
-//    qualification->getQualificationList(qList);
-//}
+void QualificationInitController::setQualificationList()
+{
+    qualification->getQualificationList(qList);
+}
 

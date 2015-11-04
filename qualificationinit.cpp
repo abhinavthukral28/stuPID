@@ -13,7 +13,7 @@ QualificationInit::QualificationInit(Student &student) :
 
 {
     ui->setupUi(this);
-    //    controller->setQualificationList();
+        controller->setQualificationList();
     activeIndex = 0;
 
     keyList.append("Git");
@@ -28,14 +28,14 @@ QualificationInit::QualificationInit(Student &student) :
     e.append("Parner's expected CGPA");
     q.append("Do you know web dev");
     e.append("How much does your partner know");
-    // ui->keyLabel->setText(qualificationList.at(0)->getTitle());
-    // ui->NumberLabel->setText("1");
-    // ui->QuesTopLabel->setText(qualificationList.at(0)->getQualificationDisplay());
-    // ui->QuesDownLabel->setText(qualificationList.at(0)->getExpectationDisplay());
-    ui->keyLabel->setText(keyList.at(0));
-    ui->NumberLabel->setText("1");
-    ui->QuesTopLabel->setText(q.at(0));
-    ui->QuesDownLabel->setText(e.at(0));
+     ui->keyLabel->setText(qualificationList.at(0)->getTitle());
+     ui->NumberLabel->setText("1");
+     ui->QuesTopLabel->setText(qualificationList.at(0)->getQualificationDisplay());
+     ui->QuesDownLabel->setText(qualificationList.at(0)->getExpectationDisplay());
+//    ui->keyLabel->setText(keyList.at(0));
+//    ui->NumberLabel->setText("1");
+//    ui->QuesTopLabel->setText(q.at(0));
+//    ui->QuesDownLabel->setText(e.at(0));
 
     ui->qualificationButtonGroup->setId(ui->qB1, 1);
     ui->qualificationButtonGroup->setId(ui->qB2, 2);
@@ -54,9 +54,9 @@ QualificationInit::~QualificationInit()
     delete ui;
 }
 
-// void QualificationInit::getQualificationList(const QList<Qualification*>& qList){
-//     qualificationList = qList;
-// }
+ void QualificationInit::getQualificationList(const QList<Qualification*>& qList){
+     qualificationList = qList;
+ }
 
 
 void QualificationInit::on_NextButton_clicked()
