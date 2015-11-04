@@ -12,11 +12,12 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-
     LoginDialog view;
     view.show();
 
-  return a.exec();
+
+
+    return a.exec();
 
 
 }
