@@ -3,6 +3,7 @@
 #include "project.h"
 #include "DatabaseQueries.h"
 #include "sqlexception.h"
+#include "qualification.h"
 #include <QDebug>
 #include <QtSql>
 const QString Database::DBpath="./testdatabase.db";
@@ -59,62 +60,62 @@ int Database::init(){
 int Database::insertValuesintoQualifications(){
     QSqlQuery qry;
 
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (1,'Core GPA','What is your core GPA?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (2,'Git Version Control','How familiar are you with the GIT?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (3, 'Object Oriented Programming', 'How familiar are you with object-oriented Programming?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (4, 'Systems Programming', 'How familiar are you with systems programming?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (5, 'Web Development', 'How much experience do you have in Web Development?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (6, 'UX Design','How much experience do you have in UX Design? ')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (7, 'Punctuality', 'How punctual are you?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (8, 'Night Owl', 'How much of a night owl are you?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (9, 'Documentation', ' How much experience do you have in documentation?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (10, 'Leadership Skills', ' How would you rate your leadership skills?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (11, 'Locally or Remotely ', ' Do you prefer to work locally or remotely?')");
-
-    qry.prepare("INSERT INTO Qualifications (qid,qtitle,qualificationValue) VALUES (12, 'Communication Skills', ' How would you rate you communication skills?')");
-
-    return 0;
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (1,'Core GPA','What is your core GPA?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (2,'Git Version Control','How familiar are you with the GIT?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (3, 'Object Oriented Programming', 'How familiar are you with object-oriented Programming?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (4, 'Systems Programming', 'How familiar are you with systems programming?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (5, 'Web Development', 'How much experience do you have in Web Development?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (6, 'UX Design','How much experience do you have in UX Design? ')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (7, 'Punctuality', 'How punctual are you?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (8, 'Night Owl', 'How much of a night owl are you?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (9, 'Documentation', ' How much experience do you have in documentation?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (10, 'Leadership Skills', ' How would you rate your leadership skills?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (11, 'Locally or Remotely ', ' Do you prefer to work locally or remotely?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Qualifications (qid,qtitle,qualificationValue) VALUES (12, 'Communication Skills', ' How would you rate you communication skills?')");
+    if (!qry.exec()) throw generateException(qry);
+    return 1;
 }
 
 int Database::insertValuesintoExpectations(){
 
     QSqlQuery qry;
 
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (1, 'Core GPA', 'What Core GPA do you expect from your team mates?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (2, 'Git Version Control','How familiar do you want your team mates to know Git?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (3, 'Object Oriented Programming', 'How familiar do you want your team mates to know Object Oriented Programming?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (4, 'Systems Programming','How familiar do you want your team mates to know Systems Programming?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (5, 'Web Development', 'How much experience do you expect your team mates to have in Web Development?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (6, 'UX Design', 'How much experience do you want your team mates to have in UX Design?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (7, 'Punctuality', 'How punctual do you want your team mates to be?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (8, 'Night Owl', 'How much of a night owl do you want your team mates to be?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (9, 'Documentation ', 'How much experience in documentation do you want your team mates to have?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (10, 'Leadership Skills', 'How much experience do you want your team mates to have in leadership?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (11, 'Locally or Remotely ', 'Do you want your team mates to work locally or remotely?')");
-
-    qry.prepare("INSERT INTO Expectations (eID,etitle,expectationValue) VALUES (12, 'Communication Skills', 'How important is it for your teams to have communication skills?')");
-
-    return 0;
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (1, 'Core GPA', 'What Core GPA do you expect from your team mates?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (2, 'Git Version Control','How familiar do you want your team mates to know Git?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (3, 'Object Oriented Programming', 'How familiar do you want your team mates to know Object Oriented Programming?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (4, 'Systems Programming','How familiar do you want your team mates to know Systems Programming?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (5, 'Web Development', 'How much experience do you expect your team mates to have in Web Development?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (6, 'UX Design', 'How much experience do you want your team mates to have in UX Design?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (7, 'Punctuality', 'How punctual do you want your team mates to be?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (8, 'Night Owl', 'How much of a night owl do you want your team mates to be?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (9, 'Documentation ', 'How much experience in documentation do you want your team mates to have?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (10, 'Leadership Skills', 'How much experience do you want your team mates to have in leadership?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (11, 'Locally or Remotely ', 'Do you want your team mates to work locally or remotely?')");
+    if (!qry.exec()) throw generateException(qry);
+    qry.prepare("INSERT OR IGNORE INTO Expectations (eID,etitle,expectationValue) VALUES (12, 'Communication Skills', 'How important is it for your teams to have communication skills?')");
+    if (!qry.exec()) throw generateException(qry);
+    return 1;
 }
 
 
@@ -127,7 +128,7 @@ void Database::createTables(){
 
     QSqlQuery qry;
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER PRIMARY KEY, studentName VARCHAR(30) UNIQUE)" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER PRIMARY KEY, studentName VARCHAR(30) UNIQUE,firstName VARCHAR(30), lastName VARCHAR(30))" );
     if( !qry.exec() )
     {
         qDebug() <<qry.lastQuery();
@@ -138,11 +139,20 @@ void Database::createTables(){
 
 
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Qualifications(qID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, qtitle VARCHAR(30),qualificationValue VARCHAR(60))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Qualifications(qID INTEGER PRIMARY KEY, qtitle VARCHAR(30),qualificationValue VARCHAR(60))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
+    {   try{
+            insertValuesintoQualifications();
+        }catch(SQLException e)
+        {
+            qDebug() << "FAILED TO INIT QUALIFICATIONS";
+            qDebug() << e.what();
+        }
+
         qDebug() << "Table Qualifications created!";
+    }
 
     qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize INTEGER, maxTeamSize INTEGER)" );
     if( !qry.exec() )
@@ -154,7 +164,7 @@ void Database::createTables(){
         qDebug() << "Table Project created!";
 
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER , studentID VARCHAR(30),PRIMARY KEY(projectID,studentID))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER NOT NULL, studentID INTEGER NOT NULL,PRIMARY KEY(projectID,studentID),FOREIGN KEY(projectID) REFERENCES Projects(projectID),FOREIGN KEY(studentID) REFERENCES Students(studentID))" );
     if( !qry.exec() )
     {
         qDebug() <<qry.lastQuery();
@@ -173,13 +183,22 @@ void Database::createTables(){
 
 
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Expectations(eID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,etitle VARCHAR(30),expectationValue VARCHAR(30))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Expectations(eID INTEGER PRIMARY KEY ,etitle VARCHAR(30),expectationValue VARCHAR(30))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
-        qDebug() << "Table Expectations created!";
+    {
+        try{
+            insertValuesintoExpectations();
+        }catch(SQLException e)
+        {
+            qDebug() << "FAILED TO INIT EXPECTATIONS";
+        }
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS StudentQualifications(studentQualificationID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, ratings VARCHAR(30), studentID int, eID int,FOREIGN KEY(eID) REFERENCES Expectations(eId))" );
+        qDebug() << "Table Expectations created!";
+    }
+
+    qry.prepare( "CREATE TABLE IF NOT EXISTS StudentQualifications(studentQualificationID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, qualificationRating INTEGER, expectationRating INTEGER, studentID int, eID int,FOREIGN KEY(eID) REFERENCES Expectations(eId))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -341,7 +360,7 @@ int Database::createProject (Project& project){
 
 }
 
-int Database::addStudentsToProject(int& projectID, QList<Student*>* students){
+int Database::addStudentsToProject(const int& projectID, QList<Student*>* students){
     if (projectID > 0)
     {
         QSqlQuery query;
@@ -370,7 +389,7 @@ int Database::addStudentsToProject(int& projectID, QList<Student*>* students){
 
 }
 
-int Database::addStudentToProject(int& projectID,Student& student){
+int Database::addStudentToProject(const int& projectID,Student& student){
 
     if (projectID > 0)
     {
@@ -384,18 +403,18 @@ int Database::addStudentToProject(int& projectID,Student& student){
         {
             qDebug() << query.lastError();
             qDebug() << query.lastQuery();
-            return 0;
+            throw generateException(query);
         }
         else {
             return query.lastInsertId().toInt();
         }
     }
-    else return NULL;
+    else return 0;
 
 
 }
 
-QList<Project*>* Database::getProjectsByStudent(const int& studentID)
+const QList<Project*>& Database::getProjectsByStudent(const int& studentID)
 {
     if (studentID > 0)
     {
@@ -406,9 +425,7 @@ QList<Project*>* Database::getProjectsByStudent(const int& studentID)
 
         if(!query.exec())
         {
-            qDebug() << query.lastError();
-            qDebug() << query.lastQuery();
-            return NULL;
+            throw generateException(query);
         }
         else {
             QList<Project*>* projects = new QList<Project*>;
@@ -455,16 +472,50 @@ QList<Project*>* Database::getProjectsByStudent(const int& studentID)
                 }
             }
 
-            return projects;
+            return *projects;
         }
     }
-    else return NULL;
+
 }
 
 
+const QList<Qualification*>& Database::getAllQualifications(const int& studentID)
+{
+
+    QSqlQuery query;
+    query.prepare(DatabaseQueries::getQualificationsByStudent);
+    query.bindValue(":studentID",studentID);
+
+    if (!query.exec())
+    {
+        throw generateException(query);
+    }
+    else
+    {
+        QList<Qualification*>* qualifications = new QList<Qualification*>;
+        Qualification* tempQualification;
+        int displayID = query.value(0).toInt();
+        QString title = query.value(1).toString();
+        QString expectationValue = query.value(2).toString();
+        QString qualificationValue = query.value(5).toString();
+        int qualificationID = query.value(6).toInt();
+        int qualificationRating = query.value(7).toInt();
+        int expectationRating = query.value(8).toInt();
+
+        while (query.next())
+        {
+            tempQualification = new Qualification(displayID,qualificationID,title,expectationValue,
+                                                  qualificationValue,qualificationRating,expectationRating);
+            qualifications->append(tempQualification);
+        }
+
+        return *qualifications;
+    }
+}
+
 SQLException Database::generateException(QSqlQuery query)
 {
-   return *(new SQLException(query.lastError().text().toStdString() + "\n"  + query.lastQuery().toStdString() + "\n"));
+    return *(new SQLException(query.lastError().text().toStdString() + "\n"  + query.lastQuery().toStdString() + "\n"));
 }
 
 

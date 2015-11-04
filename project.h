@@ -23,15 +23,15 @@ public:
     Project(const Project &obj);
     int registerStudent(Student& student);
     int registerStudents(QList<Student*>* students);
-    int setTeamMax(int& max);
-    int setTeamMin(int& min);
-    int setDescription(QString& description);
-    int setTitle (QString& title);
+    int setTeamMax(const int& max);
+    int setTeamMin(const int& min);
+    int setDescription(const QString& description);
+    int setTitle (const QString& title);
     int getMinTeamSize();
     int getMaxTeamSize();
     int getID() const;
-    int setID(int& newID);
-    QString getDescription();
+    int setID(const int& newID);
+    QString getDescription() const;
     QString getTitle() const;
     QList<Student*> getRegisteredStudents() const;
 

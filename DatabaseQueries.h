@@ -21,6 +21,7 @@ private:
     const static QString insertProject;
     const static QString addStudentToProject;
     const static QString getProjectsByStudent;
+    const static QString getQualificationsByStudent;
 
 };
 
@@ -54,5 +55,10 @@ const QString DatabaseQueries::addStudentToProject = "INSERT INTO " + DatabaseQu
 const QString DatabaseQueries::getProjectsByStudent =  QString("SELECT * FROM ") + DatabaseQueries::PROJECTS_TABLE +
         " JOIN " + DatabaseQueries::PROJECT_STUDENT_TABLE + " ON " + DatabaseQueries::PROJECTS_TABLE + ".projectID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".projectID JOIN " +
         DatabaseQueries::STUDENTS_TABLE + " ON " + DatabaseQueries::STUDENTS_TABLE+ ".studentID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".studentID WHERE "+DatabaseQueries::STUDENTS_TABLE+".studentID = :studentID";
+
+
+const QString DatabaseQueries::getQualificationsByStudent = QString("SELECT * FROM ")+DatabaseQueries::EXPECTATIONS_TABLE+" JOIN "
+        +DatabaseQueries::QUALIFICATIONS_TABLE+" ON "+DatabaseQueries::EXPECTATIONS_TABLE+".eID = "+DatabaseQueries::QUALIFICATIONS_TABLE+".qID LEFT JOIN "+
+        DatabaseQueries::STUDENT_QUALIFICATIONS_TABLE+" on "+DatabaseQueries::EXPECTATIONS_TABLE+".eID = "+DatabaseQueries::STUDENT_QUALIFICATIONS_TABLE+".eID where studentID = :studentID";
 
 #endif // DATABASEQUERIES_H
