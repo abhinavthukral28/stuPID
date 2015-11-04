@@ -5,6 +5,7 @@
 #include <QDebug>
 #include "logindialog.h"
 #include "studentregister.h"
+#include "Database.h"
 LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(login)
 {
 
@@ -14,11 +15,10 @@ LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(lo
 int LoginController::authenticate(QString &userName, QString &password, bool boolStudent)
 {
 
-    if(QString("11") == userName)
-    {
-        return 1;
-    } else {
-        return 0;
+    if (boolStudent)
+        return Database::getInstance()->studentExists(userName);
+    else{
+       return userName == "admin";
     }
 
 }

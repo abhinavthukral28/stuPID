@@ -24,8 +24,8 @@ class Database{
     int createProject(Project& project);
     int addStudentsToProject(const int& projectID, QList<Student*>* students);
     int addStudentToProject(const int& projectID,Student& student);
-
-
+    int updateQualification(const int& studentID,const Qualification& qualification);
+    int studentExists(const QString& username);
    private:
     static Database *instance;
     static const QString DBpath;

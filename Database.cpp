@@ -389,6 +389,28 @@ int Database::addStudentsToProject(const int& projectID, QList<Student*>* studen
 
 }
 
+int Database::updateQualification(const int& studentID,const Qualification& qualification)
+{
+    QSqlQuery query;
+
+    query.prepare(DatabaseQueries::updateQualificationByStudent);
+    query.bindValue(":qualificationID",qualification.getQualificationID());
+    query.bindValue(":qualificationRating",qualification.getQualificationRating());
+    query.bindValue(":expectationRating",qualification.getExpectationRating());
+    query.bindValue(":studentID",studentID);
+    query.bindValue(":displayID",qualification.getDisplayID());
+
+    if(!query.exec())
+    {
+        throw generateException(query);
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 int Database::addStudentToProject(const int& projectID,Student& student){
 
     if (projectID > 0)
@@ -480,6 +502,7 @@ const QList<Project*>& Database::getProjectsByStudent(const int& studentID)
 }
 
 
+
 const QList<Qualification*>& Database::getAllQualifications(const int& studentID)
 {
 
@@ -521,6 +544,25 @@ const QList<Qualification*>& Database::getAllQualifications(const int& studentID
         }
 
         return *qualifications;
+    }
+}
+
+
+int Database::studentExists(const QString& username){
+
+    QSqlQuery query;
+
+    query.prepare("SELECT studentID from Students where studentName = :username");
+
+    query.bindValue(":username",username);
+
+    if (!query.exec())
+    {
+        throw generateException(query);
+        return 1;
+    }else
+    {
+        return query.next();
     }
 }
 

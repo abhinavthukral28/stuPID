@@ -10,7 +10,7 @@ studentProjectRegisterView::studentProjectRegisterView(QWidget *parent) :
     for(int i=1; i<=20; i++)
     {
         ui->listWidget->addItem("Project "+ QString::number(i));
-       // ui->textBrowser->setText("Hello");
+
     }
 }
 

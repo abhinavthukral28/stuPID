@@ -26,6 +26,14 @@ int Qualification::getExpectationRating() const {
     return expectationRating;
 }
 
+int Qualification::getQualificationID() const {
+    return qualificationID;
+}
+
+int Qualification::getDisplayID() const {
+    return displayID;
+}
+
 int Qualification::setQualificationRating(const int& rating){
     if (rating < 1 || rating > 5)
         return 0;
