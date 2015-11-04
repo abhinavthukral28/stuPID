@@ -17,6 +17,7 @@ public:
 
     QualificationInit *qualification;
      void setQualificationList();
+     void createStudent(Student &student);
 
  private:
      Database *database;

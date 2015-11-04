@@ -57,9 +57,13 @@ QualificationInit::~QualificationInit()
 
 void QualificationInit::on_NextButton_clicked()
 {
+    qualificationList.at(activeIndex)->setQualificationRating(ui->qualificationButtonGroup->checkedId());
+    qualificationList.at(activeIndex)->setExpectationRating(ui->expectationButtonGroup->checkedId());
 
     activeIndex += 1;
     if(activeIndex >= qualificationList.count()){
+        newStudent.qualifications = qualificationList;
+        controller->createStudent(newStudent);
 
     }
     else{

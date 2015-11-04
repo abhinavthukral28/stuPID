@@ -17,3 +17,6 @@ void QualificationInitController::setQualificationList()
     qualification->getQualificationList(qList);
 }
 
+void QualificationInitController::createStudent(Student &student){
+    database->createStudent(student);
+}
