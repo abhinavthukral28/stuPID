@@ -1,7 +1,7 @@
 #include "user.h"
 
 #include <QDebug>
-User::User(const QString& initUsername,const int& userID) : username(initUsername),ID(userID)
+User::User(const QString& initUsername,const int& userID,const QString &fName,const QString& lName) : firstName(fName),lastName(lName),username(initUsername),ID(userID)
 {
 
 }

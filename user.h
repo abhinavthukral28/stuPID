@@ -12,8 +12,7 @@ class User
  QString lastName;
  int ID;
 protected:
-    User(const QString &username,const int& ID);
-    User(const QString &username,const int&ID,const QString &firstName,const QString &lastName);
+    User(const QString &username,const int&ID,const QString &fName,const QString &lName);
 public:
     QString getUsername() const;
     int setFirstName(QString& firstName);

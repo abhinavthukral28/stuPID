@@ -8,8 +8,8 @@ class QSqlQuery;
 class QString;
 class Student;
 class Project;
-class Team;
 class SQLException;
+class Qualification;
 class Database{
 
    public:
@@ -17,6 +17,7 @@ class Database{
 
     const QList<Student*>& getAllStudents();
     const QList<Project*>& getAllProjects();
+    const QList<Qualification*>& getAllQualifications(const int& studentID);
     //QList<Student*>* getStudentsByProject();
     QList<Project*>* getProjectsByStudent(const int& studentID);
 
@@ -24,8 +25,8 @@ class Database{
 
     int createStudent(Student& student);
     int createProject(Project& project);
-    int addStudentsToProject(int& projectID, QList<Student*>* students);
-    int addStudentToProject(int& projectID,Student& student);
+    int addStudentsToProject(const int& projectID, QList<Student*>* students);
+    int addStudentToProject(const int& projectID,Student& student);
     int insertValuesintoQualifications();
     int insertValuesintoExpectations();
 

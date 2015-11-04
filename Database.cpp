@@ -3,6 +3,7 @@
 #include "project.h"
 #include "DatabaseQueries.h"
 #include "sqlexception.h"
+#include "qualification.h"
 #include <QDebug>
 #include <QtSql>
 const QString Database::DBpath="./testdatabase.db";
@@ -127,7 +128,7 @@ void Database::createTables(){
 
     QSqlQuery qry;
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER PRIMARY KEY, studentName VARCHAR(30) UNIQUE)" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Students (studentID INTEGER PRIMARY KEY, studentName VARCHAR(30) UNIQUE,firstName VARCHAR(30), lastName VARCHAR(30))" );
     if( !qry.exec() )
     {
         qDebug() <<qry.lastQuery();
@@ -154,7 +155,7 @@ void Database::createTables(){
         qDebug() << "Table Project created!";
 
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER , studentID VARCHAR(30),PRIMARY KEY(projectID,studentID))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS ProjectStudents (projectID INTEGER NOT NULL, studentID INTEGER NOT NULL,PRIMARY KEY(projectID,studentID),FOREIGN KEY(projectID) REFERENCES Projects(projectID),FOREIGN KEY(studentID) REFERENCES Students(studentID))" );
     if( !qry.exec() )
     {
         qDebug() <<qry.lastQuery();
@@ -177,9 +178,12 @@ void Database::createTables(){
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
+    {
+        insertValuesintoExpectations();
         qDebug() << "Table Expectations created!";
+    }
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS StudentQualifications(studentQualificationID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, ratings VARCHAR(30), studentID int, eID int,FOREIGN KEY(eID) REFERENCES Expectations(eId))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS StudentQualifications(studentQualificationID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, qualificationRating INTEGER, expectationRating INTEGER, studentID int, eID int,FOREIGN KEY(eID) REFERENCES Expectations(eId))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -341,7 +345,7 @@ int Database::createProject (Project& project){
 
 }
 
-int Database::addStudentsToProject(int& projectID, QList<Student*>* students){
+int Database::addStudentsToProject(const int& projectID, QList<Student*>* students){
     if (projectID > 0)
     {
         QSqlQuery query;
@@ -370,7 +374,7 @@ int Database::addStudentsToProject(int& projectID, QList<Student*>* students){
 
 }
 
-int Database::addStudentToProject(int& projectID,Student& student){
+int Database::addStudentToProject(const int& projectID,Student& student){
 
     if (projectID > 0)
     {
@@ -384,13 +388,13 @@ int Database::addStudentToProject(int& projectID,Student& student){
         {
             qDebug() << query.lastError();
             qDebug() << query.lastQuery();
-            return 0;
+            throw generateException(query);
         }
         else {
             return query.lastInsertId().toInt();
         }
     }
-    else return NULL;
+    else return 0;
 
 
 }
@@ -462,9 +466,43 @@ QList<Project*>* Database::getProjectsByStudent(const int& studentID)
 }
 
 
+const QList<Qualification*>& Database::getAllQualifications(const int& studentID)
+{
+
+    QSqlQuery query;
+    query.prepare(DatabaseQueries::getQualificationsByStudent);
+    query.bindValue(":studentID",studentID);
+
+    if (!query.exec())
+    {
+        throw generateException(query);
+    }
+    else
+    {
+        QList<Qualification*>* qualifications = new QList<Qualification*>;
+        Qualification* tempQualification;
+        int displayID = query.value(0).toInt();
+        QString title = query.value(1).toString();
+        QString expectationValue = query.value(2).toString();
+        QString qualificationValue = query.value(5).toString();
+        int qualificationID = query.value(6).toInt();
+        int qualificationRating = query.value(7).toInt();
+        int expectationRating = query.value(8).toInt();
+
+        while (query.next())
+        {
+            tempQualification = new Qualification(displayID,qualificationID,title,expectationValue,
+                                                  qualificationValue,qualificationRating,expectationRating);
+            qualifications->append(tempQualification);
+        }
+
+        return *qualifications;
+    }
+}
+
 SQLException Database::generateException(QSqlQuery query)
 {
-   return *(new SQLException(query.lastError().text().toStdString() + "\n"  + query.lastQuery().toStdString() + "\n"));
+    return *(new SQLException(query.lastError().text().toStdString() + "\n"  + query.lastQuery().toStdString() + "\n"));
 }
 
 

@@ -41,13 +41,13 @@ int Project::registerStudents(QList<Student*>* students)
    }
 }
 
-int Project::setTeamMax(int& max)
+int Project::setTeamMax(const int& max)
 {
     teamMax = max;
     return 1;
 }
 
-int Project::setTeamMin(int& min)
+int Project::setTeamMin(const int& min)
 {
    if (min > 0)
    {
@@ -58,12 +58,12 @@ int Project::setTeamMin(int& min)
        return 0;
 }
 
-int Project::setDescription(QString& description)
+int Project::setDescription(const QString& description)
 {
     this->description = QString(description);
 }
 
-int Project::setTitle(QString& title){
+int Project::setTitle(const QString& title){
     this->projectName = QString(title);
 }
 
@@ -75,7 +75,7 @@ int Project::getMaxTeamSize(){
     return teamMax;
 }
 
-QString Project::getDescription(){
+QString Project::getDescription() const {
     return description;
 }
 
@@ -88,7 +88,7 @@ int Project::getID() const
     return ID;
 }
 
-int Project::setID(int& newID){
+int Project::setID(const int& newID){
 
     ID = newID;
     return 1;
