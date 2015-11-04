@@ -194,7 +194,7 @@ void Database::createTables(){
 }
 
 
-QList<Student*>* Database::getAllStudents(){
+const QList<Student*>& Database::getAllStudents(){
 
     QSqlQuery query;
     query.prepare(DatabaseQueries::selectAllStudents);
@@ -203,7 +203,7 @@ QList<Student*>* Database::getAllStudents(){
     {
         qDebug() << query.lastError();
         qDebug() << query.lastQuery();
-        return NULL;
+        throw generateException(query);
     }
     else
     {
@@ -221,7 +221,7 @@ QList<Student*>* Database::getAllStudents(){
             students->append(tempStudent);
         }
 
-        return students;
+        return *students;
     }
 
 

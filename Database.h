@@ -15,7 +15,7 @@ class Database{
    public:
     static Database* getInstance();
 
-    QList<Student*>* getAllStudents();
+    const QList<Student*>& getAllStudents();
     const QList<Project*>& getAllProjects();
     //QList<Student*>* getStudentsByProject();
     QList<Project*>* getProjectsByStudent(const int& studentID);
