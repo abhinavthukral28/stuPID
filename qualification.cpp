@@ -52,3 +52,7 @@ int Qualification::setExpectationRating(const int& rating){
     }
 }
 
+QString Qualification::getTitle() const{
+    return title;
+}
+
