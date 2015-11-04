@@ -27,6 +27,7 @@ private:
     Ui::qualificationinit *ui;
     QualificationInitController *controller;
     Student newStudent;
+    QList<QString> keyList,q,e;
     QList<Qualification*> qualificationList;
     int activeIndex;
 };

@@ -16,11 +16,11 @@ public:
 
 
     QualificationInit *qualification;
-    void setQualificationList();
+     void setQualificationList();
 
-private:
-    Database *database;
-    QList<Qualification*> qList;
+ private:
+     Database *database;
+     QList<Qualification*> qList;
 };
 
 #endif // LOGINTCONTROLLER_H

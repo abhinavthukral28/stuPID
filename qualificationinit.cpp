@@ -13,25 +13,29 @@ QualificationInit::QualificationInit(Student &student) :
 
 {
     ui->setupUi(this);
-    controller->setQualificationList();
+    //    controller->setQualificationList();
     activeIndex = 0;
 
-    //    keyList.append("Git");
-    //    keyList.append("OO");
-    //    keyList.append("GPA");
-    //    keyList.append("WD");
-    //    q.append("How musch do you git");
-    //    e.append("How much your partner gits");
-    //    q.append("Do you do object oriented pogramming?");
-    //    e.append("How much your partner knows");
-    //    q.append("What's you CGPA");
-    //    e.append("Parner's expected CGPA");
-    //    q.append("Do you know web dev");
-    //    e.append("How much does your partner know");
-    ui->keyLabel->setText(qualificationList.at(0)->getTitle());
+    keyList.append("Git");
+    keyList.append("OO");
+    keyList.append("GPA");
+    keyList.append("WD");
+    q.append("How musch do you git");
+    e.append("How much your partner gits");
+    q.append("Do you do object oriented pogramming?");
+    e.append("How much your partner knows");
+    q.append("What's you CGPA");
+    e.append("Parner's expected CGPA");
+    q.append("Do you know web dev");
+    e.append("How much does your partner know");
+    // ui->keyLabel->setText(qualificationList.at(0)->getTitle());
+    // ui->NumberLabel->setText("1");
+    // ui->QuesTopLabel->setText(qualificationList.at(0)->getQualificationDisplay());
+    // ui->QuesDownLabel->setText(qualificationList.at(0)->getExpectationDisplay());
+    ui->keyLabel->setText(keyList.at(0));
     ui->NumberLabel->setText("1");
-    ui->QuesTopLabel->setText(qualificationList.at(0)->getQualificationDisplay());
-    ui->QuesDownLabel->setText(qualificationList.at(0)->getExpectationDisplay());
+    ui->QuesTopLabel->setText(q.at(0));
+    ui->QuesDownLabel->setText(e.at(0));
 
     ui->qualificationButtonGroup->setId(ui->qB1, 1);
     ui->qualificationButtonGroup->setId(ui->qB2, 2);
@@ -50,20 +54,20 @@ QualificationInit::~QualificationInit()
     delete ui;
 }
 
-void QualificationInit::getQualificationList(const QList<Qualification*>& qList){
-    qualificationList = qList;
-}
+// void QualificationInit::getQualificationList(const QList<Qualification*>& qList){
+//     qualificationList = qList;
+// }
 
 
 void QualificationInit::on_NextButton_clicked()
 {
 
     activeIndex += 1;
-    if(activeIndex >= qualificationList.count()){
+    if(activeIndex >= keyList.count()){
 
     }
     else{
-        if(activeIndex == qualificationList.count() - 1){
+        if(activeIndex == keyList.count() - 1){
             ui->NextButton->setText("Submit");
         }
 
@@ -71,9 +75,13 @@ void QualificationInit::on_NextButton_clicked()
         qDebug() << ui->qualificationButtonGroup->checkedId();
         qDebug() << ui->expectationButtonGroup->checkedId();
 
-//        ui->keyLabel->setText(qualificationList.at(activeIndex)->getTitle());
-//        ui->NumberLabel->setText(QString::number(activeIndex + 1));
-//        ui->QuesTopLabel->setText(qualificationList.at(activeIndex)->getQualificationDisplay());
-//        ui->QuesDownLabel->setText(qualificationList.at(activeIndex)->getExpectationDisplay());
+        //        ui->keyLabel->setText(qualificationList.at(activeIndex)->getTitle());
+        //        ui->NumberLabel->setText(QString::number(activeIndex + 1));
+        //        ui->QuesTopLabel->setText(qualificationList.at(activeIndex)->getQualificationDisplay());
+        //        ui->QuesDownLabel->setText(qualificationList.at(activeIndex)->getExpectationDisplay());
+        ui->keyLabel->setText(keyList.at(activeIndex));
+        ui->NumberLabel->setText(QString::number(activeIndex + 1));
+        ui->QuesTopLabel->setText(q.at(activeIndex));
+        ui->QuesDownLabel->setText(e.at(activeIndex));
     }
 }

@@ -5,14 +5,15 @@
 #include <QList>
 #include "qualification.h"
 #include "Database.h"
-QualificationInitController::QualificationInitController( QualificationInit *qual): QObject(), qualification(qual),database(Database::getInstance())
+QualificationInitController::QualificationInitController( QualificationInit *qual): QObject(), qualification(qual), database(Database::getInstance())
+
 
 {
-  qList = database->getAllQualifications(-1);
+//  qList = database->getAllQualifications(-1);
 
 }
-void QualificationInitController::setQualificationList()
-{
-    qualification->getQualificationList(qList);
-}
+//void QualificationInitController::setQualificationList()
+//{
+//    qualification->getQualificationList(qList);
+//}
 
