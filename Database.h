@@ -18,10 +18,12 @@ class Database{
     const QList<Student*>& getAllStudents();
     const QList<Project*>& getAllProjects();
     const QList<Qualification*>& getAllQualifications(const int& studentID);
+
     const QList<Student*>& getStudentsByProject();
     const QList<Project*>& getProjectsByStudent(const int& studentID);
     int createStudent(Student& student);
     int createProject(Project& project);
+
     int addStudentsToProject(const int& projectID, QList<Student*>* students);
     int addStudentToProject(const int& projectID,Student& student);
     int updateQualification(const int& studentID,const Qualification& qualification);
@@ -36,6 +38,8 @@ class Database{
     void createTables();
     int insertValuesintoQualifications();
     int insertValuesintoExpectations();
+    int createQualificationEntry(const int& studentID,const Qualification& qualification);
+    int insertStudents();
     int init();
     Database();
 

@@ -11,9 +11,10 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    CreateProjectView view;
     //view.show();
     //LoginDialog view;
+    Database::getInstance();
+    LoginDialog view;
     view.show();
 /*
     Database* database = Database::getInstance();
