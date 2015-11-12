@@ -335,7 +335,7 @@ int Database::createStudent (Student& student){
  * @param project
  * @return
  */
-int Database::createProject (Project& project){
+int Database::createProject(Project& project){
     QSqlQuery query;
     query.prepare(DatabaseQueries::insertProject);
     query.bindValue(":projectName",project.getTitle());

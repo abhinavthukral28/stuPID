@@ -3,6 +3,7 @@
 #include <QObject>
 #include "createprojectviewcontroller.h"
 #include <QDialog>
+#include <qabstractbutton.h>
 
 namespace Ui {
 class CreateProjectView;
@@ -14,12 +15,15 @@ class CreateProjectView : public QDialog
 
 public:
     explicit CreateProjectView(QWidget *parent = 0);
-    void getProjectDescription();
-    void getProjectTitle();
-    void getProjectTeamMin();
-    void getProjectTeamMax();
+    const QString& getProjectDescription();
+    const QString& getProjectTitle();
+    const int& getProjectTeamMin();
+    const int& getProjectTeamMax();
 
     ~CreateProjectView();
+
+private slots:
+    void on_buttonBox_clicked(QAbstractButton *button);
 
 private:
     Ui::CreateProjectView *ui;

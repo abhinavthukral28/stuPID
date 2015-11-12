@@ -1,6 +1,8 @@
 #include "createprojectview.h"
 #include "ui_createprojectview.h"
 #include "createprojectviewcontroller.h"
+#include <QDebug>
+
 CreateProjectView::CreateProjectView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CreateProjectView),
@@ -14,27 +16,42 @@ CreateProjectView::~CreateProjectView()
     delete ui;
 }
 
- void CreateProjectView::getProjectDescription()
+const QString& CreateProjectView::getProjectDescription()
  {
  QString s =ui->projectDescriptionTextFeild->toPlainText();
- createProjectViewController->setNewProjectDescription(s);
+ //createProjectViewController->setNewProjectDescription(s);
+ QString &ref1=s;
+ return ref1;
  }
 
-void CreateProjectView::getProjectTitle(){
+const QString& CreateProjectView::getProjectTitle(){
     QString a =ui->projectNameTextFeild->text();
-    createProjectViewController->setNewProjectTitle(a);
+   QString &ref2=a;
+   // createProjectViewController->setNewProjectTitle(a);
+
+    return ref2;
 }
 
-void CreateProjectView::getProjectTeamMin(){
+const int& CreateProjectView::getProjectTeamMin(){
     int b =ui->minTeamSizeTextFeild->text().toInt();
-    createProjectViewController->setNewProjectTeamMin(b);
+    int& ref3=b;
+
+   // createProjectViewController->setNewProjectTeamMin(b);
+    return ref3;
 }
 
 
 
-void CreateProjectView::getProjectTeamMax(){
+const int& CreateProjectView::getProjectTeamMax()
+{
     int x =ui->maxTeamSizeTextFeild->text().toInt();
-    createProjectViewController->setNewProjectTeamMax(x);
-
+    int &ref4=x;
+    //createProjectViewController->setNewProjectTeamMax(x);
+    return ref4;
 }
 
+
+void CreateProjectView::on_buttonBox_clicked(QAbstractButton *button)
+{
+    createProjectViewController->saveProject();
+}
