@@ -385,7 +385,7 @@ int Database::createStudent (Student& student){
  * @brief Database::createProject
  *
  * This function currently does not register students in the Project object.
- * Please add the registered students to the database.
+ * Please add the registered stuents to the database.
  *
  * @param project
  * @return
