@@ -36,6 +36,8 @@ private slots:
 
      void on_viewResultButton_clicked();
 
+     void on_createProjectButton_clicked();
+
 private:
     Ui::ManageProjectsView *ui;
     ManageProjectsController *manageProjectsController;

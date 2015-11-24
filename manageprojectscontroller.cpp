@@ -3,6 +3,7 @@
 #include "logindialog.h"
 #include "project.h"
 #include "Database.h"
+#include "createprojectview.h"
 
 
 
@@ -54,4 +55,13 @@ int ManageProjectsController::updateStudentList(){
     return 0;
 }
 
+int ManageProjectsController::goToCreateProjectView()
+{
+    manageProjectsView->close();
+     CreateProjectView createProjectView;
+     createProjectView.exec();
+
+     return 0;
+
+}
 
