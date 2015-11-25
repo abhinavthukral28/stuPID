@@ -18,7 +18,7 @@ CreateProjectView::~CreateProjectView()
 
 const QString& CreateProjectView::getProjectDescription()
  {
- QString s =ui->projectDescriptionTextFeild->toPlainText();
+ QString s =QString(ui->projectDescriptionTextFeild->toPlainText());
  //createProjectViewController->setNewProjectDescription(s);
  QString &ref1=s;
  return ref1;
