@@ -15,7 +15,7 @@ public:
 private:
     CreateProjectView *createProjectsView;
     Database *database;
-    Project *newproject;
+
 
 
 };

@@ -9,8 +9,7 @@ CreateProjectViewController::CreateProjectViewController(CreateProjectView *view
   createProjectsView(view),
   database(Database::getInstance())
 {
-  //projectList = database->getAllProjects();
-    newproject=new Project("Empty");
+
 }
 /**
     int CreateProjectViewController::setNewProjectDescription(QString& description){
@@ -40,15 +39,14 @@ int CreateProjectViewController::saveProject(){
    //const QString& b= createProjectsView->getProjectTitle();
    //const int& c=createProjectsView->getProjectTeamMin();
   // const int& d=createProjectsView->getProjectTeamMax();
-
-   newproject->setDescription(createProjectsView->getProjectDescription());
-   newproject->setTitle(createProjectsView->getProjectTitle());
-   newproject->setTeamMin(createProjectsView->getProjectTeamMin());
-   newproject->setTeamMax(createProjectsView->getProjectTeamMax());
-
+   Project* project = new Project (createProjectsView->getProjectTitle());
+   project->setDescription(createProjectsView->getProjectDescription());
+   project->setTeamMin(createProjectsView->getProjectTeamMin());
+   project->setTeamMax(createProjectsView->getProjectTeamMax());
 
 
-    database->createProject(*newproject);
+
+    database->createProject(*project);
 qDebug()<<"YAYAYAAYAYAYAYA";
 
 return 1;
