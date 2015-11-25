@@ -15,8 +15,8 @@ class CreateProjectView : public QDialog
 
 public:
     explicit CreateProjectView(QWidget *parent = 0);
-    const QString& getProjectDescription();
-    const QString& getProjectTitle();
+    const QString getProjectDescription();
+    const QString getProjectTitle();
     const int& getProjectTeamMin();
     const int& getProjectTeamMax();
 

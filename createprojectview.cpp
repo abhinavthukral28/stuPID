@@ -16,20 +16,17 @@ CreateProjectView::~CreateProjectView()
     delete ui;
 }
 
-const QString& CreateProjectView::getProjectDescription()
+const QString CreateProjectView::getProjectDescription()
  {
- QString s =QString(ui->projectDescriptionTextFeild->toPlainText());
- //createProjectViewController->setNewProjectDescription(s);
- QString &ref1=s;
- return ref1;
+     QString desc = ui->projectDescriptionTextFeild->toPlainText();
+     return desc;
+
  }
 
-const QString& CreateProjectView::getProjectTitle(){
-    QString a =ui->projectNameTextFeild->text();
-   QString &ref2=a;
-   // createProjectViewController->setNewProjectTitle(a);
+const QString CreateProjectView::getProjectTitle(){
+    QString title =ui->projectNameTextFeild->text();
 
-    return ref2;
+    return title;
 }
 
 const int& CreateProjectView::getProjectTeamMin(){
