@@ -34,7 +34,10 @@ SOURCES += main.cpp\
     createprojectview.cpp \
     sqlexception.cpp \
     createprojectviewcontroller.cpp \
-    studentprojectregisterviewcontroller.cpp
+    studentprojectregisterviewcontroller.cpp \
+    teambuilder.cpp \
+    distributor.cpp \
+    pcibuilder.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -59,7 +62,10 @@ HEADERS  += \
     sqlexception.h \
     createprojectviewcontroller.h \
     studentprojectregisterviewcontroller.h \
-        studentmanageprojectview.h
+        studentmanageprojectview.h \
+    teambuilder.h \
+    distributor.h \
+    pcibuilder.h
 
 FORMS    += \
     studentregister.ui \
