@@ -48,7 +48,7 @@ void studentProjectRegisterView::on_registerButton_clicked()
 void studentProjectRegisterView::on_projectsList_doubleClicked(const QModelIndex &index)
 {
     ui->projectsList->currentIndex();
-    ui->projectDescription->setText("Hello I am project "+ index.data(Qt::DisplayRole).toString());
+    ui->projectDescription->setText(index.data(Qt::DisplayRole).toString());
 
 }
 
