@@ -2,16 +2,16 @@
 #include "ui_studentprojectregisterview.h"
 #include <QDebug>
 #include <QListWidgetItem>
+#include "project.h"
+#include "studentprojectregisterviewcontroller.h"
+
 studentProjectRegisterView::studentProjectRegisterView(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::studentProjectView)
+    ui(new Ui::studentProjectView),
+    studentProjectRegisterViewController(new studentprojectregisterviewcontroller(this))
 {   
     ui->setupUi(this);
-    for(int i=1; i<=20; i++)
-    {
-        ui->listWidget->addItem("Project "+ QString::number(i));
-
-    }
+    studentProjectRegisterViewController->init();
 }
 
 studentProjectRegisterView::~studentProjectRegisterView()
@@ -19,24 +19,42 @@ studentProjectRegisterView::~studentProjectRegisterView()
     delete ui;
 }
 
+int studentProjectRegisterView::updateProjectsList(QList<QString> &projectTitles)
+{
+    QString temp;
+    for (int i = 0; i <projectTitles.count();i++)
+    {
+       temp =projectTitles.at(i);
+       ui->projectsList->addItem(temp);
+    }
+    return 0;
+}
+
+int studentProjectRegisterView::updateDetailedView(Project &project)
+{
+    ui->projectName->setText(project.getTitle());
+    ui->projectDescription->setText(project.getDescription());
+
+    return 0;
+}
+
 void studentProjectRegisterView::on_registerButton_clicked()
 {
-    QListWidgetItem *item = ui->listWidget->currentItem();
+    QListWidgetItem *item = ui->projectsList->currentItem();
     item->setTextColor(Qt::red);
 
 }
 
-void studentProjectRegisterView::on_listWidget_doubleClicked(const QModelIndex &index)
+void studentProjectRegisterView::on_projectsList_doubleClicked(const QModelIndex &index)
 {
-     //  QModelIndex i = ui->listWidget->currentIndex();
-      //  qDebug()<<index;
-      //tatic int i=1;
-      // ui->textBrowser->setText("Hello I am project "+ QString::number(i));
-      // i++;
+    ui->projectsList->currentIndex();
+    ui->projectDescription->setText("Hello I am project "+ index.data(Qt::DisplayRole).toString());
 
 }
 
-void studentProjectRegisterView::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
-{
 
+
+void studentProjectRegisterView::on_manageProjectButton_clicked()
+{
+    studentProjectRegisterViewController->goStudentManageProjectView();
 }

@@ -107,6 +107,6 @@ void ManageProjectsView::on_viewResultButton_clicked()
 
 void ManageProjectsView::on_createProjectButton_clicked()
 {
-    ui->viewTextBrowser->setText(" I am create project button");
+    //ui->viewTextBrowser->setText(" I am create project button");
     manageProjectsController->goToCreateProjectView();
 }

@@ -6,7 +6,9 @@ class QListWidgetItem;
 namespace Ui {
 class studentProjectView;
 }
-
+class studentprojectregisterviewcontroller;
+class QStringList;
+class Project;
 class studentProjectRegisterView : public QDialog
 {
     Q_OBJECT
@@ -14,16 +16,19 @@ class studentProjectRegisterView : public QDialog
 public:
     explicit studentProjectRegisterView(QWidget *parent = 0);
     ~studentProjectRegisterView();
+    int updateProjectsList(QList<QString> &projectTitles);
+    int updateDetailedView(Project &project);
 
 private slots:
     void on_registerButton_clicked();
 
-    void on_listWidget_doubleClicked(const QModelIndex &index);
+    void on_projectsList_doubleClicked(const QModelIndex &index);
 
-    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
+    void on_manageProjectButton_clicked();
 
 private:
     Ui::studentProjectView *ui;
+    studentprojectregisterviewcontroller *studentProjectRegisterViewController;
 };
 
 #endif // STUDENTPROJECTVIEW_H
