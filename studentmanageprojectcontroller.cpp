@@ -1,5 +1,6 @@
 #include "studentmanageprojectcontroller.h"
 
-studentmanageprojectcontroller::studentmanageprojectcontroller()
+StudentManageProjectController::StudentManageProjectController()
 {
+
 }

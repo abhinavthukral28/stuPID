@@ -1,10 +1,16 @@
 #ifndef STUDENTMANAGEPROJECTCONTROLLER_H
 #define STUDENTMANAGEPROJECTCONTROLLER_H
 
-class studentmanageprojectcontroller
+class StudentManageProjecView;
+class StudentManageProjectController
 {
 public:
-    studentmanageprojectcontroller();
+    StudentManageProjectController(StudentManageProjectView *view);
+
+private:
+StudentManageProjectView *studentManageProjectView;
+
+
 };
 
 #endif // STUDENTMANAGEPROJECTCONTROLLER_H
