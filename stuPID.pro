@@ -38,7 +38,8 @@ SOURCES += main.cpp\
     teambuilder.cpp \
     distributor.cpp \
     pcibuilder.cpp \
-    studentmanageprojectcontroller.cpp
+    studentmanageprojectcontroller.cpp \
+    adminviewresult.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -67,7 +68,8 @@ HEADERS  += \
     teambuilder.h \
     distributor.h \
     pcibuilder.h \
-    studentmanageprojectcontroller.h
+    studentmanageprojectcontroller.h \
+    adminviewresult.h
 
 FORMS    += \
     studentregister.ui \
@@ -77,4 +79,5 @@ FORMS    += \
     manageprojectsview.ui \
     studentprojectregisterview.ui \
     studentmanageprojectview.ui \
-    createprojectview.ui
+    createprojectview.ui \
+    adminviewresult.ui
