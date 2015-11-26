@@ -5,10 +5,10 @@ class StudentManageProjecView;
 class StudentManageProjectController
 {
 public:
-    StudentManageProjectController(StudentManageProjectView *view);
+    StudentManageProjectController();
 
 private:
-StudentManageProjectView *studentManageProjectView;
+//StudentManageProjectView *studentManageProjectView;
 
 
 };
