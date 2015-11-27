@@ -634,6 +634,8 @@ int Database::createQualificationEntry(const int& studentID, const Qualification
     query.bindValue(":qualificationID",qualification.getQualificationID());
     query.bindValue(":studentID",studentID);
 
+        qDebug() << qualification.getDisplayID();
+        qDebug() << qualification.getExpectationRating();
 
     if (!query.exec())
     {

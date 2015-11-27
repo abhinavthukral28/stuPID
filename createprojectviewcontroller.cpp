@@ -10,6 +10,7 @@ CreateProjectViewController::CreateProjectViewController(CreateProjectView *view
   database(Database::getInstance())
 {
 
+
 }
 /**
     int CreateProjectViewController::setNewProjectDescription(QString& description){

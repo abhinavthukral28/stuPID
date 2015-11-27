@@ -17,7 +17,8 @@ int Distributor::calculateTeamWeight(Team team)
  return -1;
 }
 
-int Distributor::assignStudentToTeam(int studentID, QList<Team*> teams){
+int Distributor::assignStudentToTeam(int studentID, QList<Team*> teams)
+{
     return -1;
 }
 
