@@ -16,12 +16,13 @@ public:
 
 
     QualificationInit *qualification;
-     void setQualificationList();
-     void createStudent(Student &student);
+    void setQualificationList();
+    void createStudent(Student &student);
+    void goToStudentProjectRegisterView();
 
- private:
-     Database *database;
-     QList<Qualification*> qList;
+private:
+    Database *database;
+    QList<Qualification*> qList;
 };
 
 #endif // LOGINTCONTROLLER_H

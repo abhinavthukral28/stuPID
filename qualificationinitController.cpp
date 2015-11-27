@@ -5,6 +5,7 @@
 #include <QList>
 #include "qualification.h"
 #include "Database.h"
+#include "studentprojectregisterview.h"
 QualificationInitController::QualificationInitController( QualificationInit *qual): QObject(), qualification(qual), database(Database::getInstance())
 
 
@@ -19,4 +20,11 @@ void QualificationInitController::setQualificationList()
 
 void QualificationInitController::createStudent(Student &student){
     database->createStudent(student);
+}
+void QualificationInitController::goToStudentProjectRegisterView()
+{
+    qualification->close();
+    studentProjectRegisterView view;
+    view.exec();
+
 }

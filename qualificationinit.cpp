@@ -54,6 +54,7 @@ void QualificationInit::on_NextButton_clicked()
     if(activeIndex >= qualificationList.count()){
         newStudent.qualifications = qualificationList;
         controller->createStudent(newStudent);
+        controller->goToStudentProjectRegisterView();
 
     }
     else{
