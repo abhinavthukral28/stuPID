@@ -19,11 +19,11 @@ StudentRegister::~StudentRegister()
 void StudentRegister::on_pushButton_clicked()
 {
     
-    int id = 3;
+
     QString userName = ui->userName->text();
     QString firstName = ui->firstName->text();
     QString lastName = ui->lastName->text();
-    Student *student = new Student(id, userName);
+    Student *student = new Student(userName);
     student->setFirstName(firstName);
     student->setLastName(lastName);
     controller->goToQualificationsView(*student);

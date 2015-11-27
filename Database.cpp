@@ -256,7 +256,7 @@ void Database::createTables(){
     }
     else
     {
-        insertStudents();
+        //insertStudents();
         qDebug() << "Table Students created!";
     }
 
@@ -370,12 +370,12 @@ int Database::createStudent (Student& student){
     }
     else {
         int lastID = query.lastInsertId().toInt();
-
+        student.setID(lastID);
         for (int i = 0;i < student.getQualifications().count();i++)
         {
             createQualificationEntry(student.getID(),*student.getQualifications().at(i));
         }
-        student.setID(lastID);
+
         return lastID;
     }
 

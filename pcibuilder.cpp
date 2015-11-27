@@ -5,9 +5,13 @@ PciBuilder::PciBuilder()
 
 }
 
-QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>&)
+QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& studentList)
 {
 
+    for (int i = 0; i < studentList.count();i++)
+    {
+
+    }
 }
 
 

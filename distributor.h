@@ -14,7 +14,7 @@ private:
     int assignStudentToTeam(int studentID, QList<Team*> teams);
 public:
     Distributor(const QMap< int,QMap<int,int> >& pciParam);
-    const QList<Team*>& distributeTeams(int minSize, int maxSize);
+    const QList<Team*>& distributeTeams(const int minSize,const int maxSize);
 };
 
 #endif // DISTRIBUTOR_H

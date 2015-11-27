@@ -67,11 +67,11 @@ int Project::setTitle(const QString& title){
     this->projectName = QString(title);
 }
 
-int Project::getMinTeamSize(){
+int Project::getMinTeamSize() const{
     return teamMin;
 }
 
-int Project::getMaxTeamSize(){
+int Project::getMaxTeamSize() const {
     return teamMax;
 }
 

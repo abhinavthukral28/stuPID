@@ -6,7 +6,7 @@ Distributor::Distributor(const QMap< int,QMap<int,int> >& pciParam) : pci(pciPar
 
 }
 
- const QList<Team*>& Distributor::distributeTeams(int minSize, int maxSize){
+ const QList<Team*>& Distributor::distributeTeams(const int minSize,const int maxSize){
      QList <Team*>* teams = new QList<Team*>;
      return *teams;
  }

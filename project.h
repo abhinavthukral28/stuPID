@@ -27,8 +27,8 @@ public:
     int setTeamMin(const int& min);
     int setDescription(const QString& description);
     int setTitle (const QString& title);
-    int getMinTeamSize();
-    int getMaxTeamSize();
+    int getMinTeamSize() const;
+    int getMaxTeamSize() const;
     int getID() const;
     int setID(const int& newID);
     QString getDescription() const;
