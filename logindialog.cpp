@@ -40,7 +40,7 @@ void LoginDialog::on_loginpushButton_clicked()
        }
     }
     else {
-        QMessageBox::warning(this, tr("Waring"),
+        QMessageBox::warning(this, tr("Warning"),
                              tr("user name or password error!"),
                              QMessageBox::Yes);
     }
@@ -48,5 +48,5 @@ void LoginDialog::on_loginpushButton_clicked()
 
 void LoginDialog::on_pushButton_clicked()
 {
-    loginController->goToStudentRegisterView();
+    loginController->goToStudentManageProjectsView();
 }

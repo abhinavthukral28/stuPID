@@ -44,10 +44,10 @@ int LoginController::goToAdminView(QString &userName){
     transition(false);
     return 0;
 }
-int LoginController::goToStudentRegisterView(){
+int LoginController::goToStudentManageProjectsView(){
     //transition view
     loginDialog->close();
-    StudentRegister rview;
+    ManageProjectsView rview;
     rview.exec();
 
     return 0;
