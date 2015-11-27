@@ -61,7 +61,7 @@ void LoginController::transition(bool student)
 
     loginDialog->close();
     if(student){
-        StudentManageProjectView sview;
+       StudentManageProjectView sview;
         sview.exec();
     }
     else{
