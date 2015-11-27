@@ -43,6 +43,7 @@ void studentProjectRegisterView::on_registerButton_clicked()
     QListWidgetItem *item = ui->projectsList->currentItem();
     item->setTextColor(Qt::red);
 
+
 }
 
 void studentProjectRegisterView::on_projectsList_doubleClicked(const QModelIndex &index)

@@ -39,7 +39,8 @@ SOURCES += main.cpp\
     distributor.cpp \
     pcibuilder.cpp \
     studentmanageprojectcontroller.cpp \
-    adminviewresult.cpp
+    adminviewresult.cpp \
+    session.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -69,7 +70,8 @@ HEADERS  += \
     distributor.h \
     pcibuilder.h \
     studentmanageprojectcontroller.h \
-    adminviewresult.h
+    adminviewresult.h \
+    session.h
 
 FORMS    += \
     studentregister.ui \
