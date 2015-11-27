@@ -256,7 +256,7 @@ void Database::createTables(){
     }
     else
     {
-        //insertStudents();
+        insertStudents();
         qDebug() << "Table Students created!";
     }
 
