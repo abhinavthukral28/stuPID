@@ -99,7 +99,7 @@ int Database::insertStudents()
             }
         }
     }
-
+    return 1;
 }
 
 int Database::insertValuesintoQualifications(){
@@ -297,6 +297,8 @@ const QList<Student*>& Database::getAllStudents(){
 }
 
 
+
+
 const QList<Project*>& Database::getAllProjects(){
 
     QSqlQuery query;
@@ -381,15 +383,7 @@ int Database::createStudent (Student& student){
 
 }
 
-/**
- * @brief Database::createProject
- *
- * This function currently does not register students in the Project object.
- * Please add the registered stuents to the database.
- *
- * @param project
- * @return
- */
+
 int Database::createProject(Project& project){
     QSqlQuery query;
     query.prepare(DatabaseQueries::insertProject);
@@ -418,6 +412,7 @@ int Database::createProject(Project& project){
 int Database::addStudentsToProject(const int& projectID, QList<Student*>* students){
     if (projectID > 0)
     {
+        int tempInt;
         QSqlQuery query;
         QVariantList projectIDList;
         QVariantList studentIDList;
@@ -425,8 +420,13 @@ int Database::addStudentsToProject(const int& projectID, QList<Student*>* studen
 
         for (int i = 0; i< students->count();i++)
         {
-            projectIDList << projectID;
-            studentIDList << students->at(i)->getID();
+            tempInt = students->at(i)->getID();
+            if (tempInt > 0)
+            {
+                projectIDList << projectID;
+                studentIDList << tempInt ;
+            }
+            else return 0;
         }
 
         query.bindValue(":projectID",projectIDList);
@@ -441,6 +441,27 @@ int Database::addStudentsToProject(const int& projectID, QList<Student*>* studen
         else return query.lastInsertId().toInt();
     }
     else return 0;
+
+}
+
+int Database::removeStudentFromProject(const int& projectID,Student& student){
+
+    QSqlQuery query;
+
+    query.prepare(DatabaseQueries::removeStudentFromProject);
+
+    query.bindValue(":studentID",student.getID());
+
+    if(!query.exec())
+    {
+        throw generateException(query);
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+
 
 }
 

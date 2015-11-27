@@ -10,11 +10,11 @@ QString User::getUsername() const{
     return username;
 }
 
-int User::setFirstName(QString& firstName){
+int User::setFirstName(const QString& firstName){
     this->firstName = firstName;
 }
 
-int User::setLastName(QString& lastName) {
+int User::setLastName(const QString& lastName) {
     this->lastName = lastName;
 }
 QString User::getFirstName() const{
@@ -27,7 +27,8 @@ int User::getID() const{
     return ID;
 }
 
-int User::setID(int& newID){
+
+int User::setID(const int& newID){
 
     ID = newID;
     return 1;

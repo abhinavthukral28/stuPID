@@ -15,6 +15,7 @@ Project::Project(const QString &title) : projectName(QString::fromStdString(titl
 
 }
 
+
 Project::Project(const Project &obj){
   projectName = QString::fromStdString(obj.projectName.toStdString());
   teamMax = obj.teamMax;
@@ -37,8 +38,16 @@ int Project::registerStudents(QList<Student*>* students)
 {
    for (int i = 0; i < students->count(); i++)
    {
-       registerStudent(*(students->at(i)));
+       if (!registerStudent(*(students->at(i))))
+       {
+           return 0;
+       }
+       return 1;
    }
+}
+
+int Project::unregisterStudent(Student& student){
+ return registeredStudents.removeOne(&student);
 }
 
 int Project::setTeamMax(const int& max)
@@ -61,14 +70,17 @@ int Project::setTeamMin(const int& min)
 int Project::setDescription(const QString& description)
 {
     this->description = QString(description);
+    return 1;
 }
 
 int Project::setTitle(const QString& title){
     this->projectName = QString(title);
+    return 1;
 }
 
 int Project::getMinTeamSize() const{
     return teamMin;
+
 }
 
 int Project::getMaxTeamSize() const {

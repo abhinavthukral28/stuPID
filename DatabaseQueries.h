@@ -24,6 +24,7 @@ private:
     const static QString getQualificationsByStudent;
     const static QString updateQualificationByStudent;
     const static QString createQualificationByStudent;
+    const static QString removeStudentFromProject;
 
 };
 
@@ -51,6 +52,9 @@ const QString DatabaseQueries::selectAllProjects = QString("SELECT * FROM ") + D
 const QString DatabaseQueries::insertProject = "INSERT INTO "+DatabaseQueries::PROJECTS_TABLE+" (projectID,projectName,description,minTeamSize,maxTeamSize)  VALUES (null,:projectName,:description,:minTeamSize,:maxTeamSize)";
 
 const QString DatabaseQueries::addStudentToProject = "INSERT INTO " + DatabaseQueries::PROJECT_STUDENT_TABLE + " (projectID,studentID) VALUES (:projectID,:studentID)";
+
+
+const QString DatabaseQueries::removeStudentFromProject = "DELETE FROM ProjectStudents where studentID=:studentID";
 
 //SELECT Projects.* FROM Students JOIN ProjectStudents on Students.studentID = ProjectStudents.studentID JOIN Projects ON Projects.projectID = ProjectStudents.projectID where Students.studentID = ?;
 

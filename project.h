@@ -23,6 +23,7 @@ public:
     Project(const Project &obj);
     int registerStudent(Student& student);
     int registerStudents(QList<Student*>* students);
+    int unregisterStudent(Student& student);
     int setTeamMax(const int& max);
     int setTeamMin(const int& min);
     int setDescription(const QString& description);
