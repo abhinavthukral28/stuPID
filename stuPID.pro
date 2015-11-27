@@ -41,8 +41,7 @@ SOURCES += main.cpp\
     studentmanageprojectcontroller.cpp \
     adminviewresult.cpp \
     session.cpp \
-    adminviewdetial.cpp \
-    editqualificationsviewcontroller.cpp
+    adminviewdetial.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -74,8 +73,7 @@ HEADERS  += \
     studentmanageprojectcontroller.h \
     adminviewresult.h \
     session.h \
-    adminviewdetial.h \
-    editqualificationsviewcontroller.h
+    adminviewdetial.h
 
 FORMS    += \
     studentregister.ui \
