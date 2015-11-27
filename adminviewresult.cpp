@@ -6,9 +6,15 @@ AdminViewResult::AdminViewResult(QWidget *parent) :
     ui(new Ui::AdminViewResult)
 {
     ui->setupUi(this);
+
 }
 
 AdminViewResult::~AdminViewResult()
 {
     delete ui;
+}
+
+void AdminViewResult::on_BackButton_clicked()
+{
+
 }

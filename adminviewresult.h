@@ -15,6 +15,9 @@ public:
     explicit AdminViewResult(QWidget *parent = 0);
     ~AdminViewResult();
 
+private slots:
+    void on_BackButton_clicked();
+
 private:
     Ui::AdminViewResult *ui;
 };
