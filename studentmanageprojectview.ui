@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QListView" name="listView">
+  <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -124,7 +124,7 @@
     <string>Register  in New Project</string>
    </property>
   </widget>
-  <zorder>listView</zorder>
+  <zorder>listWidget</zorder>
   <zorder>editProfile</zorder>
   <zorder>dropProject</zorder>
   <zorder>descriptionView</zorder>

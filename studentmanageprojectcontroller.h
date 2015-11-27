@@ -11,15 +11,13 @@ class StudentManageProjectController:public QObject
 {
 public:
     StudentManageProjectController(StudentManageProjectView *view);
+    int init();
 private:
     StudentManageProjectView *studentManageProjectView;
     Project *selectedProject;
     QList<Project*> allProjects;
     QList<Student*> studentsByProjects;
     Database *database;
-
-
-
 
 };
 
