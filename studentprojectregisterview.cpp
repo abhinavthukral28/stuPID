@@ -46,8 +46,6 @@ void studentProjectRegisterView::on_registerButton_clicked()
 
     int index = item->listWidget()->currentIndex().row();
 
-    //item->setTextColor(Qt::red);
-
     if (!studentProjectRegisterViewController->registerToProject())
     {
         QMessageBox::warning(this, tr("Warning"),
@@ -58,19 +56,18 @@ void studentProjectRegisterView::on_registerButton_clicked()
                              tr("Successfully registered!"),
                              QMessageBox::Yes);
 
-    }//do whatever
+    }
 
 }
-
-void studentProjectRegisterView::on_projectsList_doubleClicked(const QModelIndex &index)
-{
-    int indexVal = index.row();
-    studentProjectRegisterViewController->updateSelectedProject(indexVal);
-}
-
 
 
 void studentProjectRegisterView::on_manageProjectButton_clicked()
 {
     studentProjectRegisterViewController->goStudentManageProjectView();
+}
+
+void studentProjectRegisterView::on_projectsList_clicked(const QModelIndex &index)
+{
+    int indexVal = index.row();
+    studentProjectRegisterViewController->updateSelectedProject(indexVal);
 }

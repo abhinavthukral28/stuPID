@@ -7,6 +7,8 @@
 #include "studentregister.h"
 #include "session.h"
 #include "Database.h"
+#include "studentmanageprojectview.h"
+
 LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(login)
 {
 
@@ -44,20 +46,22 @@ int LoginController::goToAdminView(QString &userName){
     transition(false);
     return 0;
 }
-int LoginController::goToStudentManageProjectsView(){
+
+int LoginController::goToStudentRegisterView(){
     //transition view
     loginDialog->close();
-    ManageProjectsView rview;
+    StudentRegister rview;
     rview.exec();
 
     return 0;
 }
+
 void LoginController::transition(bool student)
 {
 
     loginDialog->close();
     if(student){
-        studentProjectRegisterView sview;
+        StudentManageProjectView sview;
         sview.exec();
     }
     else{
@@ -65,5 +69,5 @@ void LoginController::transition(bool student)
         mview.exec();
     }
 
-
 }
+

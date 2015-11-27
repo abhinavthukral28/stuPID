@@ -48,5 +48,5 @@ void LoginDialog::on_loginpushButton_clicked()
 
 void LoginDialog::on_pushButton_clicked()
 {
-    loginController->goToStudentManageProjectsView();
+    loginController->goToStudentRegisterView();
 }

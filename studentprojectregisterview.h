@@ -23,9 +23,9 @@ public:
 private slots:
     void on_registerButton_clicked();
 
-    void on_projectsList_doubleClicked(const QModelIndex &index);
-
     void on_manageProjectButton_clicked();
+
+    void on_projectsList_clicked(const QModelIndex &index);
 
 private:
     Ui::studentProjectView *ui;
