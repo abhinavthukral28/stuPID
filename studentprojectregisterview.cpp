@@ -1,6 +1,7 @@
 #include "studentprojectregisterview.h"
 #include "ui_studentprojectregisterview.h"
 #include <QDebug>
+#include <QMessageBox>
 #include <QListWidgetItem>
 #include "session.h"
 #include "project.h"
@@ -45,12 +46,19 @@ void studentProjectRegisterView::on_registerButton_clicked()
 
     int index = item->listWidget()->currentIndex().row();
 
-    item->setTextColor(Qt::red);
+    //item->setTextColor(Qt::red);
 
-    studentProjectRegisterViewController->registerToProject();
+    if (!studentProjectRegisterViewController->registerToProject())
+    {
+        QMessageBox::warning(this, tr("Warning"),
+                             tr("Already registered!"),
+                             QMessageBox::Yes);
+    }else {
+        QMessageBox::information(this, tr("Success"),
+                             tr("Successfully registered!"),
+                             QMessageBox::Yes);
 
-
-
+    }//do whatever
 
 }
 

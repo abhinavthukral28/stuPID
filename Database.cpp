@@ -502,7 +502,7 @@ int Database::addStudentToProject(const int& projectID,Student& student){
         {
             qDebug() << query.lastError();
             qDebug() << query.lastQuery();
-            throw generateException(query);
+            return 0;
         }
         else {
             return query.lastInsertId().toInt();
