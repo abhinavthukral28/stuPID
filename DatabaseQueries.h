@@ -54,7 +54,7 @@ const QString DatabaseQueries::insertProject = "INSERT INTO "+DatabaseQueries::P
 const QString DatabaseQueries::addStudentToProject = "INSERT INTO " + DatabaseQueries::PROJECT_STUDENT_TABLE + " (projectID,studentID) VALUES (:projectID,:studentID)";
 
 
-const QString DatabaseQueries::removeStudentFromProject = "DELETE FROM ProjectStudents where studentID=:studentID";
+const QString DatabaseQueries::removeStudentFromProject = "DELETE FROM ProjectStudents where studentID=:studentID AND projectID=:projectID";
 
 //SELECT Projects.* FROM Students JOIN ProjectStudents on Students.studentID = ProjectStudents.studentID JOIN Projects ON Projects.projectID = ProjectStudents.projectID where Students.studentID = ?;
 

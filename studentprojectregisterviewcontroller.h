@@ -15,7 +15,7 @@ public:
     int init();
     int updateSelectedProject(const int& index);
     int goStudentManageProjectView();
-
+    int registerToProject();
 private:
     studentProjectRegisterView *stuProRegisterView;
     QList<Project*> allProjects;

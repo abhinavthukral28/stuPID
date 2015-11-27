@@ -451,6 +451,7 @@ int Database::removeStudentFromProject(const int& projectID,Student& student){
     query.prepare(DatabaseQueries::removeStudentFromProject);
 
     query.bindValue(":studentID",student.getID());
+    query.bindValue(":projectID",projectID);
 
     if(!query.exec())
     {
@@ -625,21 +626,39 @@ const QList<Qualification*>& Database::getAllQualifications(const int& studentID
 }
 
 
-int Database::studentExists(const QString& username){
+const Student* Database::authenticate(const QString& username){
 
     QSqlQuery query;
 
-    query.prepare("SELECT studentID from Students where studentName = :username");
+    query.prepare("SELECT * from Students where studentName = :username");
 
     query.bindValue(":username",username);
 
     if (!query.exec())
     {
+        qDebug() << query.lastError();
+        qDebug() << query.lastQuery();
         throw generateException(query);
-        return 1;
-    }else
+    }
+    else
     {
-        return query.next();
+        QString tempUsername;
+        int tempID;
+        Student* tempStudent = 0;
+
+       if (query.next())
+        {
+            //first column is 0
+            tempID = query.value(0).toInt();
+            tempUsername = QString(query.value(1).toString());
+
+            tempStudent = new Student(tempID,tempUsername);
+             return tempStudent;
+
+        }
+       else return 0;
+
+
     }
 }
 

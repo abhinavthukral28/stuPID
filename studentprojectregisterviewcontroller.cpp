@@ -1,6 +1,7 @@
 #include "studentprojectregisterviewcontroller.h"
 #include "Database.h"
 #include "project.h"
+#include "session.h"
 #include "Database.h"
 #include "studentprojectregisterview.h"
 #include "studentmanageprojectview.h"
@@ -49,3 +50,8 @@ int studentprojectregisterviewcontroller::goStudentManageProjectView()
 
      return 0;
 }
+
+ int studentprojectregisterviewcontroller::registerToProject(){
+     Student student = Session::getStudent();
+    return database->addStudentToProject((selectedProject->getID()),student);
+ }

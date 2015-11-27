@@ -2,6 +2,7 @@
 #include "ui_studentprojectregisterview.h"
 #include <QDebug>
 #include <QListWidgetItem>
+#include "session.h"
 #include "project.h"
 #include "studentprojectregisterviewcontroller.h"
 
@@ -41,7 +42,14 @@ int studentProjectRegisterView::updateDetailedView(Project &project)
 void studentProjectRegisterView::on_registerButton_clicked()
 {
     QListWidgetItem *item = ui->projectsList->currentItem();
+
+    int index = item->listWidget()->currentIndex().row();
+
     item->setTextColor(Qt::red);
+
+    studentProjectRegisterViewController->registerToProject();
+
+
 
 
 }

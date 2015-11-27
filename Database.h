@@ -8,6 +8,7 @@ class QSqlQuery;
 class QString;
 class Student;
 class Project;
+class User;
 class SQLException;
 class Qualification;
 class Database{
@@ -29,7 +30,7 @@ class Database{
     int addStudentToProject(const int& projectID,Student& student);
     int removeStudentFromProject(const int& projectID,Student& student);
     int updateQualification(const int& studentID,const Qualification& qualification);
-    int studentExists(const QString& username);
+    const Student* authenticate(const QString& username);
    private:
     static Database *instance;
     static const QString DBpath;

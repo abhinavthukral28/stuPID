@@ -19,6 +19,7 @@ public:
     int updateProjectsList(QList<QString> &projectTitles);
     int updateDetailedView(Project &project);
 
+
 private slots:
     void on_registerButton_clicked();
 
