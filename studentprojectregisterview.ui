@@ -67,14 +67,14 @@
    <widget class="QPushButton" name="manageProjectButton">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>230</x>
       <y>290</y>
-      <width>121</width>
+      <width>99</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Manage Project</string>
+     <string>Back</string>
     </property>
    </widget>
   </widget>
@@ -82,9 +82,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>20</y>
+     <y>30</y>
      <width>161</width>
-     <height>361</height>
+     <height>341</height>
     </rect>
    </property>
   </widget>
