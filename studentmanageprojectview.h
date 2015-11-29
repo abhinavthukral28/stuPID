@@ -26,6 +26,7 @@ public:
 private slots:
     void on_listWidget_clicked(const QModelIndex &index);
 
+    void on_dropProject_clicked();
     void on_RegisterNewProject_clicked();
 
 private:

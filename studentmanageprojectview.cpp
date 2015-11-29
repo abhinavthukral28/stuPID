@@ -44,18 +44,7 @@ int StudentManageProjectView::updateDetailedView(Project &project)
   num2.setNum(project.getMaxTeamSize());
   QString tempsStorage= "Description:"+ project.getDescription() + "\nMinimum Team Size: "+ num1 + "\nMaximum Team Size: " + num2;
   ui->descriptionView->setText(tempsStorage);
-//  QString a= "hello";
 
-/*
-  for(int i=0; i<project.getRegisteredStudents().count();i++)
-  {
-
-      temp += project.getRegisteredStudents().at(i)->getUsername() + "  ";
-
-      ui->viewTextBrowser->setText(temp);
-
-  }
-  */
 }
 
 
@@ -66,6 +55,10 @@ void StudentManageProjectView::on_listWidget_clicked(const QModelIndex &index)
 
 }
 
+void StudentManageProjectView::on_dropProject_clicked()
+{
+   //studentManageProjectController-
+}
 void StudentManageProjectView::on_RegisterNewProject_clicked()
 {
     studentManageProjectController->goStudentRegisterProjectView();
