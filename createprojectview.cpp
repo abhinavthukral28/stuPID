@@ -52,3 +52,13 @@ void CreateProjectView::on_buttonBox_clicked(QAbstractButton *button)
 {
     createProjectViewController->saveProject();
 }
+
+void CreateProjectView::on_buttonBox_accepted()
+{
+    createProjectViewController->goToManageProjectView();
+}
+
+void CreateProjectView::on_buttonBox_rejected()
+{
+    createProjectViewController->goToManageProjectView();
+}
