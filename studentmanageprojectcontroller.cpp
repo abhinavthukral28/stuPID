@@ -1,6 +1,7 @@
 #include "studentmanageprojectcontroller.h"
 #include "studentmanageprojectview.h"
 #include "project.h"
+#include "session.h"
 #include "Database.h"
 #include <QDebug>
 #include "studentprojectregisterview.h"
@@ -9,7 +10,7 @@ StudentManageProjectController::StudentManageProjectController(StudentManageProj
     studentManageProjectView(view),
     database(Database::getInstance())
 {
-    allProjects = database->getAllProjects();
+    allProjects = database->getProjectsByStudent(Session::getStudent().getID());
 
 }
 

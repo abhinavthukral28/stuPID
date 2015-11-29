@@ -11,7 +11,7 @@ studentprojectregisterviewcontroller::studentprojectregisterviewcontroller(stude
    stuProRegisterView(view),
    database(Database::getInstance())
 {
-    allProjects = database->getAllProjects();
+    allProjects = database->getOpenProjectsByStudent(Session::getStudent().getID());
     selectedProject=0;
 }
 

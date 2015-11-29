@@ -106,6 +106,6 @@ int Project::setID(const int& newID){
     return 1;
 }
 
-QList<Student*> Project::getRegisteredStudents () const{
+const QList<Student*>& Project::getRegisteredStudents () const{
     return registeredStudents;
 }

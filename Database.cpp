@@ -580,7 +580,69 @@ const QList<Project*>& Database::getProjectsByStudent(const int& studentID)
 
 }
 
+const QList<Project*>& Database::getOpenProjectsByStudent(const int& studentID){
+    if (studentID > 0)
+    {
+        QSqlQuery query;
 
+        query.prepare(DatabaseQueries::getAvailableProjects);
+        query.bindValue(":studentID",studentID);
+
+        if(!query.exec())
+        {
+            throw generateException(query);
+        }
+        else {
+            QList<Project*>* projects = new QList<Project*>;
+
+            Student* tempStudent;
+            QString tempDescription;
+            QString tempTitle = "";
+            QString tempUsername;
+            int tempTeamMin;
+            int tempTeamMax;
+            int tempID = -1;
+            Project* tempProject = new Project(tempID,tempTitle);
+            int tempStudentID;
+
+
+            while (query.next())
+            {
+
+                tempID = query.value(0).toInt();
+
+                if (tempProject != NULL)
+                {
+                    if (tempProject->getID() != tempID)
+                    {
+                        tempTitle = QString(query.value(2).toString());
+                        tempProject = new Project(tempID,tempTitle);
+
+                        tempDescription = QString(query.value(3).toString());
+                        tempTeamMin = query.value(4).toInt();
+                        tempTeamMax = query.value(5).toInt();
+
+                        tempProject->setDescription(tempDescription);
+                        tempProject->setTeamMax(tempTeamMax);
+                        tempProject->setTeamMin(tempTeamMin);
+
+                        projects->append(tempProject);
+                    }
+
+                    tempStudentID = query.value(8).toInt();
+                    tempUsername = query.value(9).toString();
+                    tempStudent = new Student(tempStudentID,tempUsername);
+                    tempProject->registerStudent(*tempStudent);
+
+                }
+            }
+
+            return *projects;
+        }
+    }
+    throw generateCustomSQLException("INVALID INPUT FOR STUDENT ID -> " + studentID);
+
+}
 
 const QList<Qualification*>& Database::getAllQualifications(const int& studentID)
 {

@@ -22,6 +22,7 @@ class Database{
 
     const QList<Student*>& getStudentsByProject();
     const QList<Project*>& getProjectsByStudent(const int& studentID);
+    const QList<Project*>& getOpenProjectsByStudent(const int& studentID);
 
     int createStudent(Student& student);
     int createProject(Project& project);

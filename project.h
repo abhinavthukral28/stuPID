@@ -34,7 +34,7 @@ public:
     int setID(const int& newID);
     QString getDescription() const;
     QString getTitle() const;
-    QList<Student*> getRegisteredStudents() const;
+    const QList<Student*>& getRegisteredStudents() const;
 
 };
 
