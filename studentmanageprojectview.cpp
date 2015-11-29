@@ -4,6 +4,8 @@
 #include "student.h"
 #include <QDebug>
 #include "studentmanageprojectcontroller.h"
+#include "studentregistercontroller.h"
+
 StudentManageProjectView::StudentManageProjectView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentManageProjectView),
@@ -56,4 +58,8 @@ void StudentManageProjectView::on_listWidget_clicked(const QModelIndex &index)
 void StudentManageProjectView::on_dropProject_clicked()
 {
    //studentManageProjectController-
+}
+void StudentManageProjectView::on_RegisterNewProject_clicked()
+{
+    studentManageProjectController->goStudentRegisterProjectView();
 }

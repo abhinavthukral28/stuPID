@@ -11,6 +11,7 @@ class StudentManageProjectView;
 
 class QStringList;
 class Project;
+class studentprojectregisterviewcontroller;
 class StudentManageProjectView : public QDialog
 {
     Q_OBJECT
@@ -26,11 +27,12 @@ private slots:
     void on_listWidget_clicked(const QModelIndex &index);
 
     void on_dropProject_clicked();
+    void on_RegisterNewProject_clicked();
 
 private:
     Ui::StudentManageProjectView *ui;
     StudentManageProjectController *studentManageProjectController;
-
+    studentprojectregisterviewcontroller *studentProjectRegisterViewcontroller;
 };
 
 

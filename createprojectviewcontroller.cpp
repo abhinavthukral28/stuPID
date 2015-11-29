@@ -2,6 +2,7 @@
 #include "createprojectview.h"
 #include "Database.h"
 #include "project.h"
+#include "manageprojectsview.h"
 #include <QObject>
 #include <QDebug>
 
@@ -53,3 +54,11 @@ qDebug()<<"YAYAYAAYAYAYAYA";
 return 1;
  }
 
+int CreateProjectViewController::goToManageProjectView()
+{
+     createProjectsView->close();
+     ManageProjectsView manageProjectView;
+     manageProjectView.exec();
+
+     return 0;
+}

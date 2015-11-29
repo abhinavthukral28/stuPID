@@ -12,6 +12,7 @@ studentprojectregisterviewcontroller::studentprojectregisterviewcontroller(stude
    database(Database::getInstance())
 {
     allProjects = database->getAllProjects();
+
     selectedProject=0;
 }
 

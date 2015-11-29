@@ -10,6 +10,7 @@ class CreateProjectViewController:public QObject
 {
 public:
     CreateProjectViewController(CreateProjectView *view);
+    int goToManageProjectView();
 
    int saveProject();
 private:
