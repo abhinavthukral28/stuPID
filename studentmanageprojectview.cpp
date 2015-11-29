@@ -29,6 +29,37 @@ int StudentManageProjectView::updateProjectsList(QList<QString> &projectTitles){
         ui->listWidget->addItem(temp);
     }
     return 1;
-   // manageProjectsController->updateSelectedProject(0);
+   //manageProjectsController->updateSelectedProject(0);
+
+}
+
+int StudentManageProjectView::updateDetailedView(Project &project)
+
+{
+  QString num1;
+  num1.setNum(project.getMinTeamSize());
+  QString num2;
+  num2.setNum(project.getMaxTeamSize());
+  QString tempsStorage= "Description:"+ project.getDescription() + "\nMinimum Team Size: "+ num1 + "\nMaximum Team Size: " + num2;
+  ui->descriptionView->setText(tempsStorage);
+//  QString a= "hello";
+
+/*
+  for(int i=0; i<project.getRegisteredStudents().count();i++)
+  {
+
+      temp += project.getRegisteredStudents().at(i)->getUsername() + "  ";
+
+      ui->viewTextBrowser->setText(temp);
+
+  }
+  */
+}
+
+
+void StudentManageProjectView::on_listWidget_clicked(const QModelIndex &index)
+{
+    int indexValue= index.row();
+    studentManageProjectController->updateSelectedProject(indexValue);
 
 }

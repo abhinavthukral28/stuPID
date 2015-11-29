@@ -12,6 +12,9 @@ class StudentManageProjectController:public QObject
 public:
     StudentManageProjectController(StudentManageProjectView *view);
     int init();
+    int updateSelectedProject(const int& index);
+
+
 private:
     StudentManageProjectView *studentManageProjectView;
     Project *selectedProject;

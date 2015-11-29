@@ -19,13 +19,17 @@ public:
     explicit StudentManageProjectView(QWidget *parent = 0);
     ~StudentManageProjectView();
     int updateProjectsList(QList<QString> &projectTitles);
+    int updateDetailedView(Project &project); // you pass in a projec to display
 
 
+private slots:
+    void on_listWidget_clicked(const QModelIndex &index);
 
 private:
     Ui::StudentManageProjectView *ui;
     StudentManageProjectController *studentManageProjectController;
 
 };
+
 
 #endif // STUDENTMANAGEPROJECTVIEW_H

@@ -95,7 +95,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Description</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="RegisterNewProject">

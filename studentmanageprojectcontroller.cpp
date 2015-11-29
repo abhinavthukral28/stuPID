@@ -31,3 +31,12 @@ int StudentManageProjectController::init(){
     return 1;
     */
 }
+
+
+int StudentManageProjectController::updateSelectedProject(const int& index){
+    selectedProject=allProjects.at(index);
+    if(selectedProject != NULL){
+    studentManageProjectView->updateDetailedView(*selectedProject);
+    }
+    return 0;
+}
