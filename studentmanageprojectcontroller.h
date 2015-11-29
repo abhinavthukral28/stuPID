@@ -13,7 +13,7 @@ public:
     StudentManageProjectController(StudentManageProjectView *view);
     int init();
     int updateSelectedProject(const int& index);
-
+    int goStudentRegisterProjectView();
 
 private:
     StudentManageProjectView *studentManageProjectView;

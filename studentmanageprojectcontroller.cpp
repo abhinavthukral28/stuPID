@@ -3,7 +3,7 @@
 #include "project.h"
 #include "Database.h"
 #include <QDebug>
-
+#include "studentprojectregisterview.h"
 
 StudentManageProjectController::StudentManageProjectController(StudentManageProjectView *view):QObject(),
     studentManageProjectView(view),
@@ -39,4 +39,14 @@ int StudentManageProjectController::updateSelectedProject(const int& index){
     studentManageProjectView->updateDetailedView(*selectedProject);
     }
     return 0;
+}
+
+int StudentManageProjectController::goStudentRegisterProjectView()
+{
+    studentManageProjectView->close();
+    studentProjectRegisterView studentrojectRegisterView;
+    studentrojectRegisterView.exec();
+
+    return 0;
+
 }
