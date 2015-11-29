@@ -98,6 +98,7 @@ void ManageProjectsView::on_ViewStudentButton_clicked()
 void ManageProjectsView::on_viewDetailButton_clicked()
 {
     ui->viewTextBrowser->setText("coming soon");
+
 }
 
 void ManageProjectsView::on_viewResultButton_clicked()
