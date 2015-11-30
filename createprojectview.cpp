@@ -74,7 +74,7 @@ void CreateProjectView::on_buttonBox_accepted()
 {
     switch(createProjectViewController->saveProject())
     {
-        case 0:
+        case 1:
         {
            //createProjectViewController->saveProject();
            createProjectViewController->goToManageProjectView();
