@@ -1,4 +1,4 @@
-#include "createprojectviewcontroller.h"
+﻿#include "createprojectviewcontroller.h"
 #include "createprojectview.h"
 #include "Database.h"
 #include "project.h"
@@ -37,10 +37,7 @@ CreateProjectViewController::CreateProjectViewController(CreateProjectView *view
    ***/
 
 int CreateProjectViewController::saveProject(){
-   //const QString& a= createProjectsView->getProjectDescription();
-   //const QString& b= createProjectsView->getProjectTitle();
-   //const int& c=createProjectsView->getProjectTeamMin();
-  // const int& d=createProjectsView->getProjectTeamMax();
+
    Project* project = new Project (createProjectsView->getProjectTitle());
 
    project->setDescription(createProjectsView->getProjectDescription());
@@ -49,19 +46,20 @@ int CreateProjectViewController::saveProject(){
 
    if(createProjectsView->aTitle.isEmpty())
    {
-       error(2);//project name
+       return 2;//project name
+
    }
 
-   if(project->getMaxTeamSize()< project->getMinTeamSize() &&
-           createProjectsView->aMax.isEmpty() && createProjectsView->aMin.isEmpty())
+   if(project->getMaxTeamSize() < project->getMinTeamSize() ||
+           createProjectsView->aMax.isEmpty() || createProjectsView->aMin.isEmpty())
    {
-       error(1);//team size error
+      return 3; //invalid team size
    }
    else{
-    database->createProject(*project);
-        error(0);
-   }    //vinisha
-qDebug()<<"YAYAYAAYAYAYAYA";
+    return database->createProject(*project);
+
+   }
+
 
 return 1;
  }

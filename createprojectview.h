@@ -20,11 +20,10 @@ public:
     const int& getProjectTeamMin();
     const int& getProjectTeamMax();
     QString aTitle, aMin, aMax, aDescription;
-
+    void accept();
     ~CreateProjectView();
 
 private slots:
-    void on_buttonBox_clicked(QAbstractButton *button);
 
     void on_buttonBox_accepted();
 

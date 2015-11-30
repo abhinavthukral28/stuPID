@@ -68,49 +68,49 @@ const int& CreateProjectView::getProjectTeamMax()
 }
 
 
-void CreateProjectView::on_buttonBox_clicked(QAbstractButton *button)
-{
-    createProjectViewController->saveProject();
-}
+
 
 void CreateProjectView::on_buttonBox_accepted()
 {
-       // vinisha
-       //createProjectViewController->goToManageProjectView();
-        switch(createProjectViewController->err)
+    switch(createProjectViewController->saveProject())
+    {
+        case 0:
         {
-            case 0:
-            {
-               //createProjectViewController->saveProject();
-               createProjectViewController->goToManageProjectView();
-               break;
-            }
-
-            case 1:
-            {
-
-                QMessageBox::warning(this, tr("Warning"),
-                                     tr("Wrong team size!"),
-                                     QMessageBox::Ok);
-                break;
-            }
-
-            case 2:
-            {
-
-                QMessageBox::warning(this, tr("Warning"),
-                                     tr("Please enter Project Name!"),
-                                     QMessageBox::Ok);
-                break;
-             }
-            default:
-             {
-                QMessageBox::warning(this, tr("Warning"),
-                                     tr("Please enter correct infromation!"),
-                                     QMessageBox::Ok);
-                break;
-            }
+           //createProjectViewController->saveProject();
+           createProjectViewController->goToManageProjectView();
+           break;
         }
+
+        case 3:
+        {
+
+            QMessageBox::warning(this, tr("Warning"),
+                                 tr("Wrong team size!"),
+                                 QMessageBox::Ok);
+            break;
+        }
+
+        case 2:
+        {
+
+            QMessageBox::warning(this, tr("Warning"),
+                                 tr("Please enter Project Name!"),
+                                 QMessageBox::Ok);
+            break;
+         }
+        default:
+         {
+            QMessageBox::warning(this, tr("Warning"),
+                                 tr("Please enter correct infromation!"),
+                                 QMessageBox::Ok);
+            break;
+        }
+    }
+
+}
+
+void CreateProjectView::accept()
+{
 
 }
 
