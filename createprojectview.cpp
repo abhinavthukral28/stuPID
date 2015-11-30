@@ -20,7 +20,6 @@ CreateProjectView::~CreateProjectView()
 const QString CreateProjectView::getProjectDescription()
  {
      aDescription = ui->projectDescriptionTextFeild->toPlainText();
-     //vinisha
      QString desc = ui->projectDescriptionTextFeild->toPlainText();
      return desc;
 
@@ -38,14 +37,7 @@ const int& CreateProjectView::getProjectTeamMin(){
     aMin = ui->minTeamSizeTextFeild->text();
     int b =aMin.toInt();
     int& ref3=b;
-   // createProjectViewController->setNewProjectTeamMin(b);
     return ref3;
-    /*
-    int b =ui->minTeamSizeTextFeild->text().toInt();
-    int& ref3=b;
-   // createProjectViewController->setNewProjectTeamMin(b);
-    return ref3;
-    */
 
 }
 
@@ -56,15 +48,7 @@ const int& CreateProjectView::getProjectTeamMax()
     aMax = ui->maxTeamSizeTextFeild->text();
     int x = aMax.toInt();
     int &ref4=x;
-    //createProjectViewController->setNewProjectTeamMax(x);
     return ref4;
-    //vinisha
-    /*
-    int x =ui->maxTeamSizeTextFeild->text().toInt();
-    int &ref4=x;
-    //createProjectViewController->setNewProjectTeamMax(x);
-    return ref4;
-    */
 }
 
 
@@ -76,7 +60,6 @@ void CreateProjectView::on_buttonBox_accepted()
     {
         case 1:
         {
-           //createProjectViewController->saveProject();
            createProjectViewController->goToManageProjectView();
            break;
         }
@@ -101,7 +84,7 @@ void CreateProjectView::on_buttonBox_accepted()
         default:
          {
             QMessageBox::warning(this, tr("Warning"),
-                                 tr("Please enter correct infromation!"),
+                                 tr("Project already exist!"),
                                  QMessageBox::Ok);
             break;
         }

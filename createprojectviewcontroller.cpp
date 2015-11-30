@@ -51,7 +51,8 @@ int CreateProjectViewController::saveProject(){
    }
 
    if(project->getMaxTeamSize() < project->getMinTeamSize() ||
-           createProjectsView->aMax.isEmpty() || createProjectsView->aMin.isEmpty())
+           createProjectsView->aMax.isEmpty() || createProjectsView->aMin.isEmpty() ||
+           createProjectsView->aMax.toInt() == 0 || createProjectsView->aMin.toInt() == 0)
    {
       return 3; //invalid team size
    }
@@ -65,7 +66,7 @@ int CreateProjectViewController::saveProject(){
    }
 
 
-return 0;
+
  }
 
 int CreateProjectViewController::goToManageProjectView()
