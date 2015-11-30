@@ -56,12 +56,16 @@ int CreateProjectViewController::saveProject(){
       return 3; //invalid team size
    }
    else{
-    return database->createProject(*project);
+    if(database->createProject(*project))
+    {
+        return 1;
+    }
+    else return 0;
 
    }
 
 
-return 1;
+return 0;
  }
 
 int CreateProjectViewController::goToManageProjectView()
