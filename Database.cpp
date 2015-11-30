@@ -591,7 +591,7 @@ const QList<Project*>& Database::getOpenProjectsByStudent(const int& studentID){
         if(!query.exec())
         {
             throw generateException(query);
-        }
+         }
         else {
             QList<Project*>* projects = new QList<Project*>;
 
