@@ -42,9 +42,11 @@ ManageProjectsView::~ManageProjectsView()
 
 int ManageProjectsView::updateDetailedView(Project &project)
 {
-  ui->projectName->setText(project.getTitle());
-  ui->projectDescription->setText(project.getDescription());
-  QString a= "hello";
+    QString title="Title: "+project.getTitle();
+    QString description="Description: " +project.getDescription();
+  ui->projectName->setText(title);
+  ui->projectDescription->setText(description);
+  //QString a= "hello";
    QString temp;
 
   for(int i=0; i<project.getRegisteredStudents().count();i++)
@@ -81,6 +83,17 @@ QString temp;
 
 }
 
+int ManageProjectsView::setDetailedView(Project &project)
+{
+    QString num1;
+    num1.setNum(project.getMinTeamSize());
+    QString num2;
+    num2.setNum(project.getMaxTeamSize());
+    QString tempsStorage= "Minimum Team Size: "+ num1 + "\nMaximum Team Size: " + num2;
+    ui->viewTextBrowser->setText(tempsStorage);
+
+}
+
 
 
 void ManageProjectsView::on_ViewStudentButton_clicked()
@@ -97,8 +110,7 @@ void ManageProjectsView::on_ViewStudentButton_clicked()
 
 void ManageProjectsView::on_viewDetailButton_clicked()
 {
-    ui->viewTextBrowser->setText("coming soon");
-
+   manageProjectsController->updateDetailedView();
 }
 
 void ManageProjectsView::on_viewResultButton_clicked()

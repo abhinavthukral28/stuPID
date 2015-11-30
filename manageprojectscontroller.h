@@ -16,6 +16,8 @@ public:
     int updateSelectedProject(const int& index);
     int updateStudentList();
     int goToCreateProjectView();
+    int updateDetailedView();
+
 
  private slots:
 

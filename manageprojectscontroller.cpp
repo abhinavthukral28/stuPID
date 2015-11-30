@@ -55,6 +55,13 @@ int ManageProjectsController::updateStudentList(){
     return 0;
 }
 
+int ManageProjectsController::updateDetailedView(){
+    if(selectedProject != NULL){
+    manageProjectsView->setDetailedView(*selectedProject);
+    }
+    return 0;
+}
+
 int ManageProjectsController::goToCreateProjectView()
 {
     manageProjectsView->close();

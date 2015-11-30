@@ -19,6 +19,8 @@ public:
      int updateProjectsList(QList<QString> &projectTitles);
      int updateDetailedView(Project &project);
      int setStudentList(Project &project);
+     int setDetailedView(Project &project);
+
      //int showListofAllStudents(Students);
     ~ManageProjectsView();
      void setprojectIndex(int x);
@@ -37,6 +39,9 @@ private slots:
      void on_viewResultButton_clicked();
 
      void on_createProjectButton_clicked();
+
+     //void on_viewDetailButton_clicked(bool checked);
+
 
 private:
     Ui::ManageProjectsView *ui;
