@@ -5,10 +5,12 @@
 #include <QMap>
 
 class Student;
+class Qualification;
 class PciBuilder
 {
    private:
-    int calculatePci(Student studentOne, Student studentTwo);
+    int calculatePci(const Student& studentOne,const Student& studentTwo);
+    int calculatePci(const Qualification& q1,const Qualification& q2);
 public:
     PciBuilder();
     QMap<int, QMap<int,int> >& calculatePci(const QList<Student*>&);
