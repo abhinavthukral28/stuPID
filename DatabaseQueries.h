@@ -65,7 +65,7 @@ const QString DatabaseQueries::getProjectsByStudent =  QString("SELECT * FROM ")
 
 
 
-const QString DatabaseQueries::getAvailableProjects =  "SELECT * FROM   Projects WHERE  NOT EXISTS (SELECT * FROM   ProjectStudents WHERE  ProjectStudents.studentID = :studentID)";
+const QString DatabaseQueries::getAvailableProjects =  "SELECT * FROM Projects WHERE  projectID NOT IN (SELECT projectID FROM ProjectStudents where studentID = :studentID)";
 
 
 const QString DatabaseQueries::getQualificationsByStudent = QString("SELECT * FROM ")+DatabaseQueries::EXPECTATIONS_TABLE+" JOIN "

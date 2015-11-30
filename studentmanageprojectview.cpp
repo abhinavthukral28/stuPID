@@ -57,7 +57,11 @@ void StudentManageProjectView::on_listWidget_clicked(const QModelIndex &index)
 
 void StudentManageProjectView::on_dropProject_clicked()
 {
-   //studentManageProjectController-
+    int index = ui->listWidget->currentIndex().row();
+   if(studentManageProjectController->unregisterFromProject()){
+
+       delete ui->listWidget->takeItem(index);
+   }
 }
 void StudentManageProjectView::on_RegisterNewProject_clicked()
 {

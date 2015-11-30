@@ -51,3 +51,8 @@ int StudentManageProjectController::goStudentRegisterProjectView()
     return 0;
 
 }
+
+int StudentManageProjectController::unregisterFromProject(){
+    return database->removeStudentFromProject(selectedProject->getID(),Session::getStudent());
+
+}

@@ -95,7 +95,7 @@ QString Project::getTitle() const{
     return projectName;
 }
 
-int Project::getID() const
+const int Project::getID() const
 {
     return ID;
 }

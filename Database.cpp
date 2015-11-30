@@ -444,7 +444,7 @@ int Database::addStudentsToProject(const int& projectID, QList<Student*>* studen
 
 }
 
-int Database::removeStudentFromProject(const int& projectID,Student& student){
+int Database::removeStudentFromProject(const int projectID,const Student& student){
 
     QSqlQuery query;
 

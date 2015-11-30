@@ -59,7 +59,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Drop Project</string>
+    <string>Unregister</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="descriptionView">
@@ -108,7 +108,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Register  in New Project</string>
+    <string>Register in New Project</string>
    </property>
   </widget>
   <zorder>listWidget</zorder>

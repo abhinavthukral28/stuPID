@@ -29,7 +29,7 @@ class Database{
 
     int addStudentsToProject(const int& projectID, QList<Student*>* students);
     int addStudentToProject(const int& projectID,Student& student);
-    int removeStudentFromProject(const int& projectID,Student& student);
+    int removeStudentFromProject(const int projectID,const Student& student);
     int updateQualification(const int& studentID,const Qualification& qualification);
     const Student* authenticate(const QString& username);
    private:
