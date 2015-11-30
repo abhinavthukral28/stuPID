@@ -2,6 +2,7 @@
 #include "ui_studentregister.h"
 #include "studentregistercontroller.h"
 #include "student.h"
+#include <QMessageBox>
 
 StudentRegister::StudentRegister(QWidget *parent) :
     QDialog(parent),
@@ -9,6 +10,7 @@ StudentRegister::StudentRegister(QWidget *parent) :
     controller(new StudentRegisterController(this))
 {
     ui->setupUi(this);
+    ui->password->setEchoMode(QLineEdit::Password);
 }
 
 StudentRegister::~StudentRegister()
@@ -23,10 +25,17 @@ void StudentRegister::on_pushButton_clicked()
     QString userName = ui->userName->text();
     QString firstName = ui->firstName->text();
     QString lastName = ui->lastName->text();
-    Student *student = new Student(userName);
-    student->setFirstName(firstName);
-    student->setLastName(lastName);
-    controller->goToQualificationsView(*student);
+    if(userName.isEmpty() || firstName.isEmpty() || lastName.isEmpty())
+    {
+        QMessageBox::warning(this, tr("Warning"),
+                             tr("Please enter all the information"),
+                             QMessageBox::Yes);
+    }else{
+        Student *student = new Student(userName);
+        student->setFirstName(firstName);
+        student->setLastName(lastName);
+        controller->goToQualificationsView(*student);
+    }
 
     
 }

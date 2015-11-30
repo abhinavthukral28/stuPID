@@ -25,24 +25,32 @@ void LoginDialog::on_loginpushButton_clicked()
     QString password = ui->passwroldlineEdit->text();
     bool isStudent = ui->studentradioButton->isChecked();
     qDebug() << isStudent;
-    if(loginController->authenticate(userName, password, isStudent))
+    if(!userName.isEmpty())
     {
-        //do other stuff if u want in the dialog
-       if(isStudent){
-    qDebug() << "Go to this place";
-        loginController->goToStudentView(userName);
+        if(loginController->authenticate(userName, password, isStudent))
+        {
+            //do other stuff if u want in the dialog
+           if(isStudent){
+        qDebug() << "Go to this place";
+            loginController->goToStudentView(userName);
 
-        //studentProjectView ;
-       }
-       else{
-           loginController->goToAdminView(userName);
-           //Manage Projects View       
-       }
-    }
-    else {
-        QMessageBox::warning(this, tr("Warning"),
-                             tr("user name or password error!"),
+            //studentProjectView ;
+           }
+           else{
+               loginController->goToAdminView(userName);
+               //Manage Projects View
+           }
+        }
+        else {
+            QMessageBox::warning(this, tr("Warning"),
+                                 tr("user name or password error!"),
+                                 QMessageBox::Yes);
+        }
+    }else{
+            QMessageBox::warning(this, tr("Warning"),
+                             tr("Please enter user name."),
                              QMessageBox::Yes);
+
     }
 }
 
