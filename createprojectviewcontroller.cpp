@@ -42,13 +42,25 @@ int CreateProjectViewController::saveProject(){
    //const int& c=createProjectsView->getProjectTeamMin();
   // const int& d=createProjectsView->getProjectTeamMax();
    Project* project = new Project (createProjectsView->getProjectTitle());
+
    project->setDescription(createProjectsView->getProjectDescription());
    project->setTeamMin(createProjectsView->getProjectTeamMin());
    project->setTeamMax(createProjectsView->getProjectTeamMax());
 
+   if(createProjectsView->aTitle.isEmpty())
+   {
+       error(2);//project name
+   }
 
-
+   if(project->getMaxTeamSize()< project->getMinTeamSize() &&
+           createProjectsView->aMax.isEmpty() && createProjectsView->aMin.isEmpty())
+   {
+       error(1);//team size error
+   }
+   else{
     database->createProject(*project);
+        error(0);
+   }    //vinisha
 qDebug()<<"YAYAYAAYAYAYAYA";
 
 return 1;
@@ -61,4 +73,20 @@ int CreateProjectViewController::goToManageProjectView()
      manageProjectView.exec();
 
      return 0;
+}
+
+int CreateProjectViewController::error(int type)
+{
+    if(type == 0)//all correct
+    {
+        return err = 0;
+    }
+    if(type == 1)//team size error
+    {
+        return err = 1;
+    }
+    if(type == 2)//project name
+    {
+        return err = 2;
+    }
 }
