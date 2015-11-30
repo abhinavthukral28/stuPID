@@ -17,6 +17,7 @@ class Qualification
 public:
     Qualification(const int& dispID,const int& ID,const QString& titleParam,const QString& displayExpectationParam,const QString& displayQualificationParam);
     Qualification(const int& dispID,const int& ID,const QString& titleParam,const QString& displayExpectationParam,const QString& displayQualificationParam,const int& qualificationRatingParam,const int& expectationRatingParam);
+    Qualification(const Qualification &obj);
     QString getQualificationDisplay() const;
     QString getTitle() const;
     QString getExpectationDisplay() const;

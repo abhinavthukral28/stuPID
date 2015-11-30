@@ -9,6 +9,17 @@ Qualification::Qualification(const int& dispID,const int&ID,const QString& title
                  displayID(dispID),qualificationID(ID),title(QString::fromStdString(titleParam.toStdString())),expectationDisplay(QString::fromStdString(displayExpectationParam.toStdString())),qualificationDisplay(QString::fromStdString(displayQualificationParam.toStdString())),qualificationRating(qualificationRatingParam),expectationRating(expectationRatingParam){
 }
 
+
+Qualification::Qualification(const Qualification &obj){
+   displayID = obj.getDisplayID();
+   expectationDisplay = obj.getExpectationDisplay();
+   qualificationDisplay = obj.getQualificationDisplay();
+   title = obj.getTitle();
+   qualificationRating = obj.getQualificationRating();
+   expectationRating = obj.getExpectationRating();
+   qualificationID = obj.getQualificationID();
+}
+
 QString Qualification::getQualificationDisplay() const {
     return qualificationDisplay;
 }

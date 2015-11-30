@@ -284,9 +284,11 @@ const QList<Student*>& Database::getAllStudents(){
         {
             //first column is 0
             tempID = query.value(0).toInt();
+
             tempUsername = QString(query.value(1).toString());
 
             tempStudent = new Student(tempID,tempUsername);
+            tempStudent->qualifications = getAllQualifications(tempID);
             students->append(tempStudent);
         }
 
@@ -566,8 +568,10 @@ const QList<Project*>& Database::getProjectsByStudent(const int& studentID)
                     }
 
                     tempStudentID = query.value(8).toInt();
+
                     tempUsername = query.value(9).toString();
                     tempStudent = new Student(tempStudentID,tempUsername);
+                     tempStudent->qualifications = getAllQualifications(tempStudentID);
                     tempProject->registerStudent(*tempStudent);
 
                 }
@@ -630,8 +634,10 @@ const QList<Project*>& Database::getOpenProjectsByStudent(const int& studentID){
                     }
 
                     tempStudentID = query.value(8).toInt();
+
                     tempUsername = query.value(9).toString();
                     tempStudent = new Student(tempStudentID,tempUsername);
+                     tempStudent->qualifications = getAllQualifications(tempStudentID);
                     tempProject->registerStudent(*tempStudent);
 
                 }
@@ -713,8 +719,9 @@ const Student* Database::authenticate(const QString& username){
             //first column is 0
             tempID = query.value(0).toInt();
             tempUsername = QString(query.value(1).toString());
-
             tempStudent = new Student(tempID,tempUsername);
+             QList<Qualification*> temp = getAllQualifications(tempID);
+             tempStudent->qualifications = temp;
              return tempStudent;
 
         }
