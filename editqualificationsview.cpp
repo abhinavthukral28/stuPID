@@ -1,26 +1,35 @@
 #include "editqualificationsview.h"
 #include "ui_editqualificationsview.h"
+#include "session.h"
 
-editQualificationsView::editQualificationsView(QWidget *parent) :
+EditQualificationsView::EditQualificationsView(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::editQualificationsView)
+    ui(new Ui::editQualificationsView),
+    controller(new EditQualificationsController(this))
 {
     ui->setupUi(this);
-    for(int i=1; i<=20; i++)
+    stu = controller->getStudent();
+    stu.getQualifications();
+    qualificationList = stu.getQualifications();
+
+    for(int i=0; i< qualificationList.count(); i++)
     {
-        ui->listWidget->addItem("Qualification "+ QString::number(i));
-        ui->textBrowser->setText("Hello");
+        ui->listWidget->addItem(qualificationList[i]->getTitle());
     }
 }
 
-editQualificationsView::~editQualificationsView()
+EditQualificationsView::~EditQualificationsView()
 {
     delete ui;
 }
 
-void editQualificationsView::on_listWidget_clicked(const QModelIndex &index)
+void EditQualificationsView::updatePanel(int index){
+
+}
+
+void EditQualificationsView::on_listWidget_clicked(const QModelIndex &index)
 {
-    QListWidgetItem *item = ui->listWidget->currentItem();
-    item->setTextColor(Qt::red);
+    int i = index.row();
+    updatePanel(i);
 
 }
