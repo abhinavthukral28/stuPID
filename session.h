@@ -5,7 +5,7 @@
 class Session
 {
 friend class LoginController;
-friend class QualificationInitController;
+friend class StudentRegisterController;
 protected:
        static int setStudent(const Student& user);
 private:
