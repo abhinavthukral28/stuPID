@@ -7,13 +7,16 @@
 #include "studentprojectregisterview.h"
 #include "studentmanageprojectview.h"
 
+
+
+
 studentprojectregisterviewcontroller::studentprojectregisterviewcontroller(studentProjectRegisterView *view):QObject(),
    stuProRegisterView(view),
    database(Database::getInstance())
 {
 
     allProjects = database->getOpenProjectsByStudent(Session::getStudent().getID());
-    selectedProject=0;
+    selectedProject=NULL;
 }
 
 int studentprojectregisterviewcontroller::init()
@@ -29,7 +32,11 @@ int studentprojectregisterviewcontroller::init()
 
     stuProRegisterView->updateProjectsList(projectTitles);
     if(allProjects.count() > 0)
-    stuProRegisterView->updateDetailedView(*allProjects.at(0));
+    {
+      stuProRegisterView->updateDetailedView(*allProjects.at(0));
+      if(!allProjects.isEmpty())
+        selectedProject = allProjects.at(0);
+    }
     return 1;
 
 }
@@ -55,6 +62,8 @@ int studentprojectregisterviewcontroller::goStudentManageProjectView()
 
  int studentprojectregisterviewcontroller::registerToProject(){
     Student student = Session::getStudent();
-    return database->addStudentToProject((selectedProject->getID()),student);
+    if(selectedProject != NULL)
+        return database->addStudentToProject((selectedProject->getID()),student);
+    else return 2;
 
  }

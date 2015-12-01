@@ -13,7 +13,10 @@ StudentManageProjectView::StudentManageProjectView(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    studentManageProjectController->init();
+    if(studentManageProjectController->init())
+    {
+        ui->listWidget->setCurrentRow(0);
+    }
 }
 
 StudentManageProjectView::~StudentManageProjectView()
@@ -44,7 +47,7 @@ int StudentManageProjectView::updateDetailedView(Project &project)
   num2.setNum(project.getMaxTeamSize());
   QString tempsStorage= "Description:"+ project.getDescription() + "\nMinimum Team Size: "+ num1 + "\nMaximum Team Size: " + num2;
   ui->descriptionView->setText(tempsStorage);
-
+  ui->ProjectTitle->setText(project.getTitle());
 }
 
 
