@@ -35,7 +35,11 @@ int ManageProjectsController::init(){
 
     manageProjectsView->updateProjectsList(projectTitles);
     if(allProjects.count() > 0)
-    manageProjectsView->updateDetailedView(*allProjects.at(0));
+    {
+        manageProjectsView->updateDetailedView(*allProjects.at(0));
+
+        selectedProject = allProjects.at(0);
+    }
     return 1;
 }
 
@@ -43,7 +47,8 @@ int ManageProjectsController::init(){
 int ManageProjectsController::updateSelectedProject(const int& index){
     selectedProject=allProjects.at(index);
     if(selectedProject != NULL){
-    manageProjectsView->updateDetailedView(*selectedProject);
+        manageProjectsView->updateDetailedView(*selectedProject);
+
     }
     return 0;
 }

@@ -12,7 +12,11 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
 {
     ui->setupUi(this);
 
-    manageProjectsController->init();
+    if(manageProjectsController->init())
+    {
+        ui->projectsList->setCurrentRow(0);
+
+    }
 
     ui->projectName->setText("Project Name");
     ui->projectDescription->setText("Project Description");

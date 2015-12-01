@@ -26,11 +26,14 @@ int StudentManageProjectController::init(){
     }
 
     studentManageProjectView->updateProjectsList(projectTitles);
-    /*
+
     if(allProjects.count() > 0)
-    manageProjectsView->updateDetailedView(*allProjects.at(0));
+    {
+        studentManageProjectView->updateDetailedView(*allProjects.at(0));
+        selectedProject = allProjects.at(0);
+    }
     return 1;
-    */
+
 }
 
 
