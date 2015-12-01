@@ -2,12 +2,15 @@
 #define MANAGEPROJECTSVIEW_H
 #include <QListWidgetItem>
 #include <QDialog>
+#include <QMessageBox>
+
 #include "manageprojectscontroller.h"
 
 namespace Ui {
 class ManageProjectsView;
 }
 
+class QMessageLogContext;
 class QStringList;
 class Project;
 class ManageProjectsView : public QDialog
@@ -40,8 +43,7 @@ private slots:
 
      void on_createProjectButton_clicked();
 
-     //void on_viewDetailButton_clicked(bool checked);
-
+     void on_makeTeamsButton_clicked();
 
 private:
     Ui::ManageProjectsView *ui;

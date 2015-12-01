@@ -9,7 +9,7 @@ namespace Ui {
 class StudentManageProjectView;
 }
 
-class QStringList;
+//class QStringList;
 class Project;
 class studentprojectregisterviewcontroller;
 class StudentManageProjectView : public QDialog

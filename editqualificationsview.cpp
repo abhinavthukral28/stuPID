@@ -9,7 +9,6 @@ EditQualificationsView::EditQualificationsView(QWidget *parent) :
 {
     ui->setupUi(this);
     stu = controller->getStudent();
-    stu.getQualifications();
     qualificationList = stu.getQualifications();
 
     for(int i=0; i< qualificationList.count(); i++)
