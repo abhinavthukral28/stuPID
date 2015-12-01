@@ -3,6 +3,7 @@
 #include "project.h"
 #include "manageprojectscontroller.h"
 #include "student.h"
+#include <QDialog>
 
 ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     ui(new Ui::ManageProjectsView),
@@ -120,6 +121,14 @@ void ManageProjectsView::on_viewResultButton_clicked()
 
 void ManageProjectsView::on_createProjectButton_clicked()
 {
-    //ui->viewTextBrowser->setText(" I am create project button");
     manageProjectsController->goToCreateProjectView();
+}
+
+void ManageProjectsView::on_makeTeamsButton_clicked()
+{
+
+    QMessageBox::information(this, tr("Dialog Box"),
+                         tr("Teams Created!"),
+                         QMessageBox::Ok);
+
 }

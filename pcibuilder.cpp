@@ -50,9 +50,10 @@ QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& stude
 
 int PciBuilder::calculatePci(const Student& studentOne,const Student& studentTwo){
 
-
-//    QList<Qualification*> personOneQuals = studentOne.getQualifications();
-//    QList<Qualification*> personTwoQuals = studentTwo.getQualifications();
+//get the qualification 
+    
+   //const QList<Qualification*> personOneQuals = studentOne.getQualifications();
+   //const QList<Qualification*> personTwoQuals = studentTwo.getQualifications();
     int total= 0;
 //    for (int i = 0; i < personOneQuals.size();i++)
 //    {
