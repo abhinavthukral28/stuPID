@@ -1,7 +1,7 @@
 #include <QString>
 #include "studentprojectregisterview.h"
 #include <QDebug>
-#include "EditQualificationsController.h"
+#include "editqualificationscontroller.h"
 #include <QList>
 #include "qualification.h"
 #include "Database.h"
