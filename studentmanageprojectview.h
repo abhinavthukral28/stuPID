@@ -29,6 +29,8 @@ private slots:
     void on_dropProject_clicked();
     void on_RegisterNewProject_clicked();
 
+    void on_editProfile_clicked();
+
 private:
     Ui::StudentManageProjectView *ui;
     StudentManageProjectController *studentManageProjectController;

@@ -5,7 +5,7 @@
 #include <QDebug>
 #include "studentmanageprojectcontroller.h"
 #include "studentregistercontroller.h"
-
+#include "editqualificationsview.h"
 StudentManageProjectView::StudentManageProjectView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentManageProjectView),
@@ -66,4 +66,14 @@ void StudentManageProjectView::on_dropProject_clicked()
 void StudentManageProjectView::on_RegisterNewProject_clicked()
 {
     studentManageProjectController->goStudentRegisterProjectView();
+}
+
+void StudentManageProjectView::on_editProfile_clicked()
+{
+
+    this->close();
+    EditQualificationsView view;
+    view.exec();
+
+
 }
