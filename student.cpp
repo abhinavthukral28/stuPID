@@ -20,7 +20,7 @@ Student::Student() : User("username",-1,"","")
 }
 
 
-const QList<Qualification*> Student::getQualifications(){
+const QList<Qualification*> Student::getQualifications() const{
     return qualifications;
 }
 

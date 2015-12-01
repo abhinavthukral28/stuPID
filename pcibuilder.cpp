@@ -52,13 +52,13 @@ int PciBuilder::calculatePci(const Student& studentOne,const Student& studentTwo
 
 //get the qualification 
     
-   //const QList<Qualification*> personOneQuals = studentOne.getQualifications();
-   //const QList<Qualification*> personTwoQuals = studentTwo.getQualifications();
+   const QList<Qualification*> personOneQuals = studentOne.getQualifications();
+   const QList<Qualification*> personTwoQuals = studentTwo.getQualifications();
     int total= 0;
-//    for (int i = 0; i < personOneQuals.size();i++)
-//    {
-//       // total+=calculatePci(*personOneQuals.at(i),*personTwoQuals.at(i));
-//    }
+   for (int i = 0; i < personOneQuals.size();i++)
+    {
+      total+=calculatePci(*personOneQuals.at(i),*personTwoQuals.at(i));
+    }
     //results processing...
     return total;
 
