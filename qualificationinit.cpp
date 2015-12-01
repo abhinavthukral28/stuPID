@@ -2,13 +2,14 @@
 #include "ui_qualificationinit.h"
 #include "qualificationinitController.h"
 #include "student.h"
+#include "session.h"
 #include <QDebug>
 #include "qualification.h"
-QualificationInit::QualificationInit(Student &student) :
+QualificationInit::QualificationInit() :
         QDialog(),
         ui(new Ui::qualificationinit),
         controller(new QualificationInitController(this)),
-        newStudent(student)
+        newStudent(Session::getStudent())
 
 
 {

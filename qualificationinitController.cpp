@@ -20,8 +20,8 @@ void QualificationInitController::setQualificationList()
 }
 
 void QualificationInitController::createStudent(Student &student){
-    database->createStudent(student);
-    Session::setStudent(student);
+    for (int i = 0; i < student.getQualifications().count(); i++)
+     database->createQualificationEntry(student.getID(),*student.getQualifications().at(i));
 }
 void QualificationInitController::goToStudentProjectRegisterView()
 {

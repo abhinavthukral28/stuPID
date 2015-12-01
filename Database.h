@@ -31,6 +31,7 @@ class Database{
     int addStudentToProject(const int& projectID,Student& student);
     int removeStudentFromProject(const int projectID,const Student& student);
     int updateQualification(const int& studentID,const Qualification& qualification);
+    int createQualificationEntry(const int& studentID,const Qualification& qualification);
     const Student* authenticate(const QString& username);
    private:
     static Database *instance;
@@ -42,7 +43,7 @@ class Database{
     void createTables();
     int insertValuesintoQualifications();
     int insertValuesintoExpectations();
-    int createQualificationEntry(const int& studentID,const Qualification& qualification);
+
     int insertStudents();
     int init();
     Database();

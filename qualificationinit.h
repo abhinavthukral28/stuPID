@@ -14,7 +14,7 @@ class QualificationInit : public QDialog
     Q_OBJECT
 
 public:
-    explicit QualificationInit(Student &student);
+    explicit QualificationInit();
     ~QualificationInit();
     void getQualificationList(const QList<Qualification*>& qList);
 

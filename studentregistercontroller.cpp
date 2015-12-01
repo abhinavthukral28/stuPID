@@ -2,6 +2,8 @@
 #include "qualificationinit.h"
 #include "studentregister.h"
 #include "student.h"
+#include "Database.h"
+#include "session.h"
 #include <QList>
 
 StudentRegisterController::StudentRegisterController(StudentRegister *sRegister):QObject(), studentRegister(sRegister)
@@ -12,7 +14,10 @@ StudentRegisterController::StudentRegisterController(StudentRegister *sRegister)
 int StudentRegisterController::goToQualificationsView(Student student){
 
     studentRegister->close();
-    QualificationInit qual(student);
+
+    Database::getInstance()->createStudent(student);
+    Session::setStudent(student);
+    QualificationInit qual;
     return qual.exec();
 
 
