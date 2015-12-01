@@ -29,7 +29,10 @@ QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& stude
 
                 pair.first = j ;
                 pair.second = tempResult;
-                pci.take(i).append(pair);
+                QList< QPair<int,int> > val = pci.value(i);
+                insert(val,pair);
+                pci.insert(i,val);
+
 
             }
 
@@ -38,17 +41,6 @@ QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& stude
         }
 
 
-//        Collections.sort(results);
-//        for (Result result : results)
-//        {
-//            System.out.println ("ID: " +result.one.id + " ID:" + result.two.id);
-//            System.out.println (result.score);
-//        }
-
-//        System.out.println();
-//        System.out.println();
-
-//        results.clear();
     }
 }
 
@@ -79,8 +71,25 @@ int PciBuilder::calculatePci(const Qualification& q1, const Qualification& q2)
 }
 
 
-bool PciBuilder::qPairLessThan(const QPair<int,int>& p1, const QPair<int,int>& p2){
-    return p1.second < p2.second;
+bool PciBuilder::insert(QList<QPair<int,int> >& pci,const QPair<int,int>& pair){
+    bool inserted = false;
+    for (int i = 0; i < pci.count() && !inserted; i++)
+    {
+        if (pci.at(i).second > pair.second)
+        {
+            if (i > 0)
+            {
+                pci.insert(i-1,pair);
+                inserted = true;
+            }
+            else break;
+        }
+    }
+
+    if (!inserted)
+        pci.insert(0,pair);
+
+    return inserted;
 }
 
 
