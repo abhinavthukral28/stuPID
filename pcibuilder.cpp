@@ -11,7 +11,7 @@ QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& stude
 {
 
     //student id -> student id -> pci
-     const QMap<int, QMap<int,int> > pci;
+    QMap<int, QList < QPair<int,int> > > pci;
     for (int i = 0; i < studentList.count(); i++)
     {
 
@@ -23,8 +23,13 @@ QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& stude
         {
             Student* otherOne = studentList.at(j);
             if (j != i) {
+                QPair<int,int> pair;
                 //results processing master list
                 tempResult = calculatePci(*thisOne,*otherOne);
+
+                pair.first = j ;
+                pair.second = tempResult;
+                pci.take(i).append(pair);
 
             }
 
@@ -56,9 +61,9 @@ int PciBuilder::calculatePci(const Student& studentOne,const Student& studentTwo
     int total= 0;
 //    for (int i = 0; i < personOneQuals.size();i++)
 //    {
-//       // total+=calculatePci(*personOneQuals.at(i),*personTwoQuals.at(i));
+//       total+=calculatePci(*personOneQuals.at(i),*personTwoQuals.at(i));
 //    }
-    //results processing...
+//    results processing...
     return total;
 
 
@@ -69,6 +74,11 @@ int PciBuilder::calculatePci(const Qualification& q1, const Qualification& q2)
    return abs(q2.getExpectationRating() - q1.getQualificationRating())
            - abs(q1.getExpectationRating() - q2.getQualificationRating())
            + 2* abs(q1.getExpectationRating()- q2.getExpectationRating());
+}
+
+
+bool PciBuilder::qPairLessThan(const QPair<int,int>& p1, const QPair<int,int>& p2){
+    return p1.second < p2.second;
 }
 
 
