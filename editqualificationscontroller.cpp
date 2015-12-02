@@ -1,5 +1,6 @@
 #include <QString>
 #include "studentprojectregisterview.h"
+#include "studentmanageprojectview.h"
 #include <QDebug>
 #include "editqualificationscontroller.h"
 #include <QList>
@@ -23,4 +24,13 @@ Student EditQualificationsController::getStudent()
 
 void EditQualificationsController::createStudent(Student &student){
     database->createStudent(student);
+}
+
+int EditQualificationsController::goToManageProject()
+{
+     editQualificationsView->close();
+     StudentManageProjectView studentManageProjectView;
+     studentManageProjectView.exec();
+
+     return 0;
 }

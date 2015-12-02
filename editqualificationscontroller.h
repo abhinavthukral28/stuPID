@@ -19,6 +19,7 @@ public:
      EditQualificationsView *editQualificationsView;
      Student getStudent();
      void createStudent(Student &student);
+     int goToManageProject();
 
  private:
      Database *database;
