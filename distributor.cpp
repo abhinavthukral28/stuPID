@@ -1,7 +1,7 @@
 #include "distributor.h"
 #include "team.h"
 
-Distributor::Distributor(const QMap< int,QMap<int,int> >& pciParam) : pci(pciParam)
+Distributor::Distributor(const QMap< int,QList< QPair<int,int> > >& pciParam) : pci(pciParam)
 {
 
 }

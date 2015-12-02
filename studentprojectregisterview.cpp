@@ -53,11 +53,16 @@ void studentProjectRegisterView::on_registerButton_clicked()
                                  QMessageBox::Yes);
             break;
         case 1:
+         {
             QMessageBox::information(this, tr("Success"),
                                  tr("Successfully registered!"),
                                  QMessageBox::Yes);
-            break;
+            int index = ui->projectsList->currentIndex().row();
 
+            delete ui->projectsList->takeItem(index);
+            //UPDATE DETAILED VIEW
+            break;
+        }
         case 2:
             QMessageBox::warning(this, tr("Warning"),
                                  tr("Select a project!"),
