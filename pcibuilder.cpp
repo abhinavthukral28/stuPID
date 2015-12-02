@@ -35,7 +35,6 @@ QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& stude
 
 
             }
-           //qSort(R, RandomAccessIterator end, LessThan lessThan)
 
 
 
