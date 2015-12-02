@@ -13,7 +13,10 @@ studentProjectRegisterView::studentProjectRegisterView(QWidget *parent) :
     studentProjectRegisterViewController(new studentprojectregisterviewcontroller(this))
 {   
     ui->setupUi(this);
-    studentProjectRegisterViewController->init();
+    if(studentProjectRegisterViewController->init())
+    {
+        ui->projectsList->setCurrentRow(0);
+    }
 }
 
 studentProjectRegisterView::~studentProjectRegisterView()
@@ -42,21 +45,27 @@ int studentProjectRegisterView::updateDetailedView(Project &project)
 
 void studentProjectRegisterView::on_registerButton_clicked()
 {
-    QListWidgetItem *item = ui->projectsList->currentItem();
 
-    int index = item->listWidget()->currentIndex().row();
+    switch(studentProjectRegisterViewController->registerToProject()){
+        case 0:
+            QMessageBox::warning(this, tr("Warning"),
+                                 tr("Already registered!"),
+                                 QMessageBox::Yes);
+            break;
+        case 1:
+            QMessageBox::information(this, tr("Success"),
+                                 tr("Successfully registered!"),
+                                 QMessageBox::Yes);
+            break;
 
-    if (!studentProjectRegisterViewController->registerToProject())
-    {
-        QMessageBox::warning(this, tr("Warning"),
-                             tr("Already registered!"),
-                             QMessageBox::Yes);
-    }else {
-        QMessageBox::information(this, tr("Success"),
-                             tr("Successfully registered!"),
-                             QMessageBox::Yes);
+        case 2:
+            QMessageBox::warning(this, tr("Warning"),
+                                 tr("Select a project!"),
+                                 QMessageBox::Yes);
+            break;
 
     }
+
 
 }
 

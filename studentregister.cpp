@@ -28,7 +28,7 @@ void StudentRegister::on_pushButton_clicked()
     if(userName.isEmpty() || firstName.isEmpty() || lastName.isEmpty())
     {
         QMessageBox::warning(this, tr("Warning"),
-                             tr("Please enter all the information"),
+                             tr("Please enter all the information!"),
                              QMessageBox::Yes);
     }else{
         Student *student = new Student(userName);

@@ -22,6 +22,12 @@
      <height>361</height>
     </rect>
    </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="currentRow">
+    <number>-1</number>
+   </property>
   </widget>
   <widget class="QLabel" name="QuesTopLabel">
    <property name="geometry">
@@ -48,6 +54,9 @@
    <property name="text">
     <string/>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">expectationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
@@ -74,6 +83,9 @@
    <property name="text">
     <string/>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">qualificationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QLabel" name="QuesDownLabel">
    <property name="geometry">
@@ -139,6 +151,9 @@
    <property name="text">
     <string/>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">qualificationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
@@ -165,6 +180,9 @@
    <property name="text">
     <string/>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">qualificationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QRadioButton" name="eB1">
    <property name="geometry">
@@ -181,6 +199,9 @@
    <property name="checked">
     <bool>false</bool>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">expectationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
@@ -246,6 +267,9 @@
    <property name="text">
     <string/>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">qualificationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QRadioButton" name="eB3">
    <property name="geometry">
@@ -259,6 +283,9 @@
    <property name="text">
     <string/>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">expectationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QRadioButton" name="eB4">
    <property name="geometry">
@@ -272,6 +299,9 @@
    <property name="text">
     <string/>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">expectationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QRadioButton" name="eB5">
    <property name="geometry">
@@ -285,6 +315,9 @@
    <property name="text">
     <string/>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">expectationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -327,6 +360,9 @@
    <property name="checked">
     <bool>true</bool>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">qualificationButtonGroup</string>
+   </attribute>
   </widget>
   <widget class="QPushButton" name="NextButton_2">
    <property name="geometry">
@@ -344,4 +380,8 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="qualificationButtonGroup"/>
+  <buttongroup name="expectationButtonGroup"/>
+ </buttongroups>
 </ui>

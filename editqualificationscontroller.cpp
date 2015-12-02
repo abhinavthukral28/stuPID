@@ -21,6 +21,7 @@ Student EditQualificationsController::getStudent()
     return stu;
 }
 
-void EditQualificationsController::createStudent(Student &student){
-    database->createStudent(student);
+void EditQualificationsController::updateQualifications(Student &student){
+    for (int i = 0; i < student.getQualifications().count(); i++)
+     database->updateQualification(student.getID(),*student.getQualifications().at(i));
 }
