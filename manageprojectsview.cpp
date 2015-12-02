@@ -5,6 +5,7 @@
 #include "student.h"
 #include <QDialog>
 
+
 ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     ui(new Ui::ManageProjectsView),
     manageProjectsController(new ManageProjectsController(this))
@@ -12,15 +13,17 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
 {
     ui->setupUi(this);
 
+
+    ui->projectName->setText("Project Name");
+    ui->projectDescription->setText("Project Description");
+    ui->viewTextBrowser->setText("view students or view details or view results");
+
+
     if(manageProjectsController->init())
     {
         ui->projectsList->setCurrentRow(0);
 
     }
-
-    ui->projectName->setText("Project Name");
-    ui->projectDescription->setText("Project Description");
-    ui->viewTextBrowser->setText("view students or view details or view results");
 
 }
 
@@ -131,7 +134,8 @@ void ManageProjectsView::on_createProjectButton_clicked()
 void ManageProjectsView::on_makeTeamsButton_clicked()
 {
 
-    QMessageBox::information(this, tr("Dialog Box"),
+    manageProjectsController->makeTeams();
+    QMessageBox::information(this, tr("Team Builder"),
                          tr("Teams Created!"),
                          QMessageBox::Ok);
 

@@ -3,7 +3,9 @@
 #include "logindialog.h"
 #include "project.h"
 #include "Database.h"
+#include "team.h"
 #include "createprojectview.h"
+#include "teambuilder.h"
 
 
 
@@ -77,3 +79,8 @@ int ManageProjectsController::goToCreateProjectView()
 
 }
 
+int ManageProjectsController::makeTeams()
+{
+    TeamBuilder builder;
+    QList<Team*> teams =builder.createTeams(*selectedProject);
+}

@@ -22,11 +22,16 @@ public:
 private slots:
     void on_listWidget_clicked(const QModelIndex &index);
     void updatePanel(int index);
+    void on_NextButton_2_clicked();
+
+    void on_NextButton_clicked();
+    
 private:
     Ui::editQualificationsView *ui;
     EditQualificationsController *controller;
     Student stu;
     QList<Qualification*> qualificationList;
+    int previousIndex;
 };
 
 #endif // EDITQUALIFICATIONSVIEW_H

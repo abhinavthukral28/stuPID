@@ -17,6 +17,7 @@ public:
     int updateStudentList();
     int goToCreateProjectView();
     int updateDetailedView();
+    int makeTeams();
 
 
  private slots:

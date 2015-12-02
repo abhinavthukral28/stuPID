@@ -63,7 +63,12 @@ int studentprojectregisterviewcontroller::goStudentManageProjectView()
  int studentprojectregisterviewcontroller::registerToProject(){
     Student student = Session::getStudent();
     if(selectedProject != NULL)
-        return database->addStudentToProject((selectedProject->getID()),student);
+    {
+      if( database->addStudentToProject((selectedProject->getID()),student)){
+          return 1;
+      }
+      return 0;
+    }
     else return 2;
 
  }
