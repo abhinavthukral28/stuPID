@@ -15,7 +15,7 @@ class PciBuilder
     bool insert(QList<QPair<int,int> >& pci,const QPair<int,int>&);
 public:
     PciBuilder();
-    QMap<int, QMap<int,int> >& calculatePci(const QList<Student*>&);
+    QMap<int, QList< QPair<int,int> > >& calculatePci(const QList<Student*>&);
 
 };
 

@@ -7,7 +7,7 @@ PciBuilder::PciBuilder()
 
 }
 
-QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& studentList)
+QMap<int, QList< QPair<int,int> > >& PciBuilder::calculatePci(const QList<Student*>& studentList)
 {
 
     //student id -> student id -> pci
@@ -42,6 +42,7 @@ QMap<int, QMap<int,int> >& PciBuilder::calculatePci(const QList<Student*>& stude
 
 
     }
+    return pci;
 }
 
 
