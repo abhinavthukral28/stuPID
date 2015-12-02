@@ -32,8 +32,3 @@ void EditQualificationsView::on_listWidget_clicked(const QModelIndex &index)
     updatePanel(i);
 
 }
-
-void EditQualificationsView::on_NextButton_2_clicked()
-{
-    controller->goToManageProject();
-}

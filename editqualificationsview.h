@@ -22,8 +22,6 @@ public:
 private slots:
     void on_listWidget_clicked(const QModelIndex &index);
     void updatePanel(int index);
-    void on_NextButton_2_clicked();
-
 private:
     Ui::editQualificationsView *ui;
     EditQualificationsController *controller;
