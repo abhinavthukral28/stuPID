@@ -3,19 +3,18 @@
 
 #include <QList>
 
-class Student;
 class Team
 {
 
 private :
-    QList<Student*> teamMembers;
+    QList<int> teamMembers;
     int pci;
     int rank;
 public:
     Team();
-    int addStudent(Student& student);
-    int removeStudent(Student& student);
-    const QList<Student*>& getTeamMembers();
+    int addStudent(int id);
+    int removeStudent(int id);
+    const QList<int>& getTeamMembers();
 
 };
 

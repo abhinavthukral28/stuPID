@@ -5,17 +5,17 @@ Team::Team()
 }
 
 
-int Team::addStudent(Student& student)
+int Team::addStudent(int id)
 {
-    if (!teamMembers.contains(&student))
+    if (!teamMembers.contains(id))
     {
-     teamMembers << &student;
+     teamMembers << id;
      return 1;
     }
     return 0;
 }
 
-const QList<Student*>& Team::getTeamMembers()
+const QList<int>& Team::getTeamMembers()
 {
     return teamMembers;
 }
@@ -24,6 +24,6 @@ const QList<Student*>& Team::getTeamMembers()
 
 
 
-int Team::removeStudent(Student& student){
- return teamMembers.removeOne(&student);
+int Team::removeStudent(int id){
+ return teamMembers.removeOne(id);
 }
