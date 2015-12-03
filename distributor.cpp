@@ -33,8 +33,7 @@ int Distributor::calculateTeamWeight(Team team, int id)
         }
 
     }
-    //total =(team.getTeamMembers().at(i));
-    return -1;
+    return total;
 }
 
 int Distributor::assignStudentToTeam(int studentID, QList<Team*> teams)
