@@ -60,6 +60,8 @@ void studentProjectRegisterView::on_registerButton_clicked()
             int index = ui->projectsList->currentIndex().row();
 
             delete ui->projectsList->takeItem(index);
+            ui->projectsList->setCurrentRow(0);
+            studentProjectRegisterViewController->updateSelectedProject(0);
             //UPDATE DETAILED VIEW
             break;
         }

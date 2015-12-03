@@ -15,7 +15,7 @@ StudentManageProjectView::StudentManageProjectView(QWidget *parent) :
 
     if(studentManageProjectController->init())
     {
-        ui->listWidget->setCurrentRow(0);
+       ui->listWidget->setCurrentRow(0);
     }
 }
 
@@ -64,7 +64,10 @@ void StudentManageProjectView::on_dropProject_clicked()
    if(studentManageProjectController->unregisterFromProject()){
 
        delete ui->listWidget->takeItem(index);
+       ui->listWidget->setCurrentRow(0);
+        studentManageProjectController->updateSelectedProject(0);
    }
+
 }
 void StudentManageProjectView::on_RegisterNewProject_clicked()
 {
