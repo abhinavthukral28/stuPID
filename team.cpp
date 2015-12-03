@@ -2,20 +2,21 @@
 
 Team::Team()
 {
+    pci = -1;
 }
 
 
-int Team::addStudent(Student& student)
+int Team::addStudent(int id)
 {
-    if (!teamMembers.contains(&student))
+    if (!teamMembers.contains(id))
     {
-     teamMembers << &student;
-     return 1;
+        teamMembers << id;
+        return 1;
     }
     return 0;
 }
 
-const QList<Student*>& Team::getTeamMembers()
+const QList<int>& Team::getTeamMembers()
 {
     return teamMembers;
 }
@@ -24,6 +25,18 @@ const QList<Student*>& Team::getTeamMembers()
 
 
 
-int Team::removeStudent(Student& student){
- return teamMembers.removeOne(&student);
+int Team::removeStudent(int id){
+    return teamMembers.removeOne(id);
+}
+
+int Team::getPci(){
+    return pci;
+}
+
+int Team::setPci(int newPci){
+    if(pci >= 0){
+        pci = newPci;
+        return 1;
+    }
+    return 0;
 }
