@@ -6,15 +6,17 @@ Distributor::Distributor(const QMap< int,QList< QPair<int,int> > >& pciParam) : 
 }
 
 const QList<Team*>& Distributor::distributeTeams(const int minSize,const int maxSize){
-    QList <Team*>* teams = new QList<Team*>;
 
-    QList<int> pairedStudents;
+
+    QList<int> remainingStudents = pci.keys();
 
     int numTeams = pci.keys().count()/minSize;
 
 
-     QList< QPair<int,int> > topRow = createTopRowPairs(numTeams);
-     return *teams;
+     QList<Team*> teams = createTopRowTeams(numTeams,remainingStudents);
+
+
+     return teams;
  }
 
 
@@ -36,22 +38,11 @@ int Distributor::assignStudentToTeam(int studentID, QList<Team*> teams)
     return -1;
 }
 
-QList< QPair<int,int> > Distributor::createTopRowPairs(int numTeams)
+const QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& remainingStudents)
 {
-     QList< QPair<int,int> > topRow;
-     for (int i = 0; i < pci.keys().count(); i++){
-
-         int IDOne = pci.keys().at(i);
-         insert(topRow,pci.value(IDOne).at(0));
-
-
-
-     }
-
-     for (int i = numTeams; i < topRow.count(); i++)
-     {
-         topRow.removeAt(i);
-     }
+     QList< Team* > topRow;
+     QList< QPair<int,int> > pairs;
+     for (int i = 0; i< pci.keys().count();)
      return topRow;
 }
 
