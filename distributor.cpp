@@ -14,6 +14,12 @@ Distributor::Distributor(const QMap< int,QList< QPair<int,int> > >& pciParam) : 
 
 int Distributor::calculateTeamWeight(Team team)
 {
+    QList<int> total;
+    QList<Student*> teamMembers = team.getTeamMembers();
+        for(int i=0;i<teamMembers.count();i++){
+        int a = 0;
+        }
+        //total =(team.getTeamMembers().at(i));
  return -1;
 }
 
