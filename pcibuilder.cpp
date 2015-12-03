@@ -2,6 +2,7 @@
 #include "student.h"
 #include "qualification.h"
 #include <stdlib.h>
+#include<qdebug.h>
 PciBuilder::PciBuilder()
 {
 
@@ -56,7 +57,12 @@ int PciBuilder::calculatePci(const Student& studentOne,const Student& studentTwo
 
     for (int i = 0; i < personOneQuals.size();i++)
     {
+//       qDebug << "Title: " + personOneQuals.at(i)->getTitle();
+//       qDebug << "Student UserName:" + studentOne.getUsername();
+//       qDebug << "q1 = " + personOneQuals.at(i)->getQualificationRating();
+//       qDebug << "e1 = " + personOneQuals.at(i)->getQualificationRating();
        total+=calculatePci(*personOneQuals.at(i),*personTwoQuals.at(i));
+
     }
 //    results processing...
     return total;

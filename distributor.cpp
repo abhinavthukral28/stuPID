@@ -21,13 +21,17 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,const int max
 }
 
 
-int Distributor::calculateTeamWeight(Team team)
+int Distributor::calculateTeamWeight(Team team, int id)
 {
-    QList<int> pciValues;
     QList<int> teamMembers = team.getTeamMembers();
-
+    int total = team.getPci();
     for(int i=0; i<teamMembers.count();i++){
-        teamMembers.at(i);
+       QList<QPair<int,int> > values = pci.value(id);
+       for(int j; j<values.count(); j++){
+           if(values.at(j).first == teamMembers.at(i)){
+               total += values.at(j).second;
+           }
+        }
 
     }
     //total =(team.getTeamMembers().at(i));

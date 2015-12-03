@@ -11,7 +11,7 @@ class Distributor
 {
 private:
     const QMap< int,QList < QPair<int,int> > >& pci;
-    int calculateTeamWeight(Team team);
+    int calculateTeamWeight(Team team, int id);
     int assignStudentToTeam(int studentID, QList<Team*> teams);
 public:
     Distributor(const QMap< int,QList< QPair<int,int> > >& pciParam);
