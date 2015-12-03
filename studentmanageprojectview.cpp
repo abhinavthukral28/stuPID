@@ -65,7 +65,12 @@ void StudentManageProjectView::on_dropProject_clicked()
 
        delete ui->listWidget->takeItem(index);
        ui->listWidget->setCurrentRow(0);
-        studentManageProjectController->updateSelectedProject(0);
+       studentManageProjectController->updateSelectedProject(0);
+       if(ui->listWidget->count()==0)
+       {
+           ui->ProjectTitle->setText("Project Title");
+           ui->descriptionView->clear();
+       }
    }
 
 }

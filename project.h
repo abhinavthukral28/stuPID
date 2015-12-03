@@ -35,6 +35,7 @@ public:
     QString getDescription() const;
     QString getTitle() const;
     const QList<Student*>& getRegisteredStudents() const;
+    bool operator==(const Project& other);
 
 };
 

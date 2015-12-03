@@ -109,3 +109,8 @@ int Project::setID(const int& newID){
 const QList<Student*>& Project::getRegisteredStudents () const{
     return registeredStudents;
 }
+
+bool Project::operator==(const Project& other){
+    return other.getID() == getID();
+}
+

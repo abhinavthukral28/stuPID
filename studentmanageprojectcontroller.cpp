@@ -64,7 +64,7 @@ int StudentManageProjectController::unregisterFromProject(){
     if(database->removeStudentFromProject(selectedProject->getID(),Session::getStudent()))
     {
 
-        allProjects.removeAt(0);
+        allProjects.removeOne(selectedProject);
         return 1;
 
     }

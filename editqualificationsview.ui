@@ -35,7 +35,7 @@
      <x>230</x>
      <y>40</y>
      <width>511</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -93,7 +93,7 @@
      <x>230</x>
      <y>150</y>
      <width>521</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -381,7 +381,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="qualificationButtonGroup"/>
   <buttongroup name="expectationButtonGroup"/>
+  <buttongroup name="qualificationButtonGroup"/>
  </buttongroups>
 </ui>

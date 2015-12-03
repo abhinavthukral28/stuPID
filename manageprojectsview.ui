@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>555</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -109,10 +109,10 @@
     <widget class="QLabel" name="image">
      <property name="geometry">
       <rect>
-       <x>16</x>
+       <x>20</x>
        <y>80</y>
        <width>191</width>
-       <height>171</height>
+       <height>170</height>
       </rect>
      </property>
      <property name="text">
@@ -191,7 +191,7 @@
     <widget class="QPushButton" name="makeTeamsButton">
      <property name="geometry">
       <rect>
-       <x>438</x>
+       <x>400</x>
        <y>480</y>
        <width>121</width>
        <height>27</height>
@@ -204,7 +204,7 @@
     <widget class="QPushButton" name="createProjectButton">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>90</x>
        <y>480</y>
        <width>121</width>
        <height>27</height>

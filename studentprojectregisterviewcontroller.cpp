@@ -67,12 +67,16 @@ int studentprojectregisterviewcontroller::goStudentManageProjectView()
     Student student = Session::getStudent();
     if(selectedProject != NULL)
     {
-      if( database->addStudentToProject((selectedProject->getID()),student)){
-          allProjects.removeAt(0);
+      if( database->addStudentToProject((selectedProject->getID()),student))
+      {
+          allProjects.removeOne(selectedProject);//
           return 1;
-      }
+      }else if(allProjects.count() == 0 ){
+
+          return 2;
+      }else
       return 0;
     }
-    else return 2;
+
 
  }

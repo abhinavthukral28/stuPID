@@ -17,7 +17,11 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     ui->projectName->setText("Project Name");
     ui->projectDescription->setText("Project Description");
     ui->viewTextBrowser->setText("view students or view details or view results");
-
+    QPixmap  pixmap ;
+    int w = ui->image->width();
+    int h = ui->image->height();
+    pixmap.load(":/images/abhinavthukral28-stuPID/carleton.jpeg");
+    ui->image->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     if(manageProjectsController->init())
     {

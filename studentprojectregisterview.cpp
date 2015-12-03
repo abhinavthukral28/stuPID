@@ -48,12 +48,14 @@ void studentProjectRegisterView::on_registerButton_clicked()
 
     switch(studentProjectRegisterViewController->registerToProject()){
         case 0:
+        {
             QMessageBox::warning(this, tr("Warning"),
                                  tr("Already registered!"),
                                  QMessageBox::Yes);
             break;
+        }
         case 1:
-         {
+        {
             QMessageBox::information(this, tr("Success"),
                                  tr("Successfully registered!"),
                                  QMessageBox::Yes);
@@ -62,15 +64,21 @@ void studentProjectRegisterView::on_registerButton_clicked()
             delete ui->projectsList->takeItem(index);
             ui->projectsList->setCurrentRow(0);
             studentProjectRegisterViewController->updateSelectedProject(0);
-            //UPDATE DETAILED VIEW
+
+            if(ui->projectsList->count()==0)
+            {
+                ui->projectName->setText("Project Name");
+                ui->projectDescription->clear();
+            }
             break;
         }
         case 2:
+        {
             QMessageBox::warning(this, tr("Warning"),
-                                 tr("Select a project!"),
+                                 tr("No Project here!"),
                                  QMessageBox::Yes);
             break;
-
+        }
     }
 
 

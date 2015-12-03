@@ -3,7 +3,7 @@
 #include <QListWidgetItem>
 #include <QDialog>
 #include <QMessageBox>
-
+#include <QPixmap>
 #include "manageprojectscontroller.h"
 
 namespace Ui {
@@ -49,6 +49,7 @@ private:
     Ui::ManageProjectsView *ui;
     ManageProjectsController *manageProjectsController;
     int projectIndex;
+
 
 };
 

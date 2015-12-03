@@ -88,3 +88,6 @@ FORMS    += \
     createprojectview.ui \
     adminviewresult.ui \
     adminviewdetail.ui
+
+RESOURCES += \
+    ../resource.qrc
