@@ -5,26 +5,30 @@ Distributor::Distributor(const QMap< int,QList< QPair<int,int> > >& pciParam) : 
 
 }
 
- const QList<Team*>& Distributor::distributeTeams(const int minSize,const int maxSize){
-     QList <Team*>* teams = new QList<Team*>;
+const QList<Team*>& Distributor::distributeTeams(const int minSize,const int maxSize){
+    QList <Team*>* teams = new QList<Team*>;
+
+    QList<int> pairedStudents;
+
+    int numTeams = pci.keys().count()/minSize;
 
 
-     int numTeams = pci.keys().count()/minSize;
-
-     createTopRowPairs(numTeams);
+     QList< QPair<int,int> > topRow = createTopRowPairs(numTeams);
      return *teams;
  }
 
 
 int Distributor::calculateTeamWeight(Team team)
 {
-    QList<int> total;
-    QList<Student*> teamMembers = team.getTeamMembers();
-        for(int i=0;i<teamMembers.count();i++){
-        int a = 0;
-        }
-        //total =(team.getTeamMembers().at(i));
- return -1;
+    QList<int> pciValues;
+    QList<int> teamMembers = team.getTeamMembers();
+
+    for(int i=0; i<teamMembers.count();i++){
+        teamMembers.at(i);
+
+    }
+    //total =(team.getTeamMembers().at(i));
+    return -1;
 }
 
 int Distributor::assignStudentToTeam(int studentID, QList<Team*> teams)
