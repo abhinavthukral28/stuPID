@@ -60,6 +60,8 @@ void studentProjectRegisterView::on_registerButton_clicked()
             int index = ui->projectsList->currentIndex().row();
 
             delete ui->projectsList->takeItem(index);
+             ui->projectDescription->clear();
+             //ui->projectName->setText("Project Name");
             //UPDATE DETAILED VIEW
             break;
         }

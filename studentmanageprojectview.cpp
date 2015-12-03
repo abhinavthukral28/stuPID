@@ -64,6 +64,7 @@ void StudentManageProjectView::on_dropProject_clicked()
    if(studentManageProjectController->unregisterFromProject()){
 
        delete ui->listWidget->takeItem(index);
+       ui->descriptionView->clear();
    }
 }
 void StudentManageProjectView::on_RegisterNewProject_clicked()
