@@ -15,6 +15,7 @@ public:
     Team();
     int addStudent(Student& student);
     int removeStudent(Student& student);
+    const QList<Student*>& getTeamMembers();
 
 };
 

@@ -4,6 +4,7 @@ Team::Team()
 {
 }
 
+
 int Team::addStudent(Student& student)
 {
     if (!teamMembers.contains(&student))
@@ -13,6 +14,14 @@ int Team::addStudent(Student& student)
     }
     return 0;
 }
+
+const QList<Student*>& Team::getTeamMembers()
+{
+    return teamMembers;
+}
+
+
+
 
 
 int Team::removeStudent(Student& student){

@@ -44,9 +44,12 @@ int studentprojectregisterviewcontroller::init()
 int studentprojectregisterviewcontroller::updateSelectedProject(const int& index)
 {
 
-    selectedProject=allProjects.at(index);
-    if(selectedProject != NULL){
-    stuProRegisterView->updateDetailedView(*selectedProject);
+    if (allProjects.count() > 0)
+    {
+        selectedProject=allProjects.at(index);
+        if(selectedProject != NULL){
+            stuProRegisterView->updateDetailedView(*selectedProject);
+        }
     }
     return 0;
 }
@@ -65,6 +68,7 @@ int studentprojectregisterviewcontroller::goStudentManageProjectView()
     if(selectedProject != NULL)
     {
       if( database->addStudentToProject((selectedProject->getID()),student)){
+          allProjects.removeAt(0);
           return 1;
       }
       return 0;
