@@ -13,6 +13,8 @@ private:
     const QMap< int,QList < QPair<int,int> > >& pci;
     int calculateTeamWeight(Team team);
     int assignStudentToTeam(int studentID, QList<Team*> teams);
+    QList< QPair<int,int> > createTopRowPairs(int numteams);
+    bool insert(QList<QPair<int,int> >& pair,const QPair<int,int>&);
 public:
     Distributor(const QMap< int,QList< QPair<int,int> > >& pciParam);
     const QList<Team*>& distributeTeams(const int minSize,const int maxSize);
