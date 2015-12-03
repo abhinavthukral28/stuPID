@@ -38,9 +38,14 @@ int StudentManageProjectController::init(){
 
 
 int StudentManageProjectController::updateSelectedProject(const int& index){
-    selectedProject=allProjects.at(index);
-    if(selectedProject != NULL){
-    studentManageProjectView->updateDetailedView(*selectedProject);
+    if (allProjects.count() > 0)
+    {
+        selectedProject=allProjects.at(index);
+        if(selectedProject != NULL){
+            studentManageProjectView->updateDetailedView(*selectedProject);
+             return 1;
+        }
+                else return 0;
     }
     return 0;
 }
@@ -56,6 +61,14 @@ int StudentManageProjectController::goStudentRegisterProjectView()
 }
 
 int StudentManageProjectController::unregisterFromProject(){
-    return database->removeStudentFromProject(selectedProject->getID(),Session::getStudent());
+    if(database->removeStudentFromProject(selectedProject->getID(),Session::getStudent()))
+    {
+
+        allProjects.removeAt(0);
+        return 1;
+
+    }
+    else return 0;
+
 
 }
