@@ -79,6 +79,13 @@ int ManageProjectsController::goToCreateProjectView()
 
 }
 
+int ManageProjectsController::goToLoginDialog(){
+   manageProjectsView->close();
+   LoginDialog logindialog;
+   logindialog.exec();
+
+}
+
 int ManageProjectsController::makeTeams()
 {
     TeamBuilder builder;

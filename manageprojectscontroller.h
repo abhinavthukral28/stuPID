@@ -16,6 +16,7 @@ public:
     int updateSelectedProject(const int& index);
     int updateStudentList();
     int goToCreateProjectView();
+    int goToLoginDialog();
     int updateDetailedView();
     int makeTeams();
 

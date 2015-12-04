@@ -144,3 +144,8 @@ void ManageProjectsView::on_makeTeamsButton_clicked()
                          QMessageBox::Ok);
 
 }
+
+void ManageProjectsView::on_pushButton_clicked()
+{
+    manageProjectsController->goToLoginDialog();
+}
