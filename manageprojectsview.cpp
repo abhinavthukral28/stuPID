@@ -20,7 +20,7 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     QPixmap  pixmap ;
     int w = ui->image->width();
     int h = ui->image->height();
-    pixmap.load(":/images/abhinavthukral28-stuPID/carleton.jpeg");
+    pixmap.load(":/images/carleton.jpeg");
     ui->image->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     if(manageProjectsController->init())

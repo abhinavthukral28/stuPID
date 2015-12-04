@@ -90,4 +90,4 @@ FORMS    += \
     adminviewdetail.ui
 
 RESOURCES += \
-    ../resource.qrc
+    resource.qrc
