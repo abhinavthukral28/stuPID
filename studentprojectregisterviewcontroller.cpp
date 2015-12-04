@@ -6,6 +6,7 @@
 #include "sqlexception.h"
 #include "studentprojectregisterview.h"
 #include "studentmanageprojectview.h"
+#include "logindialog.h"
 
 
 
@@ -63,6 +64,16 @@ int studentprojectregisterviewcontroller::goStudentManageProjectView()
      return 0;
 }
 
+int studentprojectregisterviewcontroller::gotoLoginDialog()
+{
+    stuProRegisterView->close();
+    LoginDialog login;
+    login.exec();
+
+     return 0;
+}
+
+
  int studentprojectregisterviewcontroller::registerToProject(){
     Student student = Session::getStudent();
     if(selectedProject != NULL)
@@ -77,6 +88,5 @@ int studentprojectregisterviewcontroller::goStudentManageProjectView()
       }else
       return 0;
     }
-
 
  }
