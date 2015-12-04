@@ -3,6 +3,7 @@
 #include "Database.h"
 #include "project.h"
 #include "manageprojectsview.h"
+#include "logindialog.h"
 #include <QObject>
 #include <QDebug>
 
@@ -10,7 +11,6 @@ CreateProjectViewController::CreateProjectViewController(CreateProjectView *view
   createProjectsView(view),
   database(Database::getInstance())
 {
-
 
 }
 /**
@@ -76,6 +76,13 @@ int CreateProjectViewController::goToManageProjectView()
      manageProjectView.exec();
 
      return 0;
+}
+
+int CreateProjectViewController::goToLoginDialog(){
+    createProjectsView->close();
+    LoginDialog login;
+    login.exec();
+
 }
 
 int CreateProjectViewController::error(int type)

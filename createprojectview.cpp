@@ -101,3 +101,8 @@ void CreateProjectView::on_buttonBox_rejected()
 {
     createProjectViewController->goToManageProjectView();
 }
+
+void CreateProjectView::on_pushButton_clicked()
+{
+    createProjectViewController->goToLoginDialog();
+}

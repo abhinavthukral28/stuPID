@@ -15,6 +15,7 @@ public:
     int error(int type);
 
    int saveProject();
+   int goToLoginDialog();
 private:
     CreateProjectView *createProjectsView;
     Database *database;

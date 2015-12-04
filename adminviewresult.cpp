@@ -1,5 +1,6 @@
 #include "adminviewresult.h"
 #include "ui_adminviewresult.h"
+#include "logindialog.h"
 
 AdminViewResult::AdminViewResult(QWidget *parent) :
     QDialog(parent),
@@ -15,6 +16,11 @@ AdminViewResult::~AdminViewResult()
 }
 
 void AdminViewResult::on_BackButton_clicked()
+{
+
+}
+
+void AdminViewResult::on_pushButton_clicked()
 {
 
 }
