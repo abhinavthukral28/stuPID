@@ -2,6 +2,7 @@
 #include "studentmanageprojectview.h"
 #include "project.h"
 #include "session.h"
+#include "logindialog.h"
 #include "Database.h"
 #include <QDebug>
 #include "studentprojectregisterview.h"
@@ -58,6 +59,12 @@ int StudentManageProjectController::goStudentRegisterProjectView()
 
     return 0;
 
+}
+
+int StudentManageProjectController::gotoLoginDialog(){
+    studentManageProjectView->close();
+    LoginDialog login;
+    login.exec();
 }
 
 int StudentManageProjectController::unregisterFromProject(){

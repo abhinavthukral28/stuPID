@@ -88,3 +88,9 @@ void StudentManageProjectView::on_editProfile_clicked()
 
 
 }
+
+void StudentManageProjectView::on_pushButton_clicked()
+{
+    studentManageProjectController->gotoLoginDialog();
+
+}

@@ -31,6 +31,8 @@ private slots:
 
     void on_editProfile_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::StudentManageProjectView *ui;
     StudentManageProjectController *studentManageProjectController;
