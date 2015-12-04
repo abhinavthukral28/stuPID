@@ -42,7 +42,8 @@ SOURCES += main.cpp\
     adminviewresult.cpp \
     session.cpp \
     adminviewdetail.cpp \
-    editqualificationscontroller.cpp
+    editqualificationscontroller.cpp \
+    resultbuilder.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -75,7 +76,8 @@ HEADERS  += \
     adminviewresult.h \
     session.h \
     adminviewdetail.h \
-    editqualificationscontroller.h
+    editqualificationscontroller.h \
+    resultbuilder.h
 
 FORMS    += \
     studentregister.ui \
