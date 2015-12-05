@@ -10,7 +10,6 @@ ResultBuilder::ResultBuilder(Team *team):newTeam(team), database(Database::getIn
         Student student = database->getStudentByID(teamMemberIds.at(i));
         teamMembers->append(student);
     }
-    pci = new PciBuilder();
 
 }
 
@@ -21,6 +20,7 @@ QString ResultBuilder::getDetailedResults()
 
 void ResultBuilder::getCompareString()
 {
+    PciBuilder pci;
     for(int i=0;i<NQ;i++)
     {
         int qPci = 0;
@@ -29,19 +29,19 @@ void ResultBuilder::getCompareString()
             Student stu1 = teamMembers->at(j);
             for(int k = j+1;k<teamMembers->count();k++){
                 Student stu2 = teamMembers->at(k);
+                qPci += pci.calculatePci(*stu1.getQualifications().at(i), *stu2.getQualifications().at(i));
 
             }
-            qPci += pci->calculatePci(stu1.getQualifications(i),stu2.getQualifications(i));
         }
         int averagePci = qPci/teamMembers->count();
         if(averagePci<=4){
             highCompatibility.append(title);
         }
-        else if(average<=8){
+        else if(averagePci<=8){
             mediumCompatibility.append(title);
 
         }
-        else if(average<=12){
+        else if(averagePci<=12){
             lowCompatibility.append(title);
         }
 

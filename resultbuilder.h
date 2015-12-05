@@ -24,7 +24,6 @@ private:
     QList<Student>* teamMembers;
     Team* newTeam;
     QString detailedResults;
-    PciBuilder* pci;
     QList<QString> highCompatibility;
     QList<QString> mediumCompatibility;
     QList<QString> lowCompatibility;
