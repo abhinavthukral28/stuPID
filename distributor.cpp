@@ -29,6 +29,12 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,const int max
 
      }
 
+     for (int i = 0; i < pci.keys().count(); i++)
+     {
+        qDebug() << pci.keys().at(i);
+     }
+
+
      return teams;
  }
 
@@ -58,7 +64,8 @@ const QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& rema
 {
 
      QList< Team* >* topRow = new QList< Team* >;
-     QList< int > keys = pci.keys();
+     QList< int > keys = sortKeys(pci.keys());
+
      for (int i = 0; i < keys.count();i++)
      {
          if (numTeams == 0)
@@ -175,4 +182,47 @@ bool Distributor::insert(QList<QPair<int,QPair<int,int> > >& pci,const QPair<int
           pci.insert(0,pair);
 
       return inserted;
+}
+
+const QList<int>& Distributor::sortKeys(QList<int> keys)
+{
+
+    QList<int>* sorted = new QList<int>;
+    for (int i = 0; i < keys.count();i++)
+    {
+        bool inserted = false;
+        for (int j = 0; j < sorted->count(); j++)
+        {
+            if (pci.value(sorted->at(j))->at(0).second >= pci.value(keys.at(i))->at(0).second)
+            {
+                sorted->insert(j,keys.at(i));
+                inserted = true;
+                break;
+            }
+
+            if (j+1 == sorted->count() && !inserted)
+            {
+                sorted->append(keys.at(i));
+                inserted = true;
+                break;
+            }
+
+        }
+
+        if (!inserted)
+        {
+            sorted->insert(0,keys.at(i));
+
+        }
+
+
+    }
+
+
+    for (int i = 0; i < sorted->count(); i ++)
+    {
+        qDebug() << sorted->at(i);
+    }
+
+    return *sorted;
 }
