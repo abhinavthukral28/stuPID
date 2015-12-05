@@ -12,7 +12,7 @@ QMap<int, QList< QPair<int,int> >* >& PciBuilder::calculatePci(const QList<Stude
 {
 
     //student id -> student id -> pci
-    QMap<int, QList < QPair<int,int> >* > pci;
+    QMap<int, QList < QPair<int,int> >* >* pci = new QMap<int, QList < QPair<int,int> >* >;
     for (int i = 0; i < studentList.count(); i++)
     {
 
@@ -34,22 +34,22 @@ QMap<int, QList< QPair<int,int> >* >& PciBuilder::calculatePci(const QList<Stude
 
             }
         }
-        pci.insert(thisOne->getID(),val);
+        pci->insert(thisOne->getID(),val);
 
     }
-    qDebug () <<"number of stu"<< pci.keys().count();
+    qDebug () <<"number of stu"<< pci->keys().count();
 
-    for (int i = 0; i < pci.keys().count(); i++)
+    for (int i = 0; i < pci->keys().count(); i++)
     {
-        QList< QPair<int,int> >* pair = pci.value(pci.keys().at(i));
+        QList< QPair<int,int> >* pair = pci->value(pci->keys().at(i));
         qDebug() <<"stu map for this stu is "<< pair->count();
-        qDebug () <<"the first stu is "<< pci.keys().at(i);
+        qDebug () <<"the first stu is "<< pci->keys().at(i);
         for (int j = 0; j < pair->count(); j++){
             qDebug() <<"second stu Id"<< pair->at(j).first;
             qDebug() <<"Pci"<< pair->at(j).second;
         }
     }
-    return pci;
+    return *pci;
 }
 
 
