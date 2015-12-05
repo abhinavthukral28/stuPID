@@ -9,6 +9,7 @@ class QString;
 class Student;
 class Project;
 class User;
+class Team;
 class SQLException;
 class Qualification;
 class Database{
@@ -20,10 +21,11 @@ class Database{
     const QList<Project*>& getAllProjects();
     const QList<Qualification*>& getAllQualifications(const int& studentID);
 
+    const Student& getStudentByID(const int& studentID);
     const QList<Student*>& getStudentsByProject();
     const QList<Project*>& getProjectsByStudent(const int& studentID);
     const QList<Project*>& getOpenProjectsByStudent(const int& studentID);
-
+    const QList<Team*>& getTeamsbyProjectID (const int& projectID);
     int createStudent(Student& student);
     int createProject(Project& project);
 

@@ -165,10 +165,42 @@ int Database::insertValuesintoExpectations(){
 }
 
 
-const QList<Team*> Database::getTeamsByProject(const int& studentID){
+const Student& Database::getStudentByID(const int& studentID){
 
     QSqlQuery query;
-    DatabaseQueries::getStudentByID
+    query.prepare(DatabaseQueries::getStudentByID);
+    query.bindValue(":studentID",studentID);
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError();
+        qDebug() << query.lastQuery();
+        throw generateException(query);
+    }
+    else
+    {
+        QString tempUsername;
+        int tempID;
+        Student* tempStudent = new Student;
+
+        if (query.next())
+        {
+            //first column is 0
+            tempID = query.value(0).toInt();
+
+            tempUsername = QString(query.value(1).toString());
+
+            tempStudent = new Student(tempID,tempUsername);
+            qDebug()<< "getAllQualifications"<<getAllQualifications(tempID);
+            tempStudent->setQualifications(getAllQualifications(tempID));
+
+        }
+
+        return *tempStudent;
+    }
+
+
+
 }
 
 
@@ -215,7 +247,7 @@ void Database::createTables(){
     else
         qDebug() << "Table ProjectStudents!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS TeamMember(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,studentID int,FOREIGN KEY(studentID) REFERENCES Students(studentId))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS TeamMember(teamID INTEGER ,studentID int,FOREIGN KEY(studentID) REFERENCES Students(studentID), PRIMARY KEY (teamID, studentID))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -304,6 +336,49 @@ const QList<Student*>& Database::getAllStudents(){
 
 }
 
+const QList<Team*>& Database::getTeamsbyProjectID (const int& projectID){
+    QList<Team*>* teams = new QList<Team*> ();
+    QSqlQuery query;
+    query.prepare(DatabaseQueries::getTeamsByProject);
+
+    query.bindValue(":projectID",projectID);
+
+
+    if (!query.exec())
+    {
+        throw generateException(query);
+    }
+    else
+    {
+        int teamID = -1;
+        int tempID;
+        int tempStudentID;
+
+
+        while (query.next())
+        {
+
+            tempID = query.value(1).toInt();
+
+
+            if (teamID != tempID)
+            {
+
+                teamID = tempID;
+                Team* team = new Team();
+
+
+            }
+
+            tempStudentID = query.value(0).toInt();
+            teams->last()->addStudent(tempStudentID);
+
+
+        }
+
+        return *teams;
+    }
+}
 
 
 
