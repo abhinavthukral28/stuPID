@@ -3,7 +3,7 @@
 #include <QObject>
 #include <QDialog>
 #include "adminviewresultcontroller.h"
-
+class AdminViewResultController;
 namespace Ui {
 class AdminViewResult;
 }
@@ -13,7 +13,7 @@ class AdminViewResult : public QDialog
     Q_OBJECT
 
 public:
-    explicit AdminViewResult(QWidget *parent = 0);
+    explicit AdminViewResult(AdminViewResultController *controller);
     ~AdminViewResult();
 
 private slots:
