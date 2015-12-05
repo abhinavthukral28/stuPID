@@ -6,21 +6,27 @@
 #include "team.h"
 #include "pcibuilder.h"
 #include <QString>
+#include <Database.h>
+
 
 
 
 class ResultBuilder
 {
 public:
-    ResultBuilder();
+    ResultBuilder(Team *team);
     QString getDetailedResults();
 
+
 private:
-    QList<Student> temaMembers;
-    Team newTeam;
+    QList<int> teamMemberIds;
+    Database* database;
+    QList<Student>* teamMembers;
+    Team* newTeam;
     QList<QPair<Student, Student> > pairs;
     QString detailedResults;
     PciBuilder pci;
+    void getCompareString();
 
 };
 
