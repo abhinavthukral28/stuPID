@@ -5,6 +5,7 @@
 #include "createprojectview.h"
 #include "logindialog.h"
 #include "project.h"
+#include "student.h"
 #include <QDebug>
 
 int main(int argc, char *argv[])
@@ -16,24 +17,12 @@ int main(int argc, char *argv[])
     Database::getInstance();
     LoginDialog view;
     view.show();
-/*
-    Database* database = Database::getInstance();
-    int tempID = -1;
-    QString title = "imaproject";
-    Project* project = new Project(tempID,title);
 
+//    Database* database = Database::getInstance();
 
-    database->createProject(*project);
-
-    QList<Project*>& projects = database->getAllProjects();
-
-    for (int i = 0; i < projects->count(); i++)
-    {
-        qDebug() << "this is fucked";
-        QString temp = projects->at(i)->getTitle();
-        std::cout << QString::toStdString(temp);
-    }
-    */
+//    Student* student = new Student("tester2");
+//    database->createStudent(*student);
+//    std::cout << "New ID " << student->getID();
 
 
   return a.exec();
