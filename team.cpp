@@ -1,10 +1,14 @@
 #include "team.h"
 
-Team::Team()
+Team::Team(int idParam): id(idParam)
 {
     pci = -1;
 }
 
+Team::Team()
+{
+   id = -1;
+}
 
 int Team::addStudent(int id)
 {
@@ -23,7 +27,10 @@ const QList<int>& Team::getTeamMembers()
 
 
 
-
+int Team::getID()
+{
+    return id;
+}
 
 int Team::removeStudent(int id){
     return teamMembers.removeOne(id);

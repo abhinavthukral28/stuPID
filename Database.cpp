@@ -366,7 +366,7 @@ const QList<Team*>& Database::getTeamsbyProjectID (const int& projectID){
             {
 
                 teamID = tempID;
-                Team* team = new Team();
+                Team* team = new Team(teamID);
                 teams->append(team);
 
             }
