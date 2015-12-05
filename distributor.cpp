@@ -186,6 +186,7 @@ bool Distributor::insert(QList<QPair<int,QPair<int,int> > >& pci,const QPair<int
 
 const QList<int>& Distributor::sortKeys(QList<int> keys)
 {
+
     QList<int>* sorted = new QList<int>;
     for (int i = 0; i < keys.count();i++)
     {
@@ -196,11 +197,14 @@ const QList<int>& Distributor::sortKeys(QList<int> keys)
             {
                 sorted->insert(j,keys.at(i));
                 inserted = true;
+                break;
             }
 
             if (j+1 == sorted->count() && !inserted)
             {
                 sorted->append(keys.at(i));
+                inserted = true;
+                break;
             }
 
         }
@@ -208,6 +212,17 @@ const QList<int>& Distributor::sortKeys(QList<int> keys)
         if (!inserted)
         {
             sorted->insert(0,keys.at(i));
+
         }
+
+
     }
+
+
+    for (int i = 0; i < sorted->count(); i ++)
+    {
+        qDebug() << sorted->at(i);
+    }
+
+    return *sorted;
 }
