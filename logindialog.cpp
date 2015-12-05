@@ -2,6 +2,7 @@
 #include "ui_logindialog.h"
 #include <QMessageBox>
 #include <QDebug>
+#include <QPixmap>
 #include "studentprojectregisterview.h"
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
@@ -12,6 +13,12 @@ LoginDialog::LoginDialog(QWidget *parent) :
     ui->setupUi(this);
     ui->passwroldlineEdit->setEchoMode(QLineEdit::Password);
     ui->studentradioButton->setChecked(true);
+    QPixmap  pixmap ;
+    //int w = ui->label->width();
+    //int h = ui->label->height();
+    pixmap.load(":/images/stuPID.png");
+    ui->label->setPixmap(pixmap.scaled(300,150,Qt::KeepAspectRatio));
+
 }
 
 LoginDialog::~LoginDialog()

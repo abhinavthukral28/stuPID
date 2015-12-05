@@ -30,10 +30,7 @@ QMap<int, QList< QPair<int,int> >* >& PciBuilder::calculatePci(const QList<Stude
 
                 pair.first = j ;
                 pair.second = tempResult;
-
-                        //pci.value(i);
                 insert(val,pair);
-               // qDebug() << pci.keys().count();
 
             }
         }
@@ -64,16 +61,9 @@ int PciBuilder::calculatePci(const Student& studentOne,const Student& studentTwo
     const QList<Qualification*> personTwoQuals = studentTwo.getQualifications();
     int total= 0;
 
-    //qDebug() << "personOneQuals" <<studentOne.getQualifications();
-
     for (int i = 0; i < personOneQuals.size();i++)
     {
-//       qDebug() << "Title: " << personOneQuals.at(i)->getTitle();
-//       qDebug() << "Student UserName:" << studentOne.getUsername();
-//       qDebug() << "q1 = " << personOneQuals.at(i)->getQualificationRating();
-//       qDebug() << "e1 = " << personOneQuals.at(i)->getQualificationRating();
        total+=calculatePci(*personOneQuals.at(i),*personTwoQuals.at(i));
-
     }
 //    results processing...
     return total;
