@@ -16,6 +16,8 @@ public:
     Student(const int& ID,const QString& username,const QString& firstName,const QString& lastName);
     const QList<Qualification*> getQualifications() const;
     QList<Qualification*> qualifications;
+    int setQualifications(QList<Qualification*> qualif);
+
 private:
 
 

@@ -15,6 +15,7 @@ public:
     int init();
     int updateSelectedProject(const int& index);
     int goStudentManageProjectView();
+    int gotoLoginDialog();
     int registerToProject();
 private:
     studentProjectRegisterView *stuProRegisterView;

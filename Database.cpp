@@ -293,7 +293,8 @@ const QList<Student*>& Database::getAllStudents(){
             tempUsername = QString(query.value(1).toString());
 
             tempStudent = new Student(tempID,tempUsername);
-            tempStudent->qualifications = getAllQualifications(tempID);
+            qDebug()<< "getAllQualifications"<<getAllQualifications(tempID);
+            tempStudent->setQualifications(getAllQualifications(tempID));
             students->append(tempStudent);
         }
 
@@ -356,6 +357,7 @@ const QList<Project*>& Database::getAllProjects(){
             tempUsername = query.value(9).toString();
             tempStudent = new Student(tempStudentID,tempUsername);
             tempProject->registerStudent(*tempStudent);
+            tempStudent->setQualifications(getAllQualifications(tempStudentID));
 
 
         }
@@ -576,7 +578,12 @@ const QList<Project*>& Database::getProjectsByStudent(const int& studentID)
 
                     tempUsername = query.value(9).toString();
                     tempStudent = new Student(tempStudentID,tempUsername);
-                     tempStudent->qualifications = getAllQualifications(tempStudentID);
+                    //tempStudent->qualifications = getAllQualifications(tempStudentID);
+                    QList<Qualification*> temp = getAllQualifications(tempID);
+
+                    //tempStudent->setQualifications(getAllQualifications(tempStudentID));
+
+                    tempStudent->qualifications = temp;
                     tempProject->registerStudent(*tempStudent);
 
                 }

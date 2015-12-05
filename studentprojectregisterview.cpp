@@ -95,3 +95,8 @@ void studentProjectRegisterView::on_projectsList_clicked(const QModelIndex &inde
     int indexVal = index.row();
     studentProjectRegisterViewController->updateSelectedProject(indexVal);
 }
+
+void studentProjectRegisterView::on_pushButton_clicked()
+{
+    studentProjectRegisterViewController->gotoLoginDialog();
+}
