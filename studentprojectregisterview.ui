@@ -87,7 +87,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Login</string>
+     <string>Logout</string>
     </property>
    </widget>
   </widget>
