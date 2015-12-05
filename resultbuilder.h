@@ -6,8 +6,8 @@
 #include "team.h"
 #include "pcibuilder.h"
 #include <QString>
-#include <Database.h>
-
+#include "Database.h"
+#include "qualification.h"
 
 
 
@@ -23,9 +23,11 @@ private:
     Database* database;
     QList<Student>* teamMembers;
     Team* newTeam;
-    QList<QPair<Student, Student> > pairs;
     QString detailedResults;
-    PciBuilder pci;
+    PciBuilder* pci;
+    QList<QString> highCompatibility;
+    QList<QString> mediumCompatibility;
+    QList<QString> lowCompatibility;
     void getCompareString();
 
 };
