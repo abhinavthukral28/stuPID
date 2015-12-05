@@ -186,6 +186,11 @@ font: 11pt &quot;URW Gothic L&quot;;</string>
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
+   </property>
    <property name="text">
     <string>Create New Project</string>
    </property>
