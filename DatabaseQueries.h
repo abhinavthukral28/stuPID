@@ -26,6 +26,8 @@ private:
     const static QString createQualificationByStudent;
     const static QString removeStudentFromProject;
     const static QString getAvailableProjects;
+    const static QString getStudentByID;
+    const static QString getTeamsByProject;
 
 };
 
@@ -74,6 +76,10 @@ const QString DatabaseQueries::getQualificationsByStudent = QString("SELECT * FR
 
 
 const QString DatabaseQueries::updateQualificationByStudent = QString("UPDATE ")+DatabaseQueries::STUDENT_QUALIFICATIONS_TABLE+" SET qualificationRating = :qualificationRating, expectationRating = :expectationRating where studentID = :studentID and eID = :displayID";
+
+const QString DatabaseQueries::getStudentByID = "Select * from Students where studentID = :studentID";
+
+const QString DatabaseQueries::getTeamsByProject = "Select studentID,TeamID from Team join TeamMember as teamJoin on Team.teamID = teamJoin.teamID join Students on teamJoin.studentID = Students.studentID where projectID = :projectID";
 
 const QString DatabaseQueries::createQualificationByStudent = QString("INSERT INTO ")+DatabaseQueries::STUDENT_QUALIFICATIONS_TABLE+" (studentQualificationID,qualificationRating,expectationRating,studentID,eID) VALUES(NULL,:qualificationRating,:expectationRating,:studentID,:eID)";
 #endif // DATABASEQUERIES_H

@@ -337,7 +337,7 @@ const QList<Student*>& Database::getAllStudents(){
 }
 
 const QList<Team*>& Database::getTeamsbyProjectID (const int& projectID){
-    QList<Team*>* teams = new QList<Team*> ();
+
     QSqlQuery query;
     query.prepare(DatabaseQueries::getTeamsByProject);
 
@@ -350,6 +350,7 @@ const QList<Team*>& Database::getTeamsbyProjectID (const int& projectID){
     }
     else
     {
+        QList<Team*>* teams = new QList<Team*> ();
         int teamID = -1;
         int tempID;
         int tempStudentID;
@@ -366,7 +367,7 @@ const QList<Team*>& Database::getTeamsbyProjectID (const int& projectID){
 
                 teamID = tempID;
                 Team* team = new Team();
-
+                teams->append(team);
 
             }
 
