@@ -243,6 +243,12 @@ int Distributor::sortTeams(QList<Team*>& teams){
         }
 
     }
+
+    qDebug() << "SORTED TEAMS";
+    for (int i = 0; i < teams.count(); i++)
+    {
+        qDebug() << teams.at(i)->getPci();
+    }
     return 1;
 }
 
@@ -276,7 +282,7 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int&
         }
 
         teams.at(i)->addStudent(minStudentID);
-
+        teams.at(i)->setPci(minWeight);
         while (iterator.hasNext()) {
             iterator.next();
             if (iterator.key() == minStudentID)
