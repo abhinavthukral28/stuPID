@@ -17,6 +17,7 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,const int max
 
       QList<Team*> teams = createTopRowTeams(numTeams,remainingStudents);
 
+
      addOutliers(teams,minSize,maxSize);
      for (int i = 0; i < teams.count(); i++)
      {
@@ -46,9 +47,15 @@ int Distributor::calculateTeamWeight(const Team& team,const int& id)
     int total = team.getPci();
     for(int i=0; i<teamMembers.count();i++){
        QList<QPair<int,int> >* values = pci.value(id);
-       for(int j; j<values->count(); j++){
+       for(int k =0; k<values->count(); k++)
+           qDebug()<<"values is "<<values->at(k);
+
+       for(int j=0; j<values->count(); j++){
+           qDebug()<<"values->at(j).first" << values->at(j).first;
+           qDebug()<<"teamMembers.at(i)" << teamMembers.at(i);
            if(values->at(j).first == teamMembers.at(i)){
                total += values->at(j).second;
+          //     qDebug()<<"values->at(j).second"<<values->at(j).second;
            }
         }
 
@@ -101,6 +108,7 @@ QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& remainingS
                  QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
                  while (iterator.hasNext()) {
                      iterator.next();
+
                      if (iterator.key() == idOne || iterator.key() == otherID)
                          iterator.remove();
                  }
@@ -123,6 +131,8 @@ QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& remainingS
 
                     for (int m = 0; m < indexes.count(); m++)
                     {
+                        if(pci.keys().at(l) == 32 )
+                        qDebug()<<"=======================================================" << pci.value(pci.keys().at(l))->at(indexes.at(m) - m).first;
                         pci.value(pci.keys().at(l))->removeAt(indexes.at(m) - m);
                     }
 
@@ -255,7 +265,18 @@ int Distributor::sortTeams(QList<Team*>& teams){
 
 
 int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int& maxSize){
+    qDebug()<<"Print 32";
+    for(int k=0; k<pci.value(32)->count(); k++){
+
+        qDebug()<<pci.value(32)->at(k).first;
+        qDebug()<<pci.value(32)->at(k).second;
+
+    }
+
     QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
+
+
+
     sortTeams(teams);
     for (int i = 0; i < teams.count(); i++ )
     {
@@ -263,6 +284,9 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int&
         int minStudentID;
         for (int j = 0; j < pci.keys().count();j++)
         {
+           qDebug()<<"TeamMembers "<<teams.at(i)->getTeamMembers();
+           qDebug()<<"pci.keys().at(j)"<<pci.keys().at(j);
+
 
            int tempWeight =  calculateTeamWeight(*teams.at(i),pci.keys().at(j));
 
@@ -280,7 +304,8 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int&
                }
            }
         }
-
+        if(minStudentID==30)
+            qDebug()<<"++++++++++++++++++++++++";
         teams.at(i)->addStudent(minStudentID);
         teams.at(i)->setPci(minWeight);
         while (iterator.hasNext()) {
