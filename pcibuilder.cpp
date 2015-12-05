@@ -110,7 +110,7 @@ bool PciBuilder::insert(QList<QPair<int,int> >* pci,const QPair<int,int>& pair){
             {
                 qDebug () << " index is greater than 0; " << i;
                 qDebug () << " inserting at " << (i-1);
-                pci->insert(i-1,pair);
+                pci->insert(i,pair);
                 inserted = true;
             }
             else break;
