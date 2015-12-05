@@ -6,16 +6,25 @@
 #include "logindialog.h"
 #include "project.h"
 #include <QDebug>
+#include "team.h"
+#include "resultbuilder.h"
 
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    //view.show();
-    //LoginDialog view;
     Database::getInstance();
     LoginDialog view;
     view.show();
+
+    Team *team = new Team();
+    team->addStudent(1);
+    team->addStudent(2);
+    team->addStudent(3);
+    ResultBuilder *result = new ResultBuilder(team);
+    QString str = result->getDetailedResults();
+    qDebug() << str;
+
 /*
     Database* database = Database::getInstance();
     int tempID = -1;

@@ -15,14 +15,15 @@ ResultBuilder::ResultBuilder(Team *team):newTeam(team), database(Database::getIn
 
 QString ResultBuilder::getDetailedResults()
 {
+    this->getCompareString();
     QString hCompString = highCompatibility.join('_');
     QString mCompString = mediumCompatibility.join('_');
     QString lCompString = lowCompatibility.join('_');
     QStringList list;
     list.append(hCompString);
     list.append(mCompString);
-    list.append(lCompString);
     QString final = list.join('/');
+    return final;
 
 
 
