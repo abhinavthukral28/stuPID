@@ -8,11 +8,11 @@ PciBuilder::PciBuilder()
 
 }
 
-QMap<int, QList< QPair<int,int> > >& PciBuilder::calculatePci(const QList<Student*>& studentList)
+QMap<int, QList< QPair<int,int> >* >& PciBuilder::calculatePci(const QList<Student*>& studentList)
 {
 
     //student id -> student id -> pci
-    QMap<int, QList < QPair<int,int> > > pci;
+    QMap<int, QList < QPair<int,int> >* > pci;
     for (int i = 0; i < studentList.count(); i++)
     {
 
@@ -30,10 +30,12 @@ QMap<int, QList< QPair<int,int> > >& PciBuilder::calculatePci(const QList<Studen
 
                 pair.first = j ;
                 pair.second = tempResult;
-                QList< QPair<int,int> > val = pci.value(i);
+                QList< QPair<int,int> >* val = new QList< QPair<int,int> >();
+                        //pci.value(i);
                 insert(val,pair);
                 pci.insert(thisOne->getID(),val);
 
+                qDebug() << pci.keys().count();
 
             }
 
@@ -42,6 +44,17 @@ QMap<int, QList< QPair<int,int> > >& PciBuilder::calculatePci(const QList<Studen
         }
 
 
+    }
+    qDebug () << pci.keys().count();
+    for (int i = 0; i < pci.keys().count(); i++)
+    {
+
+        QList< QPair<int,int> >* pair = pci.value(pci.keys().at(i));
+        qDebug() << pair->count();
+        for (int j = 0; j < pair->count(); j++){
+            qDebug() << pair->at(j).first;
+            qDebug() << pair->at(j).second;
+        }
     }
     return pci;
 }
@@ -55,14 +68,14 @@ int PciBuilder::calculatePci(const Student& studentOne,const Student& studentTwo
     const QList<Qualification*> personTwoQuals = studentTwo.getQualifications();
     int total= 0;
 
-    qDebug() << "personOneQuals" <<studentOne.getQualifications();
+    //qDebug() << "personOneQuals" <<studentOne.getQualifications();
 
     for (int i = 0; i < personOneQuals.size();i++)
     {
-       qDebug() << "Title: " << personOneQuals.at(i)->getTitle();
-       qDebug() << "Student UserName:" << studentOne.getUsername();
-       qDebug() << "q1 = " << personOneQuals.at(i)->getQualificationRating();
-       qDebug() << "e1 = " << personOneQuals.at(i)->getQualificationRating();
+//       qDebug() << "Title: " << personOneQuals.at(i)->getTitle();
+//       qDebug() << "Student UserName:" << studentOne.getUsername();
+//       qDebug() << "q1 = " << personOneQuals.at(i)->getQualificationRating();
+//       qDebug() << "e1 = " << personOneQuals.at(i)->getQualificationRating();
        total+=calculatePci(*personOneQuals.at(i),*personTwoQuals.at(i));
 
     }
@@ -80,15 +93,15 @@ int PciBuilder::calculatePci(const Qualification& q1, const Qualification& q2)
 }
 
 
-bool PciBuilder::insert(QList<QPair<int,int> >& pci,const QPair<int,int>& pair){
+bool PciBuilder::insert(QList<QPair<int,int> >* pci,const QPair<int,int>& pair){
     bool inserted = false;
-    for (int i = 0; i < pci.count() && !inserted; i++)
+    for (int i = 0; i < pci->count() && !inserted; i++)
     {
-        if (pci.at(i).second > pair.second)
+        if (pci->at(i).second > pair.second)
         {
             if (i > 0)
             {
-                pci.insert(i-1,pair);
+                pci->insert(i-1,pair);
                 inserted = true;
             }
             else break;
@@ -96,7 +109,7 @@ bool PciBuilder::insert(QList<QPair<int,int> >& pci,const QPair<int,int>& pair){
     }
 
     if (!inserted)
-        pci.insert(0,pair);
+        pci->insert(0,pair);
 
     return inserted;
 }
