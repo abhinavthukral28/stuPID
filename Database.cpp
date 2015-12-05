@@ -6,6 +6,7 @@
 #include "qualification.h"
 #include <QDebug>
 #include <QtSql>
+#include "team.h"
 
 const QString Database::DBpath="./testdatabase.db";
 
@@ -164,7 +165,11 @@ int Database::insertValuesintoExpectations(){
 }
 
 
+const QList<Team*> Database::getTeamsByProject(const int& studentID){
 
+    QSqlQuery query;
+    DatabaseQueries::getStudentByID
+}
 
 
 
