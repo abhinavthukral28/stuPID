@@ -12,44 +12,60 @@ QMap<int, QList< QPair<int,int> >* >& PciBuilder::calculatePci(const QList<Stude
 {
 
     //student id -> student id -> pci
-    QMap<int, QList < QPair<int,int> >* > pci;
+    QMap<int, QList < QPair<int,int> >* >* pci = new QMap<int, QList < QPair<int,int> >* >;
     for (int i = 0; i < studentList.count(); i++)
     {
 
 
         Student* thisOne = studentList.at(i);
+        qDebug () << "Measuring student..." << thisOne->getID();
         QList< QPair<int,int> >* val = new QList< QPair<int,int> >();
         int tempResult;
         for (int j = 0; j < studentList.count(); j++)
-        {
-            Student* otherOne = studentList.at(j);
+        {   
             if (j != i) {
+                Student* otherOne = studentList.at(j);
+                qDebug () << "Measuring with " << otherOne->getID();
                 QPair<int,int> pair;
                 //results processing master list
                 tempResult = calculatePci(*thisOne,*otherOne);
-
-                pair.first = j ;
+                qDebug () << "Got pci -> " << tempResult;
+                pair.first = otherOne->getID() ;
                 pair.second = tempResult;
+                qDebug () << "Storing pair as " << pair.first << " as other student id and " << pair.second << " as pci";
                 insert(val,pair);
+                 qDebug () << "Inserted! Current list: ";
+
+                 for (int k = 0; k < val->count(); k++)
+                 {
+                     qDebug() << val->at(k).first << " key, " << val->at(k).second << " pci";
+                 }
+
 
             }
         }
-        pci.insert(thisOne->getID(),val);
+        qDebug () << "Final list stored for student " << thisOne->getID();
+        for (int k = 0; k < val->count(); k++)
+        {
+            qDebug() << val->at(k).first << " key, " << val->at(k).second << " pci";
+        }
+
+        pci->insert(thisOne->getID(),val);
 
     }
-    qDebug () <<"number of stu"<< pci.keys().count();
+    qDebug () <<"total number of students"<< pci->keys().count();
 
-    for (int i = 0; i < pci.keys().count(); i++)
+    for (int i = 0; i < pci->keys().count(); i++)
     {
-        QList< QPair<int,int> >* pair = pci.value(pci.keys().at(i));
-        qDebug() <<"stu map for this stu is "<< pair->count();
-        qDebug () <<"the first stu is "<< pci.keys().at(i);
+        QList< QPair<int,int> >* pair = pci->value(pci->keys().at(i));
+        qDebug() <<"count of students measured with "<< pair->count();
+        qDebug () <<"This student ID "<< pci->keys().at(i);
         for (int j = 0; j < pair->count(); j++){
-            qDebug() <<"second stu Id"<< pair->at(j).first;
+            qDebug() <<"Other student ID"<< pair->at(j).first;
             qDebug() <<"Pci"<< pair->at(j).second;
         }
     }
-    return pci;
+    return *pci;
 }
 
 
@@ -80,22 +96,40 @@ int PciBuilder::calculatePci(const Qualification& q1, const Qualification& q2)
 
 
 bool PciBuilder::insert(QList<QPair<int,int> >* pci,const QPair<int,int>& pair){
+    qDebug() << "Trying to insert pair with pci of " << pair.second;
     bool inserted = false;
     for (int i = 0; i < pci->count() && !inserted; i++)
     {
+        qDebug () << "Current pci in list " << pci->at(i).second;
         if (pci->at(i).second >= pair.second)
         {
+            qDebug () << "Found a pci greater than or equal to " << pair.second;
+            qDebug () << "That pci is " << pci->at(i).second;
+
             if (i > 0)
             {
+                qDebug () << " index is greater than 0; " << i;
+                qDebug () << " inserting at " << (i-1);
                 pci->insert(i-1,pair);
                 inserted = true;
             }
             else break;
         }
+
+        if (i+1 == pci->count() && !inserted)
+        {
+
+            qDebug () << " inserting pair at end ";
+            pci->append(pair);
+            inserted = true;
+        }
     }
 
     if (!inserted)
+    {
+        qDebug () << " Inserted at index 0";
         pci->insert(0,pair);
+    }
 
     return inserted;
 }

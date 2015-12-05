@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Register Menu</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background:white;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget" native="true">
    <property name="geometry">
     <rect>
@@ -34,6 +39,11 @@
      <height>16777215</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QDialog{
+background:white;
+}</string>
+   </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -42,6 +52,12 @@
       <width>81</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <italic>false</italic>
+     </font>
     </property>
     <property name="text">
      <string>First Name</string>
@@ -56,15 +72,25 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>420</x>
       <y>270</y>
-      <width>71</width>
+      <width>81</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>Last Name</string>
@@ -79,6 +105,11 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
    </widget>
    <widget class="QLineEdit" name="userName">
     <property name="geometry">
@@ -88,6 +119,11 @@
       <width>113</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
    </widget>
    <widget class="QLineEdit" name="password">
@@ -99,15 +135,25 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>420</x>
       <y>330</y>
-      <width>71</width>
+      <width>81</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>Password</string>
@@ -116,11 +162,16 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>190</x>
       <y>330</y>
-      <width>71</width>
+      <width>81</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>UserName</string>
@@ -135,6 +186,11 @@
       <height>32</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
     <property name="text">
      <string>Continue to Profile Creation</string>
     </property>
@@ -142,14 +198,19 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>330</x>
       <y>190</y>
-      <width>161</width>
+      <width>191</width>
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
     <property name="text">
-     <string>Regiser   New   Account</string>
+     <string>Register   New   Account</string>
     </property>
    </widget>
   </widget>
