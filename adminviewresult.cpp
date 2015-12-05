@@ -2,10 +2,10 @@
 #include "ui_adminviewresult.h"
 #include "logindialog.h"
 
-AdminViewResult::AdminViewResult(QWidget *parent) :
-    QDialog(parent),
+AdminViewResult::AdminViewResult(AdminViewResultController *newController) :
+    QDialog(),
     ui(new Ui::AdminViewResult),
-    adminViewResultController(new AdminViewResultController(this))
+    adminViewResultController(newController)
 {
     ui->setupUi(this);
 

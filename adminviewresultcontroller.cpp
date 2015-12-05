@@ -1,8 +1,16 @@
 #include "adminviewresultcontroller.h"
 #include "adminviewresult.h"
 
-AdminViewResultController::AdminViewResultController(AdminViewResult *view):QObject(),
-    adminViewResult(view)
+AdminViewResultController::AdminViewResultController(int id):QObject(),
+    projectId(id),
+    database(Database::getInstance())
 {
+    adminViewResult = new AdminViewResult(this);
+    adminViewResult->exec();
 
 }
+QList<Team*> AdminViewResultController::getTeams(){
+    return database->getTeamsbyProjectID(projectId);
+
+}
+
