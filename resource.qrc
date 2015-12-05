@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/images">
         <file>carleton.jpeg</file>
+        <file>stuPID.png</file>
     </qresource>
 </RCC>
