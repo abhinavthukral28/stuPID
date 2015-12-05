@@ -1,20 +1,33 @@
 #include "distributor.h"
 #include "team.h"
-Distributor::Distributor(const QMap< int,QList< QPair<int,int> > >& pciParam) : pci(pciParam)
+#include <QDebug>
+Distributor::Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam) : pci(pciParam)
 {
 
 }
 
 const QList<Team*>& Distributor::distributeTeams(const int minSize,const int maxSize){
 
+    qDebug () << " STARTING DISTRIBUTOR";
 
     QList<int> remainingStudents = pci.keys();
 
     int numTeams = pci.keys().count()/minSize;
 
 
-     QList<Team*> teams = createTopRowTeams(numTeams,remainingStudents);
+     const QList<Team*> teams = createTopRowTeams(numTeams,remainingStudents);
 
+     for (int i = 0; i < teams.count(); i++)
+     {
+         qDebug() <<"Team " << (i+1);
+
+         for (int j = 0; j < teams.at(i)->getTeamMembers().count(); j++)
+         {
+             qDebug () << teams.at(i)->getTeamMembers().at(j);
+         }
+
+
+     }
 
      return teams;
  }
@@ -25,10 +38,10 @@ int Distributor::calculateTeamWeight(Team team, int id)
     QList<int> teamMembers = team.getTeamMembers();
     int total = team.getPci();
     for(int i=0; i<teamMembers.count();i++){
-       QList<QPair<int,int> > values = pci.value(id);
-       for(int j; j<values.count(); j++){
-           if(values.at(j).first == teamMembers.at(i)){
-               total += values.at(j).second;
+       QList<QPair<int,int> >* values = pci.value(id);
+       for(int j; j<values->count(); j++){
+           if(values->at(j).first == teamMembers.at(i)){
+               total += values->at(j).second;
            }
         }
 
@@ -43,29 +56,123 @@ int Distributor::assignStudentToTeam(int studentID, QList<Team*> teams)
 
 const QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& remainingStudents)
 {
-     QList< Team* > topRow;
-     QList< QPair<int,int> > pairs;
-     for (int i = 0; i< pci.keys().count();)
-     return topRow;
+
+     QList< Team* >* topRow = new QList< Team* >;
+     QList< int > keys = pci.keys();
+     for (int i = 0; i < keys.count();i++)
+     {
+         if (numTeams == 0)
+             return *topRow;
+         int idOne = pci.keys().at(i);
+         if (pci.contains(keys.at(i)))
+         {
+             int otherID = pci.value(idOne)->at(0).first;
+             qDebug() << "this one " << idOne;
+             qDebug() << "other one " << pci.value(idOne)->at(0).first;
+             int idTwo = pci.value(pci.value(idOne)->at(0).first)->at(0).first;
+             if (idOne == idTwo)
+             {
+                 qDebug() << "Student with ID " << idOne << "and " << pci.value(idOne)->at(0).first << "top row match";
+                 qDebug() << "The PCI between them is " << pci.value(idOne)->at(0).second;
+
+                 Team* team = new Team();
+                 team->addStudent(idOne);
+                 team->addStudent(pci.value(idOne)->at(0).first);
+                 topRow->append(team);
+                 numTeams--;
+                 qDebug() << "Added student id " << idOne << "and " << pci.value(idOne)->at(0).first << "to a new team";
+
+
+                 qDebug () << " Removing key " << idOne;
+                 qDebug () << " Removing key " << otherID;
+
+                 keys.removeOne(idOne);
+                 keys.removeOne(otherID);
+
+                 QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
+                 while (iterator.hasNext()) {
+                     iterator.next();
+                     if (iterator.key() == idOne || iterator.key() == otherID)
+                         iterator.remove();
+                 }
+
+                 for (int l = 0; l < pci.keys().count(); l++)
+                 {
+                    qDebug() << " filtering " << pci.keys().at(l);
+                    QList< QPair <int,int> >* matches = pci.value(pci.keys().at(l));
+                    QList <int> indexes;
+                    for (int k = 0; k < matches->count(); k++)
+                    {
+                        int id = matches->at(k).first;
+                        if (id == idOne || id == otherID)
+                        {
+                            qDebug () << "Removing top match from " << pci.keys().at(l) << " for id " << id;
+                            qDebug () << "Removing at index " << k;
+                            indexes << k;
+                        }
+                    }
+
+                    for (int m = 0; m < indexes.count(); m++)
+                    {
+                        pci.value(pci.keys().at(l))->removeAt(indexes.at(m) - m);
+                    }
+
+
+
+
+
+                 }
+
+
+                 for (int l = 0; l < pci.keys().count(); l++)
+                 {
+                    qDebug () << pci.keys().at(l) << " KEY";
+                    QList< QPair <int,int> >* matches = pci.value(pci.keys().at(l));
+
+                    for (int k = 0; k < matches->count(); k++)
+                    {
+                       qDebug () << matches->at(k);
+                    }
+
+
+
+
+                 }
+
+
+                 qDebug () << !pci.contains(idOne);
+                 qDebug () << !pci.contains(otherID);
+                 i = -1;
+             }
+         }
+     }
+//     remove all readily matched pairs
+
+//     remove the cells that are taken from pci
+
+//     repeat
+
+     qDebug () << topRow->count();
+     return *topRow;
 }
 
-bool Distributor::insert(QList<QPair<int,int> >& pci,const QPair<int,int>& pair){
+bool Distributor::insert(QList<QPair<int,QPair<int,int> > >& pci,const QPair<int,QPair<int,int> >& pair){
     bool inserted = false;
-    for (int i = 0; i < pci.count() && !inserted; i++)
-    {
-        if (pci.at(i).second > pair.second)
-        {
-            if (i > 0)
-            {
-                pci.insert(i-1,pair);
-                inserted = true;
-            }
-            else break;
-        }
-    }
+      for (int i = 0; i < pci.count() && !inserted; i++)
+      {
+          if (pci.at(i).second > pair.second)
+          {
+              if (i > 0)
+              {
+                  pci.insert(i-1,pair);
+                  inserted = true;
+              }
+              else break;
+          }
+      }
 
-    if (!inserted)
-        pci.insert(0,pair);
+      if (!inserted)
+          pci.insert(0,pair);
 
-    return inserted;
+      return inserted;
 }
