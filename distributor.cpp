@@ -193,7 +193,7 @@ const QList<int>& Distributor::sortKeys(QList<int> keys)
         bool inserted = false;
         for (int j = 0; j < sorted->count(); j++)
         {
-            if (pci.value(sorted->at(j))->at(0).second > pci.value(keys.at(i))->at(0).second)
+            if (pci.value(sorted->at(j))->at(0).second >= pci.value(keys.at(i))->at(0).second)
             {
                 sorted->insert(j,keys.at(i));
                 inserted = true;
