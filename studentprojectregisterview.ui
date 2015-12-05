@@ -78,6 +78,11 @@ background:white;
       <height>192</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
    </widget>
    <widget class="QPushButton" name="manageProjectButton">
     <property name="geometry">
@@ -157,6 +162,11 @@ background:white;
       <width>151</width>
       <height>331</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
    </widget>
    <widget class="QFrame" name="frame_3">

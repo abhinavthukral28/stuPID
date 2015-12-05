@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Manage Project</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background:white;
+}</string>
+  </property>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
@@ -21,6 +26,11 @@
      <width>161</width>
      <height>391</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
    </property>
   </widget>
   <widget class="QTextBrowser" name="descriptionView">
@@ -31,6 +41,11 @@
      <width>321</width>
      <height>221</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
    </property>
   </widget>
   <widget class="QLabel" name="Description">
@@ -85,6 +100,11 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>URW Gothic L</family>
+      </font>
+     </property>
      <property name="text">
       <string>Project List</string>
      </property>
@@ -115,6 +135,11 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
     <property name="text">
      <string>Project Title</string>
     </property>
@@ -127,6 +152,11 @@
       <width>181</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>Register in New Project</string>
@@ -141,6 +171,11 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
     <property name="text">
      <string>Unregister</string>
     </property>
@@ -153,6 +188,11 @@
       <width>101</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>View Results</string>
@@ -167,6 +207,11 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
     <property name="text">
      <string>Edit Profile</string>
     </property>
@@ -179,6 +224,11 @@
       <width>99</width>
       <height>27</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>Logout</string>
