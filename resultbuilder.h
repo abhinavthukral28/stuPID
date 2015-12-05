@@ -18,8 +18,9 @@ public:
 private:
     QList<Student> temaMembers;
     Team newTeam;
-    QList<QPair> pairs;
+    QList<QPair<Student, Student> > pairs;
     QString detailedResults;
+    PciBuilder pci;
 
 };
 
