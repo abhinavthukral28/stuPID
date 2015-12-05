@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>LoginDialog</class>
  <widget class="QDialog" name="LoginDialog">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,17 +13,47 @@
     <height>324</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <kerning>false</kerning>
+   </font>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Login Menu</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#LoginDialog {
+background: white;
+}
+
+</string>
   </property>
   <widget class="QPushButton" name="loginpushButton">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>190</y>
-     <width>91</width>
-     <height>27</height>
+     <y>180</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#loginpushButton {
+color:white;
+background-color: rgb(36, 132, 196);
+
+}</string>
    </property>
    <property name="text">
     <string>Login</string>
@@ -35,6 +68,14 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Student</string>
    </property>
@@ -42,14 +83,24 @@
   <widget class="QRadioButton" name="adminradioButton">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>236</x>
      <y>230</y>
-     <width>117</width>
+     <width>131</width>
      <height>22</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#QRadioButton {
+background:rgb(255, 255, 255)
+}</string>
+   </property>
    <property name="text">
-    <string>Admin</string>
+    <string>Administrator</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="userNamelineEdit">
@@ -81,6 +132,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
+   </property>
    <property name="text">
     <string>UserName</string>
    </property>
@@ -93,6 +149,11 @@
      <width>71</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
    </property>
    <property name="text">
     <string>Password</string>
@@ -120,10 +181,24 @@
      <height>27</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
+   </property>
    <property name="text">
     <string>Register (Students Only)</string>
    </property>
   </widget>
+  <zorder>studentradioButton</zorder>
+  <zorder>adminradioButton</zorder>
+  <zorder>userNamelineEdit</zorder>
+  <zorder>passwroldlineEdit</zorder>
+  <zorder>userNamelabel</zorder>
+  <zorder>passwordlabel</zorder>
+  <zorder>label</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>loginpushButton</zorder>
  </widget>
  <resources/>
  <connections/>
