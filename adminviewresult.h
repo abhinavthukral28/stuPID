@@ -1,7 +1,8 @@
 #ifndef ADMINVIEWRESULT_H
 #define ADMINVIEWRESULT_H
-
+#include <QObject>
 #include <QDialog>
+#include "adminviewresultcontroller.h"
 
 namespace Ui {
 class AdminViewResult;
@@ -22,6 +23,7 @@ private slots:
 
 private:
     Ui::AdminViewResult *ui;
+    AdminViewResultController *adminViewResultController;
 };
 
 #endif // ADMINVIEWRESULT_H

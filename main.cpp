@@ -7,22 +7,16 @@
 #include "project.h"
 #include "student.h"
 #include <QDebug>
+#include "team.h"
+#include "resultbuilder.h"
 
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    //view.show();
-    //LoginDialog view;
     Database::getInstance();
     LoginDialog view;
     view.show();
-
-//    Database* database = Database::getInstance();
-
-//    Student* student = new Student("tester2");
-//    database->createStudent(*student);
-//    std::cout << "New ID " << student->getID();
 
 
   return a.exec();

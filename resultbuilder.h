@@ -8,6 +8,7 @@
 #include <QString>
 #include "Database.h"
 #include "qualification.h"
+#include <QStringList>
 
 
 
@@ -24,9 +25,9 @@ private:
     QList<Student>* teamMembers;
     Team* newTeam;
     QString detailedResults;
-    QList<QString> highCompatibility;
-    QList<QString> mediumCompatibility;
-    QList<QString> lowCompatibility;
+    QStringList highCompatibility;
+    QStringList mediumCompatibility;
+    QStringList lowCompatibility;
     void getCompareString();
 
 };

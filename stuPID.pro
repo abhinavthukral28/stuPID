@@ -41,9 +41,9 @@ SOURCES += main.cpp\
     studentmanageprojectcontroller.cpp \
     adminviewresult.cpp \
     session.cpp \
-    adminviewdetail.cpp \
     editqualificationscontroller.cpp \
-    resultbuilder.cpp
+    resultbuilder.cpp \
+    adminviewresultcontroller.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -75,9 +75,9 @@ HEADERS  += \
     studentmanageprojectcontroller.h \
     adminviewresult.h \
     session.h \
-    adminviewdetail.h \
     editqualificationscontroller.h \
-    resultbuilder.h
+    resultbuilder.h \
+    adminviewresultcontroller.h
 
 FORMS    += \
     studentregister.ui \
@@ -88,8 +88,7 @@ FORMS    += \
     studentprojectregisterview.ui \
     studentmanageprojectview.ui \
     createprojectview.ui \
-    adminviewresult.ui \
-    adminviewdetail.ui
+    adminviewresult.ui
 
 RESOURCES += \
     resource.qrc
