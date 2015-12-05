@@ -2,7 +2,7 @@
 #include "student.h"
 #include "qualification.h"
 #include <stdlib.h>
-#include<qdebug.h>
+#include <QDebug>
 PciBuilder::PciBuilder()
 {
 
@@ -32,7 +32,7 @@ QMap<int, QList< QPair<int,int> > >& PciBuilder::calculatePci(const QList<Studen
                 pair.second = tempResult;
                 QList< QPair<int,int> > val = pci.value(i);
                 insert(val,pair);
-                pci.insert(i,val);
+                pci.insert(thisOne->getID(),val);
 
 
             }
@@ -51,16 +51,18 @@ int PciBuilder::calculatePci(const Student& studentOne,const Student& studentTwo
 
 //get the qualification 
     
-   const QList<Qualification*> personOneQuals = studentOne.getQualifications();
-   const QList<Qualification*> personTwoQuals = studentTwo.getQualifications();
+    const QList<Qualification*> personOneQuals = studentOne.getQualifications();
+    const QList<Qualification*> personTwoQuals = studentTwo.getQualifications();
     int total= 0;
+
+    qDebug() << "personOneQuals" <<studentOne.getQualifications();
 
     for (int i = 0; i < personOneQuals.size();i++)
     {
-//       qDebug << "Title: " + personOneQuals.at(i)->getTitle();
-//       qDebug << "Student UserName:" + studentOne.getUsername();
-//       qDebug << "q1 = " + personOneQuals.at(i)->getQualificationRating();
-//       qDebug << "e1 = " + personOneQuals.at(i)->getQualificationRating();
+       qDebug() << "Title: " << personOneQuals.at(i)->getTitle();
+       qDebug() << "Student UserName:" << studentOne.getUsername();
+       qDebug() << "q1 = " << personOneQuals.at(i)->getQualificationRating();
+       qDebug() << "e1 = " << personOneQuals.at(i)->getQualificationRating();
        total+=calculatePci(*personOneQuals.at(i),*personTwoQuals.at(i));
 
     }

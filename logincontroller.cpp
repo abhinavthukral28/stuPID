@@ -24,7 +24,9 @@ int LoginController::authenticate(QString &userName, QString &password, bool boo
         if (student != 0)
         {
             Session::setStudent(*student);
+            qDebug()<<"student qualifications are"<<student->getQualifications().first();
             return 1;
+
         }
         return 0;
 
