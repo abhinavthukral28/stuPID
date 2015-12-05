@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Register Projects</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background:white;
+}</string>
+  </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
@@ -37,6 +42,11 @@
       <height>27</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
     <property name="text">
      <string>Register</string>
     </property>
@@ -46,9 +56,14 @@
      <rect>
       <x>130</x>
       <y>25</y>
-      <width>91</width>
+      <width>111</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>Project Name</string>
@@ -67,11 +82,16 @@
    <widget class="QPushButton" name="manageProjectButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>170</x>
       <y>290</y>
-      <width>131</width>
+      <width>141</width>
       <height>27</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>Manage Projects</string>
@@ -85,6 +105,11 @@
       <width>99</width>
       <height>27</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>Logout</string>
@@ -114,6 +139,11 @@
       <width>171</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
     </property>
     <property name="text">
      <string>             Project List</string>
