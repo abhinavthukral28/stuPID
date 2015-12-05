@@ -6,12 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>594</width>
+    <width>513</width>
     <height>368</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>View Result</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background:white;
+}</string>
   </property>
   <widget class="QPushButton" name="BackButton">
    <property name="geometry">
@@ -21,6 +26,11 @@
      <width>81</width>
      <height>27</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
    </property>
    <property name="text">
     <string>Back</string>
@@ -34,6 +44,11 @@
      <width>491</width>
      <height>281</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+background:white;
+</string>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>
@@ -73,10 +88,15 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>10</y>
-     <width>91</width>
-     <height>20</height>
+     <y>0</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
    </property>
    <property name="text">
     <string>View Result</string>
@@ -90,6 +110,11 @@
      <width>99</width>
      <height>27</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+    </font>
    </property>
    <property name="text">
     <string>Logout</string>

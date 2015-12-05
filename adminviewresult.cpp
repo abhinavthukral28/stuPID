@@ -4,7 +4,8 @@
 
 AdminViewResult::AdminViewResult(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AdminViewResult)
+    ui(new Ui::AdminViewResult),
+    adminViewResultController(new AdminViewResultController(this))
 {
     ui->setupUi(this);
 
