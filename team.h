@@ -16,8 +16,8 @@ public:
     Team(int id);
     int addStudent(int id);
     int removeStudent(int id);
-    const QList<int>& getTeamMembers();
-    int getPci();
+    const QList<int>& getTeamMembers() const;
+    int getPci() const;
     int getID();
     int setPci(int newPci);
 

@@ -20,7 +20,7 @@ int Team::addStudent(int id)
     return 0;
 }
 
-const QList<int>& Team::getTeamMembers()
+const QList<int>& Team::getTeamMembers () const
 {
     return teamMembers;
 }
@@ -36,7 +36,7 @@ int Team::removeStudent(int id){
     return teamMembers.removeOne(id);
 }
 
-int Team::getPci(){
+int Team::getPci() const{
     return pci;
 }
 
