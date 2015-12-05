@@ -70,7 +70,7 @@ const QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& rema
      {
          if (numTeams == 0)
              return *topRow;
-         int idOne = pci.keys().at(i);
+         int idOne = keys.at(i);
          if (pci.contains(keys.at(i)))
          {
              int otherID = pci.value(idOne)->at(0).first;
