@@ -18,6 +18,7 @@ private:
 public:
     Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam);
     const QList<Team*>& distributeTeams(const int minSize,const int maxSize);
+    const QList<int>& sortKeys(QList<int> keys);
 };
 
 #endif // DISTRIBUTOR_H
