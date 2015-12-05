@@ -12,10 +12,10 @@ class PciBuilder
    private:
     int calculatePci(const Student& studentOne,const Student& studentTwo);
     int calculatePci(const Qualification& q1,const Qualification& q2);
-    bool insert(QList<QPair<int,int> >& pci,const QPair<int,int>&);
+    bool insert(QList<QPair<int,int> >* pci,const QPair<int,int>&);
 public:
     PciBuilder();
-    QMap<int, QList< QPair<int,int> > >& calculatePci(const QList<Student*>&);
+    QMap<int, QList< QPair<int,int> >* >& calculatePci(const QList<Student*>&);
 
 };
 
