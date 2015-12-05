@@ -30,7 +30,7 @@ QMap<int, QList< QPair<int,int> > >& PciBuilder::calculatePci(const QList<Studen
 
                 pair.first = j ;
                 pair.second = tempResult;
-                QList< QPair<int,int> >* val = &pci.value(i);
+                QList< QPair<int,int> > val = pci.value(i);
                 insert(val,pair);
                 pci.insert(thisOne->getID(),val);
 
