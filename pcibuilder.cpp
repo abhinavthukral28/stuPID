@@ -18,7 +18,7 @@ QMap<int, QList< QPair<int,int> >* >& PciBuilder::calculatePci(const QList<Stude
 
 
         Student* thisOne = studentList.at(i);
-
+        QList< QPair<int,int> >* val = new QList< QPair<int,int> >();
         int tempResult;
         for (int j = 0; j < studentList.count(); j++)
         {
@@ -30,30 +30,26 @@ QMap<int, QList< QPair<int,int> >* >& PciBuilder::calculatePci(const QList<Stude
 
                 pair.first = j ;
                 pair.second = tempResult;
-                QList< QPair<int,int> >* val = new QList< QPair<int,int> >();
+
                         //pci.value(i);
                 insert(val,pair);
-                pci.insert(thisOne->getID(),val);
-
-                qDebug() << pci.keys().count();
+               // qDebug() << pci.keys().count();
 
             }
-
-
-
         }
-
+        pci.insert(thisOne->getID(),val);
 
     }
-    qDebug () << pci.keys().count();
+    qDebug () <<"number of stu"<< pci.keys().count();
+
     for (int i = 0; i < pci.keys().count(); i++)
     {
-
         QList< QPair<int,int> >* pair = pci.value(pci.keys().at(i));
-        qDebug() << pair->count();
+        qDebug() <<"stu map for this stu is "<< pair->count();
+        qDebug () <<"the first stu is "<< pci.keys().at(i);
         for (int j = 0; j < pair->count(); j++){
-            qDebug() << pair->at(j).first;
-            qDebug() << pair->at(j).second;
+            qDebug() <<"second stu Id"<< pair->at(j).first;
+            qDebug() <<"Pci"<< pair->at(j).second;
         }
     }
     return pci;
@@ -88,7 +84,7 @@ int PciBuilder::calculatePci(const Student& studentOne,const Student& studentTwo
 int PciBuilder::calculatePci(const Qualification& q1, const Qualification& q2)
 {
    return abs(q2.getExpectationRating() - q1.getQualificationRating())
-           - abs(q1.getExpectationRating() - q2.getQualificationRating())
+           + abs(q1.getExpectationRating() - q2.getQualificationRating())
            + 2* abs(q1.getExpectationRating()- q2.getExpectationRating());
 }
 
@@ -97,7 +93,7 @@ bool PciBuilder::insert(QList<QPair<int,int> >* pci,const QPair<int,int>& pair){
     bool inserted = false;
     for (int i = 0; i < pci->count() && !inserted; i++)
     {
-        if (pci->at(i).second > pair.second)
+        if (pci->at(i).second >= pair.second)
         {
             if (i > 0)
             {
