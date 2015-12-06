@@ -9,6 +9,7 @@ class LoginController:public QObject
 public:
     LoginController(LoginDialog *login);
     int authenticate(QString &userName, QString &password, bool boolStudent);
+    int goToQualificationsInit();
     int goToStudentView(QString &userName);
     int goToAdminView(QString &userName);
     int goToStudentRegisterView();
