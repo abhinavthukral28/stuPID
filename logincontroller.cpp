@@ -8,6 +8,8 @@
 #include "session.h"
 #include "Database.h"
 #include "studentmanageprojectview.h"
+#include "qualificationinit.h"
+#include "qualification.h"
 
 LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(login)
 {
@@ -24,15 +26,25 @@ int LoginController::authenticate(QString &userName, QString &password, bool boo
         if (student != 0)
         {
             Session::setStudent(*student);
-            qDebug()<<"student qualifications are"<<student->getQualifications().first();
+
+
+            if(student->getQualifications().at(0)->getQualificationRating() == 0)
+            {
+                //goToQualificationsInit();
+                return 2;
+
+            }
+            //qDebug()<<"student qualifications are"<<student->getQualifications().first();
+
             return 1;
 
         }
         return 0;
 
     }
-    else{
-       return userName == "admin";
+    else{ 
+      return  userName == "admin";
+
     }
 
 }
@@ -54,6 +66,15 @@ int LoginController::goToStudentRegisterView(){
     loginDialog->close();
     StudentRegister rview;
     rview.exec();
+
+    return 0;
+}
+
+int LoginController::goToQualificationsInit(){
+    //transition view
+    loginDialog->close();
+     QualificationInit qual;
+     qual.exec();
 
     return 0;
 }
