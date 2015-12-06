@@ -16,12 +16,26 @@ ResultBuilder::ResultBuilder(Team *team):newTeam(team), database(Database::getIn
 QString ResultBuilder::getDetailedResults()
 {
     this->getCompareString();
+    if(highCompatibility.count()<=0){
+        highCompatibility.append("None");
+    }
     QString hCompString = highCompatibility.join('_');
+
+    if(mediumCompatibility.count()<=0){
+        mediumCompatibility.append("None");
+    }
     QString mCompString = mediumCompatibility.join('_');
+
+    if(lowCompatibility.count()<=0){
+        lowCompatibility.append("None");
+    }
     QString lCompString = lowCompatibility.join('_');
+
     QStringList list;
+
     list.append(hCompString);
     list.append(mCompString);
+    list.append(lCompString);
     QString final = list.join('/');
     return final;
 
@@ -52,7 +66,7 @@ void ResultBuilder::getCompareString()
             mediumCompatibility.append(title);
 
         }
-        else if(averagePci<=12){
+        else if(averagePci<16){
             lowCompatibility.append(title);
         }
 

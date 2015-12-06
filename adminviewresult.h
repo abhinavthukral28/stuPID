@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QDialog>
 #include "adminviewresultcontroller.h"
+#include "team.h"
 class AdminViewResultController;
 namespace Ui {
 class AdminViewResult;
@@ -21,9 +22,13 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_listWidget_clicked(const QModelIndex &index);
+    void updatePanel(int i);
+
 private:
     Ui::AdminViewResult *ui;
     AdminViewResultController *adminViewResultController;
+    QList<Team*> teams;
 };
 
 #endif // ADMINVIEWRESULT_H

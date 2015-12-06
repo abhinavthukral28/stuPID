@@ -6,15 +6,17 @@
 #include <QList>
 #include <QStringList>
 #include "adminviewresult.h"
+#include "resultbuilder.h"
 
 class AdminViewResult;
-class AdminViewResultController:public QObject
+class AdminViewResultController: public QObject
 {
 public:
     AdminViewResultController(int id);
+    QString getDetailResults(Team *team);
+    QList<Team*> getTeams();
 private:
     AdminViewResult *adminViewResult;
-    QList<Team*> getTeams();
     Database* database;
     int projectId;
 };
