@@ -13,28 +13,6 @@ CreateProjectViewController::CreateProjectViewController(CreateProjectView *view
 {
 
 }
-/**
-    int CreateProjectViewController::setNewProjectDescription(QString& description){
-    qDebug() << "this is description" + description;
-    newproject->setDescription(description);
-    return 0;
- }
-
-   int CreateProjectViewController::setNewProjectTeamMin(int& min){
-    newproject->setTeamMin(min);
-    return 0;
- }
-
-  int CreateProjectViewController::setNewProjectTeamMax(int& max) {
-    newproject->setTeamMax(max);
-   return 0;
-  }
-
-   int CreateProjectViewController::setNewProjectTitle(QString &title){
-    newproject->setTitle(title);
-    return 0;
- }
-   ***/
 
 int CreateProjectViewController::saveProject(){
 
@@ -52,7 +30,7 @@ int CreateProjectViewController::saveProject(){
 
    if(project->getMaxTeamSize() < project->getMinTeamSize() ||
            createProjectsView->aMax.isEmpty() || createProjectsView->aMin.isEmpty() ||
-           createProjectsView->aMax.toInt() == 0 || createProjectsView->aMin.toInt() == 0)
+           createProjectsView->aMax.toInt() == 0 || createProjectsView->aMin.toInt() < 2)
    {
       return 3; //invalid team size
    }
