@@ -13,7 +13,10 @@ const QList<Team*>& TeamBuilder::createTeams(const Project& project){
 
     Distributor* distributor = new Distributor (pci);
    QList<Team*> list = distributor->distributeTeams(project.getMinTeamSize(),project.getMaxTeamSize());
-//     return list;
+
+
+
+   return list;
 }
 
 

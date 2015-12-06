@@ -19,24 +19,17 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,const int max
 
 
      addOutliers(teams,minSize,maxSize);
+
+    qDebug() << "Final teams";
      for (int i = 0; i < teams.count(); i++)
      {
-         qDebug() <<"Team " << (i+1);
+         qDebug () << "Team " << teams.at(i)->getID();
 
          for (int j = 0; j < teams.at(i)->getTeamMembers().count(); j++)
          {
-             qDebug () << teams.at(i)->getTeamMembers().at(j);
+            qDebug() <<   teams.at(i)->getTeamMembers().at(j) ;
          }
-
-
      }
-
-     for (int i = 0; i < pci.keys().count(); i++)
-     {
-        qDebug() << pci.keys().at(i);
-     }
-
-
      return teams;
  }
 
@@ -47,12 +40,10 @@ int Distributor::calculateTeamWeight(const Team& team,const int& id)
     int total = team.getPci();
     for(int i=0; i<teamMembers.count();i++){
        QList<QPair<int,int> >* values = pci.value(id);
-       for(int k =0; k<values->count(); k++)
-           qDebug()<<"values is "<<values->at(k);
+
 
        for(int j=0; j<values->count(); j++){
-           qDebug()<<"values->at(j).first" << values->at(j).first;
-           qDebug()<<"teamMembers.at(i)" << teamMembers.at(i);
+
            if(values->at(j).first == teamMembers.at(i)){
                total += values->at(j).second;
           //     qDebug()<<"values->at(j).second"<<values->at(j).second;
@@ -81,10 +72,29 @@ QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& remainingS
          int idOne = keys.at(i);
          if (pci.contains(keys.at(i)))
          {
-             int otherID = pci.value(idOne)->at(0).first;
+             int otherID;
              qDebug() << "this one " << idOne;
              qDebug() << "other one " << pci.value(idOne)->at(0).first;
-             int idTwo = pci.value(pci.value(idOne)->at(0).first)->at(0).first;
+             int idTwo;
+
+             for (int j = 0; j <pci.value(idOne)->count(); j++ )
+             {
+                if (pci.contains(pci.value(idOne)->at(j).first))
+                {
+
+                    int otherID = pci.value(idOne)->at(j).first;
+                    for (int t = 0; t < pci.value(pci.value(idOne)->at(j).first)->count();t++ )
+                    {
+                        if (pci.contains(pci.value(pci.value(idOne)->at(j).first)->at(t).first))
+                        {
+                          idTwo = pci.value(pci.value(idOne)->at(j).first)->at(t).first;
+                        }
+                        break;
+                    }
+                    break;
+                }
+             }
+
              if (idOne == idTwo)
              {
                  qDebug() << "Student with ID " << idOne << "and " << pci.value(idOne)->at(0).first << "top row match";
@@ -113,61 +123,40 @@ QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& remainingS
                          iterator.remove();
                  }
 
-                 for (int l = 0; l < pci.keys().count(); l++)
-                 {
-                    qDebug() << " filtering " << pci.keys().at(l);
-                    QList< QPair <int,int> >* matches = pci.value(pci.keys().at(l));
-                    QList <int> indexes;
-                    for (int k = 0; k < matches->count(); k++)
-                    {
-                        int id = matches->at(k).first;
-                        if (id == idOne || id == otherID)
-                        {
-                            qDebug () << "Removing top match from " << pci.keys().at(l) << " for id " << id;
-                            qDebug () << "Removing at index " << k;
-                            indexes << k;
-                        }
-                    }
+//                 for (int l = 0; l < pci.keys().count(); l++)
+//                 {
+//                    qDebug() << " filtering " << pci.keys().at(l);
+//                    QList< QPair <int,int> >* matches = pci.value(pci.keys().at(l));
+//                    QList <int> indexes;
+//                    for (int k = 0; k < matches->count(); k++)
+//                    {
+//                        int id = matches->at(k).first;
+//                        if (id == idOne || id == otherID)
+//                        {
+//                            qDebug () << "Removing top match from " << pci.keys().at(l) << " for id " << id;
+//                            qDebug () << "Removing at index " << k;
+//                            indexes << k;
+//                        }
+//                    }
 
-                    for (int m = 0; m < indexes.count(); m++)
-                    {
-                        if(pci.keys().at(l) == 32 )
-                        qDebug()<<"=======================================================" << pci.value(pci.keys().at(l))->at(indexes.at(m) - m).first;
-                        pci.value(pci.keys().at(l))->removeAt(indexes.at(m) - m);
-                    }
+//                    for (int m = 0; m < indexes.count(); m++)
+//                    {
+//                        if(pci.keys().at(l) == 32 )
+//                        qDebug()<<"=======================================================" << pci.value(pci.keys().at(l))->at(indexes.at(m) - m).first;
+//                        pci.value(pci.keys().at(l))->removeAt(indexes.at(m) - m);
+//                    }
 
-
-
-
-
-                 }
-
-
-                 for (int l = 0; l < pci.keys().count(); l++)
-                 {
-                    qDebug () << pci.keys().at(l) << " KEY";
-                    QList< QPair <int,int> >* matches = pci.value(pci.keys().at(l));
-
-                    for (int k = 0; k < matches->count(); k++)
-                    {
-                       qDebug () << matches->at(k);
-                    }
+//                 }
 
 
 
-
-                 }
-
-
-                 qDebug () << !pci.contains(idOne);
-                 qDebug () << !pci.contains(otherID);
                  i = -1;
              }
          }
      }
 
 
-     qDebug () << topRow->count();
+
      return *topRow;
 }
 
@@ -227,10 +216,7 @@ const QList<int>& Distributor::sortKeys(QList<int> keys)
     }
 
 
-    for (int i = 0; i < sorted->count(); i ++)
-    {
-        qDebug() << sorted->at(i);
-    }
+
 
     return *sorted;
 }
@@ -238,6 +224,8 @@ const QList<int>& Distributor::sortKeys(QList<int> keys)
 
 int Distributor::sortTeams(QList<Team*>& teams){
 
+
+    qDebug() << "SORTING " << teams.count() << " teams";
     int team1, team2;
     for (int i = 0; i < (teams.count()-1); i++)
     {
@@ -254,38 +242,27 @@ int Distributor::sortTeams(QList<Team*>& teams){
 
     }
 
-    qDebug() << "SORTED TEAMS";
-    for (int i = 0; i < teams.count(); i++)
-    {
-        qDebug() << teams.at(i)->getPci();
-    }
+
     return 1;
 }
 
 
 
 int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int& maxSize){
-    qDebug()<<"Print 32";
-    for(int k=0; k<pci.value(32)->count(); k++){
 
-        qDebug()<<pci.value(32)->at(k).first;
-        qDebug()<<pci.value(32)->at(k).second;
-
-    }
-
-    QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
 
 
 
     sortTeams(teams);
+
     for (int i = 0; i < teams.count(); i++ )
     {
         int minWeight = -1;
         int minStudentID;
         for (int j = 0; j < pci.keys().count();j++)
         {
-           qDebug()<<"TeamMembers "<<teams.at(i)->getTeamMembers();
-           qDebug()<<"pci.keys().at(j)"<<pci.keys().at(j);
+           qDebug()<<"Trying to add "<<pci.keys().at(j);
+//           qDebug()<<"pci.keys().at(j)"<<pci.keys().at(j);
 
 
            int tempWeight =  calculateTeamWeight(*teams.at(i),pci.keys().at(j));
@@ -304,10 +281,11 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int&
                }
            }
         }
-        if(minStudentID==30)
-            qDebug()<<"++++++++++++++++++++++++";
-        teams.at(i)->addStudent(minStudentID);
+        qDebug () << " Adding " << minStudentID;
+         teams.at(i)->addStudent(minStudentID);
         teams.at(i)->setPci(minWeight);
+        QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
+
         while (iterator.hasNext()) {
             iterator.next();
             if (iterator.key() == minStudentID)
@@ -315,4 +293,8 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int&
         }
 
     }
+
+
+
+    return 1;
 }
