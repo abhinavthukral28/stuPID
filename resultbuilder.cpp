@@ -58,15 +58,15 @@ void ResultBuilder::getCompareString()
 
             }
         }
-        int averagePci = qPci/teamMembers->count();
-        if(averagePci<=4){
+
+        if(qPci<=20){
             highCompatibility.append(title);
         }
-        else if(averagePci<=8){
+        else if(qPci<=40){
             mediumCompatibility.append(title);
 
         }
-        else if(averagePci<16){
+        else if(qPci<60){
             lowCompatibility.append(title);
         }
 
