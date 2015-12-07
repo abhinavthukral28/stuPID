@@ -2,11 +2,14 @@
 #include "ui_editqualificationsview.h"
 #include "session.h"
 #include "studentmanageprojectview.h"
+
+
 EditQualificationsView::EditQualificationsView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editQualificationsView),
-    controller(new EditQualificationsController(this))
+    controller(EditQualificationsController::getInstance())
 {
+    controller->setView(this);
     ui->setupUi(this);
     stu = controller->getStudent();
     qualificationList = stu.getQualifications();
