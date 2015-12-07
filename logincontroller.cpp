@@ -10,8 +10,8 @@
 #include "studentmanageprojectview.h"
 #include "qualificationinit.h"
 #include "qualification.h"
-
-LoginController::LoginController( LoginDialog *login): QObject(), loginDialog(login)
+LoginController *LoginController::instance = 0;
+LoginController::LoginController(): QObject()
 {
 
 }
@@ -94,3 +94,16 @@ void LoginController::transition(bool student)
 
 }
 
+
+LoginController* LoginController::getInstance(){
+    if(!LoginController::instance) {
+        LoginController::instance = new LoginController();
+    }
+    return LoginController::instance;
+
+}
+
+int LoginController::setView(LoginDialog*view){
+   loginDialog = view;
+}
+    ;

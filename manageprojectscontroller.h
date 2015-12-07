@@ -11,7 +11,6 @@ class CreateProjectView;
 class ManageProjectsController:public QObject
 {
 public:
-    ManageProjectsController(ManageProjectsView *view);
     int init();
     int updateSelectedProject(const int& index);
     int updateStudentList();
@@ -19,17 +18,21 @@ public:
     int goToLoginDialog();
     int updateDetailedView();
     int makeTeams();
+    static ManageProjectsController * getInstance();
+    int setView(ManageProjectsView *view);
 
 
  private slots:
 
 private:
+    ManageProjectsController();
     ManageProjectsView *manageProjectsView;
 
     QList<Project*> allProjects;
     Project *selectedProject;
     QList<Student*> studentsByProjects;
     Database *database;
+    static ManageProjectsController *instance;
 
 };
 

@@ -8,9 +8,10 @@
 
 ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     ui(new Ui::ManageProjectsView),
-    manageProjectsController(new ManageProjectsController(this))
+    manageProjectsController(ManageProjectsController::getInstance())
 
 {
+    manageProjectsController->setView(this);
     ui->setupUi(this);
 
 

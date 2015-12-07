@@ -8,9 +8,8 @@
 #include "teambuilder.h"
 
 
-
-ManageProjectsController::ManageProjectsController(ManageProjectsView *view):QObject(),
-    manageProjectsView(view),
+ManageProjectsController *ManageProjectsController::instance = 0;
+ManageProjectsController::ManageProjectsController():QObject(),
     database(Database::getInstance())
 
 {
@@ -90,4 +89,14 @@ int ManageProjectsController::makeTeams()
 {
     TeamBuilder builder;
     QList<Team*> teams =builder.createTeams(*selectedProject);
+}
+int ManageProjectsController::setView(ManageProjectsView*view){
+       manageProjectsView = view;
+}
+
+ManageProjectsController* ManageProjectsController::getInstance(){
+    if(!ManageProjectsController::instance) {
+        ManageProjectsController::instance = new ManageProjectsController();
+    }
+    return ManageProjectsController::instance;
 }
