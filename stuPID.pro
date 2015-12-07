@@ -45,7 +45,8 @@ SOURCES += main.cpp\
     resultbuilder.cpp \
     adminviewresultcontroller.cpp \
     dbimpl.cpp \
-    dbproxy.cpp
+    dbproxy.cpp \
+    editprojectview.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -81,7 +82,8 @@ HEADERS  += \
     resultbuilder.h \
     adminviewresultcontroller.h \
     dbimpl.h \
-    dbproxy.h
+    dbproxy.h \
+    editprojectview.h
 
 FORMS    += \
     studentregister.ui \
@@ -92,7 +94,8 @@ FORMS    += \
     studentprojectregisterview.ui \
     studentmanageprojectview.ui \
     createprojectview.ui \
-    adminviewresult.ui
+    adminviewresult.ui \
+    editprojectview.ui
 
 RESOURCES += \
     resource.qrc

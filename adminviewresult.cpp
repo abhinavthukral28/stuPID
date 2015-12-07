@@ -11,7 +11,7 @@ AdminViewResult::AdminViewResult(AdminViewResultController *newController) :
     teams = adminViewResultController->getTeams();
     for(int i=0; i< teams.count(); i++)
     {
-        ui->listWidget->addItem("Team");
+        ui->listWidget->addItem("Team " + QString::number(i + 1));
     }
 
 }
@@ -23,7 +23,7 @@ AdminViewResult::~AdminViewResult()
 
 void AdminViewResult::on_BackButton_clicked()
 {
-
+    this->close();
 }
 
 void AdminViewResult::on_pushButton_clicked()
