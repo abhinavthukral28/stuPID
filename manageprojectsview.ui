@@ -232,7 +232,7 @@ background: white;
           </font>
          </property>
          <property name="text">
-          <string>View Details</string>
+          <string>Edit Project Settings</string>
          </property>
         </widget>
        </item>

@@ -35,16 +35,16 @@ ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
 }
 
 
- int ManageProjectsView::updateProjectsList(QList<QString> &projectTitles){
-     QString temp;
-     for (int i = 0; i <projectTitles.count();i++)
-     {
-         temp =projectTitles.at(i);
+int ManageProjectsView::updateProjectsList(QList<QString> &projectTitles){
+    QString temp;
+    for (int i = 0; i <projectTitles.count();i++)
+    {
+        temp =projectTitles.at(i);
         ui->projectsList->addItem(temp);
-     }
+    }
     // manageProjectsController->updateSelectedProject(0);
 
- }
+}
 
 
 ManageProjectsView::~ManageProjectsView()
@@ -58,20 +58,24 @@ ManageProjectsView::~ManageProjectsView()
 int ManageProjectsView::updateDetailedView(Project &project)
 {
     QString title="Title: "+project.getTitle();
-    QString description="Description: " +project.getDescription();
-  ui->projectName->setText(title);
-  ui->projectDescription->setText(description);
-  //QString a= "hello";
-   QString temp;
 
-  for(int i=0; i<project.getRegisteredStudents().count();i++)
-  {
+    ui->projectName->setText(title);
+    QString num1;
+    num1.setNum(project.getMinTeamSize());
+    QString num2;
+    num2.setNum(project.getMaxTeamSize());
+    QString tempsStorage= "\n\nMinimum Team Size: "+ num1 + "\nMaximum Team Size: " + num2;
+    QString description="Description: " +project.getDescription() + tempsStorage;
+    ui->projectDescription->setText(description);
+    QString temp;
+    for(int i=0; i<project.getRegisteredStudents().count();i++)
+    {
 
-      temp += project.getRegisteredStudents().at(i)->getUsername() + "  ";
+        temp += project.getRegisteredStudents().at(i)->getUsername() + "  ";
 
-      ui->viewTextBrowser->setText(temp);
+        ui->viewTextBrowser->setText(temp);
 
-  }
+    }
 }
 
 
@@ -81,13 +85,13 @@ void ManageProjectsView::on_projectsList_clicked(const QModelIndex &index)
 
     int indexVal = index.row();
 
-   manageProjectsController->updateSelectedProject(indexVal);
+    manageProjectsController->updateSelectedProject(indexVal);
 
 
 }
 
 int ManageProjectsView::setStudentList(Project &project){
-QString temp;
+    QString temp;
     for(int i=0; i<project.getRegisteredStudents().count();i++)
     {
         temp += project.getRegisteredStudents().at(i)->getUsername() + " ";
@@ -100,12 +104,6 @@ QString temp;
 
 int ManageProjectsView::setDetailedView(Project &project)
 {
-    QString num1;
-    num1.setNum(project.getMinTeamSize());
-    QString num2;
-    num2.setNum(project.getMaxTeamSize());
-    QString tempsStorage= "Minimum Team Size: "+ num1 + "\nMaximum Team Size: " + num2;
-    ui->viewTextBrowser->setText(tempsStorage);
 
 }
 
@@ -125,7 +123,7 @@ void ManageProjectsView::on_ViewStudentButton_clicked()
 
 void ManageProjectsView::on_viewDetailButton_clicked()
 {
-   manageProjectsController->updateDetailedView();
+    manageProjectsController->updateDetailedView();
 }
 
 void ManageProjectsView::on_viewResultButton_clicked()
@@ -142,12 +140,12 @@ void ManageProjectsView::on_makeTeamsButton_clicked()
 {
 
 
-   if (manageProjectsController->makeTeams())
-   {
-    QMessageBox::information(this, tr("Team Builder"),
-                         tr("Teams Created!"),
-                         QMessageBox::Ok);
-   }
+    if (manageProjectsController->makeTeams())
+    {
+        QMessageBox::information(this, tr("Team Builder"),
+                                 tr("Teams Created!"),
+                                 QMessageBox::Ok);
+    }
 
 
 }
