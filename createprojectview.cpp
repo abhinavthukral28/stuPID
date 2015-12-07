@@ -7,8 +7,10 @@
 CreateProjectView::CreateProjectView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CreateProjectView),
-    createProjectViewController(new CreateProjectViewController(this))
+    createProjectViewController(CreateProjectViewController::getInstance())
 {
+
+    createProjectViewController->setView(this);
     ui->setupUi(this);
 }
 

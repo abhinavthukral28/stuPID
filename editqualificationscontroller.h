@@ -13,14 +13,18 @@ class EditQualificationsController:public QObject
 {
     Q_OBJECT
 public:
-    EditQualificationsController(EditQualificationsView *qual);
-
-
-     EditQualificationsView *editQualificationsView;
      Student getStudent();
      void updateQualifications(Student &student);
 
+
+     static EditQualificationsController* getInstance();
+     int setView(EditQualificationsView *view);
+
  private:
+     EditQualificationsController();
+     EditQualificationsView *editQualificationsView;
+     static EditQualificationsController *instance;
+
      Database *database;
      QList<Qualification*> qList;
      Student stu;

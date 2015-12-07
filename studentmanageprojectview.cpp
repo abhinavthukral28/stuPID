@@ -9,8 +9,9 @@
 StudentManageProjectView::StudentManageProjectView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentManageProjectView),
-    studentManageProjectController(new StudentManageProjectController(this))
+    studentManageProjectController(StudentManageProjectController::getInstance())
 {
+    studentManageProjectController->setView(this);
     ui->setupUi(this);
 
     if(studentManageProjectController->init())

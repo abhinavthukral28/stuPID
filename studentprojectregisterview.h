@@ -19,7 +19,6 @@ public:
     int updateProjectsList(QList<QString> &projectTitles);
     int updateDetailedView(Project &project);
 
-
 private slots:
     void on_registerButton_clicked();
 
@@ -32,6 +31,7 @@ private slots:
 private:
     Ui::studentProjectView *ui;
     studentprojectregisterviewcontroller *studentProjectRegisterViewController;
+
 };
 
 #endif // STUDENTPROJECTVIEW_H

@@ -8,11 +8,12 @@
 QualificationInit::QualificationInit() :
         QDialog(),
         ui(new Ui::qualificationinit),
-        controller(new QualificationInitController(this)),
+        controller(QualificationInitController::getInstance()),
         newStudent(Session::getStudent())
 
 
 {
+    controller->setView(this);
     ui->setupUi(this);
     controller->setQualificationList();
     activeIndex = 0;

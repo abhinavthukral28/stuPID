@@ -9,6 +9,10 @@ AdminViewResult::AdminViewResult(AdminViewResultController *newController) :
 {
     ui->setupUi(this);
     teams = adminViewResultController->getTeams();
+    for(int i=0; i< teams.count(); i++)
+    {
+        ui->listWidget->addItem("Team");
+    }
 
 }
 
@@ -26,9 +30,17 @@ void AdminViewResult::on_pushButton_clicked()
 {
 
 }
-void AdminViewResult::updatePanel(int i){
+void AdminViewResult::updatePanel(int index){
 
-    QString str = adminViewResultController->getDetailResults(teams.at(i));
+    QList<int> idList = teams.at(index)->getTeamMembers();
+    QStringList nameList;
+
+    for(int j=0; j<idList.count();j++){
+        Student student = adminViewResultController->getStudent(idList.at(j));
+        nameList.append(student.getUsername());
+    }
+    ui->textBrowser_2->setText(nameList.join(','));
+    QString str = teams.at(index)->getResultDisplay();
     QStringList compatibilityLevels = str.split('/');
     QStringList highCompatibility = compatibilityLevels.at(0).split('_');
     QStringList mediumCompatibility = compatibilityLevels.at(1).split('_');

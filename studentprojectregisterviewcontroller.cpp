@@ -10,9 +10,8 @@
 
 
 
-
-studentprojectregisterviewcontroller::studentprojectregisterviewcontroller(studentProjectRegisterView *view):QObject(),
-   stuProRegisterView(view),
+studentprojectregisterviewcontroller *studentprojectregisterviewcontroller::instance=0;
+studentprojectregisterviewcontroller::studentprojectregisterviewcontroller():QObject(),
    database(Database::getInstance())
 {
 
@@ -90,3 +89,22 @@ int studentprojectregisterviewcontroller::gotoLoginDialog()
     }
 
  }
+
+ int studentprojectregisterviewcontroller::setView(studentProjectRegisterView *view){
+
+    stuProRegisterView=view;
+ }
+
+studentprojectregisterviewcontroller* studentprojectregisterviewcontroller::getInstance(){
+
+     if(!studentprojectregisterviewcontroller::instance){
+
+         studentprojectregisterviewcontroller::instance = new studentprojectregisterviewcontroller();
+     }
+     return studentprojectregisterviewcontroller::instance;
+
+ }
+
+
+
+

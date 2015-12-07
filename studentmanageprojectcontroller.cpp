@@ -7,8 +7,8 @@
 #include <QDebug>
 #include "studentprojectregisterview.h"
 
-StudentManageProjectController::StudentManageProjectController(StudentManageProjectView *view):QObject(),
-    studentManageProjectView(view),
+StudentManageProjectController *StudentManageProjectController::instance=0;
+StudentManageProjectController::StudentManageProjectController():QObject(),
     database(Database::getInstance())
 {
     allProjects = database->getProjectsByStudent(Session::getStudent().getID());
@@ -79,3 +79,19 @@ int StudentManageProjectController::unregisterFromProject(){
 
 
 }
+
+int StudentManageProjectController::setView(StudentManageProjectView *view)
+{
+    studentManageProjectView = view;
+}
+
+StudentManageProjectController* StudentManageProjectController::getInstance(){
+
+    if(!StudentManageProjectController::instance){
+
+        StudentManageProjectController::instance = new StudentManageProjectController();
+    }
+    return StudentManageProjectController::instance;
+
+}
+

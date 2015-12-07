@@ -2,18 +2,21 @@
 #include "ui_editqualificationsview.h"
 #include "session.h"
 #include "studentmanageprojectview.h"
+
+
 EditQualificationsView::EditQualificationsView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editQualificationsView),
-    controller(new EditQualificationsController(this))
+    controller(EditQualificationsController::getInstance())
 {
+    controller->setView(this);
     ui->setupUi(this);
     stu = controller->getStudent();
     qualificationList = stu.getQualifications();
 
     for(int i=0; i< qualificationList.count(); i++)
     {
-        ui->listWidget->addItem(qualificationList[i]->getTitle());
+        ui->listWidget->addItem(qualificationList.at(i)->getTitle());
     }
 
     //Setting the radio buttons

@@ -7,11 +7,11 @@
 #include "createprojectview.h"
 #include "student.h"
 #include "teambuilder.h"
+#include "adminviewresultcontroller.h"
 
 
-
-ManageProjectsController::ManageProjectsController(ManageProjectsView *view):QObject(),
-    manageProjectsView(view),
+ManageProjectsController *ManageProjectsController::instance = 0;
+ManageProjectsController::ManageProjectsController():QObject(),
     database(Database::getInstance())
 
 {
@@ -104,4 +104,17 @@ int ManageProjectsController::makeTeams()
     else return 0;
     }
     return 0;
+}
+void ManageProjectsController::showDetailedResults(){
+    AdminViewResultController resultController(selectedProject->getID());
+}
+int ManageProjectsController::setView(ManageProjectsView*view){
+       manageProjectsView = view;
+}
+
+ManageProjectsController* ManageProjectsController::getInstance(){
+    if(!ManageProjectsController::instance) {
+        ManageProjectsController::instance = new ManageProjectsController();
+    }
+    return ManageProjectsController::instance;
 }

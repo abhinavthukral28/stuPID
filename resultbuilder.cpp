@@ -62,14 +62,14 @@ void ResultBuilder::getCompareString(Team *team)
             }
         }
 
-        if(qPci<=20){
+        if(qPci<=(teamMembers->count() * 4)){
             highCompatibility.append(title);
         }
-        else if(qPci<=40){
+        else if(qPci<=(teamMembers->count() * 8)){
             mediumCompatibility.append(title);
 
         }
-        else if(qPci<60){
+        else if(qPci<(teamMembers->count() * 15)){
             lowCompatibility.append(title);
         }
 

@@ -7,8 +7,9 @@
 StudentRegister::StudentRegister(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentRegister),
-    controller(new StudentRegisterController(this))
+    controller(StudentRegisterController::getInstance())
 {
+    controller->setView(this);
     ui->setupUi(this);
     ui->password->setEchoMode(QLineEdit::Password);
 }

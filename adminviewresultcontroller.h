@@ -13,7 +13,7 @@ class AdminViewResultController: public QObject
 {
 public:
     AdminViewResultController(int id);
-    QString getDetailResults(Team *team);
+    Student getStudent(int id);
     QList<Team*> getTeams();
 private:
     AdminViewResult *adminViewResult;

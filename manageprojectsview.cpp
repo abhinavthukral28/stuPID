@@ -5,13 +5,15 @@
 #include "manageprojectscontroller.h"
 #include "student.h"
 #include <QDialog>
+#include "adminviewresultcontroller.h"
 
 
 ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
     ui(new Ui::ManageProjectsView),
-    manageProjectsController(new ManageProjectsController(this))
+    manageProjectsController(ManageProjectsController::getInstance())
 
 {
+    manageProjectsController->setView(this);
     ui->setupUi(this);
 
 
@@ -153,4 +155,10 @@ void ManageProjectsView::on_makeTeamsButton_clicked()
 void ManageProjectsView::on_pushButton_clicked()
 {
     manageProjectsController->goToLoginDialog();
+}
+
+
+void ManageProjectsView::on_detailedResult_clicked()
+{
+    manageProjectsController->showDetailedResults();
 }

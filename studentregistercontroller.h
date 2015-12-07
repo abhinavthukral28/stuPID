@@ -7,12 +7,16 @@ class StudentRegisterController:public QObject
 {
 	Q_OBJECT
 public:
-    StudentRegisterController(StudentRegister *sRegister);
     int goToQualificationsView(Student student);
+    static StudentRegisterController* getInstance();
+    int setView(StudentRegister *view);
 
 
 private:
+    StudentRegisterController();
 	StudentRegister *studentRegister;
+    static StudentRegisterController *instance;
+
 };
 
 #endif // STUDENTREGISTERCONTROLLER_H
