@@ -27,6 +27,7 @@ public:
     int createStudent(Student& student);
     int createProject(Project& project);
     int deleteTeamsByProject(const int& projectID);
+    int updateProject(const Project& project);
    // const Project& getProjectByID(const int& projectID);
     int storeTeamsByProject (const QList<Team*>& teams, const int& projectID);
     int addStudentsToProject(const int& projectID, QList<Student*>* students);

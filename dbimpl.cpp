@@ -944,6 +944,29 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
 
  }
 
+ int DBimpl::updateProject(const Project& project)
+ {
+    QSqlQuery query;
+
+    query.prepare(DatabaseQueries::updateProject);
+
+    query.bindValue(":projectName",project.getTitle());
+    query.bindValue(":description",project.getDescription());
+    query.bindValue(":minTeamSize",project.getMinTeamSize());
+    query.bindValue(":maxTeamSize",project.getMaxTeamSize());
+    query.bindValue(":projectID", project.getID());
+
+    if(!query.exec())
+    {
+        qDebug() << query.lastError();
+        qDebug() << query.lastQuery();
+        return 0;
+    }
+    else {
+        return 1;
+    }
+ }
+
 
 SQLException DBimpl::generateException(QSqlQuery query)
 {

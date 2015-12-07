@@ -29,6 +29,7 @@ class Database{
     virtual const QList<Team*>& getTeamsbyProjectID (const int& projectID) = 0;
     virtual int createStudent(Student& student) = 0;
     virtual int createProject(Project& project) = 0;
+    virtual int updateProject(const Project& project) = 0;
   //  virtual const Project& getProjectByID(const int& projectID) = 0;
     virtual int storeTeamsByProject (const QList<Team*>& teams, const int& projectID) = 0;
     virtual int addStudentsToProject(const int& projectID, QList<Student*>* students) = 0;
