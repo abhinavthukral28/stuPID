@@ -29,6 +29,7 @@ class Database{
     int createStudent(Student& student);
     int createProject(Project& project);
 
+    int storeTeamsByProject (const QList<Team*>& teams, const int& projectID);
     int addStudentsToProject(const int& projectID, QList<Student*>* students);
     int addStudentToProject(const int& projectID,Student& student);
     int removeStudentFromProject(const int projectID,const Student& student);
@@ -45,7 +46,7 @@ class Database{
     void createTables();
     int insertValuesintoQualifications();
     int insertValuesintoExpectations();
-
+    int createTeam(const int& projectID);
     int insertStudents();
     int init();
     Database();

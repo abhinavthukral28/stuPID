@@ -278,7 +278,7 @@ void Database::createTables(){
     else
         qDebug() << "Table StudentQualifications created!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Team(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,projectID int, FOREIGN KEY(projectID) REFERENCES Projects(projectID))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Team(teamID INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,projectID int, result TEXT, FOREIGN KEY(projectID) REFERENCES Projects(projectID))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -842,6 +842,60 @@ int Database::createQualificationEntry(const int& studentID, const Qualification
         return 0;
     }
 }
+
+
+int Database::storeTeamsByProject (const QList<Team*>& teams, const int& projectID){
+    if (projectID > 0)
+    {
+
+
+        int tempInt;
+        QSqlQuery query;
+        QVariantList projectIDList;
+        QVariantList teamIDList;
+        query.prepare(DatabaseQueries::storeTeamsByProject);
+
+        for (int i = 0; i< teams.count();i++)
+        {
+            tempInt = createTeam(projectID);
+            if (tempInt > 0)
+            {
+                projectIDList << projectID;
+                teamIDList << tempInt ;
+            }
+            else return 0;
+        }
+
+        query.bindValue(":projectID",projectIDList);
+        query.bindValue(":studentID",teamIDList);
+
+        if(!query.execBatch())
+        {
+            qDebug() << query.lastError();
+            qDebug() << query.lastQuery();
+            return 0;
+        }
+        else return query.lastInsertId().toInt();
+    }
+    else return 0;
+}
+
+ int Database::createTeam(const int& projectID)
+ {
+     QSqlQuery query;
+
+     query.prepare(DatabaseQueries::createTeamByProject);
+
+     query.bindValue(":projectID",projectID);
+
+     if(!query.exec())
+     {
+         qDebug() << query.lastError();
+         qDebug() << query.lastQuery();
+         return 0;
+     }
+     else return query.lastInsertId().toInt();
+ }
 
 SQLException Database::generateException(QSqlQuery query)
 {
