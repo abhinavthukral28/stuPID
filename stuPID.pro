@@ -46,7 +46,8 @@ SOURCES += main.cpp\
     adminviewresultcontroller.cpp \
     dbimpl.cpp \
     dbproxy.cpp \
-    editprojectview.cpp
+    editprojectview.cpp \
+    editprojectcontroller.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -83,7 +84,8 @@ HEADERS  += \
     adminviewresultcontroller.h \
     dbimpl.h \
     dbproxy.h \
-    editprojectview.h
+    editprojectview.h \
+    editprojectcontroller.h
 
 FORMS    += \
     studentregister.ui \
