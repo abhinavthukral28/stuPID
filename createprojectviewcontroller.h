@@ -11,7 +11,7 @@ class CreateProjectViewController:public QObject
 public:
     CreateProjectViewController(CreateProjectView *view);
     int goToManageProjectView();
-    int err = 0;
+    int err;
     int error(int type);
     int saveProject();
     int goToLoginDialog();

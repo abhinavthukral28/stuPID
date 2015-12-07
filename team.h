@@ -2,7 +2,7 @@
 #define TEAM_H
 
 #include <QList>
-
+#include <QString>
 class Team
 {
 
@@ -11,6 +11,7 @@ private :
     int pci;
     int rank;
     int id;
+    QString resultDisplay;
 public:
     Team();
     Team(int id);
@@ -20,6 +21,8 @@ public:
     int getPci() const;
     int getID();
     int setPci(int newPci);
+    QString getResultDisplay();
+    int setResultDisplay(const QString& display);
 
 };
 

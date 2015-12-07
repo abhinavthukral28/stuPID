@@ -13,8 +13,7 @@ QList<Team*> AdminViewResultController::getTeams(){
     return database->getTeamsbyProjectID(projectId);
 
 }
-QString AdminViewResultController::getDetailResults(Team *team){
-    ResultBuilder result(team);
-    return result.getDetailedResults();
+Student AdminViewResultController::getStudent(int id){
+    return database->getStudentByID(id);
 }
 

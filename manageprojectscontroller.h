@@ -20,6 +20,7 @@ public:
     int makeTeams();
     static ManageProjectsController * getInstance();
     int setView(ManageProjectsView *view);
+    void showDetailedResults();
 
 
  private slots:

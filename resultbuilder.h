@@ -15,20 +15,16 @@
 class ResultBuilder
 {
 public:
-    ResultBuilder(Team *team);
-    QString getDetailedResults();
+    ResultBuilder();
+    QString getDetailedResults(Team *team);
 
 
 private:
-    QList<int> teamMemberIds;
     Database* database;
-    QList<Student>* teamMembers;
-    Team* newTeam;
-    QString detailedResults;
     QStringList highCompatibility;
     QStringList mediumCompatibility;
     QStringList lowCompatibility;
-    void getCompareString();
+    void getCompareString(Team *team);
 
 };
 

@@ -30,6 +30,7 @@ private:
     const static QString getTeamsByProject;
     const static QString createTeamByProject;
     const static QString storeTeamsByProject;
+    const static QString getProjectByID;
 
 };
 
@@ -81,16 +82,17 @@ const QString DatabaseQueries::updateQualificationByStudent = QString("UPDATE ")
 
 const QString DatabaseQueries::getStudentByID = "Select * from Students where studentID = :studentID";
 
-const QString DatabaseQueries::getTeamsByProject =  "SELECT Students.studentID, Team.teamID FROM (Team join TeamMember as teamJoin on Team.teamID = teamJoin.teamID join Students on teamJoin.studentID = Students.studentID) where projectID = :projectID";
+const QString DatabaseQueries::getTeamsByProject =  "SELECT Students.studentID, Team.teamID, Team.result FROM (Team join TeamMember as teamJoin on Team.teamID = teamJoin.teamID join Students on teamJoin.studentID = Students.studentID) where projectID = :projectID";
 
 
 const QString DatabaseQueries::createQualificationByStudent = QString("INSERT INTO ")+DatabaseQueries::STUDENT_QUALIFICATIONS_TABLE+" (studentQualificationID,qualificationRating,expectationRating,studentID,eID) VALUES(NULL,:qualificationRating,:expectationRating,:studentID,:eID)";
 
 
 
-const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, projectID) VALUES (NULL, :projectID)";
+const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, projectID,result) VALUES (NULL, :projectID,:result)";
+
+const QString DatabaseQueries::getProjectByID = "Select * from Projects where projectID = :project";
 
 
-
-const QString DatabaseQueries::storeTeamsByProject ="INSERT INTO " + DatabaseQueries::PROJECT_STUDENT_TABLE + " (projectID,studentID) VALUES (:projectID,:studentID)";
+const QString DatabaseQueries::storeTeamsByProject ="INSERT INTO TeamMember (teamID,studentID) VALUES (:teamID,:studentID)";
 #endif // DATABASEQUERIES_H

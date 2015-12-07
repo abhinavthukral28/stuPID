@@ -1,9 +1,11 @@
 #include "manageprojectsview.h"
 #include "ui_manageprojectsview.h"
 #include "project.h"
+#include "Database.h"
 #include "manageprojectscontroller.h"
 #include "student.h"
 #include <QDialog>
+#include "adminviewresultcontroller.h"
 
 
 ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
@@ -139,6 +141,7 @@ void ManageProjectsView::on_createProjectButton_clicked()
 void ManageProjectsView::on_makeTeamsButton_clicked()
 {
 
+
     manageProjectsController->makeTeams();
     QMessageBox::information(this, tr("Team Builder"),
                          tr("Teams Created!"),
@@ -149,4 +152,10 @@ void ManageProjectsView::on_makeTeamsButton_clicked()
 void ManageProjectsView::on_pushButton_clicked()
 {
     manageProjectsController->goToLoginDialog();
+}
+
+
+void ManageProjectsView::on_detailedResult_clicked()
+{
+    manageProjectsController->showDetailedResults();
 }

@@ -4,6 +4,7 @@
 #define DATABASE_H
 
 #include <QList>
+class DBproxy;
 class QSqlQuery;
 class QString;
 class Student;
@@ -17,39 +18,28 @@ class Database{
    public:
     static Database* getInstance();
 
-    const QList<Student*>& getAllStudents();
-    const QList<Project*>& getAllProjects();
-    const QList<Qualification*>& getAllQualifications(const int& studentID);
+    virtual const QList<Student*>& getAllStudents() = 0;
+    virtual const QList<Project*>& getAllProjects() = 0;
+    virtual const QList<Qualification*>& getAllQualifications(const int& studentID) = 0;
 
-    const Student& getStudentByID(const int& studentID);
-    const QList<Student*>& getStudentsByProject();
-    const QList<Project*>& getProjectsByStudent(const int& studentID);
-    const QList<Project*>& getOpenProjectsByStudent(const int& studentID);
-    const QList<Team*>& getTeamsbyProjectID (const int& projectID);
-    int createStudent(Student& student);
-    int createProject(Project& project);
-
-    int storeTeamsByProject (const QList<Team*>& teams, const int& projectID);
-    int addStudentsToProject(const int& projectID, QList<Student*>* students);
-    int addStudentToProject(const int& projectID,Student& student);
-    int removeStudentFromProject(const int projectID,const Student& student);
-    int updateQualification(const int& studentID,const Qualification& qualification);
-    int createQualificationEntry(const int& studentID,const Qualification& qualification);
-    const Student* authenticate(const QString& username);
+    virtual const Student& getStudentByID(const int& studentID) = 0;
+//    virtual const QList<Student*>& getStudentsByProject() = 0;
+    virtual const QList<Project*>& getProjectsByStudent(const int& studentID) =  0;
+    virtual const QList<Project*>& getOpenProjectsByStudent(const int& studentID) = 0;
+    virtual const QList<Team*>& getTeamsbyProjectID (const int& projectID) = 0;
+    virtual int createStudent(Student& student) = 0;
+    virtual int createProject(Project& project) = 0;
+  //  virtual const Project& getProjectByID(const int& projectID) = 0;
+    virtual int storeTeamsByProject (const QList<Team*>& teams, const int& projectID) = 0;
+    virtual int addStudentsToProject(const int& projectID, QList<Student*>* students) = 0;
+    virtual int addStudentToProject(const int& projectID,Student& student) = 0;
+    virtual int removeStudentFromProject(const int projectID,const Student& student) = 0;
+    virtual int updateQualification(const int& studentID,const Qualification& qualification) = 0;
+    virtual int createQualificationEntry(const int& studentID,const Qualification& qualification) = 0;
+    virtual const Student* authenticate(const QString& username) = 0;
    private:
     static Database *instance;
-    static const QString DBpath;
-    static SQLException generateException(QSqlQuery query);
-    static SQLException generateCustomSQLException(const char* input);
 
-    //functions
-    void createTables();
-    int insertValuesintoQualifications();
-    int insertValuesintoExpectations();
-    int createTeam(const int& projectID);
-    int insertStudents();
-    int init();
-    Database();
 
 
 

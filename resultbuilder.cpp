@@ -2,20 +2,14 @@
 #define NQ 12
 
 
-ResultBuilder::ResultBuilder(Team *team):newTeam(team), database(Database::getInstance())
+ResultBuilder::ResultBuilder():database(Database::getInstance())
 {
-    teamMemberIds = team->getTeamMembers();
-    teamMembers = new QList<Student>();
-    for(int i=0;i<teamMemberIds.count();i++){
-        Student student = database->getStudentByID(teamMemberIds.at(i));
-        teamMembers->append(student);
-    }
 
 }
 
-QString ResultBuilder::getDetailedResults()
+QString ResultBuilder::getDetailedResults(Team *team)
 {
-    this->getCompareString();
+    this->getCompareString(team);
     if(highCompatibility.count()<=0){
         highCompatibility.append("None");
     }
@@ -43,8 +37,17 @@ QString ResultBuilder::getDetailedResults()
 
 }
 
-void ResultBuilder::getCompareString()
+void ResultBuilder::getCompareString(Team *team)
 {
+    highCompatibility.clear();
+    mediumCompatibility.clear();
+    lowCompatibility.clear();
+    QList<int> teamMemberIds = team->getTeamMembers();
+    QList<Student>* teamMembers = new QList<Student>();
+    for(int i=0;i<teamMemberIds.count();i++){
+        Student student = database->getStudentByID(teamMemberIds.at(i));
+        teamMembers->append(student);
+    }
     PciBuilder pci;
     for(int i=0;i<NQ;i++)
     {
@@ -59,14 +62,14 @@ void ResultBuilder::getCompareString()
             }
         }
 
-        if(qPci<=20){
+        if(qPci<=(teamMembers->count() * 4)){
             highCompatibility.append(title);
         }
-        else if(qPci<=40){
+        else if(qPci<=(teamMembers->count() * 8)){
             mediumCompatibility.append(title);
 
         }
-        else if(qPci<60){
+        else if(qPci<(teamMembers->count() * 15)){
             lowCompatibility.append(title);
         }
 

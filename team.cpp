@@ -47,3 +47,11 @@ int Team::setPci(int newPci){
     }
     return 0;
 }
+
+QString Team::getResultDisplay(){
+    return resultDisplay;
+}
+
+int Team::setResultDisplay(const QString& display){
+    resultDisplay = QString(display);
+}

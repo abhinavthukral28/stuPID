@@ -33,7 +33,7 @@ background: white;
       <x>19</x>
       <y>19</y>
       <width>161</width>
-      <height>511</height>
+      <height>461</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -51,7 +51,7 @@ border:3px;
        <x>0</x>
        <y>0</y>
        <width>159</width>
-       <height>509</height>
+       <height>459</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -132,7 +132,7 @@ background: white;
       <x>200</x>
       <y>20</y>
       <width>581</width>
-      <height>511</height>
+      <height>521</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -262,12 +262,16 @@ background: white;
        </item>
       </layout>
      </widget>
+     <zorder>viewTextBrowser</zorder>
+     <zorder>layoutWidget</zorder>
+     <zorder>createProjectButton_2</zorder>
+     <zorder>createProjectButton</zorder>
     </widget>
     <widget class="QPushButton" name="makeTeamsButton">
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>476</y>
+       <y>480</y>
        <width>191</width>
        <height>31</height>
       </rect>
@@ -281,29 +285,11 @@ background: white;
       <string>Make Teams</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="createProjectButton">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>476</y>
-       <width>171</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>URW Gothic L</family>
-      </font>
-     </property>
-     <property name="text">
-      <string>Create Projects</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>388</x>
-       <y>476</y>
+       <x>390</x>
+       <y>480</y>
        <width>171</width>
        <height>31</height>
       </rect>
@@ -317,9 +303,47 @@ background: white;
       <string>Logout</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="detailedResult">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>480</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>URW Gothic L</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Detailed Results</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="createProjectButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>500</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Create Projects</string>
+    </property>
    </widget>
    <zorder>frame</zorder>
    <zorder>scrollArea</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>createProjectButton</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="geometry">

@@ -47,6 +47,9 @@ private slots:
 
      void on_pushButton_clicked();
 
+
+     void on_detailedResult_clicked();
+
 private:
     Ui::ManageProjectsView *ui;
     ManageProjectsController *manageProjectsController;

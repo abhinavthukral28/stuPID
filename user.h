@@ -12,7 +12,7 @@
 class User
 {
 
-    friend class Database;
+    friend class DBimpl;
  QString username;
  QString firstName;
  QString lastName;
