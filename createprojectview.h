@@ -18,7 +18,8 @@ public:
     const QString getProjectDescription();
     const QString getProjectTitle();
     const int& getProjectTeamMin();
-    const int& getProjectTeamMax();
+    const int& getProjectTeamMax();    
+
     QString aTitle, aMin, aMax, aDescription;
     void accept();
     ~CreateProjectView();

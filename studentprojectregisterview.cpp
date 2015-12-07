@@ -10,8 +10,9 @@
 studentProjectRegisterView::studentProjectRegisterView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::studentProjectView),
-    studentProjectRegisterViewController(new studentprojectregisterviewcontroller(this))
+    studentProjectRegisterViewController(studentprojectregisterviewcontroller::getInstance())
 {   
+    studentProjectRegisterViewController->setView(this);
     ui->setupUi(this);
     if(studentProjectRegisterViewController->init())
     {

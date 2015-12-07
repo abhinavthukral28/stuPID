@@ -10,18 +10,24 @@ class Database;
 class StudentManageProjectController:public QObject
 {
 public:
-    StudentManageProjectController(StudentManageProjectView *view);
     int init();
     int updateSelectedProject(const int& index);
     int goStudentRegisterProjectView();
     int gotoLoginDialog();
     int unregisterFromProject();
+    static StudentManageProjectController* getInstance();
+    int setView(StudentManageProjectView *view);
 private:
+    StudentManageProjectController();
     StudentManageProjectView *studentManageProjectView;
+
     Project *selectedProject;
     QList<Project*> allProjects;
     QList<Student*> studentsByProjects;
     Database *database;
+    static StudentManageProjectController *instance;
+
+
 
 };
 

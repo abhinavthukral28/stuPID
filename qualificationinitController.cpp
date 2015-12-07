@@ -7,7 +7,9 @@
 #include "session.h"
 #include "Database.h"
 #include "studentprojectregisterview.h"
-QualificationInitController::QualificationInitController( QualificationInit *qual): QObject(), qualification(qual), database(Database::getInstance())
+
+QualificationInitController *QualificationInitController::instance=0;
+QualificationInitController::QualificationInitController(): QObject(), database(Database::getInstance())
 
 
 {
@@ -29,5 +31,20 @@ void QualificationInitController::goToStudentProjectRegisterView()
     qualification->close();
     studentProjectRegisterView view;
     view.exec();
+
+}
+
+int QualificationInitController::setView(QualificationInit *view)
+{
+    qualification = view;
+}
+
+QualificationInitController* QualificationInitController::getInstance(){
+
+    if(!QualificationInitController::instance){
+
+        QualificationInitController::instance = new QualificationInitController();
+    }
+    return QualificationInitController::instance;
 
 }

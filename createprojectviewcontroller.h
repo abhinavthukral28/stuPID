@@ -13,13 +13,18 @@ public:
     int goToManageProjectView();
     int err = 0;
     int error(int type);
+    int saveProject();
+    int goToLoginDialog();
 
-   int saveProject();
-   int goToLoginDialog();
+    static CreateProjectViewController * getInstance();
+    int setView(CreateProjectView *view);
+
 private:
+    CreateProjectViewController();
     CreateProjectView *createProjectsView;
-    Database *database;
 
+    Database *database;
+    static CreateProjectViewController *instance;
 
 
 };

@@ -7,11 +7,10 @@
 #include <QObject>
 #include <QDebug>
 
-CreateProjectViewController::CreateProjectViewController(CreateProjectView *view): QObject(),
-  createProjectsView(view),
+CreateProjectViewController *CreateProjectViewController::instance=0;
+CreateProjectViewController::CreateProjectViewController(): QObject(),
   database(Database::getInstance())
 {
-
 }
 
 int CreateProjectViewController::saveProject(){
@@ -77,4 +76,18 @@ int CreateProjectViewController::error(int type)
     {
         return err = 2;
     }
+}
+
+int CreateProjectViewController::setView(CreateProjectView *view){
+    createProjectsView=view;
+}
+
+CreateProjectViewController* CreateProjectViewController::getInstance(){
+
+    if(!CreateProjectViewController::instance){
+
+        CreateProjectViewController::instance = new CreateProjectViewController();
+    }
+    return CreateProjectViewController::instance;
+
 }

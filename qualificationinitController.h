@@ -12,17 +12,20 @@ class QualificationInitController:public QObject
 {
     Q_OBJECT
 public:
-    QualificationInitController(QualificationInit *qual);
-
-
-    QualificationInit *qualification;
     void setQualificationList();
     void createStudent(Student &student);
     void goToStudentProjectRegisterView();
+    static QualificationInitController* getInstance();
+    int setView(QualificationInit *view);
 
 private:
+    QualificationInit *qualification;
+    QualificationInitController();
+
     Database *database;
     QList<Qualification*> qList;
+    static QualificationInitController *instance;
+
 };
 
 #endif // LOGINTCONTROLLER_H
