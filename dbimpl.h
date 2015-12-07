@@ -27,6 +27,7 @@ public:
     int createStudent(Student& student);
     int createProject(Project& project);
     int deleteTeamsByProject(const int& projectID);
+    int updateProject(const Project& project);
    // const Project& getProjectByID(const int& projectID);
     int storeTeamsByProject (const QList<Team*>& teams, const int& projectID);
     int addStudentsToProject(const int& projectID, QList<Student*>* students);
@@ -41,6 +42,7 @@ private:
  static SQLException generateCustomSQLException(const char* input);
  //functions
  void createTables();
+ int markResults(const int& projectID,const int& results);
  int insertValuesintoQualifications();
  int insertValuesintoExpectations();
  int createTeam(const int& projectID, const QString& result);

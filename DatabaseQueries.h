@@ -32,6 +32,8 @@ private:
     const static QString storeTeamsByProject;
     const static QString getProjectByID;
     const static QString deleteTeamByProject;
+    const static QString markResults;
+    const static QString updateProject;
 
 };
 
@@ -88,7 +90,7 @@ const QString DatabaseQueries::getTeamsByProject =  "SELECT Students.studentID, 
 
 const QString DatabaseQueries::createQualificationByStudent = QString("INSERT INTO ")+DatabaseQueries::STUDENT_QUALIFICATIONS_TABLE+" (studentQualificationID,qualificationRating,expectationRating,studentID,eID) VALUES(NULL,:qualificationRating,:expectationRating,:studentID,:eID)";
 
-
+const QString DatabaseQueries::markResults = "Update projects set results = :results where projectID = :projectID";
 
 const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, projectID,result) VALUES (NULL, :projectID,:result)";
 
@@ -97,4 +99,6 @@ const QString DatabaseQueries::getProjectByID = "Select * from Projects where pr
 const QString DatabaseQueries::deleteTeamByProject = "Delete from Team where projectID = :projectID";
 
 const QString DatabaseQueries::storeTeamsByProject ="INSERT INTO TeamMember (teamID,studentID) VALUES (:teamID,:studentID)";
+
+const QString DatabaseQueries::updateProject = "UPDATE "+DatabaseQueries::PROJECTS_TABLE+" set projectName = :projectName,description = :description,minTeamSize = :minTeamSize,maxTeamSize = :maxTeamSize where projectID = :projectID";
 #endif // DATABASEQUERIES_H

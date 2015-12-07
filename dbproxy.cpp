@@ -88,6 +88,11 @@ const QList<Qualification*>& DBproxy::getAllQualifications(const int& studentID)
 
 }
 
+int DBproxy::updateProject(const Project& project)
+{
+    return dbimpl->updateProject(project);
+}
+
 
 const Student* DBproxy::authenticate(const QString& username){
 

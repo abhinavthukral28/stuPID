@@ -215,7 +215,7 @@ void DBimpl::createTables(){
         qDebug() << "Table Qualifications created!";
     }
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, admin VARCHAR(30),projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize INTEGER, maxTeamSize INTEGER)" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, results INTEGER,projectName VARCHAR(30) UNIQUE, description VARCHAR(30),minTeamSize INTEGER, maxTeamSize INTEGER)" );
     if( !qry.exec() )
     {
         qDebug() << qry.lastQuery();
@@ -399,7 +399,7 @@ const QList<Project*>& DBimpl::getAllProjects(){
         {
 
             tempID = query.value(0).toInt();
-
+            tempProject->setResultsAvailable(query.value(1).toInt());
 
             if (tempProject->getID() != tempID)
             {
@@ -561,30 +561,6 @@ int DBimpl::updateQualification(const int& studentID,const Qualification& qualif
     }
 }
 
-//int DBimpl::addStudentToProject(const int& projectID,Student& student){
-
-//    if (projectID > 0)
-//    {
-//        QSqlQuery query;
-
-//        query.prepare(DatabaseQueries::addStudentToProject);
-//        query.bindValue(":projectID",projectID);
-//        query.bindValue(":studentID",student.getID());
-
-//        if(!query.exec())
-//        {
-//            qDebug() << query.lastError();
-//            qDebug() << query.lastQuery();
-//            return 0;
-//        }
-//        else {
-//            return query.lastInsertId().toInt();
-//        }
-//    }
-//    else return 0;
-
-
-//}
 
 
 
@@ -619,7 +595,7 @@ const QList<Project*>& DBimpl::getProjectsByStudent(const int& studentID)
             {
 
                 tempID = query.value(0).toInt();
-
+                tempProject->setResultsAvailable(query.value(1).toInt());
                 if (tempProject != NULL)
                 {
                     if (tempProject->getID() != tempID)
@@ -690,7 +666,7 @@ const QList<Project*>& DBimpl::getOpenProjectsByStudent(const int& studentID){
             {
 
                 tempID = query.value(0).toInt();
-
+                tempProject->setResultsAvailable(query.value(1).toInt());
                 if (tempProject != NULL)
                 {
                     if (tempProject->getID() != tempID)
@@ -891,7 +867,10 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
          qDebug() << query.lastQuery();
          return 0;
      }
-     else return query.lastInsertId().toInt();
+     else{
+         markResults(projectID,1);
+         return query.lastInsertId().toInt();
+     }
  }
 
  int DBimpl::addStudentToProject(const int& projectID,Student& student){
@@ -935,11 +914,57 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
          return 0;
      }
      else {
+         markResults(projectID,0);
          return 1;
      }
 
 
 
+ }
+
+ int DBimpl::markResults(const int& projectID,const int& results){
+
+     QSqlQuery query;
+
+     query.prepare(DatabaseQueries::markResults);
+
+     query.bindValue(":projectID",projectID);
+     query.bindValue(":results",results);
+
+
+     if(!query.exec())
+     {
+         qDebug() << query.lastError();
+         qDebug() << query.lastQuery();
+         return 0;
+     }
+     else {
+         return 1;
+     }
+
+ }
+
+ int DBimpl::updateProject(const Project& project)
+ {
+    QSqlQuery query;
+
+    query.prepare(DatabaseQueries::updateProject);
+
+    query.bindValue(":projectName",project.getTitle());
+    query.bindValue(":description",project.getDescription());
+    query.bindValue(":minTeamSize",project.getMinTeamSize());
+    query.bindValue(":maxTeamSize",project.getMaxTeamSize());
+    query.bindValue(":projectID", project.getID());
+
+    if(!query.exec())
+    {
+        qDebug() << query.lastError();
+        qDebug() << query.lastQuery();
+        return 0;
+    }
+    else {
+        return 1;
+    }
  }
 
 
