@@ -77,6 +77,8 @@ int ManageProjectsView::updateDetailedView(Project &project)
         ui->viewTextBrowser->setText(temp);
 
     }
+    ui->detailedResult->setDisabled(!project.resultsAreAvailable());
+    ui->viewResultButton->setDisabled(!project.resultsAreAvailable());
 }
 
 
@@ -147,6 +149,8 @@ void ManageProjectsView::on_makeTeamsButton_clicked()
         QMessageBox::information(this, tr("Team Builder"),
                                  tr("Teams Created!"),
                                  QMessageBox::Ok);
+        ui->detailedResult->setDisabled(false);
+        ui->viewResultButton->setDisabled(false);
     }
 
 

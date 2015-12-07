@@ -49,12 +49,6 @@ int StudentManageProjectView::updateDetailedView(Project &project)
   QString tempsStorage= "Description:"+ project.getDescription() + "\nMinimum Team Size: "+ num1 + "\nMaximum Team Size: " + num2;
   ui->descriptionView->setText(tempsStorage);
   ui->ProjectTitle->setText(project.getTitle());
-  if(true){
-      ui->viewResults->setDisabled(true);
-  }
-  else{
-      ui->viewResults->setDisabled(false);
-  }
 }
 
 
