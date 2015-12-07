@@ -82,7 +82,7 @@ const QString DatabaseQueries::updateQualificationByStudent = QString("UPDATE ")
 
 const QString DatabaseQueries::getStudentByID = "Select * from Students where studentID = :studentID";
 
-const QString DatabaseQueries::getTeamsByProject =  "SELECT Students.studentID, Team.teamID FROM (Team join TeamMember as teamJoin on Team.teamID = teamJoin.teamID join Students on teamJoin.studentID = Students.studentID) where projectID = :projectID";
+const QString DatabaseQueries::getTeamsByProject =  "SELECT Students.studentID, Team.teamID, Team.result FROM (Team join TeamMember as teamJoin on Team.teamID = teamJoin.teamID join Students on teamJoin.studentID = Students.studentID) where projectID = :projectID";
 
 
 const QString DatabaseQueries::createQualificationByStudent = QString("INSERT INTO ")+DatabaseQueries::STUDENT_QUALIFICATIONS_TABLE+" (studentQualificationID,qualificationRating,expectationRating,studentID,eID) VALUES(NULL,:qualificationRating,:expectationRating,:studentID,:eID)";
