@@ -355,7 +355,7 @@ const QList<Team*>& DBimpl::getTeamsbyProjectID (const int& projectID){
                 teamID = tempID;
                 Team* team = new Team(teamID);
                 teams->append(team);
-
+                team->setResultDisplay(query.value(3).toString());
             }
 
             tempStudentID = query.value(0).toInt();
