@@ -1,6 +1,7 @@
 #include "distributor.h"
 #include "team.h"
 #include <QDebug>
+#include <cmath>
 Distributor::Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam) : pci(pciParam)
 {
 
@@ -9,22 +10,26 @@ Distributor::Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam) : pci(p
 const QList<Team*>& Distributor::distributeTeams(const int minSize,const int maxSize){
 
     qDebug () << " STARTING DISTRIBUTOR";
-
-
-    QList<int> remainingStudents = pci.keys();
-
-    int outlierCountMin = (pci.keys().count()/minSize) % maxSize;
+    int outlierCountMin = (floor(pci.keys().count()/minSize)) * minSize;
 
     int numTeams;
-    if (outlierCountMin == 0)
-        numTeams = pci.keys().count()/minSize;
+
+    if (outlierCountMin >= pci.keys().count())
+    {
+        numTeams = floor(pci.keys().count()/minSize);
+    }
     else
-        numTeams = pci.keys().count()/maxSize;
+    {
+       numTeams =  floor(pci.keys().count()/maxSize);
+    }
 
 
 
 
-      QList<Team*> teams = createTopRowTeams(numTeams,remainingStudents);
+
+
+
+      QList<Team*> teams = createTopRowTeams(numTeams);
 
 
       qDebug() << "Starting pairs";
@@ -81,12 +86,9 @@ int Distributor::calculateTeamWeight(const Team& team,const int& id)
     return total;
 }
 
-int Distributor::assignStudentToTeam(int studentID, QList<Team*> teams)
-{
-    return -1;
-}
 
-QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& remainingStudents)
+
+QList<Team*>& Distributor::createTopRowTeams(int numTeams)
 {
 
      QList< Team* >* topRow = new QList< Team* >;

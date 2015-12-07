@@ -140,10 +140,13 @@ void ManageProjectsView::on_makeTeamsButton_clicked()
 {
 
 
-    manageProjectsController->makeTeams();
+   if (manageProjectsController->makeTeams())
+   {
     QMessageBox::information(this, tr("Team Builder"),
                          tr("Teams Created!"),
                          QMessageBox::Ok);
+   }
+
 
 }
 

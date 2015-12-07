@@ -13,7 +13,10 @@ class TeamBuilder
 
 public:
     TeamBuilder();
-    const QList<Team*>& createTeams(const Project& project);
+    const QList<Team*>& createTeams(Project& project);
+    
+private:
+   int prefilter (Project& project);
 };
 
 #endif // TEAMBUILDER_H

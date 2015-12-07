@@ -90,13 +90,18 @@ int ManageProjectsController::goToLoginDialog(){
 int ManageProjectsController::makeTeams()
 {
 
+    if (selectedProject != NULL)
+    {
     TeamBuilder* builder = new TeamBuilder;
     QList<Team*> teams =builder->createTeams(*selectedProject);
     delete builder;
 
-    int returnval = database->storeTeamsByProject(teams,selectedProject->getID());
-    return returnval; //database->getStudentByID(1).getID();
-
-
-
+    if (teams.count() > 0)
+    {
+        int returnval = database->storeTeamsByProject(teams,selectedProject->getID());
+        return returnval;
+    }
+    else return 0;
+    }
+    return 0;
 }
