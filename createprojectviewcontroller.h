@@ -16,7 +16,7 @@ public:
     int saveProject();
     int goToLoginDialog();
 
-    static CreateProjectViewController * getInstance();
+    static CreateProjectViewController* getInstance();
     int setView(CreateProjectView *view);
 
 private:
@@ -25,6 +25,7 @@ private:
 
     Database *database;
     static CreateProjectViewController *instance;
+
 
 
 };
