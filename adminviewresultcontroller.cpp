@@ -14,7 +14,7 @@ QList<Team*> AdminViewResultController::getTeams(){
 
 }
 QString AdminViewResultController::getDetailResults(Team *team){
-    ResultBuilder result(team);
-    return result.getDetailedResults();
+    ResultBuilder result;
+    return result.getDetailedResults(team);
 }
 
