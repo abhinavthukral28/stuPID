@@ -15,6 +15,7 @@ class Project
     int teamMax;
     int teamMin;
     QString description;
+    int results;
 
 
 public:
@@ -36,6 +37,8 @@ public:
     QString getTitle() const;
     const QList<Student*>& getRegisteredStudents() const;
     bool operator==(const Project& other);
+    int resultsAreAvailable();
+    int setResultsAvailable(int available);
 
 };
 

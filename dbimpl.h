@@ -41,6 +41,7 @@ private:
  static SQLException generateCustomSQLException(const char* input);
  //functions
  void createTables();
+ int markResults(const int& projectID,const int& results);
  int insertValuesintoQualifications();
  int insertValuesintoExpectations();
  int createTeam(const int& projectID, const QString& result);

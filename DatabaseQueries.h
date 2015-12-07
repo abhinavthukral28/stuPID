@@ -32,6 +32,7 @@ private:
     const static QString storeTeamsByProject;
     const static QString getProjectByID;
     const static QString deleteTeamByProject;
+    const static QString markResults;
 
 };
 
@@ -88,7 +89,7 @@ const QString DatabaseQueries::getTeamsByProject =  "SELECT Students.studentID, 
 
 const QString DatabaseQueries::createQualificationByStudent = QString("INSERT INTO ")+DatabaseQueries::STUDENT_QUALIFICATIONS_TABLE+" (studentQualificationID,qualificationRating,expectationRating,studentID,eID) VALUES(NULL,:qualificationRating,:expectationRating,:studentID,:eID)";
 
-
+const QString DatabaseQueries::markResults = "Update projects set results = :results where projectID = :projectID";
 
 const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, projectID,result) VALUES (NULL, :projectID,:result)";
 

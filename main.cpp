@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-//    Database* database = Database::getInstance();
+    Database* database = Database::getInstance();
+//    database->getTeamsbyProjectID(1);
 //    TeamBuilder builder;
 //    QList<Team*> teams = builder.createTeams(*database->getAllProjects().at(0));
 //    database->storeTeamsByProject(teams,1);

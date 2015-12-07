@@ -114,3 +114,12 @@ bool Project::operator==(const Project& other){
     return other.getID() == getID();
 }
 
+int Project::resultsAreAvailable()
+{
+    return results;
+}
+
+int Project::setResultsAvailable(int available)
+{
+    results = available;
+}
