@@ -2,6 +2,8 @@
 #include "distributor.h"
 #include "teambuilder.h"
 #include "project.h"
+#include "resultbuilder.h"
+#include <qdebug.h>
 TeamBuilder::TeamBuilder()
 {
 
@@ -20,6 +22,13 @@ const QList<Team*>& TeamBuilder::createTeams(const Project& project){
    delete distributor;
    delete &pci;
 
+   ResultBuilder rBuilder;
+   for (int i = 0; i < list.count();i++)
+   {
+      list.at(i)->setResultDisplay(rBuilder.getDetailedResults(list.at(i)));
+
+      qDebug() << "RESULT " << list.at(i)->getResultDisplay();
+   }
    return list;
 }
 

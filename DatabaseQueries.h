@@ -89,7 +89,7 @@ const QString DatabaseQueries::createQualificationByStudent = QString("INSERT IN
 
 
 
-const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, projectID) VALUES (NULL, :projectID)";
+const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, projectID,result) VALUES (NULL, :projectID,:result)";
 
 const QString DatabaseQueries::getProjectByID = "Select * from Projects where projectID = :project";
 

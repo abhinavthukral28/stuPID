@@ -845,7 +845,7 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
 
         for (int i = 0; i< teams.count();i++)
         {
-            tempInt = createTeam(projectID);
+            tempInt = createTeam(projectID,teams.at(i)->getResultDisplay());
 
 
             if (tempInt > 0)
@@ -875,13 +875,14 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
     else return 0;
 }
 
- int DBimpl::createTeam(const int& projectID)
+ int DBimpl::createTeam(const int& projectID,const QString& resultDisplay)
  {
      QSqlQuery query;
 
      query.prepare(DatabaseQueries::createTeamByProject);
 
      query.bindValue(":projectID",projectID);
+     query.bindValue(":result",resultDisplay);
 
      if(!query.exec())
      {

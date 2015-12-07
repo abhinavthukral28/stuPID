@@ -11,6 +11,7 @@ private :
     int pci;
     int rank;
     int id;
+    QString resultDisplay;
 public:
     Team();
     Team(int id);
@@ -21,6 +22,7 @@ public:
     int getID();
     int setPci(int newPci);
     QString getResultDisplay();
+    int setResultDisplay(const QString& display);
 
 };
 

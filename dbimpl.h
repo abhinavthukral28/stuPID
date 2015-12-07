@@ -42,7 +42,7 @@ private:
  void createTables();
  int insertValuesintoQualifications();
  int insertValuesintoExpectations();
- int createTeam(const int& projectID);
+ int createTeam(const int& projectID, const QString& result);
  int insertStudents();
  int init();
 };
