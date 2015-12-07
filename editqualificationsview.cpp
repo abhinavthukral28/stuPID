@@ -13,7 +13,7 @@ EditQualificationsView::EditQualificationsView(QWidget *parent) :
 
     for(int i=0; i< qualificationList.count(); i++)
     {
-        ui->listWidget->addItem(qualificationList[i]->getTitle());
+        ui->listWidget->addItem(qualificationList.at(i)->getTitle());
     }
 
     //Setting the radio buttons

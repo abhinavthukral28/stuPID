@@ -7,6 +7,7 @@
 #include "createprojectview.h"
 #include "student.h"
 #include "teambuilder.h"
+#include "adminviewresultcontroller.h"
 
 
 
@@ -99,4 +100,7 @@ int ManageProjectsController::makeTeams()
 
 
 
+}
+void ManageProjectsController::showDetailedResults(){
+    AdminViewResultController resultController(selectedProject->getID());
 }

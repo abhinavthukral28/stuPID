@@ -19,6 +19,7 @@ public:
     int goToLoginDialog();
     int updateDetailedView();
     int makeTeams();
+    void showDetailedResults();
 
 
  private slots:
