@@ -150,32 +150,6 @@ QList<Team*>& Distributor::createTopRowTeams(int numTeams,QList<int>& remainingS
                          iterator.remove();
                  }
 
-//                 for (int l = 0; l < pci.keys().count(); l++)
-//                 {
-//                    qDebug() << " filtering " << pci.keys().at(l);
-//                    QList< QPair <int,int> >* matches = pci.value(pci.keys().at(l));
-//                    QList <int> indexes;
-//                    for (int k = 0; k < matches->count(); k++)
-//                    {
-//                        int id = matches->at(k).first;
-//                        if (id == idOne || id == otherID)
-//                        {
-//                            qDebug () << "Removing top match from " << pci.keys().at(l) << " for id " << id;
-//                            qDebug () << "Removing at index " << k;
-//                            indexes << k;
-//                        }
-//                    }
-
-//                    for (int m = 0; m < indexes.count(); m++)
-//                    {
-//                        if(pci.keys().at(l) == 32 )
-//                        qDebug()<<"=======================================================" << pci.value(pci.keys().at(l))->at(indexes.at(m) - m).first;
-//                        pci.value(pci.keys().at(l))->removeAt(indexes.at(m) - m);
-//                    }
-
-//                 }
-
-
 
                  i = -1;
              }
@@ -261,6 +235,7 @@ int Distributor::sortTeams(QList<Team*>& teams){
             if (teams.at(i)->getPci() < teams.at(i+1)->getPci())
             {
                 teams.swap(i,i+1);
+                swapped = true;
             }
         }
     }
