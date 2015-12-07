@@ -10,9 +10,18 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,const int max
 
     qDebug () << " STARTING DISTRIBUTOR";
 
+
     QList<int> remainingStudents = pci.keys();
 
-    int numTeams = pci.keys().count()/minSize;
+    int outlierCountMin = (pci.keys().count()/minSize) % maxSize;
+
+    int numTeams;
+    if (outlierCountMin == 0)
+        numTeams = pci.keys().count()/minSize;
+    else
+        numTeams = pci.keys().count()/maxSize;
+
+
 
 
       QList<Team*> teams = createTopRowTeams(numTeams,remainingStudents);
