@@ -44,7 +44,8 @@ SOURCES += main.cpp\
     editqualificationscontroller.cpp \
     resultbuilder.cpp \
     adminviewresultcontroller.cpp \
-    dbimpl.cpp
+    dbimpl.cpp \
+    dbproxy.cpp
 
 HEADERS  += \
     studentregister.h \
@@ -79,7 +80,8 @@ HEADERS  += \
     editqualificationscontroller.h \
     resultbuilder.h \
     adminviewresultcontroller.h \
-    dbimpl.h
+    dbimpl.h \
+    dbproxy.h
 
 FORMS    += \
     studentregister.ui \
