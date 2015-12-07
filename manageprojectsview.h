@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include "manageprojectscontroller.h"
+#include "team.h"
 
 namespace Ui {
 class ManageProjectsView;
@@ -28,6 +29,7 @@ public:
     ~ManageProjectsView();
      void setprojectIndex(int x);
      void getprojectIndex(int x);
+     void updateSummaryResults(QList<Team*> teams);
 
 
 

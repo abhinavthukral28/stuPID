@@ -6,6 +6,7 @@
 #include "student.h"
 #include <QDialog>
 #include "adminviewresultcontroller.h"
+#include <QStringList>
 
 
 ManageProjectsView::ManageProjectsView(QWidget *parent) :QDialog(parent),
@@ -128,8 +129,9 @@ void ManageProjectsView::on_viewDetailButton_clicked()
 
 void ManageProjectsView::on_viewResultButton_clicked()
 {
-    ui->viewTextBrowser->setText("coming soon");
+    manageProjectsController->updateSummaryResults();
 }
+
 
 void ManageProjectsView::on_createProjectButton_clicked()
 {
@@ -159,4 +161,22 @@ void ManageProjectsView::on_pushButton_clicked()
 void ManageProjectsView::on_detailedResult_clicked()
 {
     manageProjectsController->showDetailedResults();
+}
+
+void ManageProjectsView::updateSummaryResults(QList<Team*> teams)
+{
+    QString final;
+
+    for(int i=0; i< teams.count(); i++)
+    {
+        QList<int> idList = teams.at(i)->getTeamMembers();
+        QStringList nameList;
+
+        for(int j=0; j<idList.count();j++){
+            Student student = manageProjectsController->getStudent(idList.at(j));
+            nameList.append(student.getUsername());
+        }
+        final+= "Team " + QString::number(i+1) + ": " + nameList.join(',') + "\n";
+    }
+    ui->viewTextBrowser->setText(final);
 }

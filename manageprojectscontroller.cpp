@@ -121,3 +121,9 @@ ManageProjectsController* ManageProjectsController::getInstance(){
     }
     return ManageProjectsController::instance;
 }
+void ManageProjectsController::updateSummaryResults(){
+    manageProjectsView->updateSummaryResults(database->getTeamsbyProjectID(selectedProject->getID()));
+}
+Student ManageProjectsController::getStudent(int id){
+   return database->getStudentByID(id);
+}

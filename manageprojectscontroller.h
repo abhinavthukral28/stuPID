@@ -21,6 +21,8 @@ public:
     static ManageProjectsController * getInstance();
     int setView(ManageProjectsView *view);
     void showDetailedResults();
+    void updateSummaryResults();
+    Student getStudent(int id);
 
 
  private slots:
