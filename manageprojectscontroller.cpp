@@ -5,6 +5,7 @@
 #include "Database.h"
 #include "team.h"
 #include "createprojectview.h"
+#include "student.h"
 #include "teambuilder.h"
 
 
@@ -88,6 +89,14 @@ int ManageProjectsController::goToLoginDialog(){
 
 int ManageProjectsController::makeTeams()
 {
-    TeamBuilder builder;
-    QList<Team*> teams =builder.createTeams(*selectedProject);
+
+    TeamBuilder* builder = new TeamBuilder;
+    QList<Team*> teams =builder->createTeams(*selectedProject);
+    delete builder;
+
+    int returnval = database->storeTeamsByProject(teams,selectedProject->getID());
+    return returnval; //database->getStudentByID(1).getID();
+
+
+
 }

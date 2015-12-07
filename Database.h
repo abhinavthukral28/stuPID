@@ -28,7 +28,7 @@ class Database{
     const QList<Team*>& getTeamsbyProjectID (const int& projectID);
     int createStudent(Student& student);
     int createProject(Project& project);
-
+  //  const Project& getProjectByID(const int& projectID);
     int storeTeamsByProject (const QList<Team*>& teams, const int& projectID);
     int addStudentsToProject(const int& projectID, QList<Student*>* students);
     int addStudentToProject(const int& projectID,Student& student);

@@ -1,6 +1,7 @@
 #include "manageprojectsview.h"
 #include "ui_manageprojectsview.h"
 #include "project.h"
+#include "Database.h"
 #include "manageprojectscontroller.h"
 #include "student.h"
 #include <QDialog>
@@ -137,6 +138,7 @@ void ManageProjectsView::on_createProjectButton_clicked()
 
 void ManageProjectsView::on_makeTeamsButton_clicked()
 {
+
 
     manageProjectsController->makeTeams();
     QMessageBox::information(this, tr("Team Builder"),

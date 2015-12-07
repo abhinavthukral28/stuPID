@@ -845,29 +845,39 @@ int Database::createQualificationEntry(const int& studentID, const Qualification
 
 
 int Database::storeTeamsByProject (const QList<Team*>& teams, const int& projectID){
+
     if (projectID > 0)
     {
 
 
         int tempInt;
         QSqlQuery query;
-        QVariantList projectIDList;
+        QVariantList studentIDList;
         QVariantList teamIDList;
+
+
         query.prepare(DatabaseQueries::storeTeamsByProject);
 
         for (int i = 0; i< teams.count();i++)
         {
             tempInt = createTeam(projectID);
+
+
             if (tempInt > 0)
             {
-                projectIDList << projectID;
-                teamIDList << tempInt ;
+                for (int j = 0; j < teams.at(i)->getTeamMembers().count();j++)
+                {
+                    studentIDList << teams.at(i)->getTeamMembers().at(j);
+                    teamIDList << tempInt ;
+                }
+
+
             }
             else return 0;
         }
 
-        query.bindValue(":projectID",projectIDList);
-        query.bindValue(":studentID",teamIDList);
+        query.bindValue(":studentID",studentIDList);
+        query.bindValue(":teamID",teamIDList);
 
         if(!query.execBatch())
         {
@@ -896,6 +906,11 @@ int Database::storeTeamsByProject (const QList<Team*>& teams, const int& project
      }
      else return query.lastInsertId().toInt();
  }
+
+// const Project& getProjectByID(const int& projectID)
+// {
+//    return 0;
+// }
 
 SQLException Database::generateException(QSqlQuery query)
 {
