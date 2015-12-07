@@ -48,6 +48,12 @@ int StudentManageProjectView::updateDetailedView(Project &project)
   QString tempsStorage= "Description:"+ project.getDescription() + "\nMinimum Team Size: "+ num1 + "\nMaximum Team Size: " + num2;
   ui->descriptionView->setText(tempsStorage);
   ui->ProjectTitle->setText(project.getTitle());
+  if(true){
+      ui->viewResults->setDisabled(true);
+  }
+  else{
+      ui->viewResults->setDisabled(false);
+  }
 }
 
 
@@ -92,5 +98,10 @@ void StudentManageProjectView::on_editProfile_clicked()
 void StudentManageProjectView::on_pushButton_clicked()
 {
     studentManageProjectController->gotoLoginDialog();
+
+}
+
+void StudentManageProjectView::on_viewResults_clicked()
+{
 
 }

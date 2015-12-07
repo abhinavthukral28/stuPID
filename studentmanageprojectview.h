@@ -33,6 +33,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_viewResults_clicked();
+
 private:
     Ui::StudentManageProjectView *ui;
     StudentManageProjectController *studentManageProjectController;
