@@ -17,6 +17,7 @@ public:
     const QList<Project*>& getProjectsByStudent(const int& studentID);
     const QList<Project*>& getOpenProjectsByStudent(const int& studentID);
     const QList<Team*>& getTeamsbyProjectID (const int& projectID);
+    int deleteTeamsByProject(const int& projectID);
     int createStudent(Student& student);
     int createProject(Project& project);
  //   const Project& getProjectByID(const int& projectID);

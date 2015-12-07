@@ -11,12 +11,13 @@ StudentManageProjectController *StudentManageProjectController::instance=0;
 StudentManageProjectController::StudentManageProjectController():QObject(),
     database(Database::getInstance())
 {
-    allProjects = database->getProjectsByStudent(Session::getStudent().getID());
+
 
 }
 
 int StudentManageProjectController::init(){
 
+    allProjects = database->getProjectsByStudent(Session::getStudent().getID());
     QList<QString> projectTitles;
     QString tempTitle;
 

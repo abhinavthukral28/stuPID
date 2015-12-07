@@ -234,7 +234,7 @@ void DBimpl::createTables(){
     else
         qDebug() << "Table ProjectStudents!";
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS TeamMember(teamID INTEGER ,studentID int,FOREIGN KEY(studentID) REFERENCES Students(studentID), PRIMARY KEY (teamID, studentID))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS TeamMember(teamID INTEGER ,studentID int,FOREIGN KEY(studentID) REFERENCES Students(studentID), FOREIGN KEY(teamID) REFERENCES Team(teamID) on delete cascade on update cascade, PRIMARY KEY (teamID, studentID))" );
     if( !qry.exec() )
         qDebug() << qry.lastError();
     else
@@ -919,6 +919,28 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
 
  }
 
+ int DBimpl::deleteTeamsByProject(const int& projectID){
+     QSqlQuery query;
+
+     query.prepare(DatabaseQueries::deleteTeamByProject);
+
+     query.bindValue(":projectID",projectID);
+
+
+
+     if(!query.exec())
+     {
+         qDebug() << query.lastError();
+         qDebug() << query.lastQuery();
+         return 0;
+     }
+     else {
+         return 1;
+     }
+
+
+
+ }
 
 
 SQLException DBimpl::generateException(QSqlQuery query)

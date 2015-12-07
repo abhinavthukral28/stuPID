@@ -21,7 +21,7 @@ class Database{
     virtual const QList<Student*>& getAllStudents() = 0;
     virtual const QList<Project*>& getAllProjects() = 0;
     virtual const QList<Qualification*>& getAllQualifications(const int& studentID) = 0;
-
+    virtual int deleteTeamsByProject(const int& projectID) = 0;
     virtual const Student& getStudentByID(const int& studentID) = 0;
 //    virtual const QList<Student*>& getStudentsByProject() = 0;
     virtual const QList<Project*>& getProjectsByStudent(const int& studentID) =  0;

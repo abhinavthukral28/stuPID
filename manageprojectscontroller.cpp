@@ -15,8 +15,7 @@ ManageProjectsController::ManageProjectsController():QObject(),
     database(Database::getInstance())
 
 {
-    allProjects = database->getAllProjects();
-    selectedProject=0;
+
 
 }
 
@@ -26,6 +25,9 @@ ManageProjectsController::ManageProjectsController():QObject(),
 
 
 int ManageProjectsController::init(){
+
+    allProjects = database->getAllProjects();
+    selectedProject=0;
 
     QList<QString> projectTitles;
     QString tempTitle;
@@ -83,7 +85,7 @@ int ManageProjectsController::goToCreateProjectView()
 int ManageProjectsController::goToLoginDialog(){
    manageProjectsView->close();
    LoginDialog logindialog;
-   logindialog.exec();
+   return logindialog.exec();
 
 }
 
@@ -98,6 +100,7 @@ int ManageProjectsController::makeTeams()
 
     if (teams.count() > 0)
     {
+        database->deleteTeamsByProject(selectedProject->getID());
         int returnval = database->storeTeamsByProject(teams,selectedProject->getID());
         return returnval;
     }

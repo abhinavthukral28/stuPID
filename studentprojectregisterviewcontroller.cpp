@@ -15,12 +15,13 @@ studentprojectregisterviewcontroller::studentprojectregisterviewcontroller():QOb
    database(Database::getInstance())
 {
 
-    allProjects = database->getOpenProjectsByStudent(Session::getStudent().getID());
-    selectedProject=NULL;
+
 }
 
 int studentprojectregisterviewcontroller::init()
 {
+    allProjects = database->getOpenProjectsByStudent(Session::getStudent().getID());
+    selectedProject=NULL;
     QList<QString> projectTitles;
     QString tempTitle;
 

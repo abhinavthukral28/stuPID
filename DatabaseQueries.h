@@ -31,6 +31,7 @@ private:
     const static QString createTeamByProject;
     const static QString storeTeamsByProject;
     const static QString getProjectByID;
+    const static QString deleteTeamByProject;
 
 };
 
@@ -93,6 +94,7 @@ const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, 
 
 const QString DatabaseQueries::getProjectByID = "Select * from Projects where projectID = :project";
 
+const QString DatabaseQueries::deleteTeamByProject = "Delete from Team where projectID = :projectID";
 
 const QString DatabaseQueries::storeTeamsByProject ="INSERT INTO TeamMember (teamID,studentID) VALUES (:teamID,:studentID)";
 #endif // DATABASEQUERIES_H

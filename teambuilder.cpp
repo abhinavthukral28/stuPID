@@ -18,6 +18,7 @@ const QList<Team*>& TeamBuilder::createTeams(Project& project){
         return list;
     }
 
+
     PciBuilder* builder = new PciBuilder;
     QMap<int, QList < QPair<int,int> >* >& pci = builder->calculatePci(project.getRegisteredStudents());
 

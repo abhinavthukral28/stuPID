@@ -105,3 +105,8 @@ return dbimpl->storeTeamsByProject(teams,projectID);
 
 }
 
+ int DBproxy::deleteTeamsByProject(const int& projectID)
+ {
+     return dbimpl->deleteTeamsByProject(projectID);
+ }
+
