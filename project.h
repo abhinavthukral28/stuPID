@@ -30,7 +30,7 @@ public:
     int setTitle (const QString& title);
     int getMinTeamSize() const;
     int getMaxTeamSize() const;
-    const int getID() const;
+    int getID() const;
     int setID(const int& newID);
     QString getDescription() const;
     QString getTitle() const;

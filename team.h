@@ -2,7 +2,7 @@
 #define TEAM_H
 
 #include <QList>
-
+#include <QString>
 class Team
 {
 
@@ -20,6 +20,7 @@ public:
     int getPci() const;
     int getID();
     int setPci(int newPci);
+    QString getResultDisplay();
 
 };
 

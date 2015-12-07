@@ -47,3 +47,7 @@ int Team::setPci(int newPci){
     }
     return 0;
 }
+
+QString Team::getResultDisplay(){
+    return "okay";
+}

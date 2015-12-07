@@ -8,13 +8,17 @@ TeamBuilder::TeamBuilder()
 }
 
 const QList<Team*>& TeamBuilder::createTeams(const Project& project){
-    PciBuilder builder;
-    QMap<int, QList < QPair<int,int> >* >& pci = builder.calculatePci(project.getRegisteredStudents());
+    PciBuilder* builder = new PciBuilder;
+    QMap<int, QList < QPair<int,int> >* >& pci = builder->calculatePci(project.getRegisteredStudents());
 
     Distributor* distributor = new Distributor (pci);
+
+
    QList<Team*> list = distributor->distributeTeams(project.getMinTeamSize(),project.getMaxTeamSize());
 
-
+   delete builder;
+   delete distributor;
+   delete &pci;
 
    return list;
 }
