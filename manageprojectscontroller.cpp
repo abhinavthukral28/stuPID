@@ -3,6 +3,7 @@
 #include "logindialog.h"
 #include "project.h"
 #include "Database.h"
+#include <QDebug>
 #include "team.h"
 #include "createprojectview.h"
 #include "student.h"
@@ -13,7 +14,7 @@
 
 ManageProjectsController *ManageProjectsController::instance = 0;
 ManageProjectsController::ManageProjectsController():QObject(),
-    database(Database::getInstance())
+        database(Database::getInstance())
 
 {
 
@@ -62,14 +63,14 @@ int ManageProjectsController::updateSelectedProject(const int& i){
 
 int ManageProjectsController::updateStudentList(){
     if(selectedProject != NULL){
-    manageProjectsView->setStudentList(*selectedProject);
+        manageProjectsView->setStudentList(*selectedProject);
     }
     return 0;
 }
 
 int ManageProjectsController::updateDetailedView(){
     if(selectedProject != NULL){
-    manageProjectsView->setDetailedView(*selectedProject);
+        manageProjectsView->setDetailedView(*selectedProject);
     }
     return 0;
 }
@@ -77,10 +78,10 @@ int ManageProjectsController::updateDetailedView(){
 int ManageProjectsController::goToCreateProjectView()
 {
     manageProjectsView->close();
-     CreateProjectView createProjectView;
-     createProjectView.exec();
+    CreateProjectView createProjectView;
+    createProjectView.exec();
 
-     return 0;
+    return 0;
 
 }
 
@@ -89,9 +90,9 @@ Project* ManageProjectsController::getSelectedProject(){
 }
 
 int ManageProjectsController::goToLoginDialog(){
-   manageProjectsView->close();
-   LoginDialog logindialog;
-   return logindialog.exec();
+    manageProjectsView->close();
+    LoginDialog logindialog;
+    return logindialog.exec();
 
 }
 
@@ -104,28 +105,22 @@ int ManageProjectsController::goToEditProject(){
 
 int ManageProjectsController::makeTeams()
 {
-
+    qDebug() << "SENDING PROJECT WITH ID " << selectedProject->getID();
     if (selectedProject != NULL)
     {
-    TeamBuilder* builder = new TeamBuilder;
-    QList<Team*> teams =builder->createTeams(*selectedProject);
-    delete builder;
+        TeamBuilder* builder = new TeamBuilder;
+        builder->createTeams(*selectedProject);
+        delete builder;
 
-    if (teams.count() > 0)
-    {
-        database->deleteTeamsByProject(selectedProject->getID());
-        int returnval = database->storeTeamsByProject(teams,selectedProject->getID());
-        return returnval;
+        return 1;
     }
-    else return 0;
-    }
-    return 0;
 }
 void ManageProjectsController::showDetailedResults(){
-    AdminViewResultController resultController(selectedProject->getID());
+    AdminViewResultController* resultController = AdminViewResultController::getInstance();
+    resultController->init(selectedProject->getID());
 }
 int ManageProjectsController::setView(ManageProjectsView*view){
-       manageProjectsView = view;
+    manageProjectsView = view;
 }
 
 ManageProjectsController* ManageProjectsController::getInstance(){
@@ -138,7 +133,7 @@ void ManageProjectsController::updateSummaryResults(){
     manageProjectsView->updateSummaryResults(database->getTeamsbyProjectID(selectedProject->getID()));
 }
 Student ManageProjectsController::getStudent(int id){
-   return database->getStudentByID(id);
+    return database->getStudentByID(id);
 }
 
 int ManageProjectsController::getIndex(){

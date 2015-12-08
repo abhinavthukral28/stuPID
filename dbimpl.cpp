@@ -399,6 +399,7 @@ const QList<Project*>& DBimpl::getAllProjects(){
         {
 
             tempID = query.value(0).toInt();
+            qDebug () << "DB " << query.value(1).toInt();
             tempProject->setResultsAvailable(query.value(1).toInt());
 
             if (tempProject->getID() != tempID)
@@ -464,6 +465,7 @@ int DBimpl::createProject(Project& project){
     query.bindValue(":description",project.getDescription());
     query.bindValue(":minTeamSize",project.getMinTeamSize());
     query.bindValue(":maxTeamSize",project.getMaxTeamSize());
+    query.bindValue(":results",0);
     if(!query.exec())
     {
         qDebug() << query.lastError();
@@ -618,10 +620,8 @@ const QList<Project*>& DBimpl::getProjectsByStudent(const int& studentID)
 
                     tempUsername = query.value(9).toString();
                     tempStudent = new Student(tempStudentID,tempUsername);
-                    //tempStudent->qualifications = getAllQualifications(tempStudentID);
                     QList<Qualification*> temp = getAllQualifications(tempID);
 
-                    //tempStudent->setQualifications(getAllQualifications(tempStudentID));
 
                     tempStudent->qualifications = temp;
                     tempProject->registerStudent(*tempStudent);
@@ -859,7 +859,8 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
      query.prepare(DatabaseQueries::createTeamByProject);
 
      query.bindValue(":projectID",projectID);
-     query.bindValue(":result",resultDisplay);
+     query.bindValue(":results",resultDisplay);
+
 
      if(!query.exec())
      {

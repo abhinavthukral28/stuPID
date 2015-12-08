@@ -4,6 +4,7 @@
 #include "project.h"
 #include "resultbuilder.h"
 #include <QMessageBox>
+#include "Database.h"
 #include <qdebug.h>
 #include <cmath>
 TeamBuilder::TeamBuilder()
@@ -12,32 +13,29 @@ TeamBuilder::TeamBuilder()
 }
 
 const QList<Team*>& TeamBuilder::createTeams(Project& project){
-    QList<Team*> list;
+
     if (prefilter(project))
     {
+        QList<Team*> list;
         return list;
     }
 
 
     PciBuilder* builder = new PciBuilder;
+
     QMap<int, QList < QPair<int,int> >* >& pci = builder->calculatePci(project.getRegisteredStudents());
 
-    Distributor* distributor = new Distributor (pci);
+
+    Distributor* distributor = new Distributor (pci,project);
+
+  QList<Team*> list = distributor->distributeTeams(project.getMinTeamSize(),project.getMaxTeamSize());
 
 
-   list = distributor->distributeTeams(project.getMinTeamSize(),project.getMaxTeamSize());
-
-   delete builder;
+  delete builder;
    delete distributor;
    delete &pci;
 
-   ResultBuilder rBuilder;
-   for (int i = 0; i < list.count();i++)
-   {
-      list.at(i)->setResultDisplay(rBuilder.getDetailedResults(list.at(i)));
 
-      qDebug() << "RESULT " << list.at(i)->getResultDisplay();
-   }
    return list;
 }
 
@@ -53,30 +51,31 @@ const QList<Team*>& TeamBuilder::createTeams(Project& project){
         return 1;
 
     }else{
-        int outlierCountMin = (floor(project.getRegisteredStudents().count()/project.getMinTeamSize())) * project.getMaxTeamSize();
-        int outlierCountMax = (floor(project.getRegisteredStudents().count()/project.getMaxTeamSize())) * project.getMaxTeamSize();
+        return 0;
+//        int outlierCountMin = (floor(project.getRegisteredStudents().count()/project.getMinTeamSize())) * project.getMaxTeamSize();
+//        int outlierCountMax = (floor(project.getRegisteredStudents().count()/project.getMaxTeamSize())) * project.getMaxTeamSize();
         
-        if (outlierCountMin >= project.getRegisteredStudents().count() || outlierCountMax >= project.getRegisteredStudents().count())
-            return 0;
-        else
-        {
-            int increaseNum = (project.getRegisteredStudents().count() - outlierCountMin)/floor(project.getRegisteredStudents().count()/project.getMinTeamSize());
+//        if (outlierCountMin >= project.getRegisteredStudents().count() || outlierCountMax >= project.getRegisteredStudents().count())
+//            return 0;
+//        else
+//        {
+//            int increaseNum = (project.getRegisteredStudents().count() - outlierCountMin)/floor(project.getRegisteredStudents().count()/project.getMinTeamSize());
 
-            QString display = QString("Would you like to increase the minimum team size by ") + QString::number(increaseNum) + " to continue team building?";
-            QMessageBox msgBox;
-            msgBox.setWindowTitle("Invalid params");
-            msgBox.setText(display);
-            msgBox.setStandardButtons(QMessageBox::Yes);
-            msgBox.addButton(QMessageBox::No);
-            msgBox.setDefaultButton(QMessageBox::No);
-             if (msgBox.exec() == QMessageBox::Yes) {
-               project.setTeamMin(project.getMinTeamSize()+increaseNum);
-               return 0;
+//            QString display = QString("Would you like to increase the minimum team size by ") + QString::number(increaseNum) + " to continue team building?";
+//            QMessageBox msgBox;
+//            msgBox.setWindowTitle("Invalid params");
+//            msgBox.setText(display);
+//            msgBox.setStandardButtons(QMessageBox::Yes);
+//            msgBox.addButton(QMessageBox::No);
+//            msgBox.setDefaultButton(QMessageBox::No);
+//             if (msgBox.exec() == QMessageBox::Yes) {
+//               project.setTeamMin(project.getMinTeamSize()+increaseNum);
+//               return 0;
 
-             } else {
-              return 1;
-             }
-        }
+//             } else {
+//              return 1;
+//             }
+//        }
             
     }
    

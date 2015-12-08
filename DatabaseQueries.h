@@ -58,7 +58,7 @@ const QString DatabaseQueries::selectAllProjects = QString("SELECT * FROM ") + D
         " LEFT JOIN " + DatabaseQueries::PROJECT_STUDENT_TABLE + " ON " + DatabaseQueries::PROJECTS_TABLE + ".projectID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".projectID LEFT JOIN " +
         DatabaseQueries::STUDENTS_TABLE + " ON " + DatabaseQueries::STUDENTS_TABLE+ ".studentID = " + DatabaseQueries::PROJECT_STUDENT_TABLE + ".studentID";
 
-const QString DatabaseQueries::insertProject = "INSERT INTO "+DatabaseQueries::PROJECTS_TABLE+" (projectID,projectName,description,minTeamSize,maxTeamSize)  VALUES (null,:projectName,:description,:minTeamSize,:maxTeamSize)";
+const QString DatabaseQueries::insertProject = "INSERT INTO "+DatabaseQueries::PROJECTS_TABLE+" (projectID,results,projectName,description,minTeamSize,maxTeamSize)  VALUES (null,:results,:projectName,:description,:minTeamSize,:maxTeamSize)";
 
 const QString DatabaseQueries::addStudentToProject = "INSERT INTO " + DatabaseQueries::PROJECT_STUDENT_TABLE + " (projectID,studentID) VALUES (:projectID,:studentID)";
 
@@ -92,7 +92,7 @@ const QString DatabaseQueries::createQualificationByStudent = QString("INSERT IN
 
 const QString DatabaseQueries::markResults = "Update projects set results = :results where projectID = :projectID";
 
-const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, projectID,result) VALUES (NULL, :projectID,:result)";
+const QString DatabaseQueries::createTeamByProject = "INSERT INTO Team (teamID, projectID,result) VALUES (NULL, :projectID,:results)";
 
 const QString DatabaseQueries::getProjectByID = "Select * from Projects where projectID = :project";
 

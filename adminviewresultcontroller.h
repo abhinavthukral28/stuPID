@@ -12,13 +12,16 @@ class AdminViewResult;
 class AdminViewResultController: public QObject
 {
 public:
-    AdminViewResultController(int id);
     Student getStudent(int id);
     QList<Team*> getTeams();
+    void init(int id);
+    static AdminViewResultController* getInstance();
 private:
+    AdminViewResultController();
     AdminViewResult *adminViewResult;
     Database* database;
     int projectId;
+    static AdminViewResultController *instance;
 };
 
 #endif // ADMINVIEWRESULTCONTROLLER_H
