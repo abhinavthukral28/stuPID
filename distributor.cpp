@@ -307,10 +307,20 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize,  int& maxS
            }
         }
 
+        qDebug () << "Current team size " << teams.at(i)->getTeamMembers().count();
+
          if (teams.at(i)->getTeamMembers().count() != maxSize)
          {
             teams.at(i)->addStudent(minStudentID);
             teams.at(i)->setPci(minWeight);
+
+            QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
+
+            while (iterator.hasNext()) {
+                iterator.next();
+                if (iterator.key() == minStudentID)
+                    iterator.remove();
+            }
          }
          else {
              int increaseNum = ceil(pci.keys().count()/teams.count());
@@ -324,19 +334,13 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize,  int& maxS
              msgBox.setDefaultButton(QMessageBox::No);
               if (msgBox.exec() == QMessageBox::Yes) {
                 maxSize +=increaseNum;
-//                return 0;
+                 //return 0;
 
               } else {
                return 1;
               }
          }
-        QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
 
-        while (iterator.hasNext()) {
-            iterator.next();
-            if (iterator.key() == minStudentID)
-                iterator.remove();
-        }
 
     }
     }
