@@ -3,6 +3,7 @@
 #include "logindialog.h"
 #include "project.h"
 #include "Database.h"
+#include <QDebug>
 #include "team.h"
 #include "createprojectview.h"
 #include "student.h"
@@ -97,6 +98,14 @@ int ManageProjectsController::makeTeams()
     TeamBuilder* builder = new TeamBuilder;
     QList<Team*> teams =builder->createTeams(*selectedProject);
     delete builder;
+
+    ResultBuilder* rBuilder = new ResultBuilder;
+    for (int i = 0; i < teams.count();i++)
+    {
+       teams.at(i)->setResultDisplay(rBuilder->getDetailedResults(teams.at(i)));
+
+       qDebug() << "RESULT " << teams.at(i)->getResultDisplay();
+    }
 
     if (teams.count() > 0)
     {

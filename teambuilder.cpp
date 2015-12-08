@@ -35,13 +35,7 @@ const QList<Team*>& TeamBuilder::createTeams(Project& project){
    delete distributor;
    delete &pci;
 
-   ResultBuilder* rBuilder = new ResultBuilder;
-   for (int i = 0; i < list.count();i++)
-   {
-      list.at(i)->setResultDisplay(rBuilder->getDetailedResults(list.at(i)));
 
-      qDebug() << "RESULT " << list.at(i)->getResultDisplay();
-   }
    return list;
 }
 
