@@ -118,7 +118,8 @@ int ManageProjectsController::makeTeams()
     return 0;
 }
 void ManageProjectsController::showDetailedResults(){
-    AdminViewResultController resultController(selectedProject->getID());
+    AdminViewResultController* resultController = AdminViewResultController::getInstance();
+    resultController->init(selectedProject->getID());
 }
 int ManageProjectsController::setView(ManageProjectsView*view){
        manageProjectsView = view;
