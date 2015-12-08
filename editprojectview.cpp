@@ -3,7 +3,9 @@
 #include "editprojectcontroller.h"
 #include "project.h"
 #include "Database.h"
+#include "logindialog.h"
 #include "QDebug"
+#include "manageprojectsview.h"
 
 EditProjectView::EditProjectView(QWidget *parent) :
     QDialog(parent),
@@ -57,6 +59,7 @@ const int& EditProjectView::getProjectTeamMax()
 }
 
 int EditProjectView::updateView(Project *project){
+    editProjectController->initValues(project);
  ui->projectNameTextFeild->setText(project->getTitle());
  ui->projectDescriptionTextFeild->setText(project->getDescription());
 
@@ -71,9 +74,22 @@ int EditProjectView::updateView(Project *project){
 
 void EditProjectView::on_pushButton_2_clicked()
 {
-    editProjectController->saveProject();
+    if(editProjectController->saveProject())
+    {
+        this->close();
+        ManageProjectsView view;
+        view.exec();
+    }
    qDebug()<< "it clicked";
 
+}
+
+
+void EditProjectView::on_pushButton_3_clicked()
+{
+    this->close();
+    ManageProjectsView view;
+    view.exec();
 }
 
 

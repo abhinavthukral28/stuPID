@@ -132,24 +132,6 @@
     </font>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>310</y>
-     <width>99</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>URW Gothic L</family>
-    </font>
-   </property>
-   <property name="text">
-    <string>Logout</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>

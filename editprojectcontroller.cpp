@@ -109,7 +109,7 @@ int EditProjectController::setView(EditProjectView *view){
 
 int EditProjectController::initValues(Project *project){
 oldProject=Project(*project);
- editProject->updateView(project);
+//editProject->updateView(project);
 }
 
 EditProjectController* EditProjectController::getInstance(){
