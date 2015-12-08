@@ -86,9 +86,9 @@ background:white;
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>30</y>
+        <y>40</y>
         <width>141</width>
-        <height>471</height>
+        <height>401</height>
        </rect>
       </property>
       <property name="font">
@@ -202,9 +202,9 @@ background: white;
      <widget class="QTextBrowser" name="viewTextBrowser">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>40</y>
-        <width>551</width>
+        <width>541</width>
         <height>151</height>
        </rect>
       </property>
