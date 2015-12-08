@@ -47,10 +47,9 @@ private slots:
 
      void on_makeTeamsButton_clicked();
 
-     void on_pushButton_clicked();
-
-
      void on_detailedResult_clicked();
+
+     void on_pushButton_clicked();
 
 private:
     Ui::ManageProjectsView *ui;

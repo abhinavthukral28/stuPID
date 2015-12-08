@@ -92,30 +92,38 @@ int ManageProjectsController::goToLoginDialog(){
 
 int ManageProjectsController::makeTeams()
 {
-
+    qDebug() << "SENDING PROJECT WITH ID " << selectedProject->getID();
     if (selectedProject != NULL)
     {
     TeamBuilder* builder = new TeamBuilder;
     QList<Team*> teams =builder->createTeams(*selectedProject);
     delete builder;
 
-    ResultBuilder* rBuilder = new ResultBuilder;
-    for (int i = 0; i < teams.count();i++)
+    for (int i = 0; i < teams.count(); i++)
     {
-       teams.at(i)->setResultDisplay(rBuilder->getDetailedResults(teams.at(i)));
-
-       qDebug() << "RESULT " << teams.at(i)->getResultDisplay();
+        for (int j = 0; j < teams.at(i)->getTeamMembers().count(); j++){
+            qDebug () << teams.at(i)->getTeamMembers().at(j);
+        }
     }
 
-    if (teams.count() > 0)
-    {
-        database->deleteTeamsByProject(selectedProject->getID());
-        int returnval = database->storeTeamsByProject(teams,selectedProject->getID());
-        return returnval;
-    }
-    else return 0;
-    }
-    return 0;
+//    ResultBuilder* rBuilder = new ResultBuilder;
+//    for (int i = 0; i < teams.count();i++)
+//    {
+//       teams.at(i)->setResultDisplay(rBuilder->getDetailedResults(teams.at(i)));
+
+//       qDebug() << "RESULT " << teams.at(i)->getResultDisplay();
+//    }
+
+//    if (teams.count() > 0)
+//    {
+//        database->deleteTeamsByProject(selectedProject->getID());
+//        int returnval = database->storeTeamsByProject(teams,selectedProject->getID());
+//        return returnval;
+//    }
+//    else return 0;
+//    }
+    return 1;
+}
 }
 void ManageProjectsController::showDetailedResults(){
     AdminViewResultController* resultController = AdminViewResultController::getInstance();

@@ -465,6 +465,7 @@ int DBimpl::createProject(Project& project){
     query.bindValue(":description",project.getDescription());
     query.bindValue(":minTeamSize",project.getMinTeamSize());
     query.bindValue(":maxTeamSize",project.getMaxTeamSize());
+    query.bindValue(":results",0);
     if(!query.exec())
     {
         qDebug() << query.lastError();
@@ -858,7 +859,8 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
      query.prepare(DatabaseQueries::createTeamByProject);
 
      query.bindValue(":projectID",projectID);
-     query.bindValue(":result",resultDisplay);
+     query.bindValue(":results",resultDisplay);
+
 
      if(!query.exec())
      {

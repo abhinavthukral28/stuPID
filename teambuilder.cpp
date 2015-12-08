@@ -26,7 +26,7 @@ const QList<Team*>& TeamBuilder::createTeams(Project& project){
     QMap<int, QList < QPair<int,int> >* >& pci = builder->calculatePci(project.getRegisteredStudents());
 
 
-    Distributor* distributor = new Distributor (pci);
+    Distributor* distributor = new Distributor (pci,project);
 
   QList<Team*> list = distributor->distributeTeams(project.getMinTeamSize(),project.getMaxTeamSize());
 

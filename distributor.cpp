@@ -3,8 +3,10 @@
 #include <QDebug>
 #include "Database.h"
 #include <cmath>
+#include "project.h"
 #include <QMessageBox>
-Distributor::Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam) : pci(pciParam)
+#include "resultbuilder.h"
+Distributor::Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam,Project& projectParam) : pci(pciParam),project(projectParam)
 {
 
 }
@@ -63,6 +65,23 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,int maxSize){
 
            qDebug () << "PCI " << teams.at(i)->getPci();
        }
+
+
+           ResultBuilder* rBuilder = new ResultBuilder;
+           for (int i = 0; i < teams.count();i++)
+           {
+              teams.at(i)->setResultDisplay(rBuilder->getDetailedResults(teams.at(i)));
+
+              qDebug() << "RESULT " << teams.at(i)->getResultDisplay();
+           }
+
+           if (teams.count() > 0)
+           {
+               Database::getInstance()->deleteTeamsByProject(project.getID());
+               int returnval = Database::getInstance()->storeTeamsByProject(teams,project.getID());
+              // return returnval;
+           }
+           //else return 0;
 
 
      return teams;
@@ -288,10 +307,20 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize,  int& maxS
            }
         }
 
+        qDebug () << "Current team size " << teams.at(i)->getTeamMembers().count();
+
          if (teams.at(i)->getTeamMembers().count() != maxSize)
          {
             teams.at(i)->addStudent(minStudentID);
             teams.at(i)->setPci(minWeight);
+
+            QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
+
+            while (iterator.hasNext()) {
+                iterator.next();
+                if (iterator.key() == minStudentID)
+                    iterator.remove();
+            }
          }
          else {
              int increaseNum = ceil(pci.keys().count()/teams.count());
@@ -305,19 +334,13 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize,  int& maxS
              msgBox.setDefaultButton(QMessageBox::No);
               if (msgBox.exec() == QMessageBox::Yes) {
                 maxSize +=increaseNum;
-//                return 0;
+                 //return 0;
 
               } else {
                return 1;
               }
          }
-        QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
 
-        while (iterator.hasNext()) {
-            iterator.next();
-            if (iterator.key() == minStudentID)
-                iterator.remove();
-        }
 
     }
     }
