@@ -20,11 +20,11 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,int maxSize){
 
     if (pci.keys().count() % minSize == 0)
     {
-        numTeams = floor(pci.keys().count()/minSize);
+        numTeams = floor(pci.keys().count()/(float)minSize);
     }
     else
     {
-       numTeams =  ceil(pci.keys().count()/maxSize);
+       numTeams =  ceil(pci.keys().count()/(float)maxSize);
     }
 
 
@@ -283,7 +283,7 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize,  int& maxS
     for (int i = 0; i < teams.count(); i++ )
     {
         int minWeight = -1;
-        int minStudentID;
+        int minStudentID = -1;
         for (int j = 0; j < pci.keys().count();j++)
         {
 
@@ -308,7 +308,8 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize,  int& maxS
         }
 
         qDebug () << "Current team size " << teams.at(i)->getTeamMembers().count();
-
+    if (minStudentID != -1)
+    {
          if (teams.at(i)->getTeamMembers().count() != maxSize)
          {
             teams.at(i)->addStudent(minStudentID);
@@ -340,6 +341,10 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize,  int& maxS
                return 1;
               }
          }
+    }
+    else{
+        break;
+    }
 
 
     }
