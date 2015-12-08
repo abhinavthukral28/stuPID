@@ -45,18 +45,18 @@ void AdminViewResult::updatePanel(int index){
     QStringList highCompatibility = compatibilityLevels.at(0).split('_');
     QStringList mediumCompatibility = compatibilityLevels.at(1).split('_');
     QStringList lowCompatibility = compatibilityLevels.at(2).split('_');
-    QString finalString = "High Compatibility\n";
+    QString finalString = "High Compatibility\n\n";
     for(int i=0;i<highCompatibility.count();i++){
-        finalString += highCompatibility.at(i) + "\n";
+        finalString += "- " + highCompatibility.at(i) + "\n";
     }
-    finalString += "\nMedium Compatibility\n";
+    finalString += "\nMedium Compatibility\n\n";
     for(int i=0;i<mediumCompatibility.count();i++){
-        finalString += mediumCompatibility.at(i) + "\n";
+        finalString += "- " + mediumCompatibility.at(i) + "\n";
     }
     if(lowCompatibility.length() > 0){
-        finalString += "\nLow Compatibility\n";
+        finalString += "\nLow Compatibility\n\n";
         for(int i=0;i<lowCompatibility.count();i++){
-            finalString += lowCompatibility.at(i) + "\n";
+            finalString += "- " + lowCompatibility.at(i) + "\n";
         }
     }
     ui->textBrowser->setText(finalString);
