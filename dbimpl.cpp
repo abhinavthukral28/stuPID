@@ -401,13 +401,13 @@ const QList<Project*>& DBimpl::getAllProjects(){
 
             tempID = query.value(0).toInt();
             qDebug () << "DB " << query.value(1).toInt();
-            tempProject->setResultsAvailable(query.value(1).toInt());
+
 
             if (tempProject->getID() != tempID)
             {
                 tempTitle = QString(query.value(2).toString());
                 tempProject = new Project(tempID,tempTitle);
-
+                 tempProject->setResultsAvailable(query.value(1).toInt());
                 tempDescription = QString(query.value(3).toString());
                 tempTeamMin = query.value(4).toInt();
                 tempTeamMax = query.value(5).toInt();

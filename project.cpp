@@ -23,6 +23,7 @@ Project::Project(const Project &obj){
   description = QString::fromStdString(obj.description.toStdString());
   registeredStudents = obj.registeredStudents;
   ID = obj.getID();
+  results = obj.resultsAreAvailable();
 }
 
 int Project::registerStudent(Student& student)
@@ -115,7 +116,7 @@ bool Project::operator==(const Project& other){
     return other.getID() == getID();
 }
 
-int Project::resultsAreAvailable()
+int Project::resultsAreAvailable() const
 {
     return results;
 }

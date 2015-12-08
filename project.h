@@ -37,7 +37,7 @@ public:
     QString getTitle() const;
     const QList<Student*>& getRegisteredStudents() const;
     bool operator==(const Project& other);
-    int resultsAreAvailable();
+    int resultsAreAvailable() const;
     int setResultsAvailable(int available);
 
 };
