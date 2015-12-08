@@ -281,6 +281,7 @@ void DBimpl::createTables(){
     else
     {
         insertStudents();
+        randomProjects();
         qDebug() << "Table Students created!";
     }
 
@@ -968,6 +969,44 @@ int DBimpl::storeTeamsByProject (const QList<Team*>& teams, const int& projectID
     }
  }
 
+ int DBimpl::randomProjects(){
+     Project* projectOne = new Project("Project One");
+     projectOne->setTeamMax(4);
+     projectOne->setTeamMin(3);
+
+
+     Project* projectTwo = new Project ("Project Two");
+     projectTwo->setTeamMax(3);
+     projectTwo->setTeamMin(2);
+     createProject(*projectOne);
+     createProject(*projectTwo);
+
+
+     QList<Student*> students = getAllStudents();
+
+     QList <Student*> studentsOne;
+     QList <Student*> studentsTwo;
+     int insertCount = 0;
+     while (students.count() != 0)
+     {
+         int index = std::rand() % students.count();
+         if (insertCount < 13)
+         {
+              studentsOne << students.at(index);
+              students.removeAt(index);
+         }
+         else{
+             studentsTwo << students.at(index);
+             students.removeAt(index);
+         }
+         insertCount++;
+
+     }
+
+
+          addStudentsToProject(projectOne->getID(),&studentsOne);
+          addStudentsToProject(projectTwo->getID(),&studentsTwo);
+ }
 
 SQLException DBimpl::generateException(QSqlQuery query)
 {

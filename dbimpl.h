@@ -45,6 +45,7 @@ private:
  int insertValuesintoExpectations();
  int createTeam(const int& projectID, const QString& result);
  int insertStudents();
+ int randomProjects();
  int init();
 };
 
