@@ -52,24 +52,25 @@ void ResultBuilder::getCompareString(Team *team)
     for(int i=0;i<NQ;i++)
     {
         int qPci = 0;
+        int count = 0;
         QString title = teamMembers->at(0).getQualifications().at(i)->getTitle();
         for(int j=0; j<teamMembers->count() - 1;j++){
             Student stu1 = teamMembers->at(j);
             for(int k = j+1;k<teamMembers->count();k++){
                 Student stu2 = teamMembers->at(k);
                 qPci += pci.calculatePci(*stu1.getQualifications().at(i), *stu2.getQualifications().at(i));
-
+        count++;
             }
         }
 
-        if(qPci<=(teamMembers->count() * 4)){
+        if(qPci/count <= 4){
             highCompatibility.append(title);
         }
-        else if(qPci<=(teamMembers->count() * 8)){
+        else if(qPci/count <=8){
             mediumCompatibility.append(title);
 
         }
-        else if(qPci<(teamMembers->count() * 15)){
+        else if(qPci/count<16){
             lowCompatibility.append(title);
         }
 

@@ -111,6 +111,7 @@ int ManageProjectsController::makeTeams()
         TeamBuilder* builder = new TeamBuilder;
         builder->createTeams(*selectedProject);
         delete builder;
+        selectedProject->setResultsAvailable(1);
 
         return 1;
     }
