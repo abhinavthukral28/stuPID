@@ -4,7 +4,9 @@
 #include <QPair>
 #include <QList>
 #include <QMap>
+#include "project.h"
 class Team;
+class Project;
 
 
 class Distributor
@@ -17,8 +19,9 @@ private:
     int addOutliers(QList <Team*>& teams,const int& minSize, int& maxSize);
     QList<int>* sortKeys(QList<int> keys);
     int sortTeams(QList<Team*>& team);
+    Project project;
 public:
-    Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam);
+    Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam,Project& projectParam);
     const QList<Team*>& distributeTeams(const int minSize,const int maxSize);
 
 };

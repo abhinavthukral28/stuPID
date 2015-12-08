@@ -22,6 +22,7 @@ Project::Project(const Project &obj){
   teamMin = obj.teamMin;
   description = QString::fromStdString(obj.description.toStdString());
   registeredStudents = obj.registeredStudents;
+  ID = obj.getID();
 }
 
 int Project::registerStudent(Student& student)

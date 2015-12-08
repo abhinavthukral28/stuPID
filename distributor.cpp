@@ -3,8 +3,10 @@
 #include <QDebug>
 #include "Database.h"
 #include <cmath>
+#include "project.h"
 #include <QMessageBox>
-Distributor::Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam) : pci(pciParam)
+#include "resultbuilder.h"
+Distributor::Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam,Project& projectParam) : pci(pciParam),project(projectParam)
 {
 
 }
@@ -63,6 +65,23 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,int maxSize){
 
            qDebug () << "PCI " << teams.at(i)->getPci();
        }
+
+
+           ResultBuilder* rBuilder = new ResultBuilder;
+           for (int i = 0; i < teams.count();i++)
+           {
+              teams.at(i)->setResultDisplay(rBuilder->getDetailedResults(teams.at(i)));
+
+              qDebug() << "RESULT " << teams.at(i)->getResultDisplay();
+           }
+
+           if (teams.count() > 0)
+           {
+               Database::getInstance()->deleteTeamsByProject(project.getID());
+               int returnval = Database::getInstance()->storeTeamsByProject(teams,project.getID());
+              // return returnval;
+           }
+           //else return 0;
 
 
      return teams;

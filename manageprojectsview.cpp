@@ -156,10 +156,6 @@ void ManageProjectsView::on_makeTeamsButton_clicked()
 
 }
 
-void ManageProjectsView::on_pushButton_clicked()
-{
-    manageProjectsController->goToLoginDialog();
-}
 
 
 void ManageProjectsView::on_detailedResult_clicked()
@@ -183,4 +179,9 @@ void ManageProjectsView::updateSummaryResults(QList<Team*> teams)
         final+= "Team " + QString::number(i+1) + ": " + nameList.join(',') + "\n";
     }
     ui->viewTextBrowser->setText(final);
+}
+
+void ManageProjectsView::on_pushButton_clicked()
+{
+     manageProjectsController->goToLoginDialog();
 }
