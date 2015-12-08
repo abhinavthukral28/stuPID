@@ -3,11 +3,15 @@
 
 #include <QDialog>
 #include "editprojectcontroller.h"
+#include "manageprojectscontroller.h"
 namespace Ui {
 class EditProjectView;
 }
 
-//class EditProjectController;
+class EditProjectController;
+class Project;
+class Database;
+class ManageProjectController;
 class EditProjectView : public QDialog
 {
     Q_OBJECT
@@ -18,17 +22,26 @@ public:
     const QString getProjectTitle();
     const int& getProjectTeamMin();
     const int& getProjectTeamMax();
+    int updateView(Project *project);
 
     QString aTitle, aMin, aMax, aDescription;
-    void accept();
+
     ~EditProjectView();
 
 private slots:
-    void on_buttonBox_accepted();
+
+
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::EditProjectView *ui;
     EditProjectController *editProjectController;
+    Database *database;
+    ManageProjectsController manageProjects;
+    Project *project;
 };
 
 #endif // EDITPROJECTVIEW_H
+
+

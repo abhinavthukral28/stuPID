@@ -8,6 +8,7 @@
 #include "student.h"
 #include "teambuilder.h"
 #include "adminviewresultcontroller.h"
+#include "editprojectview.h"
 
 
 ManageProjectsController *ManageProjectsController::instance = 0;
@@ -49,8 +50,9 @@ int ManageProjectsController::init(){
 }
 
 
-int ManageProjectsController::updateSelectedProject(const int& index){
-    selectedProject=allProjects.at(index);
+int ManageProjectsController::updateSelectedProject(const int& i){
+    selectedProject=allProjects.at(i);
+    //index=i;
     if(selectedProject != NULL){
         manageProjectsView->updateDetailedView(*selectedProject);
 
@@ -82,11 +84,22 @@ int ManageProjectsController::goToCreateProjectView()
 
 }
 
+Project* ManageProjectsController::getSelectedProject(){
+    return selectedProject;
+}
+
 int ManageProjectsController::goToLoginDialog(){
    manageProjectsView->close();
    LoginDialog logindialog;
    return logindialog.exec();
 
+}
+
+int ManageProjectsController::goToEditProject(){
+    manageProjectsView->close();
+    EditProjectView view;
+    view.updateView(selectedProject);
+    return view.exec();
 }
 
 int ManageProjectsController::makeTeams()
@@ -126,4 +139,8 @@ void ManageProjectsController::updateSummaryResults(){
 }
 Student ManageProjectsController::getStudent(int id){
    return database->getStudentByID(id);
+}
+
+int ManageProjectsController::getIndex(){
+    return index;
 }

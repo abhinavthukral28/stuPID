@@ -184,3 +184,9 @@ void ManageProjectsView::updateSummaryResults(QList<Team*> teams)
     }
     ui->viewTextBrowser->setText(final);
 }
+
+void ManageProjectsView::on_editProject_clicked()
+{
+    manageProjectsController->goToEditProject();
+
+}

@@ -1,11 +1,15 @@
 #include "editprojectview.h"
 #include "ui_editprojectview.h"
 #include "editprojectcontroller.h"
+#include "project.h"
+#include "Database.h"
+#include "QDebug"
 
 EditProjectView::EditProjectView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditProjectView),
-    editProjectController(EditProjectController::getInstance())
+    editProjectController(EditProjectController::getInstance()),
+    database(Database::getInstance())
 {
     editProjectController->setView(this);
     ui->setupUi(this);
@@ -16,10 +20,6 @@ EditProjectView::~EditProjectView()
     delete ui;
 }
 
-void EditProjectView::on_buttonBox_accepted()
-{
-
-}
 
 
 const QString EditProjectView::getProjectDescription()
@@ -56,9 +56,24 @@ const int& EditProjectView::getProjectTeamMax()
     return ref4;
 }
 
-void EditProjectView::accept(){
+int EditProjectView::updateView(Project *project){
+ ui->projectNameTextFeild->setText(project->getTitle());
+ ui->projectDescriptionTextFeild->setText(project->getDescription());
+
+ QString num1;
+ num1.setNum(project->getMinTeamSize());
+ QString num2;
+ num2.setNum(project->getMaxTeamSize());
+ ui->maxTeamSizeTextFeild->setText(num2);
+ ui->minTeamSizeTextFeild->setText(num1);
 
 }
-    ;
+
+void EditProjectView::on_pushButton_2_clicked()
+{
+    editProjectController->saveProject();
+   qDebug()<< "it clicked";
+
+}
 
 

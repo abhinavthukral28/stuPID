@@ -3,6 +3,7 @@
 #include "createprojectview.h"
 #include "Database.h"
 #include "project.h"
+#include "manageprojectscontroller.h"
 #include "manageprojectsview.h"
 #include "logindialog.h"
 #include <QObject>
@@ -10,41 +11,61 @@
 
 EditProjectController *EditProjectController::instance=0;
 EditProjectController::EditProjectController():QObject(),
-    database(Database::getInstance())
+    database(Database::getInstance()),oldProject(Project(""))
 {
 
 }
 
 int EditProjectController::saveProject(){
-/*
-   Project* project = new Project (editProjectView->getProjectTitle());
 
-   project->setDescription(editProjectView->getProjectDescription());
-   project->setTeamMin(editProjectView->getProjectTeamMin());
-   project->setTeamMax(editProjectView->getProjectTeamMax());
+   oldProject.setTitle(editProject->getProjectTitle());
 
-   if(editProjectView->aTitle.isEmpty())
+   oldProject.setDescription(editProject->getProjectDescription());
+   oldProject.setTeamMin(editProject->getProjectTeamMin());
+   oldProject.setTeamMax(editProject->getProjectTeamMax());
+
+   qDebug()<<"Hello";
+
+   database->updateProject(oldProject);
+
+   qDebug()<<"It Updated"+oldProject.getTitle();
+
+
+
+  // database->updateProject(oldProject);
+
+   if(editProject->aTitle.isEmpty())
    {
+       qDebug()<<"title is empty";
+
        return 2;//project name
 
    }
 
-   if(project->getMaxTeamSize() < project->getMinTeamSize() ||
-           editProjectView->aMax.isEmpty() || createProjectsView->aMin.isEmpty() ||
-           editProjectView->aMax.toInt() == 0 || createProjectsView->aMin.toInt() < 2)
+   if(oldProject.getMaxTeamSize() < oldProject.getMinTeamSize() ||
+           editProject->aMax.isEmpty() || editProject->aMin.isEmpty() ||
+           editProject->aMax.toInt() == 0 || editProject->aMin.toInt() < 2)
    {
+       qDebug()<<"oh no";
+
       return 3; //invalid team size
    }
    else{
-    if(database->createProject(*project))
+    if(database->updateProject(oldProject))
     {
         return 1;
+        qDebug()<<"it updated!";
     }
-    else return 0;
+
+    else{
+        qDebug()<<"it aint updating yoo";
+        return 0;
+    }
+
 
    }
 
-*/
+
 
  }
 
@@ -81,7 +102,14 @@ int EditProjectController::error(int type)
 }
 
 int EditProjectController::setView(EditProjectView *view){
-    editProjectView=view;
+    editProject=view;
+
+}
+
+
+int EditProjectController::initValues(Project *project){
+oldProject=Project(*project);
+ editProject->updateView(project);
 }
 
 EditProjectController* EditProjectController::getInstance(){
