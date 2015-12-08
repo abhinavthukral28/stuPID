@@ -23,14 +23,12 @@ class Database{
     virtual const QList<Qualification*>& getAllQualifications(const int& studentID) = 0;
     virtual int deleteTeamsByProject(const int& projectID) = 0;
     virtual const Student& getStudentByID(const int& studentID) = 0;
-//    virtual const QList<Student*>& getStudentsByProject() = 0;
     virtual const QList<Project*>& getProjectsByStudent(const int& studentID) =  0;
     virtual const QList<Project*>& getOpenProjectsByStudent(const int& studentID) = 0;
     virtual const QList<Team*>& getTeamsbyProjectID (const int& projectID) = 0;
     virtual int createStudent(Student& student) = 0;
     virtual int createProject(Project& project) = 0;
     virtual int updateProject(const Project& project) = 0;
-  //  virtual const Project& getProjectByID(const int& projectID) = 0;
     virtual int storeTeamsByProject (const QList<Team*>& teams, const int& projectID) = 0;
     virtual int addStudentsToProject(const int& projectID, QList<Student*>* students) = 0;
     virtual int addStudentToProject(const int& projectID,Student& student) = 0;

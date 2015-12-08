@@ -5,6 +5,7 @@
 #include "manageprojectscontroller.h"
 #include "student.h"
 #include <QDialog>
+#include <QDebug>
 #include "adminviewresultcontroller.h"
 #include <QStringList>
 
@@ -43,8 +44,6 @@ int ManageProjectsView::updateProjectsList(QList<QString> &projectTitles){
         temp =projectTitles.at(i);
         ui->projectsList->addItem(temp);
     }
-    // manageProjectsController->updateSelectedProject(0);
-
 }
 
 
@@ -77,6 +76,7 @@ int ManageProjectsView::updateDetailedView(Project &project)
         ui->viewTextBrowser->setText(temp);
 
     }
+    qDebug () << "Results available? " << project.resultsAreAvailable();
     ui->detailedResult->setDisabled(!project.resultsAreAvailable());
     ui->viewResultButton->setDisabled(!project.resultsAreAvailable());
 }

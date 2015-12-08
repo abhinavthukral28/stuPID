@@ -1,28 +1,29 @@
 #include "distributor.h"
 #include "team.h"
 #include <QDebug>
+#include "Database.h"
 #include <cmath>
+#include <QMessageBox>
 Distributor::Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam) : pci(pciParam)
 {
 
 }
 
-const QList<Team*>& Distributor::distributeTeams(const int minSize,const int maxSize){
+const QList<Team*>& Distributor::distributeTeams(const int minSize,int maxSize){
 
     qDebug () << " STARTING DISTRIBUTOR";
-    int outlierCountMin = (floor(pci.keys().count()/minSize)) * minSize;
+
 
     int numTeams;
 
-    if (outlierCountMin >= pci.keys().count())
+    if (pci.keys().count() % minSize == 0)
     {
         numTeams = floor(pci.keys().count()/minSize);
     }
     else
     {
-       numTeams =  floor(pci.keys().count()/maxSize);
+       numTeams =  ceil(pci.keys().count()/maxSize);
     }
-
 
 
 
@@ -50,18 +51,20 @@ const QList<Team*>& Distributor::distributeTeams(const int minSize,const int max
 
      addOutliers(teams,minSize,maxSize);
 
-    qDebug() << "Final teams";
-     for (int i = 0; i < teams.count(); i++)
-     {
-         qDebug () << "Team " << teams.at(i)->getID();
+     qDebug() << "Final teams";
+       for (int i = 0; i < teams.count(); i++)
+       {
+           qDebug () << "Team " << teams.at(i)->getID();
 
-         for (int j = 0; j < teams.at(i)->getTeamMembers().count(); j++)
-         {
-            qDebug() <<   teams.at(i)->getTeamMembers().at(j) ;
-         }
+           for (int j = 0; j < teams.at(i)->getTeamMembers().count(); j++)
+           {
+              qDebug() <<   teams.at(i)->getTeamMembers().at(j) ;
+           }
 
-         qDebug () << "PCI " << teams.at(i)->getPci();
-     }
+           qDebug () << "PCI " << teams.at(i)->getPci();
+       }
+
+
      return teams;
  }
 
@@ -92,16 +95,16 @@ QList<Team*>& Distributor::createTopRowTeams(int numTeams)
 {
 
      QList< Team* >* topRow = new QList< Team* >;
-     QList< int > keys = sortKeys(pci.keys());
+     QList< int >* keys = sortKeys(pci.keys());
 
-     for (int i = 0; i < keys.count();i++)
+     for (int i = 0; i < keys->count();i++)
      {
          if (numTeams == 0)
              return *topRow;
-         int idOne = keys.at(i);
+         int idOne = keys->at(i);
 
          qDebug () << "first id is " << idOne;
-         if (pci.contains(keys.at(i)))
+         if (pci.contains(keys->at(i)))
          {
              int otherID;
              int pciVal;
@@ -145,13 +148,10 @@ QList<Team*>& Distributor::createTopRowTeams(int numTeams)
                  qDebug () << " Removing key " << idOne;
                  qDebug () << " Removing key " << otherID;
 
-                 keys.removeOne(idOne);
-                 keys.removeOne(otherID);
+                 keys->removeOne(idOne);
+                 keys->removeOne(otherID);
 
-                 for (int keysiter = 0; keysiter < keys.count(); keysiter++)
-                 {
-                     qDebug () << keys.at(keysiter);
-                 }
+
 
                  QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
                  while (iterator.hasNext()) {
@@ -193,7 +193,7 @@ bool Distributor::insert(QList<QPair<int,QPair<int,int> > >& pci,const QPair<int
       return inserted;
 }
 
-const QList<int>& Distributor::sortKeys(QList<int> keys)
+QList<int>* Distributor::sortKeys(QList<int> keys)
 {
 
     QList<int>* sorted = new QList<int>;
@@ -230,7 +230,7 @@ const QList<int>& Distributor::sortKeys(QList<int> keys)
 
 
 
-    return *sorted;
+    return sorted;
 }
 
 
@@ -255,10 +255,12 @@ int Distributor::sortTeams(QList<Team*>& teams){
 
 
 
-int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int& maxSize){
+int Distributor::addOutliers(QList <Team*>& teams,const int& minSize,  int& maxSize){
 
     sortTeams(teams);
 
+    while (pci.keys().count() != 0)
+    {
     for (int i = 0; i < teams.count(); i++ )
     {
         int minWeight = -1;
@@ -286,8 +288,29 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int&
            }
         }
 
-         teams.at(i)->addStudent(minStudentID);
-        teams.at(i)->setPci(minWeight);
+         if (teams.at(i)->getTeamMembers().count() != maxSize)
+         {
+            teams.at(i)->addStudent(minStudentID);
+            teams.at(i)->setPci(minWeight);
+         }
+         else {
+             int increaseNum = ceil(pci.keys().count()/teams.count());
+
+             QString display = QString("Would you like to increase the maximum team size by ") + QString::number(increaseNum) + " to continue team building?";
+             QMessageBox msgBox;
+             msgBox.setWindowTitle("Invalid params");
+             msgBox.setText(display);
+             msgBox.setStandardButtons(QMessageBox::Yes);
+             msgBox.addButton(QMessageBox::No);
+             msgBox.setDefaultButton(QMessageBox::No);
+              if (msgBox.exec() == QMessageBox::Yes) {
+                maxSize +=increaseNum;
+//                return 0;
+
+              } else {
+               return 1;
+              }
+         }
         QMutableMapIterator<int,QList<QPair<int,int > >* > iterator (pci);
 
         while (iterator.hasNext()) {
@@ -296,6 +319,7 @@ int Distributor::addOutliers(QList <Team*>& teams,const int& minSize, const int&
                 iterator.remove();
         }
 
+    }
     }
 
 

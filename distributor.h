@@ -14,8 +14,8 @@ private:
     int calculateTeamWeight(const Team& team,const int& id);
     QList< Team* >& createTopRowTeams(int numteams);
     bool insert(QList<QPair<int,QPair<int,int> > >& pci,const QPair<int,QPair<int,int> >& pair);
-    int addOutliers(QList <Team*>& teams,const int& minSize, const int& maxSize);
-    const QList<int>& sortKeys(QList<int> keys);
+    int addOutliers(QList <Team*>& teams,const int& minSize, int& maxSize);
+    QList<int>* sortKeys(QList<int> keys);
     int sortTeams(QList<Team*>& team);
 public:
     Distributor(QMap< int,QList< QPair<int,int> >* >& pciParam);

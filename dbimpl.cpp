@@ -399,6 +399,7 @@ const QList<Project*>& DBimpl::getAllProjects(){
         {
 
             tempID = query.value(0).toInt();
+            qDebug () << "DB " << query.value(1).toInt();
             tempProject->setResultsAvailable(query.value(1).toInt());
 
             if (tempProject->getID() != tempID)
@@ -618,10 +619,8 @@ const QList<Project*>& DBimpl::getProjectsByStudent(const int& studentID)
 
                     tempUsername = query.value(9).toString();
                     tempStudent = new Student(tempStudentID,tempUsername);
-                    //tempStudent->qualifications = getAllQualifications(tempStudentID);
                     QList<Qualification*> temp = getAllQualifications(tempID);
 
-                    //tempStudent->setQualifications(getAllQualifications(tempStudentID));
 
                     tempStudent->qualifications = temp;
                     tempProject->registerStudent(*tempStudent);

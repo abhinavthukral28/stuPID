@@ -20,7 +20,6 @@ public:
     const QList<Qualification*>& getAllQualifications(const int& studentID);
 
     const Student& getStudentByID(const int& studentID);
-   // const QList<Student*>& getStudentsByProject();
     const QList<Project*>& getProjectsByStudent(const int& studentID);
     const QList<Project*>& getOpenProjectsByStudent(const int& studentID);
     const QList<Team*>& getTeamsbyProjectID (const int& projectID);
@@ -28,7 +27,6 @@ public:
     int createProject(Project& project);
     int deleteTeamsByProject(const int& projectID);
     int updateProject(const Project& project);
-   // const Project& getProjectByID(const int& projectID);
     int storeTeamsByProject (const QList<Team*>& teams, const int& projectID);
     int addStudentsToProject(const int& projectID, QList<Student*>* students);
     int addStudentToProject(const int& projectID,Student& student);
