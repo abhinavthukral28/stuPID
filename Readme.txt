@@ -1,9 +1,9 @@
 Team Student Partner ID
 
-Abhinav Thukral 100871855
-Vinisha D’Souza 100882081
-Allan Luke 100916046
-Fan Zhang 100839154
+Abhinav Thukral 
+Vinisha D’Souza 
+Allan Luke 
+Fan Zhang 
 
 How to Run the program
 
